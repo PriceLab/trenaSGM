@@ -6,10 +6,12 @@
 \alias{calculate}
 \title{create regulatory model of the gene, following all the specified options}
 \usage{
-\S4method{calculate}{trenaSGM}(obj)
+\S4method{calculate}{trenaSGM}(obj, strategies)
 }
 \arguments{
 \item{obj}{An object of class trenaSGM}
+
+\item{strategies}{a list of lists, specifying all the options to build one or more models}
 }
 \value{
 A list with a bunch of tables...

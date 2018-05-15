@@ -7,21 +7,12 @@
 \alias{trenaSGM}
 \title{Create a trenaSGM object}
 \usage{
-trenaSGM(genomeName, targetGene, mtx, pfms, strategies, tfCorrelationThreshold,
-  quiet = TRUE)
+trenaSGM(genomeName, targetGene, quiet = TRUE)
 }
 \arguments{
 \item{genomeName}{hg38, mm10, ...}
 
 \item{targetGene}{in same vocabulary as rownames in the expression matrix}
-
-\item{mtx}{a numeric expression matrix}
-
-\item{pfms}{a subset of MotifDb}
-
-\item{strategies}{strings encoding the various means to be used in building models}
-
-\item{tfCorrelationThreshold}{absolute value in pearson correlation selects candidate TFs}
 
 \item{quiet}{do or do not print progress information}
 }

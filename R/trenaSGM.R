@@ -14,10 +14,6 @@
                        representation = representation(
                           genomeName="character",
                           targetGene="character",
-                          mtx="matrix",
-                          pfms="List",
-                          strategies="list",
-                          tfCorrelationThreshold="numeric",
                           quiet="logical",
                           state="environment"
                           ),
@@ -25,7 +21,7 @@
 
 
 #------------------------------------------------------------------------------------------------------------------------
-setGeneric('calculate', signature='obj', function (obj) standardGeneric ('calculate'))
+setGeneric('calculate', signature='obj', function (obj, strategies) standardGeneric ('calculate'))
 setGeneric('execute.footprint.strategy', signature='obj', function (obj, strategy) standardGeneric ('execute.footprint.strategy'))
 #------------------------------------------------------------------------------------------------------------------------
 #' Create a trenaSGM object
@@ -37,10 +33,6 @@ setGeneric('execute.footprint.strategy', signature='obj', function (obj, strateg
 #'
 #' @param genomeName hg38, mm10, ...
 #' @param targetGene in same vocabulary as rownames in the expression matrix
-#' @param mtx a numeric expression matrix
-#' @param pfms a subset of MotifDb
-#' @param strategies strings encoding the various means to be used in building models
-#' @param tfCorrelationThreshold absolute value in pearson correlation selects candidate TFs
 #' @param quiet do or do not print progress information
 #'
 #' @return An object of the trenaSGM class
@@ -56,14 +48,10 @@ setGeneric('execute.footprint.strategy', signature='obj', function (obj, strateg
 #'   }
 #'
 #' @export
-trenaSGM <- function(genomeName, targetGene, mtx, pfms, strategies, tfCorrelationThreshold, quiet=TRUE)
+trenaSGM <- function(genomeName, targetGene, quiet=TRUE)
 {
    obj <- .trenaSGM(genomeName=genomeName,
                     targetGene=targetGene,
-                    mtx=mtx,
-                    pfms=pfms,
-                    strategies=strategies,
-                    tfCorrelationThreshold=tfCorrelationThreshold,
                     quiet=quiet,
                     state=new.env(parent=emptyenv()))
    obj
@@ -76,6 +64,7 @@ trenaSGM <- function(genomeName, targetGene, mtx, pfms, strategies, tfCorrelatio
 #' @aliases calculate
 #'
 #' @param obj An object of class trenaSGM
+#' @param strategies a list of lists, specifying all the options to build one or more models
 #'
 #' @return A list with a bunch of tables...
 #'
@@ -92,9 +81,9 @@ trenaSGM <- function(genomeName, targetGene, mtx, pfms, strategies, tfCorrelatio
 #' @export
 setMethod('calculate', 'trenaSGM',
 
-   function (obj) {
-      footprint.strategies <- grep("footprints", names(strategies))
-      for(footprint.strategy in footpint.strategies){
+   function (obj, strategies) {
+      footprint.strategies <- grep("database.footprints", strategies$type)
+      for(footprint.strategy in footprint.strategies){
          execute.footprint.strategy(obj, footprint.strategy)
          }
       return(list())
@@ -121,6 +110,7 @@ setMethod('calculate', 'trenaSGM',
 setMethod('execute.footprint.strategy', 'trenaSGM',
 
    function (obj, strategy) {
+      browser()
       return(list(model=data.frame(), regions=data.frame()))
       })
 #------------------------------------------------------------------------------------------------------------------------
