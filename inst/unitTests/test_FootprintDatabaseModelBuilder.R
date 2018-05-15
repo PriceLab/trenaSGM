@@ -39,6 +39,7 @@ test_build <- function()
 {
    printf("--- test_build")
 
+   chromosome <- "chr6"
    upstream <- 2000
    downstream <- 200
    tss <- 41163186
@@ -48,7 +49,7 @@ test_build <- function()
 
    fp.specs <- list(title="fp.2000up.200down",
                     type="database.footprints",
-                    chrom="chr6",
+                    chrom=chromosome,
                     start=start,
                     end=end,
                     tss=tss,
@@ -60,7 +61,18 @@ test_build <- function()
                     solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
    fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", fp.specs, quiet=TRUE)
-   build(fpBuilder, mtx)
+   x <- build(fpBuilder, mtx)
+   checkEquals(names(x), c("model", "regulatoryRegions"))
+   tbl.regions <- x$regulatoryRegions
+   tbl.model <- x$model
+   tbl.model <- tbl.model[order(tbl.model$rfScore, decreasing=TRUE),]
+   expected.tfs <- c("IKZF1", "IRF8", "CEBPA", "TAL1",  "IRF2")
+   checkEquals(tbl.model$gene, expected.tfs)
+   checkTrue(all(expected.tfs %in% tbl.regions$geneSymbol))
+   checkTrue(all(tbl.regions$chrom == chromosome))
+   checkTrue(all(tbl.regions$fp_start >= start))
+   checkTrue(all(tbl.regions$fp_end <= end))
+
 
 } # test_build
 #------------------------------------------------------------------------------------------------------------------------

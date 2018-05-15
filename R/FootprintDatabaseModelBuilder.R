@@ -102,18 +102,16 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
    function (obj, expression.matrix) {
       tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
       if(obj@strategy$motifDiscovery == "builtinFimo"){
-         browser()
          tbl.fp$motifName <- tbl.fp$name
          tbl.fp <- associateTranscriptionFactors(MotifDb, tbl.fp, source=obj@strategy$tfMapping, expand.rows=TRUE)
-         tbl.model <- .runTrena(obj@genomeName,
-                                obj@targetGene,
-                                tbl.fp,
-                                expression.matrix,
-                                obj@strategy$tfPrefilterCorrelation,
-                                obj@strategy$solverNames)
+         tbls <- .runTrena(obj@genomeName,
+                           obj@targetGene,
+                            tbl.fp,
+                            expression.matrix,
+                            obj@strategy$tfPrefilterCorrelation,
+                            obj@strategy$solverNames)
         } # motifDisocvery, builtinFimo
-      browser()
-      return(list())
+      return(tbls)
       })
 
 #------------------------------------------------------------------------------------------------------------------------
@@ -121,13 +119,16 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
                       tfPrefilterCorrelation, solverNames)
 {
    trena <- Trena("hg38", quiet=FALSE)
-
-   browser()
-   xyz <- 99
-   tbl.model <- createGeneModel(trena, targetGene, solverNames, tbl.regulatoryRegions, expression.matrix)
-   browser()
-   xyz <- 99
-
+   all.known.tfs <- unique(mcols(MotifDb)$geneSymbol)
+   all.known.tfs.mtx <- intersect(all.known.tfs, rownames(expression.matrix))
+   mtx.tfs <- expression.matrix[c(all.known.tfs.mtx, targetGene),]
+   mtx.cor <- cor(t(mtx.tfs))
+   tf.candidates <- names(which(mtx.cor["TREM2",] >= tfPrefilterCorrelation))
+   tf.candidates.with.motifs <- intersect(tf.candidates, tbl.regulatoryRegions$geneSymbol)
+   tbl.regulatoryRegions.filtered <- subset(tbl.regulatoryRegions, geneSymbol %in% tf.candidates.with.motifs)
+   mtx.tfs.filtered <- mtx.tfs[c(targetGene, tf.candidates.with.motifs),]
+   tbl.model <- createGeneModel(trena, targetGene, solverNames, tbl.regulatoryRegions.filtered, mtx.tfs.filtered)
+   return(list(model=tbl.model, regulatoryRegions=tbl.regulatoryRegions.filtered))
 
 } # .runTrena
 #------------------------------------------------------------------------------------------------------------------------
@@ -157,7 +158,6 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
 
    tbl.fp <- do.call(rbind, fps)
    tbl.fp$shortMotif <- NA
-   browser()
    missing <- which(!tbl.fp$name %in% names(MotifDb))
    matched <- which(tbl.fp$name %in% names(MotifDb))
    x <- match(tbl.fp$name[matched], names(MotifDb))
