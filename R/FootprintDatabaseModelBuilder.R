@@ -123,7 +123,7 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
    all.known.tfs.mtx <- intersect(all.known.tfs, rownames(expression.matrix))
    mtx.tfs <- expression.matrix[c(all.known.tfs.mtx, targetGene),]
    mtx.cor <- cor(t(mtx.tfs))
-   tf.candidates <- names(which(mtx.cor["TREM2",] >= tfPrefilterCorrelation))
+   tf.candidates <- names(which(abs(mtx.cor["TREM2",]) >= tfPrefilterCorrelation))
    tf.candidates.with.motifs <- intersect(tf.candidates, tbl.regulatoryRegions$geneSymbol)
    tbl.regulatoryRegions.filtered <- subset(tbl.regulatoryRegions, geneSymbol %in% tf.candidates.with.motifs)
    mtx.tfs.filtered <- mtx.tfs[c(targetGene, tf.candidates.with.motifs),]
