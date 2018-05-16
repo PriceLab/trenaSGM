@@ -67,6 +67,22 @@ FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, quie
 
 } # FootprintDatabaseModelBuilder
 #------------------------------------------------------------------------------------------------------------------------
+#' summarize the attributes specifying the creation of a trena gene regulatory model
+#'
+#' @rdname show
+#' @aliases show
+#'
+#' @param obj An object of class FootprintDatabaseModelBuilder
+#'
+#' @export
+setMethod('show', 'FootprintDatabaseModelBuilder',
+
+    function(object) {
+      msg = sprintf("FootprintDatabaseModel object named '%s'", object@strategy$title)
+      cat (msg, '\n', sep='')
+      })
+
+#------------------------------------------------------------------------------------------------------------------------
 #' create regulatory model of the gene, following all the specified options
 #'
 #' @rdname build
@@ -74,7 +90,6 @@ FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, quie
 #'
 #' @param obj An object of class FootprintDatabaseModelBuilder
 #' @param strategy a list specifying all the options to build one or more models
-#' @param expression.matrix a numeric matrix; row names are genes, column names are sample IDs
 #'
 #' @return A list with a bunch of tables...
 #'
@@ -84,8 +99,9 @@ FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, quie
 #'                    type="database.footprints",
 #'                    chrom="chr6",
 #'                    tss=41163186,
-#'                    upstream=2000,
-#'                    downstream=200,
+#'                    start=(tss-2000),
+#'                    downstream=(tss+200),
+#'                    matrix
 #'                    db.host="khaleesi.systemsbiology.net",
 #'                    databases=list("brain_hint_20"),
 #'                    motifDiscovery="builtinFimo",
@@ -99,26 +115,35 @@ FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, quie
 #' @export
 setMethod('build', 'FootprintDatabaseModelBuilder',
 
-   function (obj, expression.matrix) {
+   function (obj) {
       tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
       if(obj@strategy$motifDiscovery == "builtinFimo"){
          tbl.fp$motifName <- tbl.fp$name
          tbl.fp <- associateTranscriptionFactors(MotifDb, tbl.fp, source=obj@strategy$tfMapping, expand.rows=TRUE)
          tbls <- .runTrena(obj@genomeName,
                            obj@targetGene,
-                            tbl.fp,
-                            expression.matrix,
-                            obj@strategy$tfPrefilterCorrelation,
-                            obj@strategy$solverNames)
+                           tbl.fp,
+                           obj@strategy$matrix,
+                           obj@strategy$tfPrefilterCorrelation,
+                           obj@strategy$solverNames,
+                           obj@quiet)
         } # motifDisocvery, builtinFimo
+      if("orderModelBy" %in% names(obj@strategy)){
+         orderByColumn <- obj@strategy$orderModelBy
+         if(nchar(orderByColumn) > 0 & orderByColumn %in% colnames(tbls[[1]])){
+            tbl.tmp <- tbls[[1]]
+            tbl.tmp <- tbl.tmp[order(tbl.tmp[, orderByColumn], decreasing=TRUE), ]
+            tbls[[1]] <- tbl.tmp
+            } # non-empty orderBy column, and that column names is in colnames
+         } # if model column to order by is in the strategy
       return(tbls)
       })
 
 #------------------------------------------------------------------------------------------------------------------------
 .runTrena <- function(genomeName, targetGene, tbl.regulatoryRegions, expression.matrix,
-                      tfPrefilterCorrelation, solverNames)
+                      tfPrefilterCorrelation, solverNames, quiet)
 {
-   trena <- Trena("hg38", quiet=FALSE)
+   trena <- Trena("hg38", quiet=quiet)
    all.known.tfs <- unique(mcols(MotifDb)$geneSymbol)
    all.known.tfs.mtx <- intersect(all.known.tfs, rownames(expression.matrix))
    mtx.tfs <- expression.matrix[c(all.known.tfs.mtx, targetGene),]
@@ -147,7 +172,7 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
    for(dbName in unlist(s$databases)){
       if(!quiet) printf("--- attempting to open %s", dbName)
       dbConnection <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname=dbName)
-      printf("--- querying %s for footprints in region of %d bases", dbName, 1 + s$end - s$start)
+      if(!quiet) printf("--- querying %s for footprints in region of %d bases", dbName, 1 + s$end - s$start)
       tbl.hits <- .queryFootprints(dbConnection, s$chrom, s$start, s$end)
       tbl.hits$chrom <- unlist(lapply(strsplit(tbl.hits$loc, ":"), "[",  1))
       tbl.hits.clean <- tbl.hits # [, c("chrom", "fp_start", "fp_end", "name", "score2", "method")]

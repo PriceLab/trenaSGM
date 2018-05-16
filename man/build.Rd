@@ -6,12 +6,10 @@
 \alias{build}
 \title{create regulatory model of the gene, following all the specified options}
 \usage{
-\S4method{build}{FootprintDatabaseModelBuilder}(obj, expression.matrix)
+\S4method{build}{FootprintDatabaseModelBuilder}(obj)
 }
 \arguments{
 \item{obj}{An object of class FootprintDatabaseModelBuilder}
-
-\item{expression.matrix}{a numeric matrix; row names are genes, column names are sample IDs}
 
 \item{strategy}{a list specifying all the options to build one or more models}
 }
@@ -27,8 +25,9 @@ if(interactive()){
                    type="database.footprints",
                    chrom="chr6",
                    tss=41163186,
-                   upstream=2000,
-                   downstream=200,
+                   start=(tss-2000),
+                   downstream=(tss+200),
+                   matrix
                    db.host="khaleesi.systemsbiology.net",
                    databases=list("brain_hint_20"),
                    motifDiscovery="builtinFimo",

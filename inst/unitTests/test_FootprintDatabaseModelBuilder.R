@@ -17,21 +17,31 @@ test_constructor <- function()
 {
    printf("--- test_constructor")
 
-   fp.specs <- list(title="fp.2000up.200down",
-                    type="database.footprints",
-                    matrix=mtx,
-                    chrom="chr6",
-                    tss=41163186,
-                    upstream=2000,
-                    downstream=200,
-                    db.host="khaleesi.systemsbiology.net",
-                    databases=list("brain_hint_20"),
-                    motifDiscovery="builtinFimo",
-                    tfMapping="MotifDB",
-                    solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
-                    tfPrefilterCorrelation=0.2)
+   genome <- "hg38"
+   targetGene <- "TREM2"
+   chromosome <- "chr6"
+   upstream <- 2000
+   downstream <- 200
+   tss <- 41163186
+      # strand-aware start and end: trem2 is on the minus strand
+   start <- tss - downstream
+   end   <- tss + upstream
 
-   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", fp.specs, quiet=TRUE)
+   build.spec <- list(title="fp.2000up.200down",
+                      type="footprint.database",
+                      chrom=chromosome,
+                      start=start,
+                      end=end,
+                      tss=tss,
+                      matrix=mtx,
+                      db.host="khaleesi.systemsbiology.net",
+                      databases=list("brain_hint_20"),
+                      motifDiscovery="builtinFimo",
+                      tfMapping="MotifDB",
+                      tfPrefilterCorrelation=0.4,
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+   fpBuilder <- FootprintDatabaseModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
 
    checkEquals(is(fpBuilder), "FootprintDatabaseModelBuilder")
 
@@ -41,10 +51,14 @@ test_build.small.fimo.motifDB.mapping.cor04 <- function()
 {
    printf("--- test_build.small.fimo.motifDB.mapping.cor04")
 
+   genome <- "hg38"
+   targetGene <- "TREM2"
+   chromosome <- "chr6"
    chromosome <- "chr6"
    upstream <- 2000
    downstream <- 200
    tss <- 41163186
+
       # strand-aware start and end: trem2 is on the minus strand
    start <- tss - downstream
    end   <- tss + upstream
@@ -55,6 +69,7 @@ test_build.small.fimo.motifDB.mapping.cor04 <- function()
                       start=start,
                       end=end,
                       tss=tss,
+                      matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
@@ -67,8 +82,8 @@ test_build.small.fimo.motifDB.mapping.cor04 <- function()
      # required, MotifDb for motif/tf lookup
      #------------------------------------------------------------
 
-   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=TRUE)
-   x <- build(fpBuilder, mtx)
+   fpBuilder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=TRUE)
+   x <- build(fpBuilder)
    checkEquals(names(x), c("model", "regulatoryRegions"))
    tbl.regions <- x$regulatoryRegions
    tbl.model <- x$model
@@ -80,7 +95,6 @@ test_build.small.fimo.motifDB.mapping.cor04 <- function()
    checkTrue(all(tbl.regions$chrom == chromosome))
    checkTrue(all(tbl.regions$fp_start >= start))
    checkTrue(all(tbl.regions$fp_end <= end))
-
 
 } # test_build.small.fimo.motifDB.mapping.cor04
 #------------------------------------------------------------------------------------------------------------------------
@@ -102,6 +116,7 @@ test_build.small.fimo.motifDB.mapping.cor.02 <- function()
                       start=start,
                       end=end,
                       tss=tss,
+                      matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
@@ -110,7 +125,7 @@ test_build.small.fimo.motifDB.mapping.cor.02 <- function()
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
    fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=TRUE)
-   x <- build(fpBuilder, mtx)
+   x <- build(fpBuilder)
    tbl.regions <- x$regulatoryRegions
    tbl.model <- x$model
    tbl.model <- tbl.model[order(tbl.model$rfScore, decreasing=TRUE),]
@@ -138,6 +153,7 @@ test_build.10kb.fimo.motifDB.mapping.cor04 <- function()
                       start=start,
                       end=end,
                       tss=tss,
+                      matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
@@ -151,7 +167,7 @@ test_build.10kb.fimo.motifDB.mapping.cor04 <- function()
      #------------------------------------------------------------
 
    fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=TRUE)
-   x <- build(fpBuilder, mtx)
+   x <- build(fpBuilder)
    tbl.regions <- x$regulatoryRegions
    tbl.model <- x$model
    tbl.model <- tbl.model[order(tbl.model$rfScore, decreasing=TRUE),]
