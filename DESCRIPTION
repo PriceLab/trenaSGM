@@ -1,7 +1,7 @@
 Package: trenaSGM
 Type: Package
 Title: trenaSGM: trena single gene model
-Version: 0.99.2
+Version: 0.99.3
 Date: 2018-05-16
 Author: Paul Shannon
 Maintainer: Paul Shannon <paul.thurmond.shannon@gmail.com>
@@ -12,6 +12,11 @@ Description:  Creates and combines a variety of transcriptional regulatory model
 License: MIT + file LICENSE
 LazyLoad: yes
 NeedsCompilation: no
+Collate:
+  'ModelBuilder.R'
+  'FootprintDatabaseModelBuilder.R'
+  'RegionsMotifMatchingModelBuilder.R'
+  'trenaSGM.R'
 Packaged: 2018-03-22 20:02:10 UTC; paul
 VignetteBuilder:
   knitr

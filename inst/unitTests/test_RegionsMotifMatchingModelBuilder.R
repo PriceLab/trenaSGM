@@ -7,9 +7,6 @@ if(!exists("mtx"))
 runTests <- function()
 {
    test_constructor()
-   test_build.small.fimo.motifDB.mapping.cor04()
-   test_build.small.fimo.motifDB.mapping.cor.02()
-   test_build.10kb.fimo.motifDB.mapping.cor04()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -20,83 +17,69 @@ test_constructor <- function()
    genome <- "hg38"
    targetGene <- "TREM2"
    chromosome <- "chr6"
-   upstream <- 2000
-   downstream <- 200
    tss <- 41163186
       # strand-aware start and end: trem2 is on the minus strand
-   start <- tss - downstream
-   end   <- tss + upstream
+   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
 
-   build.spec <- list(title="fp.2000up.200down",
-                      type="footprint.database",
-                      chrom=chromosome,
-                      start=start,
-                      end=end,
+   build.spec <- list(title="trem2.rmm.2000up.200down",
+                      type="regions.motifMatching",
                       tss=tss,
+                      regions=tbl.regions,
                       matrix=mtx,
-                      db.host="khaleesi.systemsbiology.net",
-                      databases=list("brain_hint_20"),
-                      motifDiscovery="builtinFimo",
+                      pfms=query2(MotifDb, "sapiens", "jaspar2018"),
+                      motifDiscovery="matchPWM",
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
+                      orderByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
-   fpBuilder <- FootprintDatabaseModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
+   builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
 
-   checkTrue("FootprintDatabaseModelBuilder" %in% is(fpBuilder))
+   checkEquals("RegionsMotifMatchingModelBuilder" %in% is(builder))
 
 } # test_constructor
 #------------------------------------------------------------------------------------------------------------------------
-test_build.small.fimo.motifDB.mapping.cor04 <- function()
+test_build.trem2.2200bp.model <- function()
 {
-   printf("--- test_build.small.fimo.motifDB.mapping.cor04")
+   printf("--- test_build.trem2.2200bp.model")
 
    genome <- "hg38"
    targetGene <- "TREM2"
    chromosome <- "chr6"
-   chromosome <- "chr6"
-   upstream <- 2000
-   downstream <- 200
    tss <- 41163186
-
       # strand-aware start and end: trem2 is on the minus strand
-   start <- tss - downstream
-   end   <- tss + upstream
+   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
 
-   build.spec <- list(title="fp.2000up.200down",
-                      type="database.footprints",
-                      chrom=chromosome,
-                      start=start,
-                      end=end,
+   build.spec <- list(title="trem2.rmm.2000up.200down",
+                      type="regions.motifMatching",
                       tss=tss,
+                      regions=tbl.regions,
                       matrix=mtx,
-                      db.host="khaleesi.systemsbiology.net",
-                      databases=list("brain_hint_20"),
-                      motifDiscovery="builtinFimo",
+                      pfms=query2(MotifDb, "sapiens", "jaspar2018"),
+                      matchThreshold=90,
+                      motifDiscovery="matchPWM",
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
+                      orderByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
-     #------------------------------------------------------------
-     # use the above build.spec: a small region, high correlation
-     # required, MotifDb for motif/tf lookup
-     #------------------------------------------------------------
 
-   fpBuilder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=TRUE)
-   x <- build(fpBuilder)
+   builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
+   x <- build(builder)
+   browser()
    checkEquals(names(x), c("model", "regulatoryRegions"))
    tbl.regions <- x$regulatoryRegions
    tbl.model <- x$model
-   tbl.model <- tbl.model[order(tbl.model$rfScore, decreasing=TRUE),]
-   expected.tfs <- c("IKZF1", "CEBPA", "IRF8", "TAL1", "NR6A1", "IRF2")
+   #tbl.model <- tbl.model[order(tbl.model$rfScore, decreasing=TRUE),]
+   #expected.tfs <- c("IKZF1", "CEBPA", "IRF8", "TAL1", "NR6A1", "IRF2")
 
-   checkEquals(tbl.model$gene, expected.tfs)
-   checkTrue(all(expected.tfs %in% tbl.regions$geneSymbol))
-   checkTrue(all(tbl.regions$chrom == chromosome))
-   checkTrue(all(tbl.regions$fp_start >= start))
-   checkTrue(all(tbl.regions$fp_end <= end))
+   #checkEquals(tbl.model$gene, expected.tfs)
+   #checkTrue(all(expected.tfs %in% tbl.regions$geneSymbol))
+   #checkTrue(all(tbl.regions$chrom == chromosome))
+   #checkTrue(all(tbl.regions$fp_start >= start))
+   #checkTrue(all(tbl.regions$fp_end <= end))
 
-} # test_build.small.fimo.motifDB.mapping.cor04
+} # test_build.trem2.2200bp.model
 #------------------------------------------------------------------------------------------------------------------------
 test_build.small.fimo.motifDB.mapping.cor.02 <- function()
 {
