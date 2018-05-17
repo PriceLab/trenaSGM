@@ -110,15 +110,28 @@ setMethod('build', 'RegionsMotifMatchingModelBuilder',
       tbl.motifs <- findMatchesByChromosomalRegion(mm,
                                                    tbl.regions,
                                                    pwmMatchMinimumAsPercentage=obj@strategy$matchThreshold)
+      mapper <- tolower(obj@strategy$tfMapping)
+      stopifnot(mapper %in% c("motifdb", "tfclass"))
 
-      tbl.motifs.mdb <- associateTranscriptionFactors(MotifDb, tbl.motifs, source="MotifDb", expand.rows=TRUE)
+      if(mapper == "motifdb")
+         tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source="MotifDb", expand.rows=TRUE)
+      if(mapper == "tfclass")
+         tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source="TFClass", expand.rows=TRUE)
+
       tbls <- .runTrena(obj@genomeName,
                         obj@targetGene,
-                        tbl.motifs.mdb,
+                        tbl.motifs.mapped,
                         obj@strategy$matrix,
                         obj@strategy$tfPrefilterCorrelation,
                         obj@strategy$solverNames,
                         obj@quiet)
+
+      tbl.model <- tbls$model
+      coi <- obj@strategy$orderByColumn
+      if(coi %in% colnames(tbl.model))
+         tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
+      tbls$model <- tbl.model
+      browser()
       invisible(tbls)
       })
 

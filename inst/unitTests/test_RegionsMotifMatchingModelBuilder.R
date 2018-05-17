@@ -7,6 +7,8 @@ if(!exists("mtx"))
 runTests <- function()
 {
    test_constructor()
+   test_build.trem2.2200bp.motifDB.model()
+   test_build.trem2.2200bp.TFClass.model()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -39,9 +41,9 @@ test_constructor <- function()
 
 } # test_constructor
 #------------------------------------------------------------------------------------------------------------------------
-test_build.trem2.2200bp.model <- function()
+test_build.trem2.2200bp.motifDB.model <- function()
 {
-   printf("--- test_build.trem2.2200bp.model")
+   printf("--- test_build.trem2.2200bp.motifDb.model")
 
    genome <- "hg38"
    targetGene <- "TREM2"
@@ -68,95 +70,54 @@ test_build.trem2.2200bp.model <- function()
    x <- build(builder)
    browser()
    checkEquals(names(x), c("model", "regulatoryRegions"))
-   tbl.regions <- x$regulatoryRegions
+   tbl.regRegions <- x$regulatoryRegions
    tbl.model <- x$model
-   #tbl.model <- tbl.model[order(tbl.model$rfScore, decreasing=TRUE),]
-   #expected.tfs <- c("IKZF1", "CEBPA", "IRF8", "TAL1", "NR6A1", "IRF2")
+   expected.tfs <- c("SPI1", "STAT3", "RUNX1", "NFATC2", "FLI1")
+   checkEquals(tbl.model$gene, expected.tfs)
+   checkTrue(all(expected.tfs %in% tbl.regRegions$geneSymbol))
+   checkTrue(all(tbl.regRegions$chrom == chromosome))
+   checkTrue(all(tbl.regRegions$fmotifStart >= min(tbl.regions$start)))
+   checkTrue(all(tbl.regRegions$motifEnd <= max(tbl.regions$end)))
 
-   #checkEquals(tbl.model$gene, expected.tfs)
-   #checkTrue(all(expected.tfs %in% tbl.regions$geneSymbol))
-   #checkTrue(all(tbl.regions$chrom == chromosome))
-   #checkTrue(all(tbl.regions$fp_start >= start))
-   #checkTrue(all(tbl.regions$fp_end <= end))
-
-} # test_build.trem2.2200bp.model
+} # test_build.trem2.2200bp.motifDB.model
 #------------------------------------------------------------------------------------------------------------------------
-test_build.small.fimo.motifDB.mapping.cor.02 <- function()
+test_build.trem2.2200bp.TFClass.model <- function()
 {
-   printf("--- test_build.small.fimo.motifDB.mapping.cor.02")
+   printf("--- test_build.trem2.2200bp.TFClass.model")
 
+   genome <- "hg38"
+   targetGene <- "TREM2"
    chromosome <- "chr6"
-   upstream <- 2000
-   downstream <- 200
    tss <- 41163186
       # strand-aware start and end: trem2 is on the minus strand
-   start <- tss - downstream
-   end   <- tss + upstream
+   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
 
-   build.spec <- list(title="fp.2000up.200down",
-                      type="database.footprints",
-                      chrom=chromosome,
-                      start=start,
-                      end=end,
+   build.spec <- list(title="trem2.rmm.2000up.200down",
+                      type="regions.motifMatching",
                       tss=tss,
+                      regions=tbl.regions,
                       matrix=mtx,
-                      db.host="khaleesi.systemsbiology.net",
-                      databases=list("brain_hint_20"),
-                      motifDiscovery="builtinFimo",
-                      tfMapping="MotifDB",
-                      tfPrefilterCorrelation=0.2,
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
-
-   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=TRUE)
-   x <- build(fpBuilder)
-   tbl.regions <- x$regulatoryRegions
-   tbl.model <- x$model
-   tbl.model <- tbl.model[order(tbl.model$rfScore, decreasing=TRUE),]
-   checkTrue(nrow(tbl.model) > 20)
-   top.tfs <- subset(tbl.model, rfScore >= 4)$gene
-   checkTrue(all(top.tfs %in% tbl.regions$geneSymbol))
-
-} # test_build.small.fimo.motifDB.mapping.cor02
-#------------------------------------------------------------------------------------------------------------------------
-test_build.10kb.fimo.motifDB.mapping.cor04 <- function()
-{
-   printf("--- test_build.10kb.fimo.motifDB.mapping.cor04")
-
-   chromosome <- "chr6"
-   upstream <- 5000
-   downstream <- 5000
-   tss <- 41163186
-      # strand-aware start and end: trem2 is on the minus strand
-   start <- tss - downstream
-   end   <- tss + upstream
-
-   build.spec <- list(title="fp.5kbup.5kbdown",
-                      type="database.footprints",
-                      chrom=chromosome,
-                      start=start,
-                      end=end,
-                      tss=tss,
-                      matrix=mtx,
-                      db.host="khaleesi.systemsbiology.net",
-                      databases=list("brain_hint_20"),
-                      motifDiscovery="builtinFimo",
-                      tfMapping="MotifDB",
+                      pfms=query2(MotifDb, "sapiens", "jaspar2018"),
+                      matchThreshold=90,
+                      motifDiscovery="matchPWM",
+                      tfMapping="TFClass",
                       tfPrefilterCorrelation=0.4,
+                      orderByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
-     #------------------------------------------------------------
-     # use the above build.spec: a small region, high correlation
-     # required, MotifDb for motif/tf lookup
-     #------------------------------------------------------------
 
-   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=TRUE)
-   x <- build(fpBuilder)
-   tbl.regions <- x$regulatoryRegions
+   builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
+   x <- build(builder)
+   browser()
+   checkEquals(names(x), c("model", "regulatoryRegions"))
+   tbl.regRegions <- x$regulatoryRegions
    tbl.model <- x$model
-   tbl.model <- tbl.model[order(tbl.model$rfScore, decreasing=TRUE),]
-   checkTrue(nrow(tbl.model) > 10)
-   top.tfs <- subset(tbl.model, rfScore >= 4)$gene
-   checkTrue(all(top.tfs %in% tbl.regions$geneSymbol))
+   expected.tfs <- c("SPI1", "STAT3", "RUNX1", "NFATC2", "FLI1")
+   checkEquals(tbl.model$gene, expected.tfs)
+   checkTrue(all(expected.tfs %in% tbl.regRegions$geneSymbol))
+   checkTrue(all(tbl.regRegions$chrom == chromosome))
+   checkTrue(all(tbl.regRegions$fmotifStart >= min(tbl.regions$start)))
+   checkTrue(all(tbl.regRegions$motifEnd <= max(tbl.regions$end)))
 
-} # test_build.10kb.fimo.motifDB.mapping.cor04
+} # test_build.trem2.2200bp.motifDB.model
 #------------------------------------------------------------------------------------------------------------------------

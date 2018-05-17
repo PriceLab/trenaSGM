@@ -48,6 +48,12 @@
 #' @export
 FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 {
+   required.strategy.fields <- c("title", "type", "regions", "tss", "matrix", "db.host", "databases", "motifDiscovery",
+                                 "tfMapping", "tfPrefilterCorrelation", "orderModelByColumn", "solverNames")
+   for(field in required.strategy.fields)
+      if(!field %in% names(strategy))
+         stop(sprintf("missing '%s' field in strategy", field))
+
    obj <- .FootprintDatabaseModelBuilder(ModelBuilder(genomeName=genomeName,
                                                       targetGene=targetGene,
                                                       strategy=strategy,
@@ -109,7 +115,11 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
       tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
       if(obj@strategy$motifDiscovery == "builtinFimo"){
          tbl.fp$motifName <- tbl.fp$name
+         mapper <- tolower(obj@strategy$tfMapping)
+         stopifnot(mapper %in% c("motifdb", "tfclass"))
+         #browser()
          tbl.fp <- associateTranscriptionFactors(MotifDb, tbl.fp, source=obj@strategy$tfMapping, expand.rows=TRUE)
+
          tbls <- .runTrena(obj@genomeName,
                            obj@targetGene,
                            tbl.fp,
@@ -118,14 +128,12 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
                            obj@strategy$solverNames,
                            obj@quiet)
         } # motifDisocvery, builtinFimo
-      if("orderModelBy" %in% names(obj@strategy)){
-         orderByColumn <- obj@strategy$orderModelBy
-         if(nchar(orderByColumn) > 0 & orderByColumn %in% colnames(tbls[[1]])){
-            tbl.tmp <- tbls[[1]]
-            tbl.tmp <- tbl.tmp[order(tbl.tmp[, orderByColumn], decreasing=TRUE), ]
-            tbls[[1]] <- tbl.tmp
-            } # non-empty orderBy column, and that column names is in colnames
-         } # if model column to order by is in the strategy
+      tbl.model <- tbls[[1]]
+      coi <- obj@strategy$orderModelByColumn
+      if(coi %in% colnames(tbl.model)){
+         tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
+         tbls[[1]] <- tbl.model
+         }
       return(tbls)
       })
 
@@ -146,7 +154,7 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
       if(!quiet) printf("--- attempting to open %s", dbName)
       dbConnection <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname=dbName)
       if(!quiet) printf("--- querying %s for footprints in region of %d bases", dbName, 1 + s$end - s$start)
-      tbl.hits <- .queryFootprints(dbConnection, s$chrom, s$start, s$end)
+      tbl.hits <- .multiQueryFootprints(dbConnection, s$regions)
       tbl.hits$chrom <- unlist(lapply(strsplit(tbl.hits$loc, ":"), "[",  1))
       tbl.hits.clean <- tbl.hits # [, c("chrom", "fp_start", "fp_end", "name", "score2", "method")]
       fps[[dbName]] <- tbl.hits.clean
@@ -181,4 +189,26 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
     invisible(dbGetQuery(db, query.hits))
 
 } # .queryFootprints
+#------------------------------------------------------------------------------------------------------------------------
+.multiQueryFootprints <- function(db, tbl.regions)
+{
+   tbl.fpRegions <- data.frame()
+
+   for(r in seq_len(nrow(tbl.regions))){
+      chrom <- tbl.regions$chrom[r]
+      start <- tbl.regions$start[r]
+        end <- tbl.regions$end[r]
+      query.p0 <- "select loc, chrom, start, endpos from regions"
+      query.p1 <- sprintf("where chrom='%s' and start > %d and endpos < %d", chrom, start, end)
+      query.regions <- paste(query.p0, query.p1)
+      tbl.fpRegions.new <- dbGetQuery(db, query.regions)
+      tbl.fpRegions <- rbind(tbl.fpRegions, tbl.fpRegions.new)
+      }
+
+   loc.set <- unique(sprintf("('%s')", paste(tbl.fpRegions$loc, collapse="','")))
+   query.hits <- sprintf("select * from hits where loc in %s", loc.set)
+
+   invisible(dbGetQuery(db, query.hits))
+
+} # .multiQueryFootprints
 #------------------------------------------------------------------------------------------------------------------------
