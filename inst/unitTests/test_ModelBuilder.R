@@ -23,18 +23,13 @@ test_constructor <- function()
       # strand-aware start and end: trem2 is on the minus strand
    start <- tss - downstream
    end   <- tss + upstream
+   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
 
    build.spec <- list(title="fp.2000up.200down",
                       type="footprint.database",
-                      chrom=chromosome,
-                      start=start,
-                      end=end,
+                      regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
-                      db.host="khaleesi.systemsbiology.net",
-                      databases=list("brain_hint_20"),
-                      motifDiscovery="builtinFimo",
-                      tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
@@ -44,3 +39,5 @@ test_constructor <- function()
 
 } # test_constructor
 #------------------------------------------------------------------------------------------------------------------------
+if(!interactive())
+   runTests()

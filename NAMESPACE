@@ -2,9 +2,11 @@
 
 export(FootprintDatabaseModelBuilder)
 export(ModelBuilder)
+export(NoDnaModelBuilder)
 export(RegionsMotifMatchingModelBuilder)
 export(trenaSGM)
 exportClasses(FootprintDatabaseModelBuilder)
+exportClasses(NoDnaModelBuilder)
 exportClasses(RegionsMotifMatchingModelBuilder)
 exportClasses(trenaSGM)
 exportMethods(build)

@@ -39,12 +39,11 @@ test_trem2_fpdb <- function()
       # strand-aware start and end: trem2 is on the minus strand
    start <- tss - downstream
    end   <- tss + upstream
+   tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
 
-   build.spec <- list(title="fp.2000up.200down.04",
+   build.spec <- list(title="fp.2000up.200down",
                       type="footprint.database",
-                      chrom=chromosome,
-                      start=start,
-                      end=end,
+                      regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
@@ -52,13 +51,13 @@ test_trem2_fpdb <- function()
                       motifDiscovery="builtinFimo",
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
-                      orderModelBy="rfScore",
+                      orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
    build.spec.2 <- build.spec
    build.spec.2$title <- "fp.2000up.200down.02"
    build.spec.2$tfPrefilterCorrelation=0.2
-   build.spec.2$orderModelBy="pcaMax"
+   build.spec.2$orderModelByColumn="pcaMax"
 
    strategies <- list(one=build.spec, two=build.spec.2)
 
@@ -99,11 +98,11 @@ test_summarizeModels <- function()
    start <- tss - downstream
    end   <- tss + upstream
 
+   tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
+
    build.spec <- list(title="fp.2000up.200down.04",
                       type="footprint.database",
-                      chrom=chromosome,
-                      start=start,
-                      end=end,
+                      regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
@@ -111,7 +110,7 @@ test_summarizeModels <- function()
                       motifDiscovery="builtinFimo",
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
-                      orderModelBy="rfScore",
+                      orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
 
@@ -130,3 +129,5 @@ test_summarizeModels <- function()
 
 } # test_summarizeModels
 #------------------------------------------------------------------------------------------------------------------------
+if(!interactive())
+   runTests()

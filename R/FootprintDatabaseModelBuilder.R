@@ -40,7 +40,7 @@
 #'                    db.host="khaleesi.systemsbiology.net",
 #'                    databases=list("brain_hint_16", "brain_hint_20", "brain_wellington_16", "brain_wellington_20"),
 #'                    motifDiscovery="builtinFimo",
-#'                    tfMapping=list("TFClass", "MotifDB"),
+#'                    tfMapping=c("TFClass", "MotifDB"),
 #'                    tfPrefilterCorrelation=0.2)
 #'   fpc <- FootprintDatabaseModelBuilder("hg38", "TREM2", fp.specs)
 #'   }
@@ -101,7 +101,7 @@ setMethod('show', 'FootprintDatabaseModelBuilder',
 #'                    db.host="khaleesi.systemsbiology.net",
 #'                    databases=list("brain_hint_20"),
 #'                    motifDiscovery="builtinFimo",
-#'                    tfMapping=list("TFClass", "MotifDB"),
+#'                    tfMapping=c("TFClass", "MotifDB"),
 #'                    tfPrefilterCorrelation=0.2)
 #'   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", fp.specs, quiet=TRUE)
 #'   load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
@@ -117,19 +117,21 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
          tbl.fp$motifName <- tbl.fp$name
          mapper <- tolower(obj@strategy$tfMapping)
          stopifnot(mapper %in% c("motifdb", "tfclass"))
-         #browser()
          tbl.fp <- associateTranscriptionFactors(MotifDb, tbl.fp, source=obj@strategy$tfMapping, expand.rows=TRUE)
 
-         tbls <- .runTrena(obj@genomeName,
-                           obj@targetGene,
-                           tbl.fp,
-                           obj@strategy$matrix,
-                           obj@strategy$tfPrefilterCorrelation,
-                           obj@strategy$solverNames,
-                           obj@quiet)
+         s <- obj@strategy
+         tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
+                                                obj@allKnownTFs,   # from ModelBuilder base class
+                                                obj@targetGene,
+                                                tbl.fp,
+                                                s$matrix,
+                                                s$tfPrefilterCorrelation,
+                                                s$solverNames,
+                                                obj@quiet)
+
         } # motifDisocvery, builtinFimo
       tbl.model <- tbls[[1]]
-      coi <- obj@strategy$orderModelByColumn
+      coi <- s$orderModelByColumn
       if(coi %in% colnames(tbl.model)){
          tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
          tbls[[1]] <- tbl.model
@@ -150,19 +152,21 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
    dbConnections <- list()
    fps <- list()
 
-   for(dbName in unlist(s$databases)){
-      if(!quiet) printf("--- attempting to open %s", dbName)
+   for(dbName in s$databases){
+      if(!quiet) printf("--- opening connection %s", dbName)
       dbConnection <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname=dbName)
-      if(!quiet) printf("--- querying %s for footprints in region of %d bases", dbName, 1 + s$end - s$start)
+      if(!quiet) printf("--- querying %s for footprints across %d regions totaling %d bases",
+                        dbName, nrow(s$regions), with(s$regions, sum(end-start)))
       tbl.hits <- .multiQueryFootprints(dbConnection, s$regions)
       tbl.hits$chrom <- unlist(lapply(strsplit(tbl.hits$loc, ":"), "[",  1))
       tbl.hits.clean <- tbl.hits # [, c("chrom", "fp_start", "fp_end", "name", "score2", "method")]
       fps[[dbName]] <- tbl.hits.clean
-      tbl.hits.clean.database = dbName
+      tbl.hits.clean$database = dbName
       dbDisconnect(dbConnection)
       }
 
    tbl.fp <- do.call(rbind, fps)
+   if(!quiet) printf(" combined tbl.fp: %d %d", nrow(tbl.fp), ncol(tbl.fp))
    tbl.fp$shortMotif <- NA
    missing <- which(!tbl.fp$name %in% names(MotifDb))
    matched <- which(tbl.fp$name %in% names(MotifDb))

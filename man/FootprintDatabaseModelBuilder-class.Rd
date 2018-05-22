@@ -35,7 +35,7 @@ if(interactive()){
                    db.host="khaleesi.systemsbiology.net",
                    databases=list("brain_hint_16", "brain_hint_20", "brain_wellington_16", "brain_wellington_20"),
                    motifDiscovery="builtinFimo",
-                   tfMapping=list("TFClass", "MotifDB"),
+                   tfMapping=c("TFClass", "MotifDB"),
                    tfPrefilterCorrelation=0.2)
   fpc <- FootprintDatabaseModelBuilder("hg38", "TREM2", fp.specs)
   }

@@ -47,6 +47,13 @@
 #' @export
 RegionsMotifMatchingModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 {
+   required.strategy.fields <- c("title", "type", "regions", "tss", "matrix", "motifDiscovery",
+                                 "tfMapping", "tfPrefilterCorrelation", "orderModelByColumn", "solverNames")
+
+   for(field in required.strategy.fields)
+      if(!field %in% names(strategy))
+         stop(sprintf("missing '%s' field in strategy", field))
+
    obj <- .RegionsMotifMatchingModelBuilder(ModelBuilder(genomeName=genomeName,
                                                          targetGene=targetGene,
                                                          strategy=strategy,
@@ -110,28 +117,30 @@ setMethod('build', 'RegionsMotifMatchingModelBuilder',
       tbl.motifs <- findMatchesByChromosomalRegion(mm,
                                                    tbl.regions,
                                                    pwmMatchMinimumAsPercentage=obj@strategy$matchThreshold)
-      mapper <- tolower(obj@strategy$tfMapping)
-      stopifnot(mapper %in% c("motifdb", "tfclass"))
+      mappers <- tolower(obj@strategy$tfMapping)
+      stopifnot(all(mappers %in% c("motifdb", "tfclass")))
 
-      if(mapper == "motifdb")
-         tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source="MotifDb", expand.rows=TRUE)
-      if(mapper == "tfclass")
-         tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source="TFClass", expand.rows=TRUE)
+      tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source=obj@strategy$tfMapping, expand.rows=TRUE)
+      #if(mapper == "motifdb")
+      #   tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source="MotifDb", expand.rows=TRUE)
+      #if(mapper == "tfclass")
+      #   tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source="TFClass", expand.rows=TRUE)
 
-      tbls <- .runTrena(obj@genomeName,
-                        obj@targetGene,
-                        tbl.motifs.mapped,
-                        obj@strategy$matrix,
-                        obj@strategy$tfPrefilterCorrelation,
-                        obj@strategy$solverNames,
-                        obj@quiet)
+      s <- obj@strategy
+      tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
+                                             obj@allKnownTFs,   # from ModelBuilder base class
+                                             obj@targetGene,
+                                             tbl.motifs.mapped,
+                                             s$matrix,
+                                             s$tfPrefilterCorrelation,
+                                             s$solverNames,
+                                             obj@quiet)
 
       tbl.model <- tbls$model
       coi <- obj@strategy$orderByColumn
       if(coi %in% colnames(tbl.model))
          tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
       tbls$model <- tbl.model
-      browser()
       invisible(tbls)
       })
 
