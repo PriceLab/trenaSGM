@@ -83,15 +83,24 @@ trenaSGM <- function(genomeName, targetGene, quiet=TRUE)
 setMethod('calculate', 'trenaSGM',
 
    function (obj, strategies) {
+      strategy.types <- unlist(lapply(strategies, function(s) s$type), use.names=FALSE)
+      stopifnot(all(strategy.types %in% c("footprint.database",
+                                          "regions.motifMatching",
+                                          "noDNA.tfsSupplied")))
       obj@state$strategies <- strategies
       models <- list()
       for(name in names(strategies)){
          strategy <- strategies[[name]]
-         if(strategy$type == "footprint.database"){
+         if(!obj@quiet)
+            printf(" trenaSGM::calculate building %s of type %s", name, strategy$type)
+         if(strategy$type == "footprint.database")
             builder <- FootprintDatabaseModelBuilder(obj@genomeName, obj@targetGene, strategy, quiet=obj@quiet)
-            models[[name]] <- build(builder)
-            } #
-         } # for strategy
+         if(strategy$type == "regions.motifMatching")
+            builder <- RegionsMotifMatchingModelBuilder(obj@genomeName, obj@targetGene,  strategy, quiet=TRUE)
+         if(strategy$type == "noDNA.tfsSupplied")
+            builder <- NoDnaModelBuilder(obj@genomeName, obj@targetGene, strategy, quiet=TRUE)
+         models[[name]] <- build(builder)
+         } # for strategy name
       obj@state$models <- models
       return(models)
       })
@@ -117,7 +126,6 @@ setMethod('calculate', 'trenaSGM',
 setMethod('execute.footprint.strategy', 'trenaSGM',
 
    function (obj, strategy) {
-      browser()
       return(list(model=data.frame(), regions=data.frame()))
       })
 #------------------------------------------------------------------------------------------------------------------------
@@ -230,34 +238,19 @@ setMethod('summarizeModels', 'trenaSGM',
       })
 
 #------------------------------------------------------------------------------------------------------------------------
-
-  # max <- 10
-  # top.tfs <- sort(unique(c(tbl.model.fpReduced.mdb$gene[1:max],
-  #                          tbl.model.fpReduced.tfc$gene[1:max],
-  #                          tbl.model.enhancerAll.mdb$gene[1:max],
-  #                          tbl.model.enhancerAll.tfc$gene[1:max],
-  #                          tbl.model.dhsAll.tfc$gene[1:max],
-  #                          tbl.model.dhsAll.tfc$gene[1:max])))
-  # count <- length(top.tfs)
-  # tbl <- data.frame(fp2200rank.mdb=rep(0, count),
-  #                   fp2200rank.tfc=rep(0, count),
-  #                   enhancers.mdb=rep(0, count),
-  #                   enhancers.tfc=rep(0, count),
-  #                   dhs.mdb=rep(0, count),
-  #                   dhs.tfc=rep(0, count),
-  #                   stringsAsFactors=FALSE)
-  # rownames(tbl) <- top.tfs
-  #
-  # failed.match <- NA
-  # tbl[top.tfs, "fp2200rank.mdb"] <- match(top.tfs, tbl.model.fpReduced.mdb$gene, nomatch=failed.match)
-  # tbl[top.tfs, "fp2200rank.tfc"] <- match(top.tfs, tbl.model.fpReduced.tfc$gene, nomatch=failed.match)
-  # tbl[top.tfs, "enhAncers.mdb"]  <- match(top.tfs, tbl.model.enhancerAll.mdb$gene, nomatch=failed.match)
-  # tbl[top.tfs, "enhancers.tfc"]  <- match(top.tfs, tbl.model.enhancerAll.tfc$gene, nomatch=failed.match)
-  # tbl[top.tfs, "dhs.mdb"]  <- match(top.tfs, tbl.model.dhsAll.mdb$gene, nomatch=failed.match)
-  # tbl[top.tfs, "dhs.tfc"]  <- match(top.tfs, tbl.model.dhsAll.tfc$gene, nomatch=failed.match)
-  #
-  # tbl$rank.sum <- apply(tbl, 1, function(row) sum(row, na.rm=TRUE))
-  # tbl$observed  <- apply(tbl, 1, function(row) length(which(!is.na(row))))
-  # tbl <- subset(tbl, observed >= 3)
-  # tbl <- tbl[order(tbl$rank.sum, decreasing=FALSE),]
-  #
+#' specify the universe of recognized transcription factor gene symbols
+#'
+#' @rdname allKnownTFs
+#' @aliases allKnownTFs
+#'
+#' @param obj An object of class ModelBuilder, or any subclass
+#' @param source A character string, currently only (and defaulted to) "GO:DNAbindingTranscriptionFactorActivity"
+#'
+#' @export
+allKnownTFs <- function(ource="GO:DNAbindingTranscriptionFactorActivity")
+{
+    load(system.file(package="trenaSGM", "extdata", "tfCollections",
+                    "GO_00037000_DNAbindingTranscriptionFactorActivityHuman.RData"))
+    tfs
+}
+#------------------------------------------------------------------------------------------------------------------------

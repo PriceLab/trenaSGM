@@ -7,7 +7,8 @@ if(!exists("mtx"))
 runTests <- function()
 {
    test_constructor()
-   test_build.trem2.noDNA.allTFs()
+   test_build.trem2.noDNA.13.known.TFs()
+   test_build.trem2.noDNA.all.known.TFs()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -23,7 +24,7 @@ test_constructor <- function()
    tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
 
    build.spec <- list(title="trem2.rmm.2000up.200down",
-                      type="noDNA_tfsSupplied",
+                      type="noDNA.tfsSupplied",
                       tfs=c("HLF", "STAT4", "SATB2", "SATB1", "TSHZ3", "TSHZ2", "FOXP2"),
                       matrix=mtx,
                       tfPrefilterCorrelation=0.4,
@@ -36,24 +37,22 @@ test_constructor <- function()
 
 } # test_constructor
 #------------------------------------------------------------------------------------------------------------------------
-test_build.trem2.noDNA.allTFs <- function()
+test_build.trem2.noDNA.13.known.TFs <- function()
 {
-   printf("--- test_build.trem2.noDNA.allTFs")
+   printf("--- test_build.trem2.noDNA.13.known.TFs")
 
    genome <- "hg38"
    targetGene <- "TREM2"
 
-   candidate.tfs <-   c("HLF", "STAT4", "SATB2", "SATB1", "TSHZ3", "TSHZ2", "FOXP2",
-                        "FOXP1", "LHX6", "BACH1", "SOX12", "FOXD4L1", "NFE2L2", "ZHX3",
-                        "ZBTB16", "ZHX1", "TAF1", "STAT6", "POU4F1", "FOXD1", "ATF2",
-                        "BCL6B", "STAT5B", "NR5A2", "FOXE3", "STAT3", "ATF7", "STAT2")
-
+   candidate.tfs <- c("IRF5", "IKZF1", "LYL1", "SPI1", "CEBPA", "TFEC",
+                      "BHLHE41", "IRF8", "TAL1","ELK3", "POU2F2", "MAFB",
+                      "ZBTB18", "bogus")
 
    build.spec <- list(title="trem2.noDNA.allTFs",
-                      type="noDNA_tfsSupplied",
+                      type="noDNA.tfsSupplied",
                       matrix=mtx,
                       tfs=candidate.tfs,
-                      tfPrefilterCorrelation=0.4,
+                      tfPrefilterCorrelation=0.2,
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
@@ -61,12 +60,53 @@ test_build.trem2.noDNA.allTFs <- function()
    x <- build(builder)
    checkEquals(x$regulatoryRegions, data.frame())
    tbl.model <- x$model
-   expected.tfs <- sort(c("BACH1", "FOXP1", "STAT3"))
-   checkTrue(all(expected.tfs %in% tbl.model$gene))
-   checkTrue(all(expected.tfs %in% candidate.tfs))
+      # with a relaxed tfPrefilterCorrelation, and the hand-picked TFs listed above
+      # all but "bogus" make the cut
+   checkEquals(setdiff(candidate.tfs, tbl.model$gene), "bogus")
+      # noDNA implies no bindingSites
    checkTrue(all(is.na(tbl.model$bindingSites)))
 
-} # test_build.trem2.noDNA.allTFs
+      # all pearsonCoeff above prefilter threshold?
+   checkTrue(all(abs(tbl.model$pearsonCoeff) > 0.2))
+
+      #--------------------------------------------------------------------------------
+      # run again with a stricter tfPrefilterCorrelation
+      #--------------------------------------------------------------------------------
+   build.spec$tfPrefilterCorrelation <- 0.7
+   builder <- NoDnaModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
+   x <- build(builder)
+   tbl.model <- x$model
+   checkTrue(all(abs(tbl.model$pearsonCoeff) > 0.7))
+   checkTrue(all(tbl.model$gene %in% candidate.tfs))
+
+} # test_build.trem2.noDNA.13.known.TFS
+#------------------------------------------------------------------------------------------------------------------------
+test_build.trem2.noDNA.all.known.TFs <- function()
+{
+   printf("--- test_build.trem2.noDNA.all.known.TFs")
+
+   genome <- "hg38"
+   targetGene <- "TREM2"
+
+   candidate.tfs <- allKnownTFs()
+
+   build.spec <- list(title="trem2.noDNA.allTFs",
+                      type="noDNA.tfsSupplied",
+                      matrix=mtx,
+                      tfs=candidate.tfs,
+                      tfPrefilterCorrelation=0.7,
+                      orderModelByColumn="pearsonCoeff",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+   builder <- NoDnaModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
+   x <- build(builder)
+   tbl.model <- x$model
+   checkEquals(dim(x$regulatoryRegions), c(0,0))
+   checkTrue(all(tbl.model$peasonCoeff > 0.7))
+      # the order
+   checkEquals(tbl.model$gene, c("PLEK", "IRF5", "IKZF1", "LYL1", "SPI1", "TFEC"))
+
+} # test_build.trem2.noDNA.all.known.TFs
 #------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()

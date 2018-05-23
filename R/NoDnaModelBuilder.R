@@ -110,7 +110,7 @@ setMethod('build', 'NoDnaModelBuilder',
 
       s <- obj@strategy
       tbls <- .runTrenaWithTFsOnly(obj@genomeName,
-                                   obj@allKnownTFs,
+                                   allKnownTFs(),
                                    obj@targetGene,
                                    s$tfs,
                                    s$matrix,

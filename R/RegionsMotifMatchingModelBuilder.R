@@ -117,18 +117,19 @@ setMethod('build', 'RegionsMotifMatchingModelBuilder',
       tbl.motifs <- findMatchesByChromosomalRegion(mm,
                                                    tbl.regions,
                                                    pwmMatchMinimumAsPercentage=obj@strategy$matchThreshold)
+      if(nrow(tbl.motifs) == 0){
+         warning(sprintf("failure modeling %s: no motifs found in region for %d pfms",
+                          obj@targetGene, length(obj@strategy$pfms)))
+         return(list(model=data.frame, regulatoryRegions=data.frame()))
+         }
       mappers <- tolower(obj@strategy$tfMapping)
       stopifnot(all(mappers %in% c("motifdb", "tfclass")))
 
       tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source=obj@strategy$tfMapping, expand.rows=TRUE)
-      #if(mapper == "motifdb")
-      #   tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source="MotifDb", expand.rows=TRUE)
-      #if(mapper == "tfclass")
-      #   tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source="TFClass", expand.rows=TRUE)
 
       s <- obj@strategy
       tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
-                                             obj@allKnownTFs,   # from ModelBuilder base class
+                                             allKnownTFs(),    # from trenaSGM
                                              obj@targetGene,
                                              tbl.motifs.mapped,
                                              s$matrix,
@@ -137,7 +138,7 @@ setMethod('build', 'RegionsMotifMatchingModelBuilder',
                                              obj@quiet)
 
       tbl.model <- tbls$model
-      coi <- obj@strategy$orderByColumn
+      coi <- obj@strategy$orderModelByColumn
       if(coi %in% colnames(tbl.model))
          tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
       tbls$model <- tbl.model

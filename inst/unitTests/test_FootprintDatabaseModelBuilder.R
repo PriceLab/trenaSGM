@@ -12,7 +12,7 @@ if(!exists("tbl.trena")){
    printf("loading cory's trem2 model, our standard: %s",
         paste(load("~/github/projects/priceLab/cory/trem2-model-for-dc-talk/ENSG00000095970.RData"), collapse=", "))
    ensembl.ids <- tbl.trena$gene
-   tbl.map <-  select(org.Hs.eg.db, keys=ensembl.ids, keytype="ENSEMBL", columns=c("SYMBOL", "ENSEMBL"))
+   suppressWarnings(tbl.map <-  select(org.Hs.eg.db, keys=ensembl.ids, keytype="ENSEMBL", columns=c("SYMBOL", "ENSEMBL")))
    tbl.map <- tbl.map[-which(duplicated(tbl.map$ENSEMBL)),]   # two dups
    rownames(tbl.trena) <- tbl.map$SYMBOL
    }

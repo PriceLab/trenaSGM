@@ -4,7 +4,6 @@
                           targetGene="character",
                           strategy="list",
                           quiet="logical",
-                          allKnownTFs="character",
                           state="environment"
                           ),
                        )
@@ -30,34 +29,48 @@ setGeneric('build', signature='obj', function (obj, expression.matrix) standardG
 #' @export
 ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 {
-   load(system.file(package="trenaSGM", "extdata", "tfCollections",
-                    "GO_00037000_DNAbindingTranscriptionFactorActivityHuman.RData"))
-
    obj <- .ModelBuilder(genomeName=genomeName,
                         targetGene=targetGene,
                         strategy=strategy,
                         quiet=quiet,
-                        allKnownTFs=tfs,
                         state=new.env(parent=emptyenv()))
    obj
 
 } # ModelBuilder
 #----------------------------------------------------------------------------------------------------
-.runTrenaWithRegulatoryRegions <- function(genomeName, allKnownTFs, targetGene, tbl.regulatoryRegions, expression.matrix,
-                                           tfPrefilterCorrelation, solverNames, quiet)
+.runTrenaWithRegulatoryRegions <- function(genomeName, allKnownTFs, targetGene, tbl.regulatoryRegions,
+                                           expression.matrix, tfPrefilterCorrelation, solverNames, quiet)
 {
    trena <- Trena(genomeName, quiet=quiet)
 
    all.known.tfs.mtx <- intersect(allKnownTFs, rownames(expression.matrix))
-   mtx.tfs <- expression.matrix[c(all.known.tfs.mtx, targetGene),]
-   mtx.cor <- cor(t(mtx.tfs))
-   tf.candidates <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
 
-   tf.candidates.with.motifs <- intersect(tf.candidates, tbl.regulatoryRegions$geneSymbol)
-   tbl.regulatoryRegions.filtered <- subset(tbl.regulatoryRegions, geneSymbol %in% tf.candidates.with.motifs)
-   mtx.tfs.filtered <- mtx.tfs[c(targetGene, tf.candidates.with.motifs),]
+      # for our purposes, a tf can only remain a candidate if it IS a tf, according
+      # to GO, and has expression data
+   candidate.tfs <- intersect(all.known.tfs.mtx, tbl.regulatoryRegions$geneSymbol)
+
+      # now reduce the expession matrix to just those tfs + targetGene
+      # in preparation for calculating correlated expression
+      # and further restricting the candidate tfs, and the matrix, by
+      # an abs(cor) threshold
+
+   mtx.sub <- expression.matrix[c(all.known.tfs.mtx, targetGene),]
+   mtx.cor <- cor(t(mtx.sub))
+   high.correlation.genes <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
+
+      # note that the target gene is in the list, since its correlation is perfect
+   mtx.tfs.filtered <- mtx.sub[high.correlation.genes,]
+
+      # we can leave the target gene in this list because the trena solvers
+      # always check and exclude it
+
+   tf.candidates.final <- high.correlation.genes
+   tbl.regulatoryRegions.filtered <- subset(tbl.regulatoryRegions, geneSymbol %in% tf.candidates.final)
+
+   stopifnot(all(c(targetGene, tbl.regulatoryRegions.filtered$geneSymbol) %in% rownames(mtx.tfs.filtered)))
+
    tbl.model <- createGeneModelFromRegulatoryRegions(trena, targetGene, solverNames,
-                                                      tbl.regulatoryRegions.filtered, mtx.tfs.filtered)
+                                                     tbl.regulatoryRegions.filtered, mtx.tfs.filtered)
 
    return(list(model=tbl.model, regulatoryRegions=tbl.regulatoryRegions.filtered))
 
@@ -67,13 +80,27 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
                                  tfPrefilterCorrelation, solverNames, quiet)
 {
    trena <- Trena(genomeName, quiet=quiet)
+
    all.known.tfs.mtx <- intersect(allKnownTFs, rownames(expression.matrix))
    candidate.tfs <- intersect(all.known.tfs.mtx, tfList)
+
    mtx.tfs <- expression.matrix[c(candidate.tfs, targetGene),]
    mtx.cor <- cor(t(mtx.tfs))
-   tf.candidates <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
-   mtx.tfs.filtered <- expression.matrix[tf.candidates,]
-   tbl.model <- createGeneModelFromTfList(trena, targetGene, solverNames, tf.candidates, mtx.tfs.filtered)
+
+   high.correlation.genes <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
+
+   mtx.tfs.filtered <- expression.matrix[high.correlation.genes,]
+   tf.candidates.final <- intersect(high.correlation.genes, candidate.tfs)
+
+   if(length(tf.candidates.final) <= 1){
+      message(sprintf("none of the supplied TFs reach expression correlation threshold(%4.2f) with targetGene %s",
+                      tfPrefilterCorrelation, targetGene))
+      return(list(model=data.frame(), regulatoryRegions=data.frame()))
+      }
+
+   stopifnot(all(c(targetGene, tf.candidates.final) %in% rownames(mtx.tfs.filtered)))
+
+   tbl.model <- createGeneModelFromTfList(trena, targetGene, solverNames, tf.candidates.final, mtx.tfs.filtered)
 
    return(list(model=tbl.model, regulatoryRegions=data.frame()))
 

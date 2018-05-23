@@ -1,6 +1,7 @@
 library(RUnit)
 library(trenaSGM)
 library(MotifDb)
+library(motifStack)
 #------------------------------------------------------------------------------------------------------------------------
 if(!exists("mtx"))
    load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
@@ -78,6 +79,11 @@ test_trem2_fpdb <- function()
    checkEquals(models$one$model$rfScore, sort(models$one$model$rfScore, decreasing=TRUE))
    checkEquals(models$two$model$pcaMax, sort(models$two$model$pcaMax, decreasing=TRUE))
 
+      # now summarize the two models.
+   tbl.summary <- summarizeModels(sgm, orderBy="rfScore", maxTFpredictors=6)
+   checkEquals(dim(tbl.summary), c(6, 4))
+   checkEquals(colnames(tbl.summary), c(build.spec$title, build.spec.2$title, "rank.sum", "observed"))
+
 } # test_trem2_fpdb
 #------------------------------------------------------------------------------------------------------------------------
 test_summarizeModels <- function()
@@ -100,7 +106,7 @@ test_summarizeModels <- function()
 
    tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
 
-   build.spec <- list(title="fp.2000up.200down.04",
+   spec.1 <- list(title="fp.2000up.200down.04",
                       type="footprint.database",
                       regions=tbl.regions,
                       tss=tss,
@@ -114,20 +120,51 @@ test_summarizeModels <- function()
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
 
-   build.spec.2 <- build.spec
-   build.spec.2$title <- "fp.2000up.200down.02"
-   build.spec.2$tfPrefilterCorrelation=0.2
+   spec.2 <- spec.1
+   spec.2$title <- "fp.2000up.200down.02"
+   spec.2$tfPrefilterCorrelation=0.2
 
-   strategies <- list(one=build.spec, two=build.spec.2)
+   spec.3 <- list(title="trem2.rmm.2000up.200down",
+                  type="regions.motifMatching",
+                  tss=tss,
+                  regions=tbl.regions,
+                  matrix=mtx,
+                  pfms=query(MotifDb, "sapiens", "jaspar2018"),
+                  matchThreshold=90,
+                  motifDiscovery="matchPWM",
+                  tfMapping="MotifDB",
+                  tfPrefilterCorrelation=0.4,
+                  orderModelByColumn="rfScore",
+                  solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+   candidate.tfs <- c("IRF5", "IKZF1", "LYL1", "SPI1", "CEBPA", "TFEC",
+                      "BHLHE41", "IRF8", "TAL1","ELK3", "POU2F2", "MAFB",
+                      "ZBTB18", "bogus")
+   spec.4 <- list(title="trem2.noDNA.allTFs",
+                  type="noDNA.tfsSupplied",
+                  matrix=mtx,
+                  tfs=candidate.tfs,
+                  tfPrefilterCorrelation=0.4,
+                  orderModelByColumn="rfScore",
+                  solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+   strategies <- list(one=spec.1, two=spec.2, three=spec.3, four=spec.4)
+   #strategies <- list(four=spec.4)
+
    x <- calculate(sgm, strategies)
+   # start here.  it seems that the fourth model is empty
 
    tbl.summary <- summarizeModels(sgm, orderBy="rfScore", maxTFpredictors=8)
-   checkEquals(as.numeric(apply(tbl.summary, 1, function(row) sum(row[1:2], na.rm=TRUE))),
-               tbl.summary[, "rank.sum"])
+      # no rows should be all NA
+   checkTrue(all(as.integer(apply(tbl.summary, 1, function(row) length(which(is.na(row))))) > 0))
       # two tfs not observed in the 0.4 abs(correlation) prefilter:
-   checkEquals(length(which(is.na(tbl.summary[, 1]))), 2)
+   checkEquals(ncol(tbl.summary), 6)
+   checkEquals(colnames(tbl.summary),
+               c(spec.1$title, spec.2$title, spec.3$title, spec.4$title, "rank.sum", "observed"))
+   checkTrue(nrow(tbl.summary) > 10)   # 17 on (23 may 2018)
 
 } # test_summarizeModels
 #------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()
+

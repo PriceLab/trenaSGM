@@ -121,7 +121,7 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
 
          s <- obj@strategy
          tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
-                                                obj@allKnownTFs,   # from ModelBuilder base class
+                                                allKnownTFs(),   # from ModelBuilder base class
                                                 obj@targetGene,
                                                 tbl.fp,
                                                 s$matrix,
