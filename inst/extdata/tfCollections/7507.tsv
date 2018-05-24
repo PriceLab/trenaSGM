@@ -1,0 +1,1342 @@
+DB	ID	Splice	Symbol	Taxon	Qualifier	GO ID	GO Name	Reference	Evidence	With	Aspect	Date	Source
+UniProtKB	A0A024QZ86	-	TBX2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	A0A024QZ86	-	TBX2	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	A0A024QZ86	-	TBX2	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	A0A024QZ86	-	TBX2	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	A0A024QZ86	-	TBX2	9606	-	GO:0003256	regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	A0A024QZ86	-	TBX2	9606	-	GO:0036302	atrioventricular canal development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	A0A024QZ86	-	TBX2	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	A0A024QZF7	-	FLJ22688	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000071194	Process	20160305	Ensembl
+UniProtKB	A0A024QZF7	-	FLJ22688	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000071194	Process	20160305	Ensembl
+UniProtKB	A0A024R0Q5	-	PPP1R13L	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047839	Process	20160305	Ensembl
+UniProtKB	A0A024R0Q5	-	PPP1R13L	9606	-	GO:0003229	ventricular cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047839	Process	20160305	Ensembl
+UniProtKB	A0A024R0W7	-	PRICKLE1	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000104878	Process	20160305	Ensembl
+UniProtKB	A0A024R153	-	INVS	9606	-	GO:0060971	embryonic heart tube left/right pattern formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000030029	Process	20160305	Ensembl
+UniProtKB	A0A024R274	-	SMAD4	9606	-	GO:0003190	atrioventricular valve formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025393	Process	20160305	Ensembl
+UniProtKB	A0A024R274	-	SMAD4	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025393	Process	20160305	Ensembl
+UniProtKB	A0A024R274	-	SMAD4	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025393	Process	20160305	Ensembl
+UniProtKB	A0A024R274	-	SMAD4	9606	-	GO:0036302	atrioventricular canal development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025393	Process	20160305	Ensembl
+UniProtKB	A0A024R274	-	SMAD4	9606	-	GO:0060956	endocardial cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025393	Process	20160305	Ensembl
+UniProtKB	A0A024R2D8	-	CAV3	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000074922	Process	20160305	Ensembl
+UniProtKB	A0A024R2D8	-	CAV3	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000074922	Process	20160305	Ensembl
+UniProtKB	A0A024R2Q3	-	CTNNB1	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000007130	Process	20160305	Ensembl
+UniProtKB	A0A024R2Q3	-	CTNNB1	9606	-	GO:0061324	canonical Wnt signaling pathway involved in positive regulation of cardiac outflow tract cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000007130	Process	20160305	Ensembl
+UniProtKB	A0A024R5H1	-	FOLR1	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001882	Process	20160305	Ensembl
+UniProtKB	A0A024R5H1	-	FOLR1	9606	-	GO:0003147	neural crest cell migration involved in heart formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001882	Process	20160305	Ensembl
+UniProtKB	A0A024R5H1	-	FOLR1	9606	-	GO:0003253	cardiac neural crest cell migration involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001882	Process	20160305	Ensembl
+UniProtKB	A0A024R5Z3	-	SMAD3	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034973	Process	20160305	Ensembl
+UniProtKB	A0A024R5Z3	-	SMAD3	9606	-	GO:0060039	pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034973	Process	20160305	Ensembl
+UniProtKB	A0A024R688	-	MNAT1	9606	-	GO:0007512	adult heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021523	Process	20160305	Ensembl
+UniProtKB	A0A024R6A3	-	PSEN1	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000098786	Process	20160305	Ensembl
+UniProtKB	A0A024R728	-	MET	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000111103	Process	20160305	Ensembl
+UniProtKB	A0A024R813	-	EYA1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000027066	Process	20160305	Ensembl
+UniProtKB	A0A024R878	-	ENG	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000009705	Process	20160305	Ensembl
+UniProtKB	A0A024R878	-	ENG	9606	-	GO:0003273	cell migration involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000009705	Process	20160305	Ensembl
+UniProtKB	A0A024R8E5	-	COL5A1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028280	Process	20160305	Ensembl
+UniProtKB	A0A024R990	-	MDM4	9606	-	GO:0003170	heart valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000068661	Process	20160305	Ensembl
+UniProtKB	A0A024R990	-	MDM4	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000068661	Process	20160305	Ensembl
+UniProtKB	A0A024R990	-	MDM4	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000068661	Process	20160305	Ensembl
+UniProtKB	A0A024R990	-	MDM4	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000068661	Process	20160305	Ensembl
+UniProtKB	A0A024R990	-	MDM4	9606	-	GO:0003283	atrial septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000068661	Process	20160305	Ensembl
+UniProtKB	A0A024RAE4	-	CDC42	9606	-	GO:0003161	cardiac conduction system development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000054634	Process	20160305	Ensembl
+UniProtKB	A0A024RAM6	-	PTCD2	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000022153	Process	20160305	Ensembl
+UniProtKB	A0A024RBL6	-	TBX3	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	A0A024RBL6	-	TBX3	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	A0A024RBL6	-	TBX3	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	A0A024RBL6	-	TBX3	9606	-	GO:0003167	atrioventricular bundle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	A0A024RBL6	-	TBX3	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	A0A024RBL6	-	TBX3	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	A0A024RBL6	-	TBX3	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	A0A024RBL6	-	TBX3	9606	-	GO:0060923	cardiac muscle cell fate commitment	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	A0A024RBL6	-	TBX3	9606	-	GO:0060931	sinoatrial node cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	A0A024RCZ1	-	LEMD2	9606	-	GO:0060914	heart formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058221	Process	20160305	Ensembl
+UniProtKB	A0A024RD16	-	SRF	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015749	Process	20160305	Ensembl
+UniProtKB	A0A024RD16	-	SRF	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015749	Process	20160305	Ensembl
+UniProtKB	A0A024RD16	-	SRF	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015749	Process	20160305	Ensembl
+UniProtKB	A0A024RD16	-	SRF	9606	-	GO:0060947	cardiac vascular smooth muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015749	Process	20160305	Ensembl
+UniProtKB	A0A024RDK3	-	CAMK2D	9606	-	GO:0061049	cell growth involved in cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000016026	Process	20160305	Ensembl
+UniProtKB	A0A075B6F5	-	MYO18B	9606	-	GO:0048739	cardiac muscle fiber development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000083810	Process	20160305	Ensembl
+UniProtKB	A0A087WUF6	-	FGF2	9606	-	GO:0060978	angiogenesis involved in coronary vascular morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000023388	Process	20160305	Ensembl
+UniProtKB	A0A087WUW0	-	CBY1	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023064	Process	20160305	Ensembl
+UniProtKB	A0A0A0MTM3	-	CITED2	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038405	Process	20160305	Ensembl
+UniProtKB	A0A0A0MTM3	-	CITED2	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038405	Process	20160305	Ensembl
+UniProtKB	A0A0A0MTM3	-	CITED2	9606	-	GO:0003197	endocardial cushion development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038405	Process	20160305	Ensembl
+UniProtKB	A0A0A0MTM3	-	CITED2	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038405	Process	20160305	Ensembl
+UniProtKB	A0A0A0MTM3	-	CITED2	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038405	Process	20160305	Ensembl
+UniProtKB	A0A0A0MTM3	-	CITED2	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038405	Process	20160305	Ensembl
+UniProtKB	A0A0A0MTM3	-	CITED2	9606	-	GO:0060971	embryonic heart tube left/right pattern formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038405	Process	20160305	Ensembl
+UniProtKB	A0A0A0MTM3	-	CITED2	9606	-	GO:0061308	cardiac neural crest cell development involved in heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038405	Process	20160305	Ensembl
+UniProtKB	A0A0A0MTM3	-	CITED2	9606	-	GO:0061371	determination of heart left/right asymmetry	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038405	Process	20160305	Ensembl
+UniProtKB	A0A0A0MTS7	-	TTN	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000107477	Process	20160305	Ensembl
+UniProtKB	A0A0A0MTS7	-	TTN	9606	-	GO:0007512	adult heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000107477	Process	20160305	Ensembl
+UniProtKB	A0A0A0MTS7	-	TTN	9606	-	GO:0060419	heart growth	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000107477	Process	20160305	Ensembl
+UniProtKB	A2TDB8	-	CSRP3	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000129378	Process	20160305	Ensembl
+UniProtKB	A2TDB8	-	CSRP3	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000129378	Process	20160305	Ensembl
+UniProtKB	A4UGR9	-	XIRP2	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028410	Process	20160305	Ensembl
+UniProtKB	A4UGR9	-	XIRP2	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028410	Process	20160305	Ensembl
+UniProtKB	A6NCS4	-	NKX2-6	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000024	ISS	UniProtKB:P43688	Process	20081126	BHF-UCL
+UniProtKB	A6NCS4	-	NKX2-6	9606	-	GO:0035050	embryonic heart tube development	PMID:15649947	IMP	-	Process	20071023	HGNC
+UniProtKB	A6NCS4	-	NKX2-6	9606	-	GO:0055014	atrial cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000049898	Process	20160305	Ensembl
+UniProtKB	A6NCS4	-	NKX2-6	9606	-	GO:0055014	atrial cardiac muscle cell development	GO_REF:0000024	ISS	UniProtKB:P43688	Process	20081126	BHF-UCL
+UniProtKB	A6NCS4	-	NKX2-6	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000049898	Process	20160305	Ensembl
+UniProtKB	A6NCS4	-	NKX2-6	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000024	ISS	UniProtKB:P43688	Process	20081126	BHF-UCL
+UniProtKB	A6NCS4	-	NKX2-6	9606	-	GO:0060039	pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000049898	Process	20160305	Ensembl
+UniProtKB	A6NCS4	-	NKX2-6	9606	-	GO:0060039	pericardium development	GO_REF:0000024	ISS	UniProtKB:P43688	Process	20081126	BHF-UCL
+UniProtKB	A6XAA7	-	GREM1	9606	-	GO:0003257	positive regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000097170	Process	20160305	Ensembl
+UniProtKB	A8K6K3	-	MAP3K7IP1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023050	Process	20160305	Ensembl
+UniProtKB	A8K6K3	-	MAP3K7IP1	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023050	Process	20160305	Ensembl
+UniProtKB	A8K6K3	-	MAP3K7IP1	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023050	Process	20160305	Ensembl
+UniProtKB	A8MTQ0	-	NOTO	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000087006	Process	20160305	Ensembl
+UniProtKB	A9UGY9	-	ATG5	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044769	Process	20160305	Ensembl
+UniProtKB	B0ZBD3	-	ADRA1A	9606	-	GO:0007512	adult heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000124570	Process	20160305	Ensembl
+UniProtKB	B0ZBE2	-	AGT	9606	-	GO:0061049	cell growth involved in cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000024917	Process	20160305	Ensembl
+UniProtKB	B2R5T5	-	PRKAR1A	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000102288	Process	20160305	Ensembl
+UniProtKB	B4DY26	-	TGFBR1	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000024	ISS	UniProtKB:Q06900	Process	20141202	AgBase
+UniProtKB	C8C060	-	BMP2	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028836	Process	20160305	Ensembl
+UniProtKB	C8C060	-	BMP2	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028836	Process	20160305	Ensembl
+UniProtKB	C8C060	-	BMP2	9606	-	GO:0035054	embryonic heart tube anterior/posterior pattern specification	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028836	Process	20160305	Ensembl
+UniProtKB	C8C060	-	BMP2	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028836	Process	20160305	Ensembl
+UniProtKB	C8C060	-	BMP2	9606	-	GO:0060039	pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028836	Process	20160305	Ensembl
+UniProtKB	C9JFD3	-	NCOR2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000083250	Process	20160305	Ensembl
+UniProtKB	D9YZV5	-	TPM1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000109337	Process	20160305	Ensembl
+UniProtKB	D9ZGG0	-	TBX1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000009241	Process	20160305	Ensembl
+UniProtKB	D9ZGG0	-	TBX1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000009241	Process	20160305	Ensembl
+UniProtKB	D9ZGG0	-	TBX1	9606	-	GO:0060982	coronary artery morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000009241	Process	20160305	Ensembl
+UniProtKB	E9PES4	-	KIF3A	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000112782	Process	20160305	Ensembl
+UniProtKB	F1D8Q5	-	NR2B1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000076491	Process	20160305	Ensembl
+UniProtKB	F1D8Q5	-	NR2B1	9606	-	GO:0055012	ventricular cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000076491	Process	20160305	Ensembl
+UniProtKB	F1D8S6	-	NR1B2	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000067694	Process	20160305	Ensembl
+UniProtKB	F1D8S6	-	NR1B2	9606	-	GO:0055012	ventricular cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000067694	Process	20160305	Ensembl
+UniProtKB	F5H8B4	-	UTY	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000070012	Process	20160305	Ensembl
+UniProtKB	F6KD01	-	PTEN	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000013807	Process	20160305	Ensembl
+UniProtKB	H0YE88	-	TEAD1	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000060671	Process	20160305	Ensembl
+UniProtKB	I3VM53	-	KDM2A	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047683	Process	20160305	Ensembl
+UniProtKB	J3KNQ4	-	PARVA	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000033030	Process	20160305	Ensembl
+UniProtKB	J3KPA4	-	VEGFA	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000115883	Process	20160305	Ensembl
+UniProtKB	J3KPA4	-	VEGFA	9606	-	GO:0048739	cardiac muscle fiber development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000115883	Process	20160305	Ensembl
+UniProtKB	K7PPA8	-	TP53	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000104298	Process	20160305	Ensembl
+UniProtKB	L7RTG7	-	FRS2	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020381	Process	20160305	Ensembl
+UniProtKB	L7RXH5	-	MAPK3	9606	-	GO:0061308	cardiac neural crest cell development involved in heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000051619	Process	20160305	Ensembl
+UniProtKB	O00501	-	CLDN5	9606	-	GO:0003151	outflow tract morphogenesis	PMID:9192844	TAS	-	Process	20150911	UniProt
+UniProtKB	O00548	-	DLL1	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000014917	Process	20160305	Ensembl
+UniProtKB	O00548	-	DLL1	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q61483	Process	20120727	BHF-UCL
+UniProtKB	O00622	-	CYR61	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029846	Process	20160305	Ensembl
+UniProtKB	O00622	-	CYR61	9606	-	GO:0003278	apoptotic process involved in heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029846	Process	20160305	Ensembl
+UniProtKB	O00622	-	CYR61	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029846	Process	20160305	Ensembl
+UniProtKB	O00622	-	CYR61	9606	-	GO:0060413	atrial septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029846	Process	20160305	Ensembl
+UniProtKB	O14497	-	ARID1A	9606	-	GO:0003205	cardiac chamber development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000101517	Process	20160305	Ensembl
+UniProtKB	O14497	-	ARID1A	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000101517	Process	20160305	Ensembl
+UniProtKB	O14641	-	DVL2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000140073	Process	20160305	Ensembl
+UniProtKB	O14641	-	DVL2	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000140073	Process	20160305	Ensembl
+UniProtKB	O14641	-	DVL2	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q60838	Process	20111012	BHF-UCL
+UniProtKB	O14786	-	NRP1	9606	-	GO:0060978	angiogenesis involved in coronary vascular morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000026917	Process	20160305	Ensembl
+UniProtKB	O14786	-	NRP1	9606	-	GO:0060978	angiogenesis involved in coronary vascular morphogenesis	PMID:24401374	ISS	UniProtKB:P97333	Process	20140522	BHF-UCL
+UniProtKB	O14786	-	NRP1	9606	-	GO:0060982	coronary artery morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000026917	Process	20160305	Ensembl
+UniProtKB	O15054	-	KDM6B	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000091620	Process	20160305	Ensembl
+UniProtKB	O15054	-	KDM6B	9606	-	GO:0055007	cardiac muscle cell differentiation	PMID:23856522	ISS	UniProtKB:Q5NCY0	Process	20140528	BHF-UCL
+UniProtKB	O15105	-	SMAD7	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000026999	Process	20160305	Ensembl
+UniProtKB	O15105	-	SMAD7	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:O35253	Process	20090211	BHF-UCL
+UniProtKB	O15105	-	SMAD7	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000026999	Process	20160305	Ensembl
+UniProtKB	O15105	-	SMAD7	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:O35253	Process	20090211	BHF-UCL
+UniProtKB	O15119	-	TBX3	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	O15119	-	TBX3	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	O15119	-	TBX3	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	O15119	-	TBX3	9606	-	GO:0003167	atrioventricular bundle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	O15119	-	TBX3	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	O15119	-	TBX3	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	O15119	-	TBX3	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	O15119	-	TBX3	9606	-	GO:0060923	cardiac muscle cell fate commitment	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	O15119	-	TBX3	9606	-	GO:0060931	sinoatrial node cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018748	Process	20160305	Ensembl
+UniProtKB	O15151	-	MDM4	9606	-	GO:0003170	heart valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000068661	Process	20160305	Ensembl
+UniProtKB	O15151	-	MDM4	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000068661	Process	20160305	Ensembl
+UniProtKB	O15151	-	MDM4	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000068661	Process	20160305	Ensembl
+UniProtKB	O15151	-	MDM4	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000068661	Process	20160305	Ensembl
+UniProtKB	O15151	-	MDM4	9606	-	GO:0003283	atrial septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000068661	Process	20160305	Ensembl
+UniProtKB	O15178	-	T	9606	-	GO:0003007	heart morphogenesis	PMID:21632880	IDA	-	Process	20111130	BHF-UCL
+UniProtKB	O15178	-	T	9606	-	GO:0003257	positive regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	PMID:21632880	IDA	-	Process	20111130	BHF-UCL
+UniProtKB	O15178	-	T	9606	-	GO:0061371	determination of heart left/right asymmetry	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000074236	Process	20160305	Ensembl
+UniProtKB	O15273	-	TCAP	9606	-	GO:0007512	adult heart development	PMID:9817758	IMP	-	Process	20120927	BHF-UCL
+UniProtKB	O15273	-	TCAP	9606	-	GO:0048739	cardiac muscle fiber development	PMID:9817758	IMP	-	Process	20081017	BHF-UCL
+UniProtKB	O15273	-	TCAP	9606	-	GO:0055003	cardiac myofibril assembly	PMID:9817758	IMP	-	Process	20110708	BHF-UCL
+UniProtKB	O15273	-	TCAP	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	PMID:9817758	IMP	-	Process	20081017	BHF-UCL
+UniProtKB	O15550	-	KDM6A	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000061539	Process	20160305	Ensembl
+UniProtKB	O43155	-	FLRT2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000062171	Process	20160305	Ensembl
+UniProtKB	O43155	-	FLRT2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q8BLU0	Process	20150917	UniProt
+UniProtKB	O43155	-	FLRT2	9606	-	GO:0061343	cell adhesion involved in heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000062171	Process	20160305	Ensembl
+UniProtKB	O43155	-	FLRT2	9606	-	GO:0061343	cell adhesion involved in heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q8BLU0	Process	20150917	UniProt
+UniProtKB	O43435	-	TBX1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000009241	Process	20160305	Ensembl
+UniProtKB	O43435	-	TBX1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:P70323	Process	20110815	UniProt
+UniProtKB	O43435	-	TBX1	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:P70323	Process	20110816	UniProt
+UniProtKB	O43435	-	TBX1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000009241	Process	20160305	Ensembl
+UniProtKB	O43435	-	TBX1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:P70323	Process	20110815	UniProt
+UniProtKB	O43435	-	TBX1	9606	-	GO:0060982	coronary artery morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000009241	Process	20160305	Ensembl
+UniProtKB	O43435	-	TBX1	9606	-	GO:0060982	coronary artery morphogenesis	GO_REF:0000024	ISS	UniProtKB:P70323	Process	20110815	UniProt
+UniProtKB	O43541	-	SMAD6	9606	-	GO:0003170	heart valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000036285	Process	20160305	Ensembl
+UniProtKB	O43541	-	SMAD6	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000036285	Process	20160305	Ensembl
+UniProtKB	O43541	-	SMAD6	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000036285	Process	20160305	Ensembl
+UniProtKB	O43623	-	SNAI2	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023356	Process	20160305	Ensembl
+UniProtKB	O43623	-	SNAI2	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000024	ISS	UniProtKB:P97469	Process	20120925	BHF-UCL
+UniProtKB	O43623	-	SNAI2	9606	-	GO:0003273	cell migration involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023356	Process	20160305	Ensembl
+UniProtKB	O43623	-	SNAI2	9606	-	GO:0003273	cell migration involved in endocardial cushion formation	GO_REF:0000024	ISS	UniProtKB:P97469	Process	20120727	BHF-UCL
+UniProtKB	O43829	-	ZBTB14	9606	-	GO:0003170	heart valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000108296	Process	20160305	Ensembl
+UniProtKB	O43829	-	ZBTB14	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000108296	Process	20160305	Ensembl
+UniProtKB	O43829	-	ZBTB14	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000108296	Process	20160305	Ensembl
+UniProtKB	O60344	-	ECE2	9606	-	GO:0010002	cardioblast differentiation	GO_REF:0000024	ISS	UniProtKB:Q923T6	Process	20041006	UniProt
+UniProtKB	O60481	-	ZIC3	9606	-	GO:0001947	heart looping	PMID:9354794	IMP	-	Process	20130304	BHF-UCL
+UniProtKB	O60565	-	GREM1	9606	-	GO:0003257	positive regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000097170	Process	20160305	Ensembl
+UniProtKB	O60565	-	GREM1	9606	-	GO:0003257	positive regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	PMID:9660951	ISS	UniProtKB:O70326	Process	20120319	BHF-UCL
+UniProtKB	O60902	-	SHOX2	9606	-	GO:0003170	heart valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029422	Process	20160305	Ensembl
+UniProtKB	O60902	-	SHOX2	9606	-	GO:0003209	cardiac atrium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029422	Process	20160305	Ensembl
+UniProtKB	O75147	-	OBSL1	9606	-	GO:0055003	cardiac myofibril assembly	PMID:17289344	NAS	-	Process	20130509	BHF-UCL
+UniProtKB	O75182	-	SIN3B	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000004494	Process	20160305	Ensembl
+UniProtKB	O75581	-	LRP6	9606	-	GO:0003344	pericardium morphogenesis	GO_REF:0000033	IBA	PANTHER:PTN000056284	Process	20110721	GO_Central
+UniProtKB	O75593	-	FOXH1	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000036591	Process	20160305	Ensembl
+UniProtKB	O75593	-	FOXH1	9606	-	GO:0003139	secondary heart field specification	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000036591	Process	20160305	Ensembl
+UniProtKB	O75593	-	FOXH1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000036591	Process	20160305	Ensembl
+UniProtKB	O75593	-	FOXH1	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000036591	Process	20160305	Ensembl
+UniProtKB	O75593	-	FOXH1	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000036591	Process	20160305	Ensembl
+UniProtKB	O75593	-	FOXH1	9606	-	GO:0035054	embryonic heart tube anterior/posterior pattern specification	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000036591	Process	20160305	Ensembl
+UniProtKB	O75610	-	LEFTY1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q64280	Process	20110922	BHF-UCL
+UniProtKB	O75626	-	PRDM1	9606	-	GO:0003170	heart valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000101129	Process	20160305	Ensembl
+UniProtKB	O75626	-	PRDM1	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000101129	Process	20160305	Ensembl
+UniProtKB	O75626	-	PRDM1	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000101129	Process	20160305	Ensembl
+UniProtKB	O75626	-	PRDM1	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000101129	Process	20160305	Ensembl
+UniProtKB	O75911	-	DHRS3	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000122552	Process	20160305	Ensembl
+UniProtKB	O75911	-	DHRS3	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000122552	Process	20160305	Ensembl
+UniProtKB	O76041	-	NEBL	9606	-	GO:0071691	cardiac muscle thin filament assembly	PMID:11822876	IMP	-	Process	20111220	UniProt
+UniProtKB	O76041	-	NEBL	9606	-	GO:0071691	cardiac muscle thin filament assembly	PMID:18823973	IMP	-	Process	20111220	UniProt
+UniProtKB	O94788	-	ALDH1A2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034723	Process	20160305	Ensembl
+UniProtKB	O94788	-	ALDH1A2	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034723	Process	20160305	Ensembl
+UniProtKB	O94851	-	MICAL2	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:F1RA39	Process	20140505	UniProt
+UniProtKB	O94875	-	SORBS2	9606	-	GO:0061049	cell growth involved in cardiac muscle cell development	GO_REF:0000024	ISS	UniProtKB:O35413	Process	20150717	BHF-UCL
+UniProtKB	O95069	-	KCNK2	9606	-	GO:0003231	cardiac ventricle development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000003684	Process	20160305	Ensembl
+UniProtKB	O95352	-	ATG7	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000133215	Process	20160305	Ensembl
+UniProtKB	O95393	-	BMP10	9606	-	GO:0007512	adult heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032125	Process	20160305	Ensembl
+UniProtKB	O95393	-	BMP10	9606	-	GO:0007512	adult heart development	PMID:10072785	ISS	UniProtKB:Q9R229	Process	20080604	BHF-UCL
+UniProtKB	O95393	-	BMP10	9606	-	GO:0055009	atrial cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032125	Process	20160305	Ensembl
+UniProtKB	O95393	-	BMP10	9606	-	GO:0055009	atrial cardiac muscle tissue morphogenesis	PMID:10072785	ISS	UniProtKB:Q9R229	Process	20080604	BHF-UCL
+UniProtKB	O95393	-	BMP10	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032125	Process	20160305	Ensembl
+UniProtKB	O95393	-	BMP10	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:10072785	ISS	UniProtKB:Q9R229	Process	20080604	BHF-UCL
+UniProtKB	O95393	-	BMP10	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032125	Process	20160305	Ensembl
+UniProtKB	O95393	-	BMP10	9606	-	GO:0055015	ventricular cardiac muscle cell development	PMID:10072785	ISS	UniProtKB:Q9R229	Process	20080604	BHF-UCL
+UniProtKB	O95393	-	BMP10	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032125	Process	20160305	Ensembl
+UniProtKB	O95393	-	BMP10	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000024	ISS	UniProtKB:Q9R229	Process	20071011	UniProt
+UniProtKB	O95393	-	BMP10	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032125	Process	20160305	Ensembl
+UniProtKB	O95393	-	BMP10	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000024	ISS	UniProtKB:Q9R229	Process	20081104	BHF-UCL
+UniProtKB	O95487	-	SEC24B	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001079	Process	20160305	Ensembl
+UniProtKB	O95487	-	SEC24B	9606	-	GO:0060982	coronary artery morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001079	Process	20160305	Ensembl
+UniProtKB	O95863	-	SNAI1	9606	-	GO:0061314	Notch signaling involved in heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000050581	Process	20160305	Ensembl
+UniProtKB	O95863	-	SNAI1	9606	-	GO:0061314	Notch signaling involved in heart development	GO_REF:0000024	ISS	UniProtKB:Q02085	Process	20120727	BHF-UCL
+UniProtKB	O95935	-	TBX18	9606	-	GO:0003163	sinoatrial node development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034991	Process	20160305	Ensembl
+UniProtKB	O95936	-	EOMES	9606	-	GO:0010002	cardioblast differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000035020	Process	20160305	Ensembl
+UniProtKB	O96004	-	HAND1	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000046999	Process	20160305	Ensembl
+UniProtKB	O96004	-	HAND1	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q64279	Process	20090826	BHF-UCL
+UniProtKB	O96004	-	HAND1	9606	-	GO:0003144	embryonic heart tube formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000046999	Process	20160305	Ensembl
+UniProtKB	O96004	-	HAND1	9606	-	GO:0003218	cardiac left ventricle formation	PMID:18276607	IMP	-	Process	20100421	BHF-UCL
+UniProtKB	O96004	-	HAND1	9606	-	GO:0003219	cardiac right ventricle formation	PMID:18276607	IMP	-	Process	20100421	BHF-UCL
+UniProtKB	O96004	-	HAND1	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000046999	Process	20160305	Ensembl
+UniProtKB	O96004	-	HAND1	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000024	ISS	UniProtKB:Q64279	Process	20090826	BHF-UCL
+UniProtKB	O96004	-	HAND1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:18276607	IMP	-	Process	20090826	BHF-UCL
+UniProtKB	O96004	-	HAND1	9606	-	GO:0060411	cardiac septum morphogenesis	PMID:19586923	IMP	-	Process	20090826	BHF-UCL
+UniProtKB	O96004	-	HAND1	9606	-	GO:0061371	determination of heart left/right asymmetry	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000046999	Process	20160305	Ensembl
+UniProtKB	O96014	-	WNT11	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064333	Process	20160305	Ensembl
+UniProtKB	O96014	-	WNT11	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064333	Process	20160305	Ensembl
+UniProtKB	O96028	-	WHSC1	9606	-	GO:0003149	membranous septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000075210	Process	20160305	Ensembl
+UniProtKB	O96028	-	WHSC1	9606	-	GO:0003289	atrial septum primum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000075210	Process	20160305	Ensembl
+UniProtKB	O96028	-	WHSC1	9606	-	GO:0003290	atrial septum secundum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000075210	Process	20160305	Ensembl
+UniProtKB	P01019	-	AGT	9606	-	GO:0061049	cell growth involved in cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000024917	Process	20160305	Ensembl
+UniProtKB	P01160	-	NPPA	9606	-	GO:0061049	cell growth involved in cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000011005	Process	20160305	Ensembl
+UniProtKB	P02458	-	COL2A1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023123	Process	20160305	Ensembl
+UniProtKB	P02545	-	LMNA	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029699	Process	20160305	Ensembl
+UniProtKB	P02753	-	RBP4	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000024	ISS	UniProtKB:Q00724	Process	20080730	BHF-UCL
+UniProtKB	P02753	-	RBP4	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000024	ISS	UniProtKB:Q00724	Process	20081104	BHF-UCL
+UniProtKB	P04637	-	TP53	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000104298	Process	20160305	Ensembl
+UniProtKB	P05412	-	JUN	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000102711	Process	20160305	Ensembl
+UniProtKB	P05556	-	ITGB1	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000087457	Process	20160305	Ensembl
+UniProtKB	P05556	-	ITGB1	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000087457	Process	20160305	Ensembl
+UniProtKB	P06213	-	INSR	9606	-	GO:0003007	heart morphogenesis	PMID:7693131	IMP	-	Process	20080606	BHF-UCL
+UniProtKB	P06493	-	CDK1	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000070138	Process	20160305	Ensembl
+UniProtKB	P07101	-	TH	9606	-	GO:0003007	heart morphogenesis	PMID:12113410	NAS	-	Process	20080926	BHF-UCL
+UniProtKB	P07996	-	THBS1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044903	Process	20160305	Ensembl
+UniProtKB	P07996	-	THBS1	9606	-	GO:0003197	endocardial cushion development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044903	Process	20160305	Ensembl
+UniProtKB	P08581	-	MET	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000111103	Process	20160305	Ensembl
+UniProtKB	P08590	-	MYL3	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:16754800	IMP	-	Process	20080122	BHF-UCL
+UniProtKB	P08590	-	MYL3	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:8673105	IMP	-	Process	20080121	BHF-UCL
+UniProtKB	P09493	-	TPM1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000109337	Process	20160305	Ensembl
+UniProtKB	P09493	-	TPM1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:11136687	IMP	-	Process	20081016	BHF-UCL
+UniProtKB	P09544	-	WNT2	9606	-	GO:0055009	atrial cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000010941	Process	20160305	Ensembl
+UniProtKB	P09544	-	WNT2	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000010941	Process	20160305	Ensembl
+UniProtKB	P09619	-	PDGFRB	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000024	ISS	UniProtKB:P05622	Process	20110408	UniProt
+UniProtKB	P09619	-	PDGFRB	9606	-	GO:0060981	cell migration involved in coronary angiogenesis	GO_REF:0000024	ISS	UniProtKB:P05622	Process	20111010	UniProt
+UniProtKB	P10253	-	GAA	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000101866	Process	20160305	Ensembl
+UniProtKB	P10276	-	RARA	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000069744	Process	20160305	Ensembl
+UniProtKB	P10276	-	RARA	9606	-	GO:0055012	ventricular cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000069744	Process	20160305	Ensembl
+UniProtKB	P10644	-	PRKAR1A	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000102288	Process	20160305	Ensembl
+UniProtKB	P10826	-	RARB	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000067694	Process	20160305	Ensembl
+UniProtKB	P10826	-	RARB	9606	-	GO:0055012	ventricular cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000067694	Process	20160305	Ensembl
+UniProtKB	P10916	-	MYL2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000107380	Process	20160305	Ensembl
+UniProtKB	P10916	-	MYL2	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000107380	Process	20160305	Ensembl
+UniProtKB	P10916	-	MYL2	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000024	ISS	UniProtKB:P51667	Process	20080121	BHF-UCL
+UniProtKB	P10916	-	MYL2	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:8673105	IMP	-	Process	20080121	BHF-UCL
+UniProtKB	P11308	-	ERG	9606	-	GO:0003197	endocardial cushion development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000109477	Process	20160305	Ensembl
+UniProtKB	P11308	-	ERG	9606	-	GO:0003199	endocardial cushion to mesenchymal transition involved in heart valve formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000109477	Process	20160305	Ensembl
+UniProtKB	P11831	-	SRF	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015749	Process	20160305	Ensembl
+UniProtKB	P11831	-	SRF	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q9JM73	Process	20080919	BHF-UCL
+UniProtKB	P11831	-	SRF	9606	-	GO:0003257	positive regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	PMID:19783823	IGI	UniProtKB:Q9JM73	Process	20121024	BHF-UCL
+UniProtKB	P11831	-	SRF	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015749	Process	20160305	Ensembl
+UniProtKB	P11831	-	SRF	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015749	Process	20160305	Ensembl
+UniProtKB	P11831	-	SRF	9606	-	GO:0060947	cardiac vascular smooth muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015749	Process	20160305	Ensembl
+UniProtKB	P12107	-	COL11A1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000089793	Process	20160305	Ensembl
+UniProtKB	P12107	-	COL11A1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000089793	Process	20160305	Ensembl
+UniProtKB	P12643	-	BMP2	9606	-	GO:0003130	BMP signaling pathway involved in heart induction	PMID:19736317	IDA	-	Process	20100324	BHF-UCL
+UniProtKB	P12643	-	BMP2	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028836	Process	20160305	Ensembl
+UniProtKB	P12643	-	BMP2	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:P21274	Process	20120209	UniProt
+UniProtKB	P12643	-	BMP2	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028836	Process	20160305	Ensembl
+UniProtKB	P12643	-	BMP2	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000024	ISS	UniProtKB:P21274	Process	20120209	UniProt
+UniProtKB	P12643	-	BMP2	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000024	ISS	UniProtKB:P21274	Process	20120727	BHF-UCL
+UniProtKB	P12643	-	BMP2	9606	-	GO:0035051	cardiocyte differentiation	PMID:15110716	IDA	-	Process	20040722	MGI
+UniProtKB	P12643	-	BMP2	9606	-	GO:0035051	cardiocyte differentiation	PMID:19736317	IMP	-	Process	20100324	BHF-UCL
+UniProtKB	P12643	-	BMP2	9606	-	GO:0035054	embryonic heart tube anterior/posterior pattern specification	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028836	Process	20160305	Ensembl
+UniProtKB	P12643	-	BMP2	9606	-	GO:0035054	embryonic heart tube anterior/posterior pattern specification	GO_REF:0000024	ISS	UniProtKB:P21274	Process	20120209	UniProt
+UniProtKB	P12643	-	BMP2	9606	-	GO:0055007	cardiac muscle cell differentiation	PMID:21311046	IMP	-	Process	20120727	BHF-UCL
+UniProtKB	P12643	-	BMP2	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028836	Process	20160305	Ensembl
+UniProtKB	P12643	-	BMP2	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:P21274	Process	20120209	UniProt
+UniProtKB	P12643	-	BMP2	9606	-	GO:0060039	pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028836	Process	20160305	Ensembl
+UniProtKB	P12643	-	BMP2	9606	-	GO:0060039	pericardium development	GO_REF:0000024	ISS	UniProtKB:P21274	Process	20120209	UniProt
+UniProtKB	P12643	-	BMP2	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	PMID:18184661	IDA	-	Process	20081017	BHF-UCL
+UniProtKB	P12644	-	BMP4	9606	-	GO:0003130	BMP signaling pathway involved in heart induction	PMID:20702560	IMP	-	Process	20110418	BHF-UCL
+UniProtKB	P12644	-	BMP4	9606	-	GO:0003139	secondary heart field specification	PMID:20702560	IMP	-	Process	20110418	BHF-UCL
+UniProtKB	P12644	-	BMP4	9606	-	GO:0003197	endocardial cushion development	PMID:18076106	TAS	-	Process	20100520	BHF-UCL
+UniProtKB	P12644	-	BMP4	9606	-	GO:0003279	cardiac septum development	PMID:18076106	TAS	-	Process	20100520	BHF-UCL
+UniProtKB	P12883	-	MYH7	9606	-	GO:0007512	adult heart development	PMID:15856146	IMP	-	Process	20061230	HGNC
+UniProtKB	P12883	-	MYH7	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:15856146	IMP	-	Process	20061230	HGNC
+UniProtKB	P12883	-	MYH7	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:16754800	IMP	-	Process	20080122	BHF-UCL
+UniProtKB	P13385	-	TDGF1	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000035075	Process	20160305	Ensembl
+UniProtKB	P13533	-	MYH6	9606	-	GO:0007512	adult heart development	PMID:15735645	IMP	-	Process	20061230	HGNC
+UniProtKB	P13533	-	MYH6	9606	-	GO:0007512	adult heart development	PMID:15998695	IMP	-	Process	20061230	HGNC
+UniProtKB	P13533	-	MYH6	9606	-	GO:0048739	cardiac muscle fiber development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000080538	Process	20160305	Ensembl
+UniProtKB	P13533	-	MYH6	9606	-	GO:0048739	cardiac muscle fiber development	GO_REF:0000024	ISS	UniProtKB:Q02566	Process	20080803	BHF-UCL
+UniProtKB	P13533	-	MYH6	9606	-	GO:0055009	atrial cardiac muscle tissue morphogenesis	PMID:15735645	IMP	-	Process	20061230	HGNC
+UniProtKB	P13533	-	MYH6	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:11815426	IMP	-	Process	20061230	HGNC
+UniProtKB	P13533	-	MYH6	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:15998695	IMP	-	Process	20061230	HGNC
+UniProtKB	P14635	-	CCNB1	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000075114	Process	20160305	Ensembl
+UniProtKB	P15328	-	FOLR1	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001882	Process	20160305	Ensembl
+UniProtKB	P15328	-	FOLR1	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:P35846	Process	20150528	BHF-UCL
+UniProtKB	P15328	-	FOLR1	9606	-	GO:0003147	neural crest cell migration involved in heart formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001882	Process	20160305	Ensembl
+UniProtKB	P15328	-	FOLR1	9606	-	GO:0003147	neural crest cell migration involved in heart formation	GO_REF:0000024	ISS	UniProtKB:P35846	Process	20150528	BHF-UCL
+UniProtKB	P15328	-	FOLR1	9606	-	GO:0003253	cardiac neural crest cell migration involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001882	Process	20160305	Ensembl
+UniProtKB	P15328	-	FOLR1	9606	-	GO:0003253	cardiac neural crest cell migration involved in outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:P35846	Process	20150604	BHF-UCL
+UniProtKB	P15336	-	ATF2	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058521	Process	20160305	Ensembl
+UniProtKB	P15692	-	VEGFA	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q00731	Process	20120920	BHF-UCL
+UniProtKB	P15692	-	VEGFA	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q00731-3	Process	20120920	BHF-UCL
+UniProtKB	P15692	-	VEGFA	9606	-	GO:0003169	coronary vein morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q00731-3	Process	20120920	BHF-UCL
+UniProtKB	P15692	-	VEGFA	9606	-	GO:0048739	cardiac muscle fiber development	GO_REF:0000024	ISS	UniProtKB:Q00731	Process	20120920	BHF-UCL
+UniProtKB	P15692	-	VEGFA	9606	-	GO:0060948	cardiac vascular smooth muscle cell development	GO_REF:0000024	ISS	UniProtKB:Q00731-3	Process	20120920	BHF-UCL
+UniProtKB	P15692	-	VEGFA	9606	-	GO:0060982	coronary artery morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q00731-3	Process	20120920	BHF-UCL
+UniProtKB	P15924	-	DSP	9606	-	GO:0003223	ventricular compact myocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000115062	Process	20160305	Ensembl
+UniProtKB	P15924	-	DSP	9606	-	GO:0003223	ventricular compact myocardium morphogenesis	PMID:16917092	ISS	UniProtKB:E9Q557	Process	20120625	BHF-UCL
+UniProtKB	P16234	-	PDGFRA	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000024	ISS	UniProtKB:P26618	Process	20110406	UniProt
+UniProtKB	P16870	-	CPE	9606	-	GO:0003214	cardiac left ventricle morphogenesis	PMID:19593212	IMP	-	Process	20100819	BHF-UCL
+UniProtKB	P17302	-	GJA1	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064536	Process	20160305	Ensembl
+UniProtKB	P17302	-	GJA1	9606	-	GO:0003294	atrial ventricular junction remodeling	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064536	Process	20160305	Ensembl
+UniProtKB	P17302	-	GJA1	9606	-	GO:0007512	adult heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064536	Process	20160305	Ensembl
+UniProtKB	P17302	-	GJA1	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064536	Process	20160305	Ensembl
+UniProtKB	P17813	-	ENG	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000009705	Process	20160305	Ensembl
+UniProtKB	P17813	-	ENG	9606	-	GO:0001947	heart looping	PMID:8194490	ISS	UniProtKB:Q63961	Process	20081109	BHF-UCL
+UniProtKB	P17813	-	ENG	9606	-	GO:0003273	cell migration involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000009705	Process	20160305	Ensembl
+UniProtKB	P19237	-	TNNI1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000123509	Process	20160305	Ensembl
+UniProtKB	P19404	-	NDUFV2	9606	-	GO:0048738	cardiac muscle tissue development	PMID:12754703	IMP	-	Process	20080904	UniProt
+UniProtKB	P19429	-	TNNI3	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:11815426	IMP	-	Process	20061230	HGNC
+UniProtKB	P19429	-	TNNI3	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:16754800	IMP	-	Process	20080122	BHF-UCL
+UniProtKB	P19544	-	WT1	9606	-	GO:0060923	cardiac muscle cell fate commitment	GO_REF:0000024	ISS	UniProtKB:P22561	Process	20110618	BHF-UCL
+UniProtKB	P19544	-	WT1	9606	-	GO:0061032	visceral serous pericardium development	PMID:10101119	IGI	UniProtKB:P22561	Process	20100723	UniProt
+UniProtKB	P19634	-	SLC9A1	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000030669	Process	20160305	Ensembl
+UniProtKB	P19793	-	RXRA	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000076491	Process	20160305	Ensembl
+UniProtKB	P19793	-	RXRA	9606	-	GO:0055012	ventricular cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000076491	Process	20160305	Ensembl
+UniProtKB	P20827	-	EFNA1	9606	-	GO:0003180	aortic valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029566	Process	20160305	Ensembl
+UniProtKB	P20827	-	EFNA1	9606	-	GO:0003180	aortic valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:P52793	Process	20110228	BHF-UCL
+UniProtKB	P20827	-	EFNA1	9606	-	GO:0003183	mitral valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029566	Process	20160305	Ensembl
+UniProtKB	P20827	-	EFNA1	9606	-	GO:0003183	mitral valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:P52793	Process	20110228	BHF-UCL
+UniProtKB	P20827	-	EFNA1	9606	-	GO:0003199	endocardial cushion to mesenchymal transition involved in heart valve formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029566	Process	20160305	Ensembl
+UniProtKB	P20827	-	EFNA1	9606	-	GO:0003199	endocardial cushion to mesenchymal transition involved in heart valve formation	GO_REF:0000024	ISS	UniProtKB:P52793	Process	20110228	BHF-UCL
+UniProtKB	P20908	-	COL5A1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028280	Process	20160305	Ensembl
+UniProtKB	P21453	-	S1PR1	9606	-	GO:0003245	cardiac muscle tissue growth involved in heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000050897	Process	20160305	Ensembl
+UniProtKB	P21453	-	S1PR1	9606	-	GO:0003245	cardiac muscle tissue growth involved in heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:O08530	Process	20131127	UniProt
+UniProtKB	P21802	-	FGFR2	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000112430	Process	20160305	Ensembl
+UniProtKB	P21802	-	FGFR2	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:P21803	Process	20101105	UniProt
+UniProtKB	P21802	-	FGFR2	9606	-	GO:0003149	membranous septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000112430	Process	20160305	Ensembl
+UniProtKB	P21802	-	FGFR2	9606	-	GO:0003149	membranous septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:P21803	Process	20101105	UniProt
+UniProtKB	P21802	-	FGFR2	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000112430	Process	20160305	Ensembl
+UniProtKB	P21802	-	FGFR2	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:P21803	Process	20101105	UniProt
+UniProtKB	P21817	-	RYR1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000137123	Process	20160305	Ensembl
+UniProtKB	P21817	-	RYR1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:E9PZQ0	Process	20111222	UniProt
+UniProtKB	P21860	-	ERBB3	9606	-	GO:0003197	endocardial cushion development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000080716	Process	20160305	Ensembl
+UniProtKB	P23771	-	GATA3	9606	-	GO:0003180	aortic valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000100041	Process	20160305	Ensembl
+UniProtKB	P23771	-	GATA3	9606	-	GO:0003180	aortic valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:P23772	Process	20110515	UniProt
+UniProtKB	P23771	-	GATA3	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000100041	Process	20160305	Ensembl
+UniProtKB	P23771	-	GATA3	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:P23772	Process	20110515	UniProt
+UniProtKB	P23771	-	GATA3	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000100041	Process	20160305	Ensembl
+UniProtKB	P23771	-	GATA3	9606	-	GO:0003281	ventricular septum development	GO_REF:0000024	ISS	UniProtKB:P23772	Process	20110515	UniProt
+UniProtKB	P25929	-	NPY1R	9606	-	GO:0003151	outflow tract morphogenesis	PMID:19593212	IMP	-	Process	20100819	BHF-UCL
+UniProtKB	P26678	-	PLN	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000132743	Process	20160305	Ensembl
+UniProtKB	P27361	-	MAPK3	9606	-	GO:0061308	cardiac neural crest cell development involved in heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000051619	Process	20160305	Ensembl
+UniProtKB	P27797	-	CALR	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000004091	Process	20160305	Ensembl
+UniProtKB	P28360	-	MSX1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058354	Process	20160305	Ensembl
+UniProtKB	P28360	-	MSX1	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058354	Process	20160305	Ensembl
+UniProtKB	P28360	-	MSX1	9606	-	GO:0061312	BMP signaling pathway involved in heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058354	Process	20160305	Ensembl
+UniProtKB	P28482	-	MAPK1	9606	-	GO:0061308	cardiac neural crest cell development involved in heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000065983	Process	20160305	Ensembl
+UniProtKB	P28702	-	RXRB	9606	-	GO:0055012	ventricular cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000036585	Process	20160305	Ensembl
+UniProtKB	P28702	-	RXRB	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000036585	Process	20160305	Ensembl
+UniProtKB	P29966	-	MARCKS	9606	-	GO:0003229	ventricular cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000000707	Process	20160305	Ensembl
+UniProtKB	P31271	-	HOXA13	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000039170	Process	20160305	Ensembl
+UniProtKB	P32418	-	SLC8A1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000083725	Process	20160305	Ensembl
+UniProtKB	P32418	-	SLC8A1	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000083725	Process	20160305	Ensembl
+UniProtKB	P32418	-	SLC8A1	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000083725	Process	20160305	Ensembl
+UniProtKB	P32418	-	SLC8A1	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000024	ISS	UniProtKB:P70414	Process	20120622	BHF-UCL
+UniProtKB	P35222	-	CTNNB1	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000007130	Process	20160305	Ensembl
+UniProtKB	P35222	-	CTNNB1	9606	-	GO:0061324	canonical Wnt signaling pathway involved in positive regulation of cardiac outflow tract cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000007130	Process	20160305	Ensembl
+UniProtKB	P35222	-	CTNNB1	9606	-	GO:0061324	canonical Wnt signaling pathway involved in positive regulation of cardiac outflow tract cell proliferation	GO_REF:0000024	ISS	UniProtKB:Q02248	Process	20111012	BHF-UCL
+UniProtKB	P35348	-	ADRA1A	9606	-	GO:0007512	adult heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000124570	Process	20160305	Ensembl
+UniProtKB	P35368	-	ADRA1B	9606	-	GO:0007512	adult heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000070200	Process	20160305	Ensembl
+UniProtKB	P35548	-	MSX2	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021922	Process	20160305	Ensembl
+UniProtKB	P35548	-	MSX2	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021922	Process	20160305	Ensembl
+UniProtKB	P35548	-	MSX2	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021922	Process	20160305	Ensembl
+UniProtKB	P35548	-	MSX2	9606	-	GO:0061312	BMP signaling pathway involved in heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021922	Process	20160305	Ensembl
+UniProtKB	P35580	-	MYH10	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099671	Process	20160305	Ensembl
+UniProtKB	P35580	-	MYH10	9606	-	GO:0007512	adult heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099671	Process	20160305	Ensembl
+UniProtKB	P35580	-	MYH10	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099671	Process	20160305	Ensembl
+UniProtKB	P35580	-	MYH10	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099671	Process	20160305	Ensembl
+UniProtKB	P35580	-	MYH10	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099671	Process	20160305	Ensembl
+UniProtKB	P35609	-	ACTN2	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000067708	Process	20160305	Ensembl
+UniProtKB	P35712	-	SOX6	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000072583	Process	20160305	Ensembl
+UniProtKB	P35713	-	SOX18	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:P43680	Process	20100317	BHF-UCL
+UniProtKB	P35713	-	SOX18	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:P43680	Process	20100317	BHF-UCL
+UniProtKB	P35713	-	SOX18	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000062759	Process	20160305	Ensembl
+UniProtKB	P35713	-	SOX18	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000024	ISS	UniProtKB:P43680	Process	20100317	BHF-UCL
+UniProtKB	P35713	-	SOX18	9606	-	GO:0060214	endocardium formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000062759	Process	20160305	Ensembl
+UniProtKB	P35713	-	SOX18	9606	-	GO:0060214	endocardium formation	GO_REF:0000024	ISS	UniProtKB:P43680	Process	20100317	BHF-UCL
+UniProtKB	P35713	-	SOX18	9606	-	GO:0060956	endocardial cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000062759	Process	20160305	Ensembl
+UniProtKB	P35713	-	SOX18	9606	-	GO:0060956	endocardial cell differentiation	GO_REF:0000024	ISS	UniProtKB:P43680	Process	20100317	BHF-UCL
+UniProtKB	P35716	-	SOX11	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000078070	Process	20160305	Ensembl
+UniProtKB	P35716	-	SOX11	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q7M6Y2	Process	20110624	UniProt
+UniProtKB	P35716	-	SOX11	9606	-	GO:0003211	cardiac ventricle formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000078070	Process	20160305	Ensembl
+UniProtKB	P35716	-	SOX11	9606	-	GO:0003211	cardiac ventricle formation	GO_REF:0000024	ISS	UniProtKB:Q7M6Y2	Process	20110621	UniProt
+UniProtKB	P35716	-	SOX11	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000078070	Process	20160305	Ensembl
+UniProtKB	P35716	-	SOX11	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q7M6Y2	Process	20110624	UniProt
+UniProtKB	P35749	-	MYH11	9606	-	GO:0048739	cardiac muscle fiber development	PMID:16444274	IMP	-	Process	20071116	UniProt
+UniProtKB	P36382	-	GJA5	9606	-	GO:0003151	outflow tract morphogenesis	PMID:22199024	IMP	-	Process	20130129	BHF-UCL
+UniProtKB	P36382	-	GJA5	9606	-	GO:0003161	cardiac conduction system development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	P36382	-	GJA5	9606	-	GO:0003174	mitral valve development	PMID:22199024	IMP	-	Process	20130129	BHF-UCL
+UniProtKB	P36382	-	GJA5	9606	-	GO:0003193	pulmonary valve formation	PMID:22199024	IMP	-	Process	20130129	BHF-UCL
+UniProtKB	P36382	-	GJA5	9606	-	GO:0003281	ventricular septum development	PMID:22199024	IMP	-	Process	20130129	BHF-UCL
+UniProtKB	P36382	-	GJA5	9606	-	GO:0003283	atrial septum development	PMID:22199024	IMP	-	Process	20130129	BHF-UCL
+UniProtKB	P36382	-	GJA5	9606	-	GO:0003284	septum primum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	P36382	-	GJA5	9606	-	GO:0003294	atrial ventricular junction remodeling	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	P36382	-	GJA5	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	P36382	-	GJA5	9606	-	GO:0035922	foramen ovale closure	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	P36382	-	GJA5	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	P36382	-	GJA5	9606	-	GO:0060413	atrial septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	P36383	-	GJC1	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000102690	Process	20160305	Ensembl
+UniProtKB	P36894	-	BMPR1A	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000035900	Process	20160305	Ensembl
+UniProtKB	P36894	-	BMPR1A	9606	-	GO:0003272	endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000035900	Process	20160305	Ensembl
+UniProtKB	P36894	-	BMPR1A	9606	-	GO:0003272	endocardial cushion formation	GO_REF:0000024	ISS	UniProtKB:P36895	Process	20120925	BHF-UCL
+UniProtKB	P36894	-	BMPR1A	9606	-	GO:0060914	heart formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000035900	Process	20160305	Ensembl
+UniProtKB	P36897	-	TGFBR1	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000024	ISS	UniProtKB:Q06900	Process	20141202	AgBase
+UniProtKB	P36897	UniProtKB:P36897-2	TGFBR1	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000024	ISS	UniProtKB:Q06900	Process	20141202	AgBase
+UniProtKB	P41221	-	WNT5A	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064878	Process	20160305	Ensembl
+UniProtKB	P41221	-	WNT5A	9606	-	GO:0003344	pericardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064878	Process	20160305	Ensembl
+UniProtKB	P41221	-	WNT5A	9606	-	GO:0061347	planar cell polarity pathway involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064878	Process	20160305	Ensembl
+UniProtKB	P41221	-	WNT5A	9606	-	GO:0061348	planar cell polarity pathway involved in ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064878	Process	20160305	Ensembl
+UniProtKB	P41221	-	WNT5A	9606	-	GO:0061349	planar cell polarity pathway involved in cardiac right atrium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064878	Process	20160305	Ensembl
+UniProtKB	P41221	-	WNT5A	9606	-	GO:0061350	planar cell polarity pathway involved in cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064878	Process	20160305	Ensembl
+UniProtKB	P41221	-	WNT5A	9606	-	GO:0061354	planar cell polarity pathway involved in pericardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064878	Process	20160305	Ensembl
+UniProtKB	P41595	-	HTR2B	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000027431	Process	20160305	Ensembl
+UniProtKB	P41595	-	HTR2B	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q02152	Process	20100527	UniProt
+UniProtKB	P42345	-	MTOR	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099510	Process	20160305	Ensembl
+UniProtKB	P42345	-	MTOR	9606	-	GO:0003179	heart valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099510	Process	20160305	Ensembl
+UniProtKB	P42345	-	MTOR	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099510	Process	20160305	Ensembl
+UniProtKB	P42345	-	MTOR	9606	-	GO:0055006	cardiac cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099510	Process	20160305	Ensembl
+UniProtKB	P42345	-	MTOR	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099510	Process	20160305	Ensembl
+UniProtKB	P43694	-	GATA4	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q08369	Process	20080421	BHF-UCL
+UniProtKB	P43694	-	GATA4	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000066927	Process	20160305	Ensembl
+UniProtKB	P43694	-	GATA4	9606	-	GO:0003197	endocardial cushion development	GO_REF:0000024	ISS	UniProtKB:Q08369	Process	20100317	BHF-UCL
+UniProtKB	P43694	-	GATA4	9606	-	GO:0003197	endocardial cushion development	PMID:21330551	IMP	-	Process	20121129	BHF-UCL
+UniProtKB	P43694	-	GATA4	9606	-	GO:0003208	cardiac ventricle morphogenesis	PMID:20347099	TAS	-	Process	20110511	BHF-UCL
+UniProtKB	P43694	-	GATA4	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q08369	Process	20100317	BHF-UCL
+UniProtKB	P43694	-	GATA4	9606	-	GO:0003229	ventricular cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000066927	Process	20160305	Ensembl
+UniProtKB	P43694	-	GATA4	9606	-	GO:0003281	ventricular septum development	GO_REF:0000024	ISS	UniProtKB:Q08369	Process	20100317	BHF-UCL
+UniProtKB	P43694	-	GATA4	9606	-	GO:0003289	atrial septum primum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q08369	Process	20100317	BHF-UCL
+UniProtKB	P43694	-	GATA4	9606	-	GO:0003290	atrial septum secundum morphogenesis	PMID:20347099	IMP	-	Process	20110511	BHF-UCL
+UniProtKB	P43694	-	GATA4	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000066927	Process	20160305	Ensembl
+UniProtKB	P43694	-	GATA4	9606	-	GO:0035054	embryonic heart tube anterior/posterior pattern specification	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000066927	Process	20160305	Ensembl
+UniProtKB	P43694	-	GATA4	9606	-	GO:0035054	embryonic heart tube anterior/posterior pattern specification	GO_REF:0000024	ISS	UniProtKB:Q08369	Process	20080421	BHF-UCL
+UniProtKB	P43694	-	GATA4	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000066927	Process	20160305	Ensembl
+UniProtKB	P43694	-	GATA4	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000066927	Process	20160305	Ensembl
+UniProtKB	P43694	-	GATA4	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000014320	Process	20160305	Ensembl
+UniProtKB	P43694	-	GATA4	9606	-	GO:0060413	atrial septum morphogenesis	PMID:12845333	IMP	-	Process	20100317	BHF-UCL
+UniProtKB	P43694	-	GATA4	9606	-	GO:0061049	cell growth involved in cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000014320	Process	20160305	Ensembl
+UniProtKB	P45379	-	TNNT2	9606	-	GO:0055009	atrial cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000140941	Process	20160305	Ensembl
+UniProtKB	P45379	-	TNNT2	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:16754800	IMP	-	Process	20080122	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003157	endocardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003157	endocardium development	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120724	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003160	endocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003160	endocardium morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003162	atrioventricular node development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003169	coronary vein morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003169	coronary vein morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003180	aortic valve morphogenesis	PMID:16025100	IMP	-	Process	20091209	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003180	aortic valve morphogenesis	PMID:17662764	IMP	-	Process	20120730	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003184	pulmonary valve morphogenesis	PMID:16025100	IMP	-	Process	20120806	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003192	mitral valve formation	PMID:16025100	IMP	-	Process	20120806	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003197	endocardial cushion development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003207	cardiac chamber formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003207	cardiac chamber formation	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003208	cardiac ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003208	cardiac ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003209	cardiac atrium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003209	cardiac atrium morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003213	cardiac right atrium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003213	cardiac right atrium morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120730	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003214	cardiac left ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003214	cardiac left ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003219	cardiac right ventricle formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120730	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003241	growth involved in heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003241	growth involved in heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120730	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003256	regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003256	regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120730	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003270	Notch signaling pathway involved in regulation of secondary heart field cardioblast proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003273	cell migration involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003273	cell migration involved in endocardial cushion formation	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120925	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003344	pericardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0003344	pericardium morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120730	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120730	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120730	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060412	ventricular septum morphogenesis	PMID:16025100	IMP	-	Process	20120806	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060948	cardiac vascular smooth muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060948	cardiac vascular smooth muscle cell development	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060956	endocardial cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060956	endocardial cell differentiation	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060979	vasculogenesis involved in coronary vascular morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060979	vasculogenesis involved in coronary vascular morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060982	coronary artery morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028288	Process	20160305	Ensembl
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0060982	coronary artery morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0061314	Notch signaling involved in heart development	PMID:16025100	IMP	-	Process	20120806	BHF-UCL
+UniProtKB	P46531	-	NOTCH1	9606	-	GO:0061314	Notch signaling involved in heart development	PMID:17662764	IMP	-	Process	20120730	BHF-UCL
+UniProtKB	P46934	-	NEDD4	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034740	Process	20160305	Ensembl
+UniProtKB	P46934	-	NEDD4	9606	-	GO:0003197	endocardial cushion development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034740	Process	20160305	Ensembl
+UniProtKB	P46937	-	YAP1	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000069554	Process	20160305	Ensembl
+UniProtKB	P48436	-	SOX9	9606	-	GO:0003170	heart valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000579	Process	20160305	Ensembl
+UniProtKB	P48436	-	SOX9	9606	-	GO:0003170	heart valve development	GO_REF:0000024	ISS	UniProtKB:Q04887	Process	20110708	UniProt
+UniProtKB	P48436	-	SOX9	9606	-	GO:0003179	heart valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000579	Process	20160305	Ensembl
+UniProtKB	P48436	-	SOX9	9606	-	GO:0003179	heart valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q04887	Process	20110707	UniProt
+UniProtKB	P48436	-	SOX9	9606	-	GO:0003188	heart valve formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000579	Process	20160305	Ensembl
+UniProtKB	P48436	-	SOX9	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000579	Process	20160305	Ensembl
+UniProtKB	P48436	-	SOX9	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q04887	Process	20110707	UniProt
+UniProtKB	P49146	-	NPY2R	9606	-	GO:0003151	outflow tract morphogenesis	PMID:19593212	IMP	-	Process	20100819	BHF-UCL
+UniProtKB	P49146	-	NPY2R	9606	-	GO:0003214	cardiac left ventricle morphogenesis	PMID:19593212	IMP	-	Process	20100819	BHF-UCL
+UniProtKB	P49765	-	VEGFB	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025914	Process	20160305	Ensembl
+UniProtKB	P49768	-	PSEN1	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000098786	Process	20160305	Ensembl
+UniProtKB	P49840	-	GSK3A	9606	-	GO:0003214	cardiac left ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q2NL51	Process	20110708	BHF-UCL
+UniProtKB	P50052	-	AGTR2	9606	-	GO:0061049	cell growth involved in cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000064709	Process	20160305	Ensembl
+UniProtKB	P50461	-	CSRP3	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000129378	Process	20160305	Ensembl
+UniProtKB	P50461	-	CSRP3	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000024	ISS	UniProtKB:P50462	Process	20120927	BHF-UCL
+UniProtKB	P50461	-	CSRP3	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000129378	Process	20160305	Ensembl
+UniProtKB	P50461	-	CSRP3	9606	-	GO:0055003	cardiac myofibril assembly	PMID:12507422	ISS	UniProtKB:P50462	Process	20120927	BHF-UCL
+UniProtKB	P50570	-	DNM2	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000133564	Process	20160305	Ensembl
+UniProtKB	P50570	-	DNM2	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000133564	Process	20160305	Ensembl
+UniProtKB	P51654	-	GPC3	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064131	Process	20160305	Ensembl
+UniProtKB	P51948	-	MNAT1	9606	-	GO:0007512	adult heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021523	Process	20160305	Ensembl
+UniProtKB	P52848	-	NDST1	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000126623	Process	20160305	Ensembl
+UniProtKB	P52848	-	NDST1	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000126623	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0001947	heart looping	PMID:8900537	ISS	UniProtKB:P42582	Process	20081128	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003007	heart morphogenesis	PMID:8900537	ISS	UniProtKB:P42582	Process	20081128	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003148	outflow tract septum morphogenesis	PMID:20807224	IMP	-	Process	20110511	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003161	cardiac conduction system development	PMID:15109497	IMP	-	Process	20091123	MGI
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003162	atrioventricular node development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003166	bundle of His development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003168	Purkinje myocyte differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003208	cardiac ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003211	cardiac ventricle formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003221	right ventricular cardiac muscle tissue morphogenesis	PMID:20807224	IMP	-	Process	20110511	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003278	apoptotic process involved in heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0003285	septum secundum development	PMID:10587520	IMP	-	Process	20100422	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0007512	adult heart development	PMID:9651244	IMP	-	Process	20081128	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0035050	embryonic heart tube development	PMID:8900537	ISS	UniProtKB:P42582	Process	20081128	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0055005	ventricular cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0055007	cardiac muscle cell differentiation	PMID:8900537	ISS	UniProtKB:P42582	Process	20110606	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	PMID:11889119	IMP	-	Process	20081128	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0055014	atrial cardiac muscle cell development	PMID:8900537	ISS	UniProtKB:P42582	Process	20110606	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0055015	ventricular cardiac muscle cell development	PMID:8900537	ISS	UniProtKB:P42582	Process	20110606	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0060412	ventricular septum morphogenesis	PMID:10587520	IMP	-	Process	20090825	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0060412	ventricular septum morphogenesis	PMID:20807224	IMP	-	Process	20110511	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0060413	atrial septum morphogenesis	PMID:10587520	IMP	-	Process	20090825	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0060413	atrial septum morphogenesis	PMID:9651244	IMP	-	Process	20090825	BHF-UCL
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0060928	atrioventricular node cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0060929	atrioventricular node cell fate commitment	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52952	-	NKX2-5	9606	-	GO:0060971	embryonic heart tube left/right pattern formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015723	Process	20160305	Ensembl
+UniProtKB	P52954	-	LBX1	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000096997	Process	20160305	Ensembl
+UniProtKB	P54760	-	EPHB4	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:P54761	Process	20110907	UniProt
+UniProtKB	P55075	-	FGF8	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000026241	Process	20160305	Ensembl
+UniProtKB	P55075	-	FGF8	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000026241	Process	20160305	Ensembl
+UniProtKB	P55075	-	FGF8	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000026241	Process	20160305	Ensembl
+UniProtKB	P55075	-	FGF8	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:P37237	Process	20110816	UniProt
+UniProtKB	P55075	-	FGF8	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000026241	Process	20160305	Ensembl
+UniProtKB	P55075	-	FGF8	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000026241	Process	20160305	Ensembl
+UniProtKB	P55075	-	FGF8	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000024	ISS	UniProtKB:P37237	Process	20120727	BHF-UCL
+UniProtKB	P55075	-	FGF8	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000026241	Process	20160305	Ensembl
+UniProtKB	P56539	-	CAV3	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000074922	Process	20160305	Ensembl
+UniProtKB	P56539	-	CAV3	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000074922	Process	20160305	Ensembl
+UniProtKB	P56704	-	WNT3A	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000010044	Process	20160305	Ensembl
+UniProtKB	P56704	-	WNT3A	9606	-	GO:0003136	negative regulation of heart induction by canonical Wnt signaling pathway	PMID:19736317	IDA	-	Process	20100324	BHF-UCL
+UniProtKB	P56704	-	WNT3A	9606	-	GO:0060923	cardiac muscle cell fate commitment	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000010044	Process	20160305	Ensembl
+UniProtKB	P56704	-	WNT3A	9606	-	GO:0061317	canonical Wnt signaling pathway involved in cardiac muscle cell fate commitment	PMID:20559569	IDA	-	Process	20120821	BHF-UCL
+UniProtKB	P57059	-	SIK1	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000024	ISS	UniProtKB:Q60670	Process	20110902	UniProt
+UniProtKB	P60484	-	PTEN	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000013807	Process	20160305	Ensembl
+UniProtKB	P60953	-	CDC42	9606	-	GO:0003161	cardiac conduction system development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000054634	Process	20160305	Ensembl
+UniProtKB	P61296	-	HAND2	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044983	Process	20160305	Ensembl
+UniProtKB	P61296	-	HAND2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044983	Process	20160305	Ensembl
+UniProtKB	P61296	-	HAND2	9606	-	GO:0003219	cardiac right ventricle formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044983	Process	20160305	Ensembl
+UniProtKB	P61296	-	HAND2	9606	-	GO:0003253	cardiac neural crest cell migration involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044983	Process	20160305	Ensembl
+UniProtKB	P61296	-	HAND2	9606	-	GO:0003278	apoptotic process involved in heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044983	Process	20160305	Ensembl
+UniProtKB	P61296	-	HAND2	9606	-	GO:0007512	adult heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044983	Process	20160305	Ensembl
+UniProtKB	P61296	-	HAND2	9606	-	GO:0007512	adult heart development	PMID:9878849	IEP	-	Process	20090827	BHF-UCL
+UniProtKB	P61296	-	HAND2	9606	-	GO:0060982	coronary artery morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044983	Process	20160305	Ensembl
+UniProtKB	P61296	-	HAND2	9606	-	GO:0061032	visceral serous pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044983	Process	20160305	Ensembl
+UniProtKB	P61296	-	HAND2	9606	-	GO:0061309	cardiac neural crest cell development involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044983	Process	20160305	Ensembl
+UniProtKB	P61296	-	HAND2	9606	-	GO:0061309	cardiac neural crest cell development involved in outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q61039	Process	20110618	BHF-UCL
+UniProtKB	P61296	-	HAND2	9606	-	GO:0061325	cell proliferation involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044983	Process	20160305	Ensembl
+UniProtKB	P61296	-	HAND2	9606	-	GO:0061371	determination of heart left/right asymmetry	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044983	Process	20160305	Ensembl
+UniProtKB	P61371	-	ISL1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044879	Process	20160305	Ensembl
+UniProtKB	P61371	-	ISL1	9606	-	GO:0003139	secondary heart field specification	PMID:20520780	IMP	-	Process	20110920	BHF-UCL
+UniProtKB	P61371	-	ISL1	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044879	Process	20160305	Ensembl
+UniProtKB	P61371	-	ISL1	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:P61372	Process	20110919	BHF-UCL
+UniProtKB	P61371	-	ISL1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044879	Process	20160305	Ensembl
+UniProtKB	P61371	-	ISL1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:P61372	Process	20110919	BHF-UCL
+UniProtKB	P61371	-	ISL1	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044879	Process	20160305	Ensembl
+UniProtKB	P61371	-	ISL1	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000024	ISS	UniProtKB:P61372	Process	20110919	BHF-UCL
+UniProtKB	P61371	-	ISL1	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044879	Process	20160305	Ensembl
+UniProtKB	P61371	-	ISL1	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:P61372	Process	20110919	BHF-UCL
+UniProtKB	P61371	-	ISL1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044879	Process	20160305	Ensembl
+UniProtKB	P61371	-	ISL1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:P61372	Process	20110919	BHF-UCL
+UniProtKB	P61371	-	ISL1	9606	-	GO:0060379	cardiac muscle cell myoblast differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044879	Process	20160305	Ensembl
+UniProtKB	P61371	-	ISL1	9606	-	GO:0060413	atrial septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044879	Process	20160305	Ensembl
+UniProtKB	P61371	-	ISL1	9606	-	GO:0060413	atrial septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:P61372	Process	20110919	BHF-UCL
+UniProtKB	P61371	-	ISL1	9606	-	GO:0060913	cardiac cell fate determination	PMID:19571884	IDA	-	Process	20110920	BHF-UCL
+UniProtKB	P61812	-	TGFB2	9606	-	GO:0003007	heart morphogenesis	PMID:10092230	IDA	-	Process	20080816	BHF-UCL
+UniProtKB	P61812	-	TGFB2	9606	-	GO:0003179	heart valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000043849	Process	20160305	Ensembl
+UniProtKB	P61812	-	TGFB2	9606	-	GO:0010002	cardioblast differentiation	PMID:15896309	IDA	-	Process	20051202	UniProt
+UniProtKB	P61812	-	TGFB2	9606	-	GO:0060038	cardiac muscle cell proliferation	PMID:15896309	IDA	-	Process	20070309	UniProt
+UniProtKB	P61812	-	TGFB2	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	PMID:10092230	IDA	-	Process	20081017	BHF-UCL
+UniProtKB	P61968	-	LMO4	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000113840	Process	20160305	Ensembl
+UniProtKB	P62942	-	FKBP1A	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000037206	Process	20160305	Ensembl
+UniProtKB	P62942	-	FKBP1A	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:P26883	Process	20080827	BHF-UCL
+UniProtKB	P62942	-	FKBP1A	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000037206	Process	20160305	Ensembl
+UniProtKB	P62942	-	FKBP1A	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:P26883	Process	20080827	BHF-UCL
+UniProtKB	P62942	-	FKBP1A	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000037206	Process	20160305	Ensembl
+UniProtKB	P62942	-	FKBP1A	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000024	ISS	UniProtKB:P26883	Process	20081104	BHF-UCL
+UniProtKB	P63010	-	AP2B1	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018875	Process	20160305	Ensembl
+UniProtKB	P63010	-	AP2B1	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018875	Process	20160305	Ensembl
+UniProtKB	P63010	-	AP2B1	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018875	Process	20160305	Ensembl
+UniProtKB	P63316	-	TNNC1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:15542288	IMP	-	Process	20080508	BHF-UCL
+UniProtKB	P68032	-	ACTC1	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000087736	Process	20160305	Ensembl
+UniProtKB	P68032	-	ACTC1	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000024	ISS	UniProtKB:P68033	Process	20080609	UniProt
+UniProtKB	P68032	-	ACTC1	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000087736	Process	20160305	Ensembl
+UniProtKB	P68032	-	ACTC1	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:P68033	Process	20080609	UniProt
+UniProtKB	P78310	-	CXADR	9606	-	GO:0048739	cardiac muscle fiber development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023572	Process	20160305	Ensembl
+UniProtKB	P78310	-	CXADR	9606	-	GO:0048739	cardiac muscle fiber development	GO_REF:0000024	ISS	UniProtKB:P97792	Process	20110927	UniProt
+UniProtKB	P78504	-	JAG1	9606	-	GO:0003184	pulmonary valve morphogenesis	PMID:20437614	IMP	-	Process	20120730	BHF-UCL
+UniProtKB	P78504	-	JAG1	9606	-	GO:0003184	pulmonary valve morphogenesis	PMID:9207787	IMP	-	Process	20120730	BHF-UCL
+UniProtKB	P78504	-	JAG1	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028735	Process	20160305	Ensembl
+UniProtKB	P78504	-	JAG1	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QXX0	Process	20120727	BHF-UCL
+UniProtKB	P78504	-	JAG1	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028735	Process	20160305	Ensembl
+UniProtKB	P78504	-	JAG1	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QXX0	Process	20120727	BHF-UCL
+UniProtKB	P78504	-	JAG1	9606	-	GO:0061309	cardiac neural crest cell development involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028735	Process	20160305	Ensembl
+UniProtKB	P78504	-	JAG1	9606	-	GO:0061309	cardiac neural crest cell development involved in outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QXX0	Process	20120727	BHF-UCL
+UniProtKB	P78504	-	JAG1	9606	-	GO:0061314	Notch signaling involved in heart development	PMID:20437614	IMP	-	Process	20120730	BHF-UCL
+UniProtKB	P78504	-	JAG1	9606	-	GO:0061314	Notch signaling involved in heart development	PMID:9207787	IC	GO:0003184	Process	20120730	BHF-UCL
+UniProtKB	P78504	-	JAG1	9606	-	GO:0061444	endocardial cushion cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000028735	Process	20160305	Ensembl
+UniProtKB	P78504	-	JAG1	9606	-	GO:0061444	endocardial cushion cell development	GO_REF:0000024	ISS	UniProtKB:Q9QXX0	Process	20120727	BHF-UCL
+UniProtKB	P84022	-	SMAD3	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034973	Process	20160305	Ensembl
+UniProtKB	P84022	-	SMAD3	9606	-	GO:0060039	pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034973	Process	20160305	Ensembl
+UniProtKB	P98160	-	HSPG2	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000131316	Process	20160305	Ensembl
+UniProtKB	P98164	-	LRP2	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000079752	Process	20160305	Ensembl
+UniProtKB	P98164	-	LRP2	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000079752	Process	20160305	Ensembl
+UniProtKB	Q00987	-	MDM2	9606	-	GO:0003170	heart valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020408	Process	20160305	Ensembl
+UniProtKB	Q00987	-	MDM2	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020408	Process	20160305	Ensembl
+UniProtKB	Q00987	-	MDM2	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020408	Process	20160305	Ensembl
+UniProtKB	Q00987	-	MDM2	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020408	Process	20160305	Ensembl
+UniProtKB	Q00987	-	MDM2	9606	-	GO:0003283	atrial septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020408	Process	20160305	Ensembl
+UniProtKB	Q00987	-	MDM2	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020408	Process	20160305	Ensembl
+UniProtKB	Q01484	-	ANK2	9606	-	GO:0003283	atrial septum development	PMID:18832177	IMP	-	Process	20120615	BHF-UCL
+UniProtKB	Q01851	-	POU4F1	9606	-	GO:0003223	ventricular compact myocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000060798	Process	20160305	Ensembl
+UniProtKB	Q01860	UniProtKB:Q01860-1	POU5F1	9606	-	GO:0003130	BMP signaling pathway involved in heart induction	PMID:19736317	IMP	-	Process	20100324	BHF-UCL
+UniProtKB	Q01860	UniProtKB:Q01860-1	POU5F1	9606	-	GO:0060913	cardiac cell fate determination	PMID:19736317	IDA	-	Process	20101214	BHF-UCL
+UniProtKB	Q02078	-	MEF2A	9606	-	GO:0055005	ventricular cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000117496	Process	20160305	Ensembl
+UniProtKB	Q02078	-	MEF2A	9606	-	GO:0055005	ventricular cardiac myofibril assembly	GO_REF:0000024	ISS	UniProtKB:Q60929	Process	20110518	UniProt
+UniProtKB	Q02297	-	NRG1	9606	-	GO:0003161	cardiac conduction system development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000073546	Process	20160305	Ensembl
+UniProtKB	Q02297	-	NRG1	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	PMID:17336907	IDA	-	Process	20120806	BHF-UCL
+UniProtKB	Q02297	-	NRG1	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000024	ISS	UniProtKB:Q6DR98	Process	20080604	BHF-UCL
+UniProtKB	Q02297	UniProtKB:Q02297-9	NRG1	9606	-	GO:0055012	ventricular cardiac muscle cell differentiation	PMID:9553078	IDA	-	Process	20080711	BHF-UCL
+UniProtKB	Q02297	-	NRG1	9606	-	GO:0060379	cardiac muscle cell myoblast differentiation	PMID:17336907	IDA	-	Process	20120806	BHF-UCL
+UniProtKB	Q02297	-	NRG1	9606	-	GO:0060956	endocardial cell differentiation	PMID:17336907	IDA	-	Process	20120806	BHF-UCL
+UniProtKB	Q02363	-	ID2	9606	-	GO:0003149	membranous septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020974	Process	20160305	Ensembl
+UniProtKB	Q02363	-	ID2	9606	-	GO:0003166	bundle of His development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020974	Process	20160305	Ensembl
+UniProtKB	Q02763	-	TEK	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000024	ISS	UniProtKB:Q02858	Process	20111111	UniProt
+UniProtKB	Q03014	-	HHEX	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025944	Process	20160305	Ensembl
+UniProtKB	Q03112	-	MECOM	9606	-	GO:0060039	pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000134303	Process	20160305	Ensembl
+UniProtKB	Q03167	-	TGFBR3	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q90998	Process	20080822	BHF-UCL
+UniProtKB	Q03167	-	TGFBR3	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:O88393	Process	20081104	BHF-UCL
+UniProtKB	Q03167	-	TGFBR3	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000024	ISS	UniProtKB:O88393	Process	20081104	BHF-UCL
+UniProtKB	Q03167	-	TGFBR3	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	PMID:18184661	IDA	-	Process	20081017	BHF-UCL
+UniProtKB	Q03167	-	TGFBR3	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000024	ISS	UniProtKB:O88393	Process	20081104	BHF-UCL
+UniProtKB	Q04721	-	NOTCH2	9606	-	GO:0003184	pulmonary valve morphogenesis	PMID:16773578	IMP	-	Process	20120806	BHF-UCL
+UniProtKB	Q04721	-	NOTCH2	9606	-	GO:0060413	atrial septum morphogenesis	PMID:16773578	IMP	-	Process	20120730	BHF-UCL
+UniProtKB	Q04721	-	NOTCH2	9606	-	GO:0061314	Notch signaling involved in heart development	PMID:16773578	IC	GO:0060413	Process	20120730	BHF-UCL
+UniProtKB	Q04771	-	ACVR1	9606	-	GO:0003143	embryonic heart tube morphogenesis	PMID:19506109	IMP	-	Process	20120312	BHF-UCL
+UniProtKB	Q04771	-	ACVR1	9606	-	GO:0003183	mitral valve morphogenesis	PMID:19506109	IMP	-	Process	20120312	BHF-UCL
+UniProtKB	Q04771	-	ACVR1	9606	-	GO:0003289	atrial septum primum morphogenesis	PMID:19506109	IMP	-	Process	20120312	BHF-UCL
+UniProtKB	Q04771	-	ACVR1	9606	-	GO:0060923	cardiac muscle cell fate commitment	PMID:19506109	IMP	-	Process	20120312	BHF-UCL
+UniProtKB	Q04771	-	ACVR1	9606	-	GO:0061445	endocardial cushion cell fate commitment	PMID:19506109	IMP	-	Process	20120822	BHF-UCL
+UniProtKB	Q05397	-	PTK2	9606	-	GO:0003007	heart morphogenesis	PMID:20552554	TAS	-	Process	20111208	UniProt
+UniProtKB	Q05707	-	COL14A1	9606	-	GO:0003229	ventricular cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000105850	Process	20160305	Ensembl
+UniProtKB	Q06124	-	PTPN11	9606	-	GO:0036302	atrioventricular canal development	PMID:12058348	IMP	-	Process	20130301	BHF-UCL
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003139	secondary heart field specification	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040694	Process	20160305	Ensembl
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040694	Process	20160305	Ensembl
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:P31266	Process	20120727	BHF-UCL
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003157	endocardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040694	Process	20160305	Ensembl
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003160	endocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040694	Process	20160305	Ensembl
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003160	endocardium morphogenesis	GO_REF:0000024	ISS	UniProtKB:P31266	Process	20120727	BHF-UCL
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040694	Process	20160305	Ensembl
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000024	ISS	UniProtKB:P31266	Process	20120727	BHF-UCL
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003214	cardiac left ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040694	Process	20160305	Ensembl
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003214	cardiac left ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:P31266	Process	20120730	BHF-UCL
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040694	Process	20160305	Ensembl
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000024	ISS	UniProtKB:P31266	Process	20120925	BHF-UCL
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003256	regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040694	Process	20160305	Ensembl
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0003256	regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	GO_REF:0000024	ISS	UniProtKB:P31266	Process	20120727	BHF-UCL
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0036302	atrioventricular canal development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040694	Process	20160305	Ensembl
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0036302	atrioventricular canal development	GO_REF:0000024	ISS	UniProtKB:P31266	Process	20120920	BHF-UCL
+UniProtKB	Q06330	-	RBPJ	9606	-	GO:0061314	Notch signaling involved in heart development	PMID:21311046	IC	GO:0003256	Process	20120730	BHF-UCL
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000143315	Process	20160305	Ensembl
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q8CFN5	Process	20110808	UniProt
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0003138	primary heart field specification	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000143315	Process	20160305	Ensembl
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0003138	primary heart field specification	GO_REF:0000024	ISS	UniProtKB:Q8CFN5	Process	20110810	UniProt
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0003139	secondary heart field specification	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000143315	Process	20160305	Ensembl
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0003139	secondary heart field specification	GO_REF:0000024	ISS	UniProtKB:Q8CFN5	Process	20110808	UniProt
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000143315	Process	20160305	Ensembl
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q8CFN5	Process	20110805	UniProt
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0003185	sinoatrial valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000143315	Process	20160305	Ensembl
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0003185	sinoatrial valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q8CFN5	Process	20110810	UniProt
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0003211	cardiac ventricle formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000143315	Process	20160305	Ensembl
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0003211	cardiac ventricle formation	GO_REF:0000024	ISS	UniProtKB:Q8CFN5	Process	20110805	UniProt
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0055012	ventricular cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000143315	Process	20160305	Ensembl
+UniProtKB	Q06413	-	MEF2C	9606	-	GO:0055012	ventricular cardiac muscle cell differentiation	GO_REF:0000024	ISS	UniProtKB:Q8CFN5	Process	20110808	UniProt
+UniProtKB	Q06945	-	SOX4	9606	-	GO:0003183	mitral valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000100013	Process	20160305	Ensembl
+UniProtKB	Q06945	-	SOX4	9606	-	GO:0003183	mitral valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q06831	Process	20110712	BHF-UCL
+UniProtKB	Q06945	-	SOX4	9606	-	GO:0003211	cardiac ventricle formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000100013	Process	20160305	Ensembl
+UniProtKB	Q06945	-	SOX4	9606	-	GO:0003211	cardiac ventricle formation	GO_REF:0000024	ISS	UniProtKB:Q06831	Process	20110621	UniProt
+UniProtKB	Q06945	-	SOX4	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000100013	Process	20160305	Ensembl
+UniProtKB	Q06945	-	SOX4	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q06831	Process	20110712	BHF-UCL
+UniProtKB	Q06945	-	SOX4	9606	-	GO:0003289	atrial septum primum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000100013	Process	20160305	Ensembl
+UniProtKB	Q06945	-	SOX4	9606	-	GO:0003289	atrial septum primum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q06831	Process	20110712	BHF-UCL
+UniProtKB	Q06945	-	SOX4	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000100013	Process	20160305	Ensembl
+UniProtKB	Q06945	-	SOX4	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q06831	Process	20110712	BHF-UCL
+UniProtKB	Q0ZGT2	-	NEXN	9606	-	GO:0048739	cardiac muscle fiber development	GO_REF:0000033	IBA	PANTHER:PTN001491415	Process	20140306	GO_Central
+UniProtKB	Q12946	-	FOXF1	9606	-	GO:0003197	endocardial cushion development	PMID:19500772	IMP	-	Process	20110428	DFLAT
+UniProtKB	Q12946	-	FOXF1	9606	-	GO:0003214	cardiac left ventricle morphogenesis	PMID:19500772	IMP	-	Process	20110428	DFLAT
+UniProtKB	Q12948	-	FOXC1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052196	Process	20160305	Ensembl
+UniProtKB	Q12948	-	FOXC1	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052196	Process	20160305	Ensembl
+UniProtKB	Q12948	-	FOXC1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052196	Process	20160305	Ensembl
+UniProtKB	Q12948	-	FOXC1	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052196	Process	20160305	Ensembl
+UniProtKB	Q12980	-	NPRL3	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020530	Process	20160305	Ensembl
+UniProtKB	Q12980	-	NPRL3	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020530	Process	20160305	Ensembl
+UniProtKB	Q13043	-	STK4	9606	-	GO:0003157	endocardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018353	Process	20160305	Ensembl
+UniProtKB	Q13099	-	IFT88	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000113768	Process	20160305	Ensembl
+UniProtKB	Q13099	-	IFT88	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000113768	Process	20160305	Ensembl
+UniProtKB	Q13099	-	IFT88	9606	-	GO:0060914	heart formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000113768	Process	20160305	Ensembl
+UniProtKB	Q13127	-	REST	9606	-	GO:0060379	cardiac muscle cell myoblast differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000079231	Process	20160305	Ensembl
+UniProtKB	Q13127	-	REST	9606	-	GO:0060379	cardiac muscle cell myoblast differentiation	GO_REF:0000024	ISS	UniProtKB:Q8VIG1	Process	20110629	UniProt
+UniProtKB	Q13188	-	STK3	9606	-	GO:0003157	endocardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018476	Process	20160305	Ensembl
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q7ZTU9	Process	20150803	UniProt
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q60707	Process	20120727	BHF-UCL
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q60707	Process	20120727	BHF-UCL
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q60707	Process	20120727	BHF-UCL
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0003256	regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0003256	regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	GO_REF:0000024	ISS	UniProtKB:Q60707	Process	20120924	BHF-UCL
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000024	ISS	UniProtKB:Q7ZTU9	Process	20150803	UniProt
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0036302	atrioventricular canal development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0036302	atrioventricular canal development	GO_REF:0000024	ISS	UniProtKB:Q60707	Process	20120924	BHF-UCL
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000095	Process	20160305	Ensembl
+UniProtKB	Q13207	-	TBX2	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000024	ISS	UniProtKB:Q60707	Process	20120925	BHF-UCL
+UniProtKB	Q13308	-	PTK7	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000043703	Process	20160305	Ensembl
+UniProtKB	Q13308	-	PTK7	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000043703	Process	20160305	Ensembl
+UniProtKB	Q13326	-	SGCG	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000033	IBA	PANTHER:PTN000986439	Process	20141029	GO_Central
+UniProtKB	Q13418	-	ILK	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000033182	Process	20160305	Ensembl
+UniProtKB	Q13444	-	ADAM15	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029676	Process	20160305	Ensembl
+UniProtKB	Q13485	-	SMAD4	9606	-	GO:0003190	atrioventricular valve formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025393	Process	20160305	Ensembl
+UniProtKB	Q13485	-	SMAD4	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025393	Process	20160305	Ensembl
+UniProtKB	Q13485	-	SMAD4	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025393	Process	20160305	Ensembl
+UniProtKB	Q13485	-	SMAD4	9606	-	GO:0036302	atrioventricular canal development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025393	Process	20160305	Ensembl
+UniProtKB	Q13485	-	SMAD4	9606	-	GO:0060956	endocardial cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025393	Process	20160305	Ensembl
+UniProtKB	Q13557	-	CAMK2D	9606	-	GO:0061049	cell growth involved in cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000016026	Process	20160305	Ensembl
+UniProtKB	Q13563	-	PKD2	9606	-	GO:0001947	heart looping	PMID:21719175	IMP	-	Process	20130301	BHF-UCL
+UniProtKB	Q13635	-	PTCH1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021921	Process	20160305	Ensembl
+UniProtKB	Q13765	-	NACA	9606	-	GO:0003231	cardiac ventricle development	GO_REF:0000024	ISS	UniProtKB:Q60817	Process	20121128	BHF-UCL
+UniProtKB	Q13765	-	NACA	9606	-	GO:1901227	negative regulation of transcription from RNA polymerase II promoter involved in heart development	GO_REF:0000024	ISS	UniProtKB:Q60817	Process	20121128	BHF-UCL
+UniProtKB	Q13765	-	NACA	9606	-	GO:1901228	positive regulation of transcription from RNA polymerase II promoter involved in heart development	GO_REF:0000024	ISS	UniProtKB:Q60817	Process	20121128	BHF-UCL
+UniProtKB	Q14126	-	DSG2	9606	-	GO:0003165	Purkinje myocyte development	PMID:16505173	IMP	-	Process	20150205	BHF-UCL
+UniProtKB	Q14192	-	FHL2	9606	-	GO:0055014	atrial cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000008280	Process	20160305	Ensembl
+UniProtKB	Q14192	-	FHL2	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000008280	Process	20160305	Ensembl
+UniProtKB	Q14192	-	FHL2	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000008280	Process	20160305	Ensembl
+UniProtKB	Q14332	-	FZD2	9606	-	GO:0003149	membranous septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000091463	Process	20160305	Ensembl
+UniProtKB	Q14332	-	FZD2	9606	-	GO:0003150	muscular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000091463	Process	20160305	Ensembl
+UniProtKB	Q14332	-	FZD2	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000091463	Process	20160305	Ensembl
+UniProtKB	Q14332	-	FZD2	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000091463	Process	20160305	Ensembl
+UniProtKB	Q14469	-	HES1	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023171	Process	20160305	Ensembl
+UniProtKB	Q14469	-	HES1	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000024	ISS	UniProtKB:P35428	Process	20120730	BHF-UCL
+UniProtKB	Q14469	-	HES1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023171	Process	20160305	Ensembl
+UniProtKB	Q14469	-	HES1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:P35428	Process	20110708	BHF-UCL
+UniProtKB	Q14469	-	HES1	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023171	Process	20160305	Ensembl
+UniProtKB	Q14469	-	HES1	9606	-	GO:0003281	ventricular septum development	GO_REF:0000024	ISS	UniProtKB:P35428	Process	20110708	BHF-UCL
+UniProtKB	Q14469	-	HES1	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023171	Process	20160305	Ensembl
+UniProtKB	Q14469	-	HES1	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:P35428	Process	20120730	BHF-UCL
+UniProtKB	Q14469	-	HES1	9606	-	GO:0061309	cardiac neural crest cell development involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023171	Process	20160305	Ensembl
+UniProtKB	Q14524	-	SCN5A	9606	-	GO:0003231	cardiac ventricle development	GO_REF:0000024	ISS	UniProtKB:Q9JJV9	Process	20121004	BHF-UCL
+UniProtKB	Q14623	-	IHH	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:P97812	Process	20110719	BHF-UCL
+UniProtKB	Q14766	-	LTBP1	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001927	Process	20160305	Ensembl
+UniProtKB	Q14766	-	LTBP1	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001927	Process	20160305	Ensembl
+UniProtKB	Q14814	-	MEF2D	9606	-	GO:0007512	adult heart development	PMID:10458488	IEP	-	Process	20110812	UniProt
+UniProtKB	Q14896	-	MYBPC3	9606	-	GO:0003007	heart morphogenesis	PMID:7493025	IMP	-	Process	20080114	BHF-UCL
+UniProtKB	Q14896	-	MYBPC3	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:11815426	IMP	-	Process	20061230	HGNC
+UniProtKB	Q14896	-	MYBPC3	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:16754800	IMP	-	Process	20080122	BHF-UCL
+UniProtKB	Q15036	-	SNX17	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000031029	Process	20160305	Ensembl
+UniProtKB	Q15036	-	SNX17	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000031029	Process	20160305	Ensembl
+UniProtKB	Q15327	-	ANKRD1	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	PMID:19525294	IMP	-	Process	20110921	BHF-UCL
+UniProtKB	Q15327	-	ANKRD1	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	PMID:19608030	IMP	-	Process	20110921	BHF-UCL
+UniProtKB	Q15465	-	SHH	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000002708	Process	20160305	Ensembl
+UniProtKB	Q15465	-	SHH	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q62226	Process	20110719	BHF-UCL
+UniProtKB	Q15468	-	STIL	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000030490	Process	20160305	Ensembl
+UniProtKB	Q15468	-	STIL	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q60988	Process	20110830	BHF-UCL
+UniProtKB	Q15475	-	SIX1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000059026	Process	20160305	Ensembl
+UniProtKB	Q15562	-	TEAD2	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000103431	Process	20160305	Ensembl
+UniProtKB	Q15643	-	TRIP11	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021605	Process	20160305	Ensembl
+UniProtKB	Q15648	-	MED1	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000103169	Process	20160305	Ensembl
+UniProtKB	Q15648	-	MED1	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000103169	Process	20160305	Ensembl
+UniProtKB	Q15672	-	TWIST1	9606	-	GO:0003180	aortic valve morphogenesis	PMID:20804746	IMP	-	Process	20110622	BHF-UCL
+UniProtKB	Q15672	-	TWIST1	9606	-	GO:0003183	mitral valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040089	Process	20160305	Ensembl
+UniProtKB	Q15672	-	TWIST1	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040089	Process	20160305	Ensembl
+UniProtKB	Q15672	-	TWIST1	9606	-	GO:0003253	cardiac neural crest cell migration involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040089	Process	20160305	Ensembl
+UniProtKB	Q15672	-	TWIST1	9606	-	GO:0061309	cardiac neural crest cell development involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040089	Process	20160305	Ensembl
+UniProtKB	Q15672	-	TWIST1	9606	-	GO:2000793	cell proliferation involved in heart valve development	PMID:20804746	IMP	-	Process	20120119	BHF-UCL
+UniProtKB	Q15750	-	TAB1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023050	Process	20160305	Ensembl
+UniProtKB	Q15750	-	TAB1	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023050	Process	20160305	Ensembl
+UniProtKB	Q15750	-	TAB1	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023050	Process	20160305	Ensembl
+UniProtKB	Q15761	-	NPY5R	9606	-	GO:0003151	outflow tract morphogenesis	PMID:19593212	IMP	-	Process	20100819	BHF-UCL
+UniProtKB	Q15761	-	NPY5R	9606	-	GO:0003214	cardiac left ventricle morphogenesis	PMID:19593212	IMP	-	Process	20100819	BHF-UCL
+UniProtKB	Q15772	-	SPEG	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000084361	Process	20160305	Ensembl
+UniProtKB	Q15796	-	SMAD2	9606	-	GO:0060039	pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000130115	Process	20160305	Ensembl
+UniProtKB	Q15797	-	SMAD1	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000071035	Process	20160305	Ensembl
+UniProtKB	Q16553	-	LY6E	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000056703	Process	20160305	Ensembl
+UniProtKB	Q16585	-	SGCB	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000079937	Process	20160305	Ensembl
+UniProtKB	Q16635	-	TAZ	9606	-	GO:0048738	cardiac muscle tissue development	PMID:17043667	IMP	-	Process	20070913	HGNC
+UniProtKB	Q16665	-	HIF1A	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021530	Process	20160305	Ensembl
+UniProtKB	Q16665	-	HIF1A	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021530	Process	20160305	Ensembl
+UniProtKB	Q16665	-	HIF1A	9606	-	GO:0003208	cardiac ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021530	Process	20160305	Ensembl
+UniProtKB	Q1HBJ4	-	MAPK1	9606	-	GO:0061308	cardiac neural crest cell development involved in heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000065983	Process	20160305	Ensembl
+UniProtKB	Q2M1P5	-	KIF7	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000139359	Process	20160305	Ensembl
+UniProtKB	Q2M1P5	-	KIF7	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000139359	Process	20160305	Ensembl
+UniProtKB	Q2V2M9	-	FHOD3	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000041361	Process	20160305	Ensembl
+UniProtKB	Q32MK0	-	MYLK3	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000023657	Process	20160305	Ensembl
+UniProtKB	Q32MK0	-	MYLK3	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000024	ISS	UniProtKB:E9PT87	Process	20101129	BHF-UCL
+UniProtKB	Q3B8N5	-	PROX2	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000033	IBA	PANTHER:PTN000258074	Process	20150807	GO_Central
+UniProtKB	Q3SXY8	-	ARL13B	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000086703	Process	20160305	Ensembl
+UniProtKB	Q4AC94	-	C2CD3	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000062637	Process	20160305	Ensembl
+UniProtKB	Q4G0X9	-	CCDC40	9606	-	GO:0001947	heart looping	PMID:22693285	IMP	-	Process	20130228	BHF-UCL
+UniProtKB	Q53T66	-	ID2	9606	-	GO:0003149	membranous septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020974	Process	20160305	Ensembl
+UniProtKB	Q53T66	-	ID2	9606	-	GO:0003166	bundle of His development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020974	Process	20160305	Ensembl
+UniProtKB	Q53XR6	-	SMAD2	9606	-	GO:0060039	pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000130115	Process	20160305	Ensembl
+UniProtKB	Q5BKY1	-	LRRC10	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000073502	Process	20160305	Ensembl
+UniProtKB	Q5R352	-	PLN	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000132743	Process	20160305	Ensembl
+UniProtKB	Q5T4U5	-	ACADM	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000072483	Process	20160305	Ensembl
+UniProtKB	Q5T7S2	-	TGFBR1	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000024	ISS	UniProtKB:Q06900	Process	20141202	AgBase
+UniProtKB	Q5U0N0	-	SGCB	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000079937	Process	20160305	Ensembl
+UniProtKB	Q68CZ1	-	RPGRIP1L	9606	-	GO:0060039	pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000042702	Process	20160305	Ensembl
+UniProtKB	Q6FI18	-	CYR61	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029846	Process	20160305	Ensembl
+UniProtKB	Q6FI18	-	CYR61	9606	-	GO:0003278	apoptotic process involved in heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029846	Process	20160305	Ensembl
+UniProtKB	Q6FI18	-	CYR61	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029846	Process	20160305	Ensembl
+UniProtKB	Q6FI18	-	CYR61	9606	-	GO:0060413	atrial septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029846	Process	20160305	Ensembl
+UniProtKB	Q6I9R7	-	RARA	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000069744	Process	20160305	Ensembl
+UniProtKB	Q6I9R7	-	RARA	9606	-	GO:0055012	ventricular cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000069744	Process	20160305	Ensembl
+UniProtKB	Q6I9R8	-	FHL2	9606	-	GO:0055014	atrial cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000008280	Process	20160305	Ensembl
+UniProtKB	Q6I9R8	-	FHL2	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000008280	Process	20160305	Ensembl
+UniProtKB	Q6I9R8	-	FHL2	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000008280	Process	20160305	Ensembl
+UniProtKB	Q6IB42	-	MYL2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000107380	Process	20160305	Ensembl
+UniProtKB	Q6IB42	-	MYL2	9606	-	GO:0055003	cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000107380	Process	20160305	Ensembl
+UniProtKB	Q6ISB3	-	GRHL2	9606	-	GO:0003208	cardiac ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000022895	Process	20160305	Ensembl
+UniProtKB	Q6KC79	-	NIPBL	9606	-	GO:0003007	heart morphogenesis	PMID:8291537	IMP	-	Process	20100218	BHF-UCL
+UniProtKB	Q6KC79	-	NIPBL	9606	-	GO:0003151	outflow tract morphogenesis	PMID:19242925	IMP	-	Process	20100127	BHF-UCL
+UniProtKB	Q6N022	-	TENM4	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000102783	Process	20160305	Ensembl
+UniProtKB	Q6N022	-	TENM4	9606	-	GO:0060912	cardiac cell fate specification	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000102783	Process	20160305	Ensembl
+UniProtKB	Q6PI78	-	TMEM65	9606	-	GO:0003231	cardiac ventricle development	GO_REF:0000024	ISS	UniProtKB:Q4VAE3	Process	20151105	UniProt
+UniProtKB	Q6STE5	-	SMARCD3	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000030791	Process	20160305	Ensembl
+UniProtKB	Q6STE5	-	SMARCD3	9606	-	GO:0003139	secondary heart field specification	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000030791	Process	20160305	Ensembl
+UniProtKB	Q6STE5	-	SMARCD3	9606	-	GO:0003219	cardiac right ventricle formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000030791	Process	20160305	Ensembl
+UniProtKB	Q6V0I7	-	FAT4	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000061836	Process	20160305	Ensembl
+UniProtKB	Q76L83	-	ASXL2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000117384	Process	20160305	Ensembl
+UniProtKB	Q76L83	-	ASXL2	9606	-	GO:0007512	adult heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000117384	Process	20160305	Ensembl
+UniProtKB	Q7LAP4	-	VEGFB	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025914	Process	20160305	Ensembl
+UniProtKB	Q7RTU7	-	SCX	9606	-	GO:0003179	heart valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000043668	Process	20160305	Ensembl
+UniProtKB	Q7RTU7	-	SCX	9606	-	GO:0003179	heart valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q64124	Process	20110907	UniProt
+UniProtKB	Q7RTU7	-	SCX	9606	-	GO:0003188	heart valve formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000043668	Process	20160305	Ensembl
+UniProtKB	Q7RTU7	-	SCX	9606	-	GO:0003188	heart valve formation	GO_REF:0000024	ISS	UniProtKB:Q64124	Process	20110826	UniProt
+UniProtKB	Q7Z494	-	NPHP3	9606	-	GO:0001947	heart looping	PMID:18371931	IMP	-	Process	20130228	BHF-UCL
+UniProtKB	Q7Z494	-	NPHP3	9606	-	GO:0001947	heart looping	PMID:20007846	IMP	-	Process	20130228	BHF-UCL
+UniProtKB	Q7Z494	-	NPHP3	9606	-	GO:0003283	atrial septum development	PMID:18371931	IMP	-	Process	20130228	BHF-UCL
+UniProtKB	Q7Z7A1	-	CNTRL	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000108655	Process	20160305	Ensembl
+UniProtKB	Q7Z7A1	-	CNTRL	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000108655	Process	20160305	Ensembl
+UniProtKB	Q7Z7A1	-	CNTRL	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000108655	Process	20160305	Ensembl
+UniProtKB	Q7Z7M0	-	MEGF8	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000122192	Process	20160305	Ensembl
+UniProtKB	Q7Z7M0	-	MEGF8	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000024	ISS	UniProtKB:P60882	Process	20140206	UniProt
+UniProtKB	Q7Z7M0	-	MEGF8	9606	-	GO:0060971	embryonic heart tube left/right pattern formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000122192	Process	20160305	Ensembl
+UniProtKB	Q7Z7M0	-	MEGF8	9606	-	GO:0060971	embryonic heart tube left/right pattern formation	GO_REF:0000024	ISS	UniProtKB:P60882	Process	20140206	UniProt
+UniProtKB	Q7Z7M0	-	MEGF8	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000122192	Process	20160305	Ensembl
+UniProtKB	Q7Z7M0	-	MEGF8	9606	-	GO:0061371	determination of heart left/right asymmetry	PMID:23063620	IMP	-	Process	20140206	UniProt
+UniProtKB	Q86V48	-	LUZP1	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000130758	Process	20160305	Ensembl
+UniProtKB	Q86YT6	-	MIB1	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000054428	Process	20160305	Ensembl
+UniProtKB	Q8IW40	-	CCDC103	9606	-	GO:0001947	heart looping	PMID:22581229	IMP	-	Process	20130228	BHF-UCL
+UniProtKB	Q8IWY4	-	SCUBE1	9606	-	GO:0007512	adult heart development	PMID:12270931	NAS	-	Process	20031216	UniProt
+UniProtKB	Q8IWZ6	-	BBS7	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q08C18	Process	20080812	BHF-UCL
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058037	Process	20160305	Ensembl
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:O35615	Process	20110810	BHF-UCL
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058037	Process	20160305	Ensembl
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:O35615	Process	20110810	BHF-UCL
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0003192	mitral valve formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058037	Process	20160305	Ensembl
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0003192	mitral valve formation	GO_REF:0000024	ISS	UniProtKB:O35615	Process	20110810	BHF-UCL
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0003195	tricuspid valve formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058037	Process	20160305	Ensembl
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0003195	tricuspid valve formation	GO_REF:0000024	ISS	UniProtKB:O35615	Process	20110810	BHF-UCL
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058037	Process	20160305	Ensembl
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:O35615	Process	20110810	BHF-UCL
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058037	Process	20160305	Ensembl
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:O35615	Process	20110810	BHF-UCL
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0060413	atrial septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058037	Process	20160305	Ensembl
+UniProtKB	Q8IX07	-	ZFPM1	9606	-	GO:0060413	atrial septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:O35615	Process	20110810	BHF-UCL
+UniProtKB	Q8IXJ9	-	ASXL1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000105413	Process	20160305	Ensembl
+UniProtKB	Q8IY31	-	IFT20	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000118015	Process	20160305	Ensembl
+UniProtKB	Q8IZQ8	-	MYOCD	9606	-	GO:0003231	cardiac ventricle development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000104335	Process	20160305	Ensembl
+UniProtKB	Q8IZQ8	-	MYOCD	9606	-	GO:0003257	positive regulation of transcription from RNA polymerase II promoter involved in myocardial precursor cell differentiation	PMID:15907818	IDA	-	Process	20110606	BHF-UCL
+UniProtKB	Q8IZQ8	-	MYOCD	9606	-	GO:0035051	cardiocyte differentiation	PMID:12640126	NAS	-	Process	20090615	UniProt
+UniProtKB	Q8IZQ8	-	MYOCD	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000104335	Process	20160305	Ensembl
+UniProtKB	Q8IZQ8	-	MYOCD	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000024	ISS	UniProtKB:Q8VIM5	Process	20110606	BHF-UCL
+UniProtKB	Q8IZQ8	-	MYOCD	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000033	IBA	PANTHER:PTN000513570	Process	20150728	GO_Central
+UniProtKB	Q8IZQ8	-	MYOCD	9606	-	GO:0055012	ventricular cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000104335	Process	20160305	Ensembl
+UniProtKB	Q8IZQ8	-	MYOCD	9606	-	GO:0061049	cell growth involved in cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000072988	Process	20160305	Ensembl
+UniProtKB	Q8N119	-	MMP21	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000033278	Process	20160305	Ensembl
+UniProtKB	Q8N157	-	AHI1	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q8K3E5	Process	20111123	UniProt
+UniProtKB	Q8N3I7	-	BBS5	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q7ZWB7	Process	20080812	BHF-UCL
+UniProtKB	Q8N441	-	FGFRL1	9606	-	GO:0003179	heart valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000013633	Process	20160305	Ensembl
+UniProtKB	Q8N441	-	FGFRL1	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000013633	Process	20160305	Ensembl
+UniProtKB	Q8N6T7	-	SIRT6	9606	-	GO:0003247	post-embryonic cardiac muscle cell growth involved in heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000008758	Process	20160305	Ensembl
+UniProtKB	Q8N907	-	DAND5	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000070057	Process	20160305	Ensembl
+UniProtKB	Q8N907	-	DAND5	9606	-	GO:0003281	ventricular septum development	GO_REF:0000024	ISS	UniProtKB:Q76LW6	Process	20120217	BHF-UCL
+UniProtKB	Q8N907	-	DAND5	9606	-	GO:0003283	atrial septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000070057	Process	20160305	Ensembl
+UniProtKB	Q8N907	-	DAND5	9606	-	GO:0003283	atrial septum development	GO_REF:0000024	ISS	UniProtKB:Q76LW6	Process	20120217	BHF-UCL
+UniProtKB	Q8N907	-	DAND5	9606	-	GO:0061371	determination of heart left/right asymmetry	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000070057	Process	20160305	Ensembl
+UniProtKB	Q8N907	-	DAND5	9606	-	GO:0061371	determination of heart left/right asymmetry	GO_REF:0000024	ISS	UniProtKB:Q76LW6	Process	20120217	BHF-UCL
+UniProtKB	Q8NC56	-	LEMD2	9606	-	GO:0060914	heart formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058221	Process	20160305	Ensembl
+UniProtKB	Q8NCM8	-	DYNC2H1	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000120007	Process	20160305	Ensembl
+UniProtKB	Q8NCW6	-	GALNT11	9606	-	GO:0061314	Notch signaling involved in heart development	GO_REF:0000024	ISS	UniProtKB:Q6DJR8	Process	20131202	UniProt
+UniProtKB	Q8NDZ4	-	C3orf58	9606	-	GO:0060038	cardiac muscle cell proliferation	PMID:23784961	IDA	-	Process	20130912	UniProt
+UniProtKB	Q8NE79	-	BVES	9606	-	GO:0060931	sinoatrial node cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000093382	Process	20160305	Ensembl
+UniProtKB	Q8NE79	-	BVES	9606	-	GO:0060973	cell migration involved in heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000093382	Process	20160305	Ensembl
+UniProtKB	Q8NEP3	-	DNAAF1	9606	-	GO:0001947	heart looping	PMID:19944400	IMP	-	Process	20130228	BHF-UCL
+UniProtKB	Q8NEP3	-	DNAAF1	9606	-	GO:0001947	heart looping	PMID:19944405	IMP	-	Process	20130301	BHF-UCL
+UniProtKB	Q8TDR0	-	TRAF3IP1	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000042391	Process	20160305	Ensembl
+UniProtKB	Q8WU20	-	FRS2	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000020381	Process	20160305	Ensembl
+UniProtKB	Q8WUF5	-	PPP1R13L	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047839	Process	20160305	Ensembl
+UniProtKB	Q8WUF5	-	PPP1R13L	9606	-	GO:0003229	ventricular cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047839	Process	20160305	Ensembl
+UniProtKB	Q8WV60	-	PTCD2	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000022153	Process	20160305	Ensembl
+UniProtKB	Q8WW38	-	ZFPM2	9606	-	GO:0003148	outflow tract septum morphogenesis	PMID:20807224	IMP	-	Process	20110511	BHF-UCL
+UniProtKB	Q8WW38	-	ZFPM2	9606	-	GO:0003221	right ventricular cardiac muscle tissue morphogenesis	PMID:20807224	IMP	-	Process	20110511	BHF-UCL
+UniProtKB	Q8WW38	-	ZFPM2	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000051335	Process	20160305	Ensembl
+UniProtKB	Q8WW38	-	ZFPM2	9606	-	GO:0060412	ventricular septum morphogenesis	PMID:20807224	IMP	-	Process	20110511	BHF-UCL
+UniProtKB	Q8WZ42	-	TTN	9606	-	GO:0048739	cardiac muscle fiber development	PMID:9817758	IMP	-	Process	20081017	BHF-UCL
+UniProtKB	Q8WZ42	-	TTN	9606	-	GO:0055003	cardiac myofibril assembly	PMID:11846417	IMP	-	Process	20081015	BHF-UCL
+UniProtKB	Q8WZ42	-	TTN	9606	-	GO:0055003	cardiac myofibril assembly	PMID:9817758	IMP	-	Process	20081017	BHF-UCL
+UniProtKB	Q8WZ42	-	TTN	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	PMID:9817758	IMP	-	Process	20081017	BHF-UCL
+UniProtKB	Q92574	-	TSC1	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000109500	Process	20160305	Ensembl
+UniProtKB	Q92585	-	MAML1	9606	-	GO:0003162	atrioventricular node development	GO_REF:0000024	ISS	UniProtKB:Q01705	Process	20120727	BHF-UCL
+UniProtKB	Q92585	-	MAML1	9606	-	GO:0060928	atrioventricular node cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000059210	Process	20160305	Ensembl
+UniProtKB	Q92585	-	MAML1	9606	-	GO:0060928	atrioventricular node cell development	GO_REF:0000024	ISS	UniProtKB:Q6T264	Process	20120727	BHF-UCL
+UniProtKB	Q92629	-	SGCD	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000033	IBA	PANTHER:PTN000986439	Process	20141029	GO_Central
+UniProtKB	Q92736	-	RYR2	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021750	Process	20160305	Ensembl
+UniProtKB	Q92736	-	RYR2	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000024	ISS	UniProtKB:E9Q401	Process	20111222	UniProt
+UniProtKB	Q92736	-	RYR2	9606	-	GO:0003220	left ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021750	Process	20160305	Ensembl
+UniProtKB	Q92736	-	RYR2	9606	-	GO:0003220	left ventricular cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:E9Q401	Process	20121004	BHF-UCL
+UniProtKB	Q92786	-	PROX1	9606	-	GO:0055005	ventricular cardiac myofibril assembly	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000135703	Process	20160305	Ensembl
+UniProtKB	Q92786	-	PROX1	9606	-	GO:0055005	ventricular cardiac myofibril assembly	GO_REF:0000024	ISS	UniProtKB:P48437	Process	20090120	BHF-UCL
+UniProtKB	Q92786	-	PROX1	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000033	IBA	PANTHER:PTN000258074	Process	20150807	GO_Central
+UniProtKB	Q92786	-	PROX1	9606	-	GO:0055009	atrial cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000135703	Process	20160305	Ensembl
+UniProtKB	Q92786	-	PROX1	9606	-	GO:0055009	atrial cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:P48437	Process	20090120	BHF-UCL
+UniProtKB	Q92786	-	PROX1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000135703	Process	20160305	Ensembl
+UniProtKB	Q92786	-	PROX1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:P48437	Process	20090120	BHF-UCL
+UniProtKB	Q92786	-	PROX1	9606	-	GO:0060214	endocardium formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000135703	Process	20160305	Ensembl
+UniProtKB	Q92786	-	PROX1	9606	-	GO:0060214	endocardium formation	GO_REF:0000024	ISS	UniProtKB:P48437	Process	20090120	BHF-UCL
+UniProtKB	Q92786	-	PROX1	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000135703	Process	20160305	Ensembl
+UniProtKB	Q92786	-	PROX1	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:P48437	Process	20090226	BHF-UCL
+UniProtKB	Q92794	-	KAT6A	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038181	Process	20160305	Ensembl
+UniProtKB	Q92819	-	HAS2	9606	-	GO:0036302	atrioventricular canal development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000062212	Process	20160305	Ensembl
+UniProtKB	Q92819	-	HAS2	9606	-	GO:0036302	atrioventricular canal development	GO_REF:0000024	ISS	UniProtKB:P70312	Process	20130909	UniProt
+UniProtKB	Q92819	-	HAS2	9606	-	GO:0090500	endocardial cushion to mesenchymal transition	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000062212	Process	20160305	Ensembl
+UniProtKB	Q92819	-	HAS2	9606	-	GO:0090500	endocardial cushion to mesenchymal transition	GO_REF:0000024	ISS	UniProtKB:P70312	Process	20130909	UniProt
+UniProtKB	Q92824	-	PCSK5	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025618	Process	20160305	Ensembl
+UniProtKB	Q92824	-	PCSK5	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000025618	Process	20160305	Ensembl
+UniProtKB	Q92830	-	KAT2A	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000052125	Process	20160305	Ensembl
+UniProtKB	Q92908	-	GATA6	9606	-	GO:0003148	outflow tract septum morphogenesis	PMID:19666519	IMP	-	Process	20100106	BHF-UCL
+UniProtKB	Q92908	-	GATA6	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000041774	Process	20160305	Ensembl
+UniProtKB	Q92908	-	GATA6	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000041774	Process	20160305	Ensembl
+UniProtKB	Q92908	-	GATA6	9606	-	GO:0060947	cardiac vascular smooth muscle cell differentiation	PMID:11889139	IMP	-	Process	20110106	UniProt
+UniProtKB	Q92908	-	GATA6	9606	-	GO:0060947	cardiac vascular smooth muscle cell differentiation	PMID:12615657	IMP	-	Process	20110106	UniProt
+UniProtKB	Q92997	-	DVL3	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000003318	Process	20160305	Ensembl
+UniProtKB	Q92997	-	DVL3	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000003318	Process	20160305	Ensembl
+UniProtKB	Q96HC4	-	PDLIM5	9606	-	GO:0061049	cell growth involved in cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000022387	Process	20160305	Ensembl
+UniProtKB	Q96HC4	-	PDLIM5	9606	-	GO:0061049	cell growth involved in cardiac muscle cell development	GO_REF:0000024	ISS	UniProtKB:Q62920	Process	20150717	BHF-UCL
+UniProtKB	Q96HD1	-	CRELD1	9606	-	GO:0003197	endocardial cushion development	PMID:18076106	TAS	-	Process	20100520	BHF-UCL
+UniProtKB	Q96HD1	-	CRELD1	9606	-	GO:0003279	cardiac septum development	PMID:18076106	TAS	-	Process	20100520	BHF-UCL
+UniProtKB	Q96HF1	-	SFRP2	9606	-	GO:0003151	outflow tract morphogenesis	PMID:19593212	IMP	-	Process	20100819	BHF-UCL
+UniProtKB	Q96HF1	-	SFRP2	9606	-	GO:0003214	cardiac left ventricle morphogenesis	PMID:19593212	IMP	-	Process	20100819	BHF-UCL
+UniProtKB	Q96JQ0	-	DCHS1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000077574	Process	20160305	Ensembl
+UniProtKB	Q96JQ0	-	DCHS1	9606	-	GO:0003192	mitral valve formation	PMID:26258302	IMP	-	Process	20151214	UniProt
+UniProtKB	Q96JQ0	-	DCHS1	9606	-	GO:0003273	cell migration involved in endocardial cushion formation	PMID:26258302	IMP	-	Process	20151214	UniProt
+UniProtKB	Q96L96	-	ALPK3	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000102971	Process	20160305	Ensembl
+UniProtKB	Q96LD1	-	SGCZ	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000033	IBA	PANTHER:PTN000986439	Process	20141029	GO_Central
+UniProtKB	Q96MT3	-	PRICKLE1	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000104878	Process	20160305	Ensembl
+UniProtKB	Q96NZ1	-	FOXN4	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:A2BGM5	Process	20140306	UniProt
+UniProtKB	Q96NZ1	-	FOXN4	9606	-	GO:0036302	atrioventricular canal development	GO_REF:0000024	ISS	UniProtKB:A2BGM5	Process	20140306	UniProt
+UniProtKB	Q96QB1	-	DLC1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000132812	Process	20160305	Ensembl
+UniProtKB	Q96QB1	-	DLC1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9R0Z9	Process	20080514	UniProt
+UniProtKB	Q96RK4	-	BBS4	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q05AN5	Process	20080903	BHF-UCL
+UniProtKB	Q96S42	-	NODAL	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000039653	Process	20160305	Ensembl
+UniProtKB	Q96S42	-	NODAL	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000039653	Process	20160305	Ensembl
+UniProtKB	Q96T37	-	RBM15	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000054424	Process	20160305	Ensembl
+UniProtKB	Q96T68	-	SETDB2	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q06ZW3	Process	20100730	UniProt
+UniProtKB	Q99502	-	EYA1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000027066	Process	20160305	Ensembl
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0003166	bundle of His development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018407	Process	20160305	Ensembl
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018407	Process	20160305	Ensembl
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0003197	endocardial cushion development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018407	Process	20160305	Ensembl
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0003218	cardiac left ventricle formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018407	Process	20160305	Ensembl
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0003218	cardiac left ventricle formation	GO_REF:0000024	ISS	UniProtKB:P70326	Process	20100727	BHF-UCL
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0003229	ventricular cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018407	Process	20160305	Ensembl
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018407	Process	20160305	Ensembl
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0003281	ventricular septum development	GO_REF:0000024	ISS	UniProtKB:P70326	Process	20100727	BHF-UCL
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0003283	atrial septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018407	Process	20160305	Ensembl
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018407	Process	20160305	Ensembl
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0060039	pericardium development	PMID:15138308	IDA	-	Process	20070302	UniProt
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0060413	atrial septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018407	Process	20160305	Ensembl
+UniProtKB	Q99593	-	TBX5	9606	-	GO:0060980	cell migration involved in coronary vasculogenesis	PMID:20299672	TAS	-	Process	20100510	DFLAT
+UniProtKB	Q99697	-	PITX2	9606	-	GO:0003171	atrioventricular valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047359	Process	20160305	Ensembl
+UniProtKB	Q99697	-	PITX2	9606	-	GO:0003253	cardiac neural crest cell migration involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047359	Process	20160305	Ensembl
+UniProtKB	Q99697	-	PITX2	9606	-	GO:0003253	cardiac neural crest cell migration involved in outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:P97474	Process	20111012	BHF-UCL
+UniProtKB	Q99697	-	PITX2	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047359	Process	20160305	Ensembl
+UniProtKB	Q99697	-	PITX2	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047359	Process	20160305	Ensembl
+UniProtKB	Q99697	-	PITX2	9606	-	GO:0055009	atrial cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047359	Process	20160305	Ensembl
+UniProtKB	Q99697	-	PITX2	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047359	Process	20160305	Ensembl
+UniProtKB	Q99697	-	PITX2	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047359	Process	20160305	Ensembl
+UniProtKB	Q99697	-	PITX2	9606	-	GO:0061325	cell proliferation involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047359	Process	20160305	Ensembl
+UniProtKB	Q99697	-	PITX2	9606	-	GO:0061325	cell proliferation involved in outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:P97474	Process	20111012	BHF-UCL
+UniProtKB	Q99784	-	OLFM1	9606	-	GO:0003190	atrioventricular valve formation	GO_REF:0000024	ISS	UniProtKB:Q9IAK4	Process	20150213	AgBase
+UniProtKB	Q99784	-	OLFM1	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000024	ISS	UniProtKB:Q9IAK4	Process	20150213	AgBase
+UniProtKB	Q99835	-	SMO	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001812	Process	20160305	Ensembl
+UniProtKB	Q99835	-	SMO	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:P56726	Process	20110719	BHF-UCL
+UniProtKB	Q99835	-	SMO	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001812	Process	20160305	Ensembl
+UniProtKB	Q99835	-	SMO	9606	-	GO:0060413	atrial septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000001812	Process	20160305	Ensembl
+UniProtKB	Q99958	-	FOXC2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000055290	Process	20160305	Ensembl
+UniProtKB	Q99958	-	FOXC2	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000055290	Process	20160305	Ensembl
+UniProtKB	Q99958	-	FOXC2	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000055290	Process	20160305	Ensembl
+UniProtKB	Q99958	-	FOXC2	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000055290	Process	20160305	Ensembl
+UniProtKB	Q99959	-	PKP2	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	PMID:22889254	IMP	-	Process	20120928	BHF-UCL
+UniProtKB	Q99967	-	CITED2	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:O35740	Process	20120517	BHF-UCL
+UniProtKB	Q99967	-	CITED2	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:O35740	Process	20120517	BHF-UCL
+UniProtKB	Q99967	-	CITED2	9606	-	GO:0060971	embryonic heart tube left/right pattern formation	GO_REF:0000024	ISS	UniProtKB:O35740	Process	20120517	BHF-UCL
+UniProtKB	Q99985	-	SEMA3C	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000030568	Process	20160305	Ensembl
+UniProtKB	Q99985	-	SEMA3C	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000030568	Process	20160305	Ensembl
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032760	Process	20160305	Ensembl
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:P97309	Process	20101013	BHF-UCL
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032760	Process	20160305	Ensembl
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003139	secondary heart field specification	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032760	Process	20160305	Ensembl
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003139	secondary heart field specification	GO_REF:0000024	ISS	UniProtKB:P97309	Process	20101013	BHF-UCL
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032760	Process	20160305	Ensembl
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000024	ISS	UniProtKB:P97309	Process	20101013	BHF-UCL
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003210	cardiac atrium formation	PMID:18297060	IMP	-	Process	20101013	BHF-UCL
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003211	cardiac ventricle formation	PMID:18297060	IMP	-	Process	20101013	BHF-UCL
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003236	sinus venosus morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032760	Process	20160305	Ensembl
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003236	sinus venosus morphogenesis	GO_REF:0000024	ISS	UniProtKB:P97309	Process	20101013	BHF-UCL
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003241	growth involved in heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032760	Process	20160305	Ensembl
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003241	growth involved in heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:P97309	Process	20101013	BHF-UCL
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003259	cardioblast anterior-lateral migration	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032760	Process	20160305	Ensembl
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003259	cardioblast anterior-lateral migration	GO_REF:0000024	ISS	UniProtKB:P97309	Process	20101013	BHF-UCL
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0003260	cardioblast migration	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032760	Process	20160305	Ensembl
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0055007	cardiac muscle cell differentiation	PMID:18297060	IMP	-	Process	20101013	BHF-UCL
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0060913	cardiac cell fate determination	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032760	Process	20160305	Ensembl
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0060913	cardiac cell fate determination	GO_REF:0000024	ISS	UniProtKB:P97309	Process	20101013	BHF-UCL
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0060921	sinoatrial node cell differentiation	PMID:18297060	IMP	-	Process	20101013	BHF-UCL
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0060947	cardiac vascular smooth muscle cell differentiation	PMID:18297060	IMP	-	Process	20101013	BHF-UCL
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0060975	cardioblast migration to the midline involved in heart field formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032760	Process	20160305	Ensembl
+UniProtKB	Q9BRJ9	-	MESP1	9606	-	GO:0060975	cardioblast migration to the midline involved in heart field formation	GO_REF:0000024	ISS	UniProtKB:P97309	Process	20101013	BHF-UCL
+UniProtKB	Q9BRP0	-	OVOL2	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044026	Process	20160305	Ensembl
+UniProtKB	Q9BRP0	-	OVOL2	9606	-	GO:0060214	endocardium formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044026	Process	20160305	Ensembl
+UniProtKB	Q9BRP0	-	OVOL2	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044026	Process	20160305	Ensembl
+UniProtKB	Q9BSQ5	-	CCM2	9606	-	GO:0060039	pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000000388	Process	20160305	Ensembl
+UniProtKB	Q9BT04	-	FUZ	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000071194	Process	20160305	Ensembl
+UniProtKB	Q9BT04	-	FUZ	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000071194	Process	20160305	Ensembl
+UniProtKB	Q9BTE1	-	DCTN5	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000033156	Process	20160305	Ensembl
+UniProtKB	Q9BTE1	-	DCTN5	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000033156	Process	20160305	Ensembl
+UniProtKB	Q9BX79	-	STRA6	9606	-	GO:0003184	pulmonary valve morphogenesis	PMID:17273977	IMP	-	Process	20110503	DFLAT
+UniProtKB	Q9BX79	-	STRA6	9606	-	GO:0003281	ventricular septum development	PMID:17273977	IMP	-	Process	20110503	DFLAT
+UniProtKB	Q9BYW2	-	SETD2	9606	-	GO:0060039	pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000116313	Process	20160305	Ensembl
+UniProtKB	Q9BYW2	-	SETD2	9606	-	GO:0060977	coronary vasculature morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000116313	Process	20160305	Ensembl
+UniProtKB	Q9GZT9	-	EGLN1	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034469	Process	20160305	Ensembl
+UniProtKB	Q9GZT9	-	EGLN1	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034469	Process	20160305	Ensembl
+UniProtKB	Q9GZT9	-	EGLN1	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034469	Process	20160305	Ensembl
+UniProtKB	Q9H1J5	-	WNT8A	9606	-	GO:0061317	canonical Wnt signaling pathway involved in cardiac muscle cell fate commitment	PMID:20559569	IEP	-	Process	20120821	BHF-UCL
+UniProtKB	Q9H1R3	-	MYLK2	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	PMID:16448786	IMP	-	Process	20080124	BHF-UCL
+UniProtKB	Q9H1Y0	-	ATG5	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000044769	Process	20160305	Ensembl
+UniProtKB	Q9H4B6	-	SAV1	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000021467	Process	20160305	Ensembl
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000027035	Process	20160305	Ensembl
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q61473	Process	20100317	BHF-UCL
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q61473	Process	20101215	UniProt
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0003142	cardiogenic plate morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000027035	Process	20160305	Ensembl
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0003142	cardiogenic plate morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q61473	Process	20110712	BHF-UCL
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000027035	Process	20160305	Ensembl
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q61473	Process	20110712	BHF-UCL
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000027035	Process	20160305	Ensembl
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q61473	Process	20100317	BHF-UCL
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000027035	Process	20160305	Ensembl
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000024	ISS	UniProtKB:Q61473	Process	20100317	BHF-UCL
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0060214	endocardium formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000027035	Process	20160305	Ensembl
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0060214	endocardium formation	GO_REF:0000024	ISS	UniProtKB:Q61473	Process	20100317	BHF-UCL
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0060913	cardiac cell fate determination	PMID:19736317	IMP	-	Process	20100727	BHF-UCL
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0060914	heart formation	PMID:19736317	TAS	-	Process	20100324	BHF-UCL
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0060956	endocardial cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000027035	Process	20160305	Ensembl
+UniProtKB	Q9H6I2	-	SOX17	9606	-	GO:0060956	endocardial cell differentiation	GO_REF:0000024	ISS	UniProtKB:Q61473	Process	20100317	BHF-UCL
+UniProtKB	Q9H799	-	C5orf42	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000106247	Process	20160305	Ensembl
+UniProtKB	Q9H799	-	C5orf42	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000106247	Process	20160305	Ensembl
+UniProtKB	Q9H799	-	C5orf42	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000106247	Process	20160305	Ensembl
+UniProtKB	Q9HBG6	-	IFT122	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000045468	Process	20160305	Ensembl
+UniProtKB	Q9HBG6	-	IFT122	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000024	ISS	UniProtKB:Q6NWV3	Process	20100805	UniProt
+UniProtKB	Q9HBG6	-	IFT122	9606	-	GO:0060971	embryonic heart tube left/right pattern formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000045468	Process	20160305	Ensembl
+UniProtKB	Q9HBU9	-	POPDC2	9606	-	GO:0060931	sinoatrial node cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023494	Process	20160305	Ensembl
+UniProtKB	Q9NPH5	-	NOX4	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000032781	Process	20160305	Ensembl
+UniProtKB	Q9NPJ1	-	MKKS	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q7ZVV0	Process	20080903	BHF-UCL
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040576	Process	20160305	Ensembl
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9DBX7	Process	20120730	BHF-UCL
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040576	Process	20160305	Ensembl
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0003181	atrioventricular valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9DBX7	Process	20120730	BHF-UCL
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0003184	pulmonary valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040576	Process	20160305	Ensembl
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0003184	pulmonary valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9DBX7	Process	20120730	BHF-UCL
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040576	Process	20160305	Ensembl
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000024	ISS	UniProtKB:Q9DBX7	Process	20110715	UniProt
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040576	Process	20160305	Ensembl
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9DBX7	Process	20120730	BHF-UCL
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0003208	cardiac ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040576	Process	20160305	Ensembl
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0003208	cardiac ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9DBX7	Process	20120730	BHF-UCL
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040576	Process	20160305	Ensembl
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000024	ISS	UniProtKB:Q9DBX7	Process	20120730	BHF-UCL
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000040576	Process	20160305	Ensembl
+UniProtKB	Q9NQ87	-	HEYL	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9DBX7	Process	20120730	BHF-UCL
+UniProtKB	Q9NQC3	-	RTN4	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099907	Process	20160305	Ensembl
+UniProtKB	Q9NR61	-	DLL4	9606	-	GO:0003208	cardiac ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099575	Process	20160305	Ensembl
+UniProtKB	Q9NR61	-	DLL4	9606	-	GO:0003208	cardiac ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9JI71	Process	20120730	BHF-UCL
+UniProtKB	Q9NR61	-	DLL4	9606	-	GO:0003209	cardiac atrium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099575	Process	20160305	Ensembl
+UniProtKB	Q9NR61	-	DLL4	9606	-	GO:0003209	cardiac atrium morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9JI71	Process	20120730	BHF-UCL
+UniProtKB	Q9NR61	-	DLL4	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099575	Process	20160305	Ensembl
+UniProtKB	Q9NR61	-	DLL4	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9JI71	Process	20120730	BHF-UCL
+UniProtKB	Q9NR61	-	DLL4	9606	-	GO:0003344	pericardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099575	Process	20160305	Ensembl
+UniProtKB	Q9NR61	-	DLL4	9606	-	GO:0003344	pericardium morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9JI71	Process	20120730	BHF-UCL
+UniProtKB	Q9NR61	-	DLL4	9606	-	GO:0061314	Notch signaling involved in heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000099575	Process	20160305	Ensembl
+UniProtKB	Q9NR61	-	DLL4	9606	-	GO:0061314	Notch signaling involved in heart development	GO_REF:0000024	ISS	UniProtKB:Q9JI71	Process	20120730	BHF-UCL
+UniProtKB	Q9NSC2	-	SALL1	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034090	Process	20160305	Ensembl
+UniProtKB	Q9NSC2	-	SALL1	9606	-	GO:0003281	ventricular septum development	GO_REF:0000024	ISS	UniProtKB:Q9ER74	Process	20100114	UniProt
+UniProtKB	Q9NUG4	-	CCM2L	9606	-	GO:0003209	cardiac atrium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000105425	Process	20160305	Ensembl
+UniProtKB	Q9NUG4	-	CCM2L	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000105425	Process	20160305	Ensembl
+UniProtKB	Q9NUG4	-	CCM2L	9606	-	GO:0055017	cardiac muscle tissue growth	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000105425	Process	20160305	Ensembl
+UniProtKB	Q9NV29	-	TMEM100	9606	-	GO:0003197	endocardial cushion development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000090464	Process	20160305	Ensembl
+UniProtKB	Q9NV29	-	TMEM100	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000090464	Process	20160305	Ensembl
+UniProtKB	Q9NVD7	-	PARVA	9606	-	GO:0003148	outflow tract septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9EPC1	Process	20121026	UniProt
+UniProtKB	Q9NWB7	-	IFT57	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000046645	Process	20160305	Ensembl
+UniProtKB	Q9NZU0	-	FLRT3	9606	-	GO:0003345	proepicardium cell migration involved in pericardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000105684	Process	20160305	Ensembl
+UniProtKB	Q9NZU0	-	FLRT3	9606	-	GO:0003345	proepicardium cell migration involved in pericardium morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q8BGT1	Process	20150917	UniProt
+UniProtKB	Q9P2D1	-	CHD7	9606	-	GO:0003007	heart morphogenesis	PMID:15300250	IMP	-	Process	20080923	BHF-UCL
+UniProtKB	Q9P2D1	-	CHD7	9606	-	GO:0007512	adult heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000059079	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003150	muscular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003150	muscular septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20120730	BHF-UCL
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20120730	BHF-UCL
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003171	atrioventricular valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003184	pulmonary valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003184	pulmonary valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20120730	BHF-UCL
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003186	tricuspid valve morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003186	tricuspid valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20120730	BHF-UCL
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003195	tricuspid valve formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003199	endocardial cushion to mesenchymal transition involved in heart valve formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003208	cardiac ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003208	cardiac ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20110715	UniProt
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003214	cardiac left ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003214	cardiac left ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20120730	BHF-UCL
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20120730	BHF-UCL
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0055015	ventricular cardiac muscle cell development	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20110719	UniProt
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20120730	BHF-UCL
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20120730	BHF-UCL
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20120730	BHF-UCL
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0060413	atrial septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0060413	atrial septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20120730	BHF-UCL
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0060948	cardiac vascular smooth muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0060977	coronary vasculature morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000019924	Process	20160305	Ensembl
+UniProtKB	Q9UBP5	-	HEY2	9606	-	GO:0061314	Notch signaling involved in heart development	PMID:12372254	IC	GO:0003214	Process	20120730	BHF-UCL
+UniProtKB	Q9UBV4	-	WNT16	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000031681	Process	20160305	Ensembl
+UniProtKB	Q9UFE4	-	CCDC39	9606	-	GO:0001947	heart looping	PMID:22693285	IMP	-	Process	20130228	BHF-UCL
+UniProtKB	Q9UG01	-	IFT172	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000049335	Process	20160305	Ensembl
+UniProtKB	Q9UHI8	-	ADAMTS1	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023610	Process	20160305	Ensembl
+UniProtKB	Q9UIG0	-	BAZ1B	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000002825	Process	20160305	Ensembl
+UniProtKB	Q9UIG0	-	BAZ1B	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9Z277	Process	20100624	BHF-UCL
+UniProtKB	Q9UJQ4	-	SALL4	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000029061	Process	20160305	Ensembl
+UniProtKB	Q9UKP5	-	ADAMTS6	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064570	Process	20160305	Ensembl
+UniProtKB	Q9UKP5	-	ADAMTS6	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000064570	Process	20160305	Ensembl
+UniProtKB	Q9ULH7	-	MKL2	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000009713	Process	20160305	Ensembl
+UniProtKB	Q9ULH7	-	MKL2	9606	-	GO:0048738	cardiac muscle tissue development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000009713	Process	20160305	Ensembl
+UniProtKB	Q9ULI3	-	HEG1	9606	-	GO:0003209	cardiac atrium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000119790	Process	20160305	Ensembl
+UniProtKB	Q9ULI3	-	HEG1	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000119790	Process	20160305	Ensembl
+UniProtKB	Q9ULI3	-	HEG1	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000119790	Process	20160305	Ensembl
+UniProtKB	Q9ULI3	-	HEG1	9606	-	GO:0055017	cardiac muscle tissue growth	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000119790	Process	20160305	Ensembl
+UniProtKB	Q9ULI3	-	HEG1	9606	-	GO:0060039	pericardium development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000119790	Process	20160305	Ensembl
+UniProtKB	Q9ULJ6	-	ZMIZ1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000124863	Process	20160305	Ensembl
+UniProtKB	Q9ULK5	-	VANGL2	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000106894	Process	20160305	Ensembl
+UniProtKB	Q9ULK5	-	VANGL2	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q91ZD4	Process	20060707	UniProt
+UniProtKB	Q9ULK5	-	VANGL2	9606	-	GO:0003149	membranous septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000106894	Process	20160305	Ensembl
+UniProtKB	Q9ULK5	-	VANGL2	9606	-	GO:0003150	muscular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000106894	Process	20160305	Ensembl
+UniProtKB	Q9ULK5	-	VANGL2	9606	-	GO:0061346	planar cell polarity pathway involved in heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000106894	Process	20160305	Ensembl
+UniProtKB	Q9ULP0	-	NDRG4	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q1JPS5	Process	20160122	BHF-UCL
+UniProtKB	Q9ULP0	-	NDRG4	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000024	ISS	UniProtKB:Q1JPS5	Process	20160122	BHF-UCL
+UniProtKB	Q9ULP0	-	NDRG4	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000024	ISS	UniProtKB:Q1JPS5	Process	20160122	BHF-UCL
+UniProtKB	Q9ULP0	-	NDRG4	9606	-	GO:0060973	cell migration involved in heart development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000072883	Process	20160305	Ensembl
+UniProtKB	Q9ULT8	-	HECTD1	9606	-	GO:0003170	heart valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000046766	Process	20160305	Ensembl
+UniProtKB	Q9ULT8	-	HECTD1	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000046766	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0001947	heart looping	GO_REF:0000024	ISS	UniProtKB:Q9ES03	Process	20110919	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003143	embryonic heart tube morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9ES03	Process	20120730	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003148	outflow tract septum morphogenesis	PMID:18275040	IMP	-	Process	20110704	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003148	outflow tract septum morphogenesis	PMID:18834961	IMP	-	Process	20110704	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003175	tricuspid valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003175	tricuspid valve development	GO_REF:0000024	ISS	UniProtKB:Q9ES03	Process	20110919	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003176	aortic valve development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003180	aortic valve morphogenesis	PMID:18275040	IMP	-	Process	20110704	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003180	aortic valve morphogenesis	PMID:18834961	IMP	-	Process	20110704	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003193	pulmonary valve formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003193	pulmonary valve formation	GO_REF:0000024	ISS	UniProtKB:Q9ES03	Process	20110919	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9ES03	Process	20120730	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003207	cardiac chamber formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003207	cardiac chamber formation	GO_REF:0000024	ISS	UniProtKB:Q9ES03	Process	20120730	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003215	cardiac right ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9ES03	Process	20110919	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003272	endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003272	endocardial cushion formation	GO_REF:0000024	ISS	UniProtKB:Q9ES03	Process	20110919	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003279	cardiac septum development	GO_REF:0000024	ISS	UniProtKB:Q9ES03	Process	20110919	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003344	pericardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0003344	pericardium morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9ES03	Process	20120730	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0035922	foramen ovale closure	PMID:19762328	IMP	-	Process	20110707	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0036306	embryonic heart tube elongation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052591	Process	20160305	Ensembl
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9ES03	Process	20110919	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0060413	atrial septum morphogenesis	PMID:17668378	IMP	-	Process	20110704	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0060413	atrial septum morphogenesis	PMID:18834961	IMP	-	Process	20110704	BHF-UCL
+UniProtKB	Q9UMR3	-	TBX20	9606	-	GO:0060413	atrial septum morphogenesis	PMID:19762328	IMP	-	Process	20110704	BHF-UCL
+UniProtKB	Q9UMX1	-	SUFU	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000107498	Process	20160305	Ensembl
+UniProtKB	Q9UMX1	-	SUFU	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000107498	Process	20160305	Ensembl
+UniProtKB	Q9UMX1	-	SUFU	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000107498	Process	20160305	Ensembl
+UniProtKB	Q9UP38	-	FZD1	9606	-	GO:0003149	membranous septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058629	Process	20160305	Ensembl
+UniProtKB	Q9UP38	-	FZD1	9606	-	GO:0003150	muscular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058629	Process	20160305	Ensembl
+UniProtKB	Q9UP38	-	FZD1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058629	Process	20160305	Ensembl
+UniProtKB	Q9UP38	-	FZD1	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000058629	Process	20160305	Ensembl
+UniProtKB	Q9UPY3	-	DICER1	9606	-	GO:0055013	cardiac muscle cell development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000043676	Process	20160305	Ensembl
+UniProtKB	Q9UPY3	-	DICER1	9606	-	GO:0061309	cardiac neural crest cell development involved in outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000043676	Process	20160305	Ensembl
+UniProtKB	Q9Y283	-	INVS	9606	-	GO:0060971	embryonic heart tube left/right pattern formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000030029	Process	20160305	Ensembl
+UniProtKB	Q9Y2A7	-	NCKAP1	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000107390	Process	20160305	Ensembl
+UniProtKB	Q9Y2K7	-	KDM2A	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000047683	Process	20160305	Ensembl
+UniProtKB	Q9Y2T1	-	AXIN2	9606	-	GO:0003139	secondary heart field specification	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000051331	Process	20160305	Ensembl
+UniProtKB	Q9Y366	-	IFT52	9606	-	GO:0001947	heart looping	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000018002	Process	20160305	Ensembl
+UniProtKB	Q9Y3M2	-	CBY1	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000024	ISS	UniProtKB:Q9D1C2	Process	20071203	UniProt
+UniProtKB	Q9Y4D7	-	PLXND1	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015511	Process	20160305	Ensembl
+UniProtKB	Q9Y4D7	-	PLXND1	9606	-	GO:0003279	cardiac septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015511	Process	20160305	Ensembl
+UniProtKB	Q9Y4D7	-	PLXND1	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000015511	Process	20160305	Ensembl
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0003184	pulmonary valve morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9WV93	Process	20120730	BHF-UCL
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0003190	atrioventricular valve formation	GO_REF:0000024	ISS	UniProtKB:Q9WV93	Process	20120730	BHF-UCL
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038014	Process	20160305	Ensembl
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0003198	epithelial to mesenchymal transition involved in endocardial cushion formation	GO_REF:0000024	ISS	UniProtKB:Q9QUM5	Process	20110715	UniProt
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0003199	endocardial cushion to mesenchymal transition involved in heart valve formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038014	Process	20160305	Ensembl
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0003203	endocardial cushion morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9WV93	Process	20120730	BHF-UCL
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0003208	cardiac ventricle morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9WV93	Process	20120730	BHF-UCL
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0003222	ventricular trabecula myocardium morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000038014	Process	20160305	Ensembl
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0060317	cardiac epithelial to mesenchymal transition	GO_REF:0000024	ISS	UniProtKB:Q9WV93	Process	20120730	BHF-UCL
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000024	ISS	UniProtKB:Q9QUS4	Process	20120730	BHF-UCL
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0060411	cardiac septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9WV93	Process	20120730	BHF-UCL
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000024	ISS	UniProtKB:Q9WV93	Process	20120730	BHF-UCL
+UniProtKB	Q9Y5J3	-	HEY1	9606	-	GO:0061314	Notch signaling involved in heart development	PMID:17259303	IC	GO:0060411	Process	20120730	BHF-UCL
+UniProtKB	Q9Y5P4	-	COL4A3BP	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000076856	Process	20160305	Ensembl
+UniProtKB	Q9Y6N7	-	ROBO1	9606	-	GO:0003281	ventricular septum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023600	Process	20160305	Ensembl
+UniProtKB	Q9Y6N7	-	ROBO1	9606	-	GO:0060976	coronary vasculature development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000023600	Process	20160305	Ensembl
+UniProtKB	R4SCQ0	-	EGLN1	9606	-	GO:0055008	cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034469	Process	20160305	Ensembl
+UniProtKB	R4SCQ0	-	EGLN1	9606	-	GO:0060347	heart trabecula formation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034469	Process	20160305	Ensembl
+UniProtKB	R4SCQ0	-	EGLN1	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000034469	Process	20160305	Ensembl
+UniProtKB	V9HW88	-	HEL-S-99n	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSRNOP00000004091	Process	20160305	Ensembl
+UniProtKB	V9HWF0	-	HEL-S-28	9606	-	GO:0003151	outflow tract morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000033182	Process	20160305	Ensembl
+UniProtKB	W6CJ52	-	FOXC1	9606	-	GO:0003007	heart morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052196	Process	20160305	Ensembl
+UniProtKB	W6CJ52	-	FOXC1	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052196	Process	20160305	Ensembl
+UniProtKB	W6CJ52	-	FOXC1	9606	-	GO:0055010	ventricular cardiac muscle tissue morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052196	Process	20160305	Ensembl
+UniProtKB	W6CJ52	-	FOXC1	9606	-	GO:0060038	cardiac muscle cell proliferation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000052196	Process	20160305	Ensembl
+UniProtKB	X5D2H9	-	GJA5	9606	-	GO:0003161	cardiac conduction system development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	X5D2H9	-	GJA5	9606	-	GO:0003284	septum primum development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	X5D2H9	-	GJA5	9606	-	GO:0003294	atrial ventricular junction remodeling	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	X5D2H9	-	GJA5	9606	-	GO:0035050	embryonic heart tube development	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	X5D2H9	-	GJA5	9606	-	GO:0035922	foramen ovale closure	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	X5D2H9	-	GJA5	9606	-	GO:0060412	ventricular septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	X5D2H9	-	GJA5	9606	-	GO:0060413	atrial septum morphogenesis	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000088264	Process	20160305	Ensembl
+UniProtKB	X5D9D2	-	TSC1	9606	-	GO:0055007	cardiac muscle cell differentiation	GO_REF:0000019	IEA	Ensembl:ENSMUSP00000109500	Process	20160305	Ensembl
