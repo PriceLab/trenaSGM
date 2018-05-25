@@ -6,7 +6,8 @@
 \alias{summarizeModels}
 \title{summarize the gene regulatory models preciously calculated by this trensSGM instance}
 \usage{
-\S4method{summarizeModels}{trenaSGM}(obj, orderBy, maxTFpredictors)
+\S4method{summarizeModels}{trenaSGM}(obj, orderBy, maxTFpredictors,
+  models = list())
 }
 \arguments{
 \item{obj}{An object of class trenaSGM}
@@ -14,6 +15,8 @@
 \item{orderBy}{a characters string, the name of the column in the standard trena model data.frame, typically pcaMax, rfScore, pearsonCoeff}
 
 \item{maxTFpredictors}{an integer, the number of tfs to extract from each model (when present)}
+
+\item{models}{a list of lists of model + regulatoryRegion data.fames, default NA, in which case the list is found in object state data}
 }
 \value{
 A data.frame summarizing tfs by model type, by count (the number of models in which it appears) and rank in each model

@@ -30,7 +30,6 @@ test_trem2_fpdb <- function()
    genome <- "hg38"
    targetGene <- "TREM2"
 
-   sgm <- trenaSGM(genome, targetGene)
 
    chromosome <- "chr6"
    upstream <- 2000

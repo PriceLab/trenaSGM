@@ -3,7 +3,7 @@
 #' @import trena
 #' @import MotifDb
 #' @import RPostgreSQL
-
+#' @import GenomicRanges
 #' @import motifStack
 #'
 #' @name trenaSGM-class
@@ -22,7 +22,7 @@
 
 #------------------------------------------------------------------------------------------------------------------------
 setGeneric('calculate', signature='obj', function (obj, strategies) standardGeneric ('calculate'))
-setGeneric('summarizeModels', signature='obj', function (obj, orderBy, maxTFpredictors) standardGeneric ('summarizeModels'))
+setGeneric('summarizeModels', signature='obj', function (obj, orderBy, maxTFpredictors, models=NA) standardGeneric ('summarizeModels'))
 setGeneric('execute.footprint.strategy', signature='obj', function (obj, strategy) standardGeneric ('execute.footprint.strategy'))
 #------------------------------------------------------------------------------------------------------------------------
 #' Create a trenaSGM object
@@ -137,6 +137,7 @@ setMethod('execute.footprint.strategy', 'trenaSGM',
 #' @param obj An object of class trenaSGM
 #' @param orderBy a characters string, the name of the column in the standard trena model data.frame, typically pcaMax, rfScore, pearsonCoeff
 #' @param maxTFpredictors an integer, the number of tfs to extract from each model (when present)
+#' @param models a list of lists of model + regulatoryRegion data.fames, default NA, in which case the list is found in object state data
 #'
 #' @return A data.frame summarizing tfs by model type, by count (the number of models in which it appears) and rank in each model
 #'
@@ -182,9 +183,10 @@ setMethod('execute.footprint.strategy', 'trenaSGM',
 #' @export
 setMethod('summarizeModels', 'trenaSGM',
 
-   function(obj, orderBy, maxTFpredictors) {
+   function(obj, orderBy, maxTFpredictors, models=list()) {
 
-      models <- obj@state$models
+      if(length(models) == 0)
+         models <- obj@state$models
          #  collect the top tfs from each model
       top.tfs <- c()
       for(model in models){
@@ -202,8 +204,9 @@ setMethod('summarizeModels', 'trenaSGM',
          # build up an empty table
          #------------------------------------------------------------
 
-      strategies <- obj@state$strategies
-      model.names <- unlist(lapply(strategies, function(strategy) strategy$title), use.names=FALSE)
+      #strategies <- obj@state$strategies
+      #model.names <- unlist(lapply(strategies, function(strategy) strategy$title), use.names=FALSE)
+      model.names <- names(models)
       count <- length(top.tfs)
       empty.column <- rep(0, count)
       tbl <- data.frame(bogus.column=empty.column)
@@ -247,7 +250,7 @@ setMethod('summarizeModels', 'trenaSGM',
 #' @param source A character string, currently only (and defaulted to) "GO:DNAbindingTranscriptionFactorActivity"
 #'
 #' @export
-allKnownTFs <- function(ource="GO:DNAbindingTranscriptionFactorActivity")
+allKnownTFs <- function(source="GO:DNAbindingTranscriptionFactorActivity")
 {
     load(system.file(package="trenaSGM", "extdata", "tfCollections",
                     "GO_00037000_DNAbindingTranscriptionFactorActivityHuman.RData"))
