@@ -5,6 +5,13 @@ library(motifStack)
 #------------------------------------------------------------------------------------------------------------------------
 if(!exists("mtx"))
    load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
+
+genome <- "hg38"
+targetGene <- "TREM2"
+
+if(!exists("sgm"))
+   sgm <- trenaSGM(genome, targetGene)
+
 #------------------------------------------------------------------------------------------------------------------------
 runTests <- function()
 {
@@ -26,10 +33,6 @@ test_constructor <- function()
 test_trem2_fpdb <- function()
 {
    printf("--- test_trem2_fpdb")
-
-   genome <- "hg38"
-   targetGene <- "TREM2"
-
 
    chromosome <- "chr6"
    upstream <- 2000
@@ -58,6 +61,7 @@ test_trem2_fpdb <- function()
    build.spec.2$title <- "fp.2000up.200down.02"
    build.spec.2$tfPrefilterCorrelation=0.2
    build.spec.2$orderModelByColumn="pcaMax"
+   build.spec.2$tfMapping <- c("MotifDb", "TFClass")
 
    strategies <- list(one=build.spec, two=build.spec.2)
 
@@ -80,19 +84,14 @@ test_trem2_fpdb <- function()
 
       # now summarize the two models.
    tbl.summary <- summarizeModels(sgm, orderBy="rfScore", maxTFpredictors=6)
-   checkEquals(dim(tbl.summary), c(6, 4))
-   checkEquals(colnames(tbl.summary), c(build.spec$title, build.spec.2$title, "rank.sum", "observed"))
+   checkEquals(dim(tbl.summary), c(8, 4))
+   checkEquals(colnames(tbl.summary), c("one", "two", "rank.sum", "observed"))
 
 } # test_trem2_fpdb
 #------------------------------------------------------------------------------------------------------------------------
 test_summarizeModels <- function()
 {
    printf("--- test_summarizeModels")
-
-   genome <- "hg38"
-   targetGene <- "TREM2"
-
-   sgm <- trenaSGM(genome, targetGene)
 
    chromosome <- "chr6"
    upstream <- 2000
@@ -158,8 +157,7 @@ test_summarizeModels <- function()
    checkTrue(all(as.integer(apply(tbl.summary, 1, function(row) length(which(is.na(row))))) > 0))
       # two tfs not observed in the 0.4 abs(correlation) prefilter:
    checkEquals(ncol(tbl.summary), 6)
-   checkEquals(colnames(tbl.summary),
-               c(spec.1$title, spec.2$title, spec.3$title, spec.4$title, "rank.sum", "observed"))
+   checkEquals(colnames(tbl.summary), c("one", "two", "three", "four", "rank.sum", "observed"))
    checkTrue(nrow(tbl.summary) > 10)   # 17 on (23 may 2018)
 
 } # test_summarizeModels
