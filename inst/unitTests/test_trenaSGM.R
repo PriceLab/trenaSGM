@@ -3,8 +3,14 @@ library(trenaSGM)
 library(MotifDb)
 library(motifStack)
 #------------------------------------------------------------------------------------------------------------------------
-if(!exists("mtx"))
-   load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
+if(!exists("mtx")){
+   filename <- system.file(package="trenaSGM", "extdata", "mayo.tcx.RData")
+   if(!file.exists(filename))
+      filename <- file.path("../extdata", "mayo.tcx.RData")
+   stopifnot(file.exists(filename))
+   load(filename)
+   }
+
 
 genome <- "hg38"
 targetGene <- "TREM2"
