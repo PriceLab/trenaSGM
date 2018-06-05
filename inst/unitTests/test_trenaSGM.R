@@ -154,14 +154,15 @@ test_summarizeModels <- function()
                   solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
    strategies <- list(one=spec.1, two=spec.2, three=spec.3, four=spec.4)
-   #strategies <- list(four=spec.4)
 
    x <- calculate(sgm, strategies)
-   # start here.  it seems that the fourth model is empty
 
    tbl.summary <- summarizeModels(sgm, orderBy="rfScore", maxTFpredictors=8)
-      # no rows should be all NA
-   checkTrue(all(as.integer(apply(tbl.summary, 1, function(row) length(which(is.na(row))))) > 0))
+     # for a tf to be in the summary, it must appear in at least one model
+     # thus there should be a non-NA entry in the first four columns of each row
+     # (the fifth and sixth columns are counts, and will always be non-NA: so just
+     #  check the first four columns)
+   checkTrue(all(as.integer(apply(tbl.summary, 1, function(row) length(which(!is.na(row[1:4]))))) > 0))
       # two tfs not observed in the 0.4 abs(correlation) prefilter:
    checkEquals(ncol(tbl.summary), 6)
    checkEquals(colnames(tbl.summary), c("one", "two", "three", "four", "rank.sum", "observed"))
