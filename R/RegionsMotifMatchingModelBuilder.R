@@ -4,8 +4,6 @@
 #' @import MotifDb
 #' @import RPostgreSQL
 
-#' @import motifStack
-#'
 #' @name RegionsMotifMatchingModelBuilder-class
 #' @rdname RegionsMotifMatchingModelBuilder-class
 #' @exportClass RegionsMotifMatchingModelBuilder

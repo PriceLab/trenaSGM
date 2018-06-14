@@ -4,7 +4,6 @@
 #' @import MotifDb
 #' @import RPostgreSQL
 #' @import GenomicRanges
-#' @import motifStack
 #'
 #' @name trenaSGM-class
 #' @rdname trenaSGM-class
