@@ -6,9 +6,19 @@ library(FimoClient)
 if(!exists("mtx"))
    load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
 
+
+# fimo setup for these tests
+# cd ~/github/fimoService/server/
+# make -f makefile.unitTests
+#    PORT=5560
+#    FIMO="/Users/paul/meme/bin/fimo"
+#    MOTIFS="../pfms/trem2.curated.15.pfms.meme"
+#    start:
+#	python -i runServer.py $(PORT) $(FIMO) $(MOTIFS)
+
 if(!exists("fimo")){
    FIMO_HOST <- "localhost"
-   FIMO_PORT <- 5558
+   FIMO_PORT <- 5560
    fimo <-FimoClient(FIMO_HOST, FIMO_PORT, quiet=FALSE)
    }
 
@@ -16,7 +26,7 @@ if(!exists("fimo")){
 runTests <- function()
 {
    test_constructor()
-   test_build.trem2.2200bp.model()
+   test_build.trem2.400bp.motifDB.model()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -37,29 +47,29 @@ test_constructor <- function()
                       tss=tss,
                       regions=tbl.regions,
                       matrix=mtx,
-                      pfms=list()
+                      pfms=list(),
                       motifDiscovery="fimo",
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
-   builder <- RegionsFimoModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
+   builder <- RegionsFimoModelBuilder(genome, targetGene,  build.spec, fimo, quiet=TRUE)
 
-   checkTrue("RegionsMotifMatchingModelBuilder" %in% is(builder))
+   checkTrue("RegionsFimoModelBuilder" %in% is(builder))
 
 } # test_constructor
 #------------------------------------------------------------------------------------------------------------------------
-test_build.trem2.2200bp.motifDB.model <- function()
+test_build.trem2.400bp.motifDB.model <- function()
 {
-   printf("--- test_build.trem2.2200bp.motifDb.model")
+   printf("--- test_build.trem2.400bp.motifDb.model")
 
    genome <- "hg38"
    targetGene <- "TREM2"
    chromosome <- "chr6"
    tss <- 41163186
       # strand-aware start and end: trem2 is on the minus strand
-   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
+   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+200, stringsAsFactors=FALSE)
 
    build.spec <- list(title="trem2.rmm.2000up.200down",
                       type="regions.motifMatching",
@@ -67,269 +77,75 @@ test_build.trem2.2200bp.motifDB.model <- function()
                       regions=tbl.regions,
                       matrix=mtx,
                       pfms=query(MotifDb, "sapiens", "jaspar2018"),
-                      matchThreshold=90,
-                      motifDiscovery="matchPWM",
+                      matchThreshold=1e-4,
+                      motifDiscovery="fimo",
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
-   builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
+   builder <- RegionsFimoModelBuilder(genome, targetGene,  build.spec, fimo, quiet=TRUE)
    x <- build(builder)
    checkEquals(names(x), c("model", "regulatoryRegions"))
    tbl.regRegions <- x$regulatoryRegions
    tbl.model <- x$model
-   expected.tfs <- sort(c("SPI1", "STAT3", "RUNX1", "NFATC2", "FLI1"))
-   checkEquals(sort(tbl.model$gene), expected.tfs)
+   expected.tfs <- c("IKZF1", "CEBPA", "ELK3", "TAL1")
+   checkEquals(sort(tbl.model$gene), sort(expected.tfs))
    checkTrue(all(expected.tfs %in% tbl.regRegions$geneSymbol))
    checkTrue(all(tbl.regRegions$chrom == chromosome))
    checkTrue(all(tbl.regRegions$fmotifStart >= min(tbl.regions$start)))
    checkTrue(all(tbl.regRegions$motifEnd <= max(tbl.regions$end)))
 
-} # test_build.trem2.2200bp.motifDB.model
+} # test_build.trem2.400bp.motifDB.model
 #------------------------------------------------------------------------------------------------------------------------
-test_build.trem2.2200bp.TFClass.model <- function()
+test_build.trem2.twoRegions.motifDB.model <- function()
 {
-   printf("--- test_build.trem2.2200bp.TFClass.model")
+   printf("--- test_build.trem2.twoRegions.motifDb.model")
 
    genome <- "hg38"
    targetGene <- "TREM2"
    chromosome <- "chr6"
    tss <- 41163186
       # strand-aware start and end: trem2 is on the minus strand
-   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
+   tbl.regions <- data.frame(chrom=rep(chromosome, 2),
+                             start=c(tss-5000, tss),
+                             end=c(tss, tss+5000),
+                             stringsAsFactors=FALSE)
 
-   build.spec <- list(title="trem2.rmm.2000up.200down",
+   build.spec <- list(title="trem2.fimo.5kup.5kdown",
                       type="regions.motifMatching",
                       tss=tss,
                       regions=tbl.regions,
                       matrix=mtx,
                       pfms=query(MotifDb, "sapiens", "jaspar2018"),
-                      matchThreshold=90,
-                      motifDiscovery="matchPWM",
-                      tfMapping="TFClass",
+                      matchThreshold=1e-4,
+                      motifDiscovery="fimo",
+                      tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
-
-   builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
+   builder <- RegionsFimoModelBuilder(genome, targetGene,  build.spec, fimo, quiet=TRUE)
    x <- build(builder)
    checkEquals(names(x), c("model", "regulatoryRegions"))
    tbl.regRegions <- x$regulatoryRegions
    tbl.model <- x$model
-   expected.top.tfs <- sort(c("LYL1", "TFEC", "NFATC2", "TAL1", "ELK3"))
-   checkEquals(sort(tbl.model$gene[1:5]), expected.top.tfs)
-   checkTrue(all(expected.top.tfs %in% tbl.regRegions$geneSymbol))
+   expected.tfs <- c("IKZF1", "IRF5", "TFEC", "CEBPA", "IRF8", "NFATC2", "ELK3", "TAL1", "FOXP1")
+   checkEquals(sort(tbl.model$gene), sort(expected.tfs))
+   checkTrue(all(expected.tfs %in% tbl.regRegions$geneSymbol))
    checkTrue(all(tbl.regRegions$chrom == chromosome))
    checkTrue(all(tbl.regRegions$fmotifStart >= min(tbl.regions$start)))
    checkTrue(all(tbl.regRegions$motifEnd <= max(tbl.regions$end)))
 
-} # test_build.trem2.2200bp.TFClass.model
-#------------------------------------------------------------------------------------------------------------------------
-test_build.trem2.2200bp.TFClass.and.MotifDb.model <- function()
-{
-   printf("--- test_build.trem2.2200bp.TFClass.and.MotifDbmodel")
+   # now make sure that there are motif hits in BOTH of the two, non-overlapping
+   # regions in tbl.regions
+   region.1.count <- nrow(subset(tbl.regRegions, start >=  tss-5000 & stop <= tss))
+   region.2.count <- nrow(subset(tbl.regRegions, start >=  tss & stop <= tss + 5000))
+   checkTrue(region.1.count > 0)
+   checkTrue(region.2.count > 0)
+   checkEquals(region.1.count + region.2.count, nrow(tbl.regRegions))
 
-   genome <- "hg38"
-   targetGene <- "TREM2"
-   chromosome <- "chr6"
-   tss <- 41163186
-      # strand-aware start and end: trem2 is on the minus strand
-   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
-
-   build.spec <- list(title="trem2.rmm.2000up.200down",
-                      type="regions.motifMatching",
-                      tss=tss,
-                      regions=tbl.regions,
-                      matrix=mtx,
-                      pfms=query(MotifDb, "sapiens", "jaspar2018"),
-                      matchThreshold=90,
-                      motifDiscovery="matchPWM",
-                      tfMapping=c("MotifDb", "TFClass"),
-                      tfPrefilterCorrelation=0.4,
-                      orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
-
-
-   builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
-   x <- build(builder)
-   checkEquals(names(x), c("model", "regulatoryRegions"))
-   tbl.regRegions <- x$regulatoryRegions
-   tbl.model <- x$model
-   expected.top.tfs <- sort(c("LYL1", "SPI1", "TFEC", "NFATC2", "TAL1"))
-   checkEquals(sort(tbl.model$gene[1:5]), expected.top.tfs)
-   checkTrue(all(expected.top.tfs %in% tbl.regRegions$geneSymbol))
-   checkTrue(all(tbl.regRegions$chrom == chromosome))
-   checkTrue(all(tbl.regRegions$fmotifStart >= min(tbl.regions$start)))
-   checkTrue(all(tbl.regRegions$motifEnd <= max(tbl.regions$end)))
-
-} # test_build.trem2.2200bp.TFClass.and.MotifDb.model
-#------------------------------------------------------------------------------------------------------------------------
-# with my historical preference for jaspar2018, the crucial tf of TREM2, IKZF1, is missed: only HOCOMOCO
-# and SwissRegulon report a motif for it.  this test demonstrates the solution, and thus the importance of
-# motif sources other than MotifDb
-test_IKZF1 <- function()
-{
-   printf("--- test_IKZF1")
-   genome <- "hg38"
-   targetGene <- "TREM2"
-   chromosome <- "chr6"
-   tss <- 41163186
-      # strand-aware start and end: trem2 is on the minus strand
-   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
-
-   build.spec <- list(title="trem2.2000up.200down-find.ikzf1",
-                      type="regions.motifMatching",
-                      tss=tss,
-                      regions=tbl.regions,
-                      matrix=mtx,
-                      pfms=query(MotifDb, andStrings="sapiens", orString=c("jaspar2018", "hocomoco")),
-                      matchThreshold=90,
-                      motifDiscovery="matchPWM",
-                      tfMapping=c("MotifDb", "TFClass"),
-                      tfPrefilterCorrelation=0.4,
-                      orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
-
-   builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
-   x <- build(builder)
-   checkEquals(names(x), c("model", "regulatoryRegions"))
-   tbl.regRegions <- x$regulatoryRegions
-   tbl.model <- x$model
-   expected.top.tfs <- sort(c("IKZF1", "LYL1", "SPI1", "TFEC", "NFATC2", "TAL1"))
-   checkEquals(sort(tbl.model$gene[1:6]), expected.top.tfs)
-   checkTrue(all(expected.top.tfs %in% tbl.regRegions$geneSymbol))
-   checkTrue(all(tbl.regRegions$chrom == chromosome))
-   checkTrue(all(tbl.regRegions$fmotifStart >= min(tbl.regions$start)))
-   checkTrue(all(tbl.regRegions$motifEnd <= max(tbl.regions$end)))
-
-} # test_IKZF1
-#------------------------------------------------------------------------------------------------------------------------
-# irf5 matches (about 4kb upstream of tss) only two older motifs, and then only at 82%
-# show that here
-test_IRF5 <- function()
-{
-   printf("--- test_IRF5")
-   genome <- "hg38"
-   targetGene <- "TREM2"
-   chromosome <- "chr6"
-   tss <- 41163186
-      # strand-aware start and end: trem2 is on the minus strand
-   tbl.regions <- data.frame(chrom=chromosome, start=tss-5000, end=tss+5000, stringsAsFactors=FALSE)
-
-   build.spec <- list(title="trem2.2000up.200down-find.irf5",
-                      type="regions.motifMatching",
-                      tss=tss,
-                      regions=tbl.regions,
-                      matrix=mtx,
-                      pfms=query(MotifDb, andStrings=c("sapiens", "irf5")),
-                      matchThreshold=80,
-                      motifDiscovery="matchPWM",
-                      tfMapping=c("MotifDb", "TFClass"),
-                      tfPrefilterCorrelation=0.4,
-                      orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
-
-   builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
-   suppressWarnings(x <- build(builder))
-   checkEquals(names(x), c("model", "regulatoryRegions"))
-   tbl.regRegions <- x$regulatoryRegions
-   tbl.model <- x$model
-   checkEquals(tbl.model$gene[1], "IRF5")    # just one tf, IRF5
-   checkTrue(all(tbl.regRegions$chrom == chromosome))
-   checkTrue(all(tbl.regRegions$fmotifStart >= min(tbl.regions$start)))
-   checkTrue(all(tbl.regRegions$motifEnd <= max(tbl.regions$end)))
-
-} # test_IRF5
-#------------------------------------------------------------------------------------------------------------------------
-# fails to make it into a standard regions model unless pwm match threshold is dropped to 84.
-# however, looking at the sequence of the 84.4% match,  chr6:41158763-41158772, it looks like
-# a strong pwm/sequence match to me, perfect until base 9/10, where [AC] is actually a T
-#  showGeomicRegion(igv, "chr6:41,158,763-41,158,772")
-#  x <- query(MotifDb, andStrings=c("sapiens", "jaspar", "bhlhe41"))
-#  motifStack(lapply(names(x), function(mName) new("pfm", x[[mName]], name=mName)))
-test_BHLHE41 <- function()
-{
-   printf("--- test_BHLHE41")
-   genome <- "hg38"
-   targetGene <- "TREM2"
-   chromosome <- "chr6"
-   tss <- 41163186
-      # strand-aware start and end: trem2 is on the minus strand
-   tbl.regions <- data.frame(chrom=chromosome, start=tss-5000, end=tss+5000, stringsAsFactors=FALSE)
-
-   build.spec <- list(title="trem2.2000up.200down-find.bhlhe41",
-                      type="regions.motifMatching",
-                      tss=tss,
-                      regions=tbl.regions,
-                      matrix=mtx,
-                      pfms=query(MotifDb, andStrings=c("sapiens", "jaspar2018", "bhlhe41")),
-                      matchThreshold=80,
-                      motifDiscovery="matchPWM",
-                      tfMapping=c("MotifDb", "TFClass"),
-                      tfPrefilterCorrelation=0.4,
-                      orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
-
-   builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
-   suppressWarnings(x <- build(builder))
-   checkEquals(names(x), c("model", "regulatoryRegions"))
-   tbl.regRegions <- x$regulatoryRegions
-   tbl.model <- x$model
-   checkEquals(tbl.model$gene[1], "BHLHE41")    # just one tf, BHLHE41
-   checkTrue(all(tbl.regRegions$chrom == chromosome))
-   checkTrue(all(tbl.regRegions$fmotifStart >= min(tbl.regions$start)))
-   checkTrue(all(tbl.regRegions$motifEnd <= max(tbl.regions$end)))
-
-   checkTrue(all(tbl.regRegions$motifRelativeScore > 0.81))
-   checkTrue(all(tbl.regRegions$motifRelativeScore < 0.85))
-   checkTrue(tbl.model$pearsonCoeff[1] > 0.6)
-
-} # test_BHLHE41
-#------------------------------------------------------------------------------------------------------------------------
-# 105 seconds to run
-# how closely can we recreate cory's footprint/fimo database TREM2 model?
-test_build.trem2.enhancers.TFClass.and.MotifDb.model <- function()
-{
-   printf("--- test_build.trem2.enhancers.TFClass.and.MotifDb.model")
-   load(system.file(package="trenaSGM", "extdata", "enhancers.v47.TREM2.RData"))
-
-   genome <- "hg38"
-   targetGene <- "TREM2"
-   chromosome <- "chr6"
-   tss <- 41163186
-
-   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
-   tbl.regions$width <- with(tbl.regions, 1 + end - start)
-   tbl.regionsCombined <- rbind(tbl.regions, tbl.enhancers)
-
-   build.spec <- list(title="trem2.rmm.2000up.200down",
-                      type="regions.motifMatching",
-                      tss=tss,
-                      regions=tbl.regionsCombined,
-                      matrix=mtx,
-                      pfms=query(MotifDb, andStrings="sapiens", orString=c("jaspar2018", "hocomoco")),
-                      matchThreshold=90,
-                      motifDiscovery="matchPWM",
-                      tfMapping=c("MotifDb", "TFClass"),
-                      tfPrefilterCorrelation=0.4,
-                      orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
-
-   builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
-   x <- build(builder)
-   checkEquals(names(x), c("model", "regulatoryRegions"))
-   tbl.regRegions <- x$regulatoryRegions
-   tbl.model <- x$model
-
-   corys.tfs <-  c("IRF5", "IKZF1", "LYL1", "SPI1", "CEBPA", "TFEC", "BHLHE41", "IRF8", "TAL1",
-                   "BACH1", "NR6A1", "FOXP1", "RUNX1", "NR1I3", "MAFB", "HHEX", "ELK3", "POU2F2",
-                   "MAF", "ZBTB18")
-   checkEquals(length(intersect(tbl.model$gene[1:10], corys.tfs[1:10])), 8)
-   checkEquals(setdiff(corys.tfs[1:10], tbl.model$gene[1:10]), c("IRF5", "BHLHE41"))
-
-} # test_build.trem2.enhancers.TFClass.and.MotifDb.model
+} # test_build.trem2.twoRegions.motifDB.model
 #------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()
