@@ -125,7 +125,6 @@ setMethod('build', 'RegionsFimoModelBuilder',
         tbl.fimo <- requestMatch(obj@fimo, seq.list)
         tbl.fimo.filtered <- subset(tbl.fimo, p.value <= obj@strategy$matchThreshold)
         if(nrow(tbl.fimo.filtered) > 0){
-           browser()
            tbl.fimo.filtered$start <- tbl.fimo.filtered$start + tbl.regions$start[r]
            tbl.fimo.filtered$stop <- tbl.fimo.filtered$stop + tbl.regions$start[r]
            tbl.fimo.filtered$chrom <- tbl.regions$chrom[r]
