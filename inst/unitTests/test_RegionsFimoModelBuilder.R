@@ -27,6 +27,7 @@ runTests <- function()
 {
    test_constructor()
    test_build.trem2.400bp.motifDB.model()
+   test_build.trem2.twoRegions.motifDB.model()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
