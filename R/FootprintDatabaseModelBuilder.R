@@ -4,8 +4,6 @@
 #' @import MotifDb
 #' @import RPostgreSQL
 
-#' @import motifStack
-#'
 #' @name FootprintDatabaseModelBuilder-class
 #' @rdname FootprintDatabaseModelBuilder-class
 #' @exportClass FootprintDatabaseModelBuilder
@@ -116,10 +114,11 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
       if(obj@strategy$motifDiscovery == "builtinFimo"){
          tbl.fp$motifName <- tbl.fp$name
          mapper <- tolower(obj@strategy$tfMapping)
-         stopifnot(mapper %in% c("motifdb", "tfclass"))
+         stopifnot(all(mapper %in% c("motifdb", "tfclass")))
          tbl.fp <- associateTranscriptionFactors(MotifDb, tbl.fp, source=obj@strategy$tfMapping, expand.rows=TRUE)
 
          s <- obj@strategy
+         xyz <- "FootprintDatabaseModelBuilder, build"
          tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
                                                 allKnownTFs(),   # from ModelBuilder base class
                                                 obj@targetGene,

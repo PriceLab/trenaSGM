@@ -3,34 +3,39 @@
 #' @import trena
 #' @import MotifDb
 #' @import RPostgreSQL
+##  @importFrom FimoClient FimoClientClass
+#' @import FimoClient
 
-#' @name RegionsMotifMatchingModelBuilder-class
-#' @rdname RegionsMotifMatchingModelBuilder-class
-#' @exportClass RegionsMotifMatchingModelBuilder
+#' @name RegionsFimoModelBuilder-class
+#' @rdname RegionsFimoModelBuilder-class
+#' @exportClass RegionsFimoModelBuilder
 
-.RegionsMotifMatchingModelBuilder <- setClass("RegionsMotifMatchingModelBuilder", contains="ModelBuilder")
+.RegionsFimoModelBuilder <- setClass("RegionsFimoModelBuilder",
+                                     contains="ModelBuilder",
+                                     slots=c(fimo="FimoClientClass")
+                                     )
 
 #------------------------------------------------------------------------------------------------------------------------
-#' Create a RegionsMotifMatchingModelBuilder object
+#' Create a RegionsFimoModelBuilder object
 #'
 #' @description
 #' tell us what we need to know
 #'
-#' @rdname RegionsMotifMatchingModelBuilder-class
+#' @rdname RegionsFimoModelBuilder-class
 #'
 #' @param genomeName hg38, mm10, ...
 #' @param targetGene in same vocabulary as rownames in the expression matrix
 #' @param quiet do or do not print progress information
+#' @param fimoClient a live connection to a FimoServer
 #'
-#' @return An object of the RegionsMotifMatchingModelBuilder class
-#'
+#' @return An object of the RegionsFimoModelBuilder class
 #'
 #' @examples
 #' if(interactive()){
 #'
 #'   load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
 #'   spec <- list(title="2000up.200down.rmm",
-#'                type="regions.motifMatching",
+#'                type="regions.fimo",
 #'                tss=41163186,
 #'                regions=data.frame(chrom="chr6", start=41162986, end=41165186, stringsAsFactors=FALSE)
 #'                matrix=mtx,
@@ -38,12 +43,12 @@
 #'                matchThreshold=90,
 #'                tfMapping=list("MotifDB"),
 #'                tfPrefilterCorrelation=0.2)
-#'   rmmBuilder <- RegionsMotifMatchingModelBuilder("hg38", "TREM2", spec)
+#'   rmmBuilder <- RegionsFimoModelBuilder("hg38", "TREM2", spec)
 #'   build(rmmBuilder)
 #'   }
 #'
 #' @export
-RegionsMotifMatchingModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
+RegionsFimoModelBuilder <- function(genomeName, targetGene, strategy, fimoClient, quiet=TRUE)
 {
    required.strategy.fields <- c("title", "type", "regions", "tss", "matrix", "motifDiscovery",
                                  "tfMapping", "tfPrefilterCorrelation", "orderModelByColumn", "solverNames")
@@ -52,27 +57,28 @@ RegionsMotifMatchingModelBuilder <- function(genomeName, targetGene, strategy, q
       if(!field %in% names(strategy))
          stop(sprintf("missing '%s' field in strategy", field))
 
-   obj <- .RegionsMotifMatchingModelBuilder(ModelBuilder(genomeName=genomeName,
-                                                         targetGene=targetGene,
-                                                         strategy=strategy,
-                                                         quiet=quiet))
+   obj <- .RegionsFimoModelBuilder(ModelBuilder(genomeName=genomeName,
+                                                targetGene=targetGene,
+                                                strategy=strategy,
+                                                quiet=quiet),
+                                   fimo=fimoClient)
 
    obj
 
-} # RegionsMotifMatchingModelBuilder
+} # RegionsFimoModelBuilder
 #------------------------------------------------------------------------------------------------------------------------
 #' summarize the attributes specifying the creation of a trena gene regulatory model
 #'
 #' @rdname show
 #' @aliases show
 #'
-#' @param obj An object of class RegionsMotifMatchingModelBuilder
+#' @param obj An object of class RegionsFimoModelBuilder
 #'
 #' @export
-setMethod('show', 'RegionsMotifMatchingModelBuilder',
+setMethod('show', 'RegionsFimoModelBuilder',
 
     function(object) {
-      msg = sprintf("RegionsMotifMatchingModelBuilder object named '%s'", object@strategy$title)
+      msg = sprintf("RegionsFimoModelBuilder object named '%s'", object@strategy$title)
       cat (msg, '\n', sep='')
       })
 
@@ -82,7 +88,7 @@ setMethod('show', 'RegionsMotifMatchingModelBuilder',
 #' @rdname build
 #' @aliases build
 #'
-#' @param obj An object of class RegionsMotifMatchingModelBuilder
+#' @param obj An object of class RegionsFimoModelBuilder
 #' @param strategy a list specifying all the options to build one or more models
 #'
 #' @return A list with a bunch of tables...
@@ -101,38 +107,39 @@ setMethod('show', 'RegionsMotifMatchingModelBuilder',
 #'                    motifDiscovery="builtinFimo",
 #'                    tfMapping=list("TFClass", "MotifDB"),
 #'                    tfPrefilterCorrelation=0.2)
-#'   fpBuilder <- RegionsMotifMatchingModelBuilder("hg38", "TREM2", fp.specs, quiet=TRUE)
+#'   fpBuilder <- RegionsFimoModelBuilder("hg38", "TREM2", fp.specs, quiet=TRUE)
 #'   load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
 #'   build(fpBuilder, mtx)
 #'   }
 #'
 #' @export
-setMethod('build', 'RegionsMotifMatchingModelBuilder',
+setMethod('build', 'RegionsFimoModelBuilder',
 
    function (obj) {
-      mm <- MotifMatcher(obj@genomeName, as.list(obj@strategy$pfms))
+      mm <- MotifMatcher(obj@genomeName, list())
       tbl.regions <- obj@strategy$regions
-      tbl.motifs <- findMatchesByChromosomalRegion(mm,
-                                                   tbl.regions,
-                                                   pwmMatchMinimumAsPercentage=obj@strategy$matchThreshold)
-      if(nrow(tbl.motifs) == 0){
-         warning(sprintf("failure modeling %s: no motifs found in region for %d pfms",
-                          obj@targetGene, length(obj@strategy$pfms)))
-         return(list(model=data.frame, regulatoryRegions=data.frame()))
-         }
-      mappers <- tolower(obj@strategy$tfMapping)
-      stopifnot(all(mappers %in% c("motifdb", "tfclass")))
-
-      tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source=obj@strategy$tfMapping, expand.rows=TRUE)
-
-      s <- obj@strategy
+      tbl.motifs <- data.frame()
+      for(r in seq_len(nrow(tbl.regions))){
+        tbl.seq <- getSequence(mm, tbl.regions[r,])
+        seq.list <- list(tbl.seq$seq)
+        tbl.fimo <- requestMatch(obj@fimo, seq.list)
+        tbl.fimo.filtered <- subset(tbl.fimo, p.value <= obj@strategy$matchThreshold)
+        if(nrow(tbl.fimo.filtered) > 0){
+           tbl.fimo.filtered$start <- tbl.fimo.filtered$start + tbl.regions$start[r]
+           tbl.fimo.filtered$stop <- tbl.fimo.filtered$stop + tbl.regions$start[r]
+           tbl.fimo.filtered$chrom <- tbl.regions$chrom[r]
+           tbl.motifs <- rbind(tbl.motifs, tbl.fimo.filtered)
+           } # if filtered
+        } # for nrow(tbl(regions
+      tfs <- mcols(MotifDb[tbl.motifs$motif])$geneSymbol
+      tbl.motifs$geneSymbol <- tfs
       tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
                                              allKnownTFs(),    # from trenaSGM
                                              obj@targetGene,
-                                             tbl.motifs.mapped,
-                                             s$matrix,
-                                             s$tfPrefilterCorrelation,
-                                             s$solverNames,
+                                             tbl.motifs,
+                                             obj@strategy$matrix,
+                                             obj@strategy$tfPrefilterCorrelation,
+                                             obj@strategy$solverNames,
                                              obj@quiet)
 
       tbl.model <- tbls$model

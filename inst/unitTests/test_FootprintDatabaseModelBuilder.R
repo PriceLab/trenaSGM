@@ -26,6 +26,7 @@ runTests <- function()
    test_build.10kb.fimo.motifDB.mapping.cor04()
    test_build.10kb.fimo.tfclass.mapping.cor04()
    test_reproduceCorysTrem2model()
+   test_lyl1()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -80,7 +81,7 @@ test_build.small.fimo.motifDB.mapping.cor04 <- function()
    tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
 
    build.spec <- list(title="fp.2000up.200down",
-                      type="database.footprints",
+                      type="footprint.database",
                       #chrom=chromosome,
                       #start=start,
                       #end=end,
@@ -188,7 +189,7 @@ test_build.small.fimo.motifDB.mapping.cor.02 <- function()
    tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
 
    build.spec <- list(title="fp.2000up.200down",
-                      type="database.footprints",
+                      type="footprint.database",
                       regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
@@ -225,7 +226,7 @@ test_build.10kb.fimo.motifDB.mapping.cor04 <- function()
    tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
 
    build.spec <- list(title="fp.5kbup.5kbdown",
-                      type="database.footprints",
+                      type="footprint.database",
                       regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
@@ -267,7 +268,7 @@ test_build.10kb.fimo.tfclass.mapping.cor04 <- function()
    tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
 
    build.spec <- list(title="fp.5kbup.5kbdown",
-                      type="database.footprints",
+                      type="footprint.database",
                       regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
@@ -306,7 +307,7 @@ test_reproduceCorysTrem2model <- function()
    load(system.file(package="trenaSGM", "extdata", "enhancers.TREM2.RData"))
 
    build.spec <- list(title="fp.enhancers",
-                      type="database.footprints",
+                      type="footprint.database",
                       regions=tbl.enhancers,
                       tss=tss,
                       matrix=mtx,
@@ -325,6 +326,7 @@ test_reproduceCorysTrem2model <- function()
    checkTrue(nrow(tbl.model) > 20)
    top.tfs <- subset(tbl.model, rfScore >= 4)$gene
    checkTrue(all(top.tfs %in% tbl.regions$geneSymbol))
+   checkTrue(all(c("IKZF1", "IRF5", "LYL1", "SPI1") %in% top.tfs))
 
       # now compare to cory's previous model, which has been designated the reference
    top.tfs.bothModels <- intersect(rownames(subset(tbl.trena, pearsonCoeff >= 0.4))[1:10], tbl.model$gene[1:10])
@@ -435,6 +437,99 @@ find.tf.bindingSites <- function(tf)
 
 
 } # find.tf.bindingSites
+#------------------------------------------------------------------------------------------------------------------------
+# very confusing absence of LYL1 from trenaShinyApps trem2 models.  this function explores the
+# problem, reproducing it for 2200 bp promoter (no LYL1 binding sites there) but
+#
+explore_missing.lyl1 <- function()
+{
+   printf("--- explore_missing.lyl1")
+   tss <- 41163186
+      # strand-aware start and end: trem2 is on the minus strand
+   print(load(system.file(package="trenaSGM", "extdata", "enhancers.TREM2.RData")))
+
+   build.spec <- list(title="fp.enhancers",
+                      type="footprint.database",
+                      regions=tbl.enhancers,
+                      tss=tss,
+                      matrix=mtx,
+                      db.host="khaleesi.systemsbiology.net",
+                      databases=c("brain_hint_20"),  #"brain_hint_16", "brain_wellington_20", "brain_wellington_16"),
+                      motifDiscovery="builtinFimo",
+                      tfMapping=c("TFClass", "MotifDb"),
+                      tfPrefilterCorrelation=0.4,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=FALSE)
+   x <- build(fpBuilder)
+
+   tbl.reg <- x$regulatoryRegions
+   tbl.model <- x$model
+
+   if(!exists(igv)){
+      library(igvR)
+      igv <- igvR()
+      Sys.sleep(3)
+      setGenome(igv, "hg38")
+      Sys.sleep(3)
+      showGenomicRegion(igv, "TREM2")
+      }
+
+   track <- DataFrameAnnotationTrack("enhancers", tbl.enhancers, color="blue")
+   displayTrack(igv, track)
+
+
+   tbl.lyl1 <- subset(tbl.regions, geneSymbol=="LYL1")[, c("chrom", "fp_start", "fp_end")]
+   track <- DataFrameAnnotationTrack("tbl.regions lyl1", tbl.lyl1, color="green")
+   displayTrack(igv, track)
+
+   tbl.singleEnhancer.lyl1motifs <- subset(tbl.enhancers, start > 41161174 & end < 41162986)
+   track <- DataFrameAnnotationTrack("e1.lyl1", tbl.singleEnhancer.lyl1motifs, color="orange")
+   displayTrack(igv, track)
+
+   build.spec <- list(title="fp.enhancers",
+                      type="footprint.database",
+                      regions=tbl.singleEnhancer.lyl1motifs,
+                      tss=tss,
+                      matrix=mtx,
+                      db.host="khaleesi.systemsbiology.net",
+                      databases=c("brain_hint_20"),  #"brain_hint_16", "brain_wellington_20", "brain_wellington_16"),
+                      motifDiscovery="builtinFimo",
+                      tfMapping=c("TFClass", "MotifDb"),
+                      tfPrefilterCorrelation=0.4,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=FALSE)
+   x <- build(fpBuilder)
+
+   tbl.reg <- x$regulatoryRegions
+   tbl.model <- x$model
+
+
+   build.spec <- list(title="fp.enhancers",
+                      type="footprint.database",
+                      regions=data.frame(chrom="chr6", start=tss-5000, end=tss+5000),
+                      tss=tss,
+                      matrix=mtx,
+                      db.host="khaleesi.systemsbiology.net",
+                      databases=c("brain_hint_20", "brain_hint_16", "brain_wellington_20", "brain_wellington_16"),
+                      motifDiscovery="builtinFimo",
+                      tfMapping=c("TFClass", "MotifDb"),
+                      tfPrefilterCorrelation=0.4,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=FALSE)
+   x <- build(fpBuilder)
+
+   tbl.reg <- x$regulatoryRegions
+   tbl.model <- x$model
+   checkTrue("LYL1" %in% tbl.model$gene)
+
+
+} # test_lyl1
 #------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()

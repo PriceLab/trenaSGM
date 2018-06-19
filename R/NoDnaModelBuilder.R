@@ -4,8 +4,6 @@
 #' @import MotifDb
 #' @import RPostgreSQL
 
-#' @import motifStack
-#'
 #' @name NoDnaModelBuilder-class
 #' @rdname NoDnaModelBuilder-class
 #' @exportClass NoDnaModelBuilder
