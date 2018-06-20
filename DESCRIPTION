@@ -1,7 +1,7 @@
 Package: trenaSGM
 Type: Package
 Title: trenaSGM: trena single gene model
-Version: 0.99.24
+Version: 0.99.25
 Date: 2018-06-20
 Author: Paul Shannon
 Maintainer: Paul Shannon <paul.thurmond.shannon@gmail.com>
@@ -17,7 +17,6 @@ Collate:
   'ModelBuilder.R'
   'FootprintDatabaseModelBuilder.R'
   'RegionsMotifMatchingModelBuilder.R'
-  'RegionsFimoModelBuilder.R'
   'NoDnaModelBuilder.R'
   'trenaSGM.R'
 Packaged: 2018-03-22 20:02:10 UTC; paul
