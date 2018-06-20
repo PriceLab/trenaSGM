@@ -4,10 +4,13 @@
 \alias{allKnownTFs}
 \title{specify the universe of recognized transcription factor gene symbols}
 \usage{
-allKnownTFs(source = "GO:DNAbindingTranscriptionFactorActivity")
+allKnownTFs(source = "GO:DNAbindingTranscriptionFactorActivity",
+  identifierType = "geneSymbol")
 }
 \arguments{
 \item{source}{A character string, currently only (and defaulted to) "GO:DNAbindingTranscriptionFactorActivity"}
+
+\item{identifierType}{A string, one of "geneSymbol" (the default), "entrezGeneID", "ensemblGeneID"}
 
 \item{obj}{An object of class ModelBuilder, or any subclass}
 }

@@ -27,6 +27,7 @@ test_constructor <- function()
                       type="noDNA.tfsSupplied",
                       tfs=c("HLF", "STAT4", "SATB2", "SATB1", "TSHZ3", "TSHZ2", "FOXP2"),
                       matrix=mtx,
+                      tfPool=allKnownTFs(),
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
@@ -51,6 +52,7 @@ test_build.trem2.noDNA.13.known.TFs <- function()
    build.spec <- list(title="trem2.noDNA.allTFs",
                       type="noDNA.tfsSupplied",
                       matrix=mtx,
+                      tfPool=allKnownTFs(),
                       tfs=candidate.tfs,
                       tfPrefilterCorrelation=0.2,
                       orderModelByColumn="rfScore",
@@ -93,6 +95,7 @@ test_build.trem2.noDNA.all.known.TFs <- function()
    build.spec <- list(title="trem2.noDNA.allTFs",
                       type="noDNA.tfsSupplied",
                       matrix=mtx,
+                      tfPool=allKnownTFs(),
                       tfs=candidate.tfs,
                       tfPrefilterCorrelation=0.7,
                       orderModelByColumn="pearsonCoeff",

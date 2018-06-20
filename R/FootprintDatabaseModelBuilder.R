@@ -47,7 +47,8 @@
 FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 {
    required.strategy.fields <- c("title", "type", "regions", "tss", "matrix", "db.host", "databases", "motifDiscovery",
-                                 "tfMapping", "tfPrefilterCorrelation", "orderModelByColumn", "solverNames")
+                                 "tfMapping", "tfPool", "tfPrefilterCorrelation", "orderModelByColumn", "solverNames")
+
    for(field in required.strategy.fields)
       if(!field %in% names(strategy))
          stop(sprintf("missing '%s' field in strategy", field))
@@ -120,7 +121,7 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
          s <- obj@strategy
          xyz <- "FootprintDatabaseModelBuilder, build"
          tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
-                                                allKnownTFs(),   # from ModelBuilder base class
+                                                s$tfPool,
                                                 obj@targetGene,
                                                 tbl.fp,
                                                 s$matrix,

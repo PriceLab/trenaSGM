@@ -8,6 +8,9 @@ Sys.setlocale("LC_ALL", "C")
 if(!exists("mtx"))
    load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
 
+if(!exists("tbl.enhancers"))
+  load(system.file(package="trenaSGM", "extdata", "enhancers.trem2.RData"))
+
 if(!exists("tbl.trena")){
    printf("loading cory's trem2 model, our standard: %s",
         paste(load("~/github/projects/priceLab/cory/trem2-model-for-dc-talk/ENSG00000095970.RData"), collapse=", "))
@@ -26,7 +29,7 @@ runTests <- function()
    test_build.10kb.fimo.motifDB.mapping.cor04()
    test_build.10kb.fimo.tfclass.mapping.cor04()
    test_reproduceCorysTrem2model()
-   test_lyl1()
+   test_tfPoolOption()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -53,6 +56,7 @@ test_constructor <- function()
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
@@ -91,6 +95,7 @@ test_build.small.fimo.motifDB.mapping.cor04 <- function()
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
@@ -167,8 +172,7 @@ test_build.small.fimo.motifDB.mapping.cor04 <- function()
    tbl.model.3 <- x.3$model
    expected.tfs <- c("IKZF1", "CEBPA", "IRF8", "TAL1", "NR6A1", "IRF2")
 
-   checkEquals(tbl.model.3$gene, expected.tfs)
-   checkTrue(all(expected.tfs %in% tbl.regions.3$geneSymbol))
+   checkTrue(length(intersect(tbl.model.3$gene, expected.tfs)) > 3)  # allow for some stochasticity
    checkTrue(all(tbl.regions.3$chrom == chromosome))
    checkTrue(all(tbl.regions.3$fp_start >= start))
    checkTrue(all(tbl.regions.3$fp_end <= end))
@@ -196,6 +200,7 @@ test_build.small.fimo.motifDB.mapping.cor.02 <- function()
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.2,
                       orderModelByColumn="rfScore",
@@ -233,6 +238,7 @@ test_build.10kb.fimo.motifDB.mapping.cor04 <- function()
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
@@ -275,6 +281,7 @@ test_build.10kb.fimo.tfclass.mapping.cor04 <- function()
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
                       tfMapping="TFClass",
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
@@ -304,7 +311,6 @@ test_reproduceCorysTrem2model <- function()
    printf("--- test_reproduceCorysTrem2model")
    tss <- 41163186
       # strand-aware start and end: trem2 is on the minus strand
-   load(system.file(package="trenaSGM", "extdata", "enhancers.TREM2.RData"))
 
    build.spec <- list(title="fp.enhancers",
                       type="footprint.database",
@@ -314,6 +320,7 @@ test_reproduceCorysTrem2model <- function()
                       db.host="khaleesi.systemsbiology.net",
                       databases=c("brain_hint_20", "brain_hint_16", "brain_wellington_20", "brain_wellington_16"),
                       motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
                       tfMapping=c("TFClass", "MotifDb"),
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
@@ -438,98 +445,50 @@ find.tf.bindingSites <- function(tf)
 
 } # find.tf.bindingSites
 #------------------------------------------------------------------------------------------------------------------------
-# very confusing absence of LYL1 from trenaShinyApps trem2 models.  this function explores the
-# problem, reproducing it for 2200 bp promoter (no LYL1 binding sites there) but
-#
-explore_missing.lyl1 <- function()
+test_tfPoolOption <- function()
 {
-   printf("--- explore_missing.lyl1")
+   genome <- "hg38"
+   targetGene <- "TREM2"
+   chromosome <- "chr6"
+   upstream <- 2000
+   downstream <- 200
    tss <- 41163186
+
       # strand-aware start and end: trem2 is on the minus strand
-   print(load(system.file(package="trenaSGM", "extdata", "enhancers.TREM2.RData")))
+   start <- tss - downstream
+   end   <- tss + upstream
+   tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
 
-   build.spec <- list(title="fp.enhancers",
+   build.spec <- list(title="fp.2000up.200down",
                       type="footprint.database",
-                      regions=tbl.enhancers,
+                      regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
-                      databases=c("brain_hint_20"),  #"brain_hint_16", "brain_wellington_20", "brain_wellington_16"),
+                      databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
-                      tfMapping=c("TFClass", "MotifDb"),
+                      tfPool=allKnownTFs(),
+                      tfMapping="MotifDB",
+                      tfPool=allKnownTFs(),
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
-   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=FALSE)
-   x <- build(fpBuilder)
+     #------------------------------------------------------------
+     # use the above build.spec: a small region, high correlation
+     # required, MotifDb for motif/tf lookup, all known tfs.
+     #------------------------------------------------------------
 
-   tbl.reg <- x$regulatoryRegions
-   tbl.model <- x$model
+   builder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=TRUE)
+   x <- build(builder)
 
-   if(!exists(igv)){
-      library(igvR)
-      igv <- igvR()
-      Sys.sleep(3)
-      setGenome(igv, "hg38")
-      Sys.sleep(3)
-      showGenomicRegion(igv, "TREM2")
-      }
+   build.spec$tfPool <- c("IKZF1", "TAL1")
+   builder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=TRUE)
+   x <- build(builder)
+   checkEquals(sort(x$model$gene), sort(build.spec$tfPool))
+   checkEquals(sort(unique(x$regulatoryRegions$geneSymbol)), sort(build.spec$tfPool))
 
-   track <- DataFrameAnnotationTrack("enhancers", tbl.enhancers, color="blue")
-   displayTrack(igv, track)
-
-
-   tbl.lyl1 <- subset(tbl.regions, geneSymbol=="LYL1")[, c("chrom", "fp_start", "fp_end")]
-   track <- DataFrameAnnotationTrack("tbl.regions lyl1", tbl.lyl1, color="green")
-   displayTrack(igv, track)
-
-   tbl.singleEnhancer.lyl1motifs <- subset(tbl.enhancers, start > 41161174 & end < 41162986)
-   track <- DataFrameAnnotationTrack("e1.lyl1", tbl.singleEnhancer.lyl1motifs, color="orange")
-   displayTrack(igv, track)
-
-   build.spec <- list(title="fp.enhancers",
-                      type="footprint.database",
-                      regions=tbl.singleEnhancer.lyl1motifs,
-                      tss=tss,
-                      matrix=mtx,
-                      db.host="khaleesi.systemsbiology.net",
-                      databases=c("brain_hint_20"),  #"brain_hint_16", "brain_wellington_20", "brain_wellington_16"),
-                      motifDiscovery="builtinFimo",
-                      tfMapping=c("TFClass", "MotifDb"),
-                      tfPrefilterCorrelation=0.4,
-                      orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
-
-   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=FALSE)
-   x <- build(fpBuilder)
-
-   tbl.reg <- x$regulatoryRegions
-   tbl.model <- x$model
-
-
-   build.spec <- list(title="fp.enhancers",
-                      type="footprint.database",
-                      regions=data.frame(chrom="chr6", start=tss-5000, end=tss+5000),
-                      tss=tss,
-                      matrix=mtx,
-                      db.host="khaleesi.systemsbiology.net",
-                      databases=c("brain_hint_20", "brain_hint_16", "brain_wellington_20", "brain_wellington_16"),
-                      motifDiscovery="builtinFimo",
-                      tfMapping=c("TFClass", "MotifDb"),
-                      tfPrefilterCorrelation=0.4,
-                      orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
-
-   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=FALSE)
-   x <- build(fpBuilder)
-
-   tbl.reg <- x$regulatoryRegions
-   tbl.model <- x$model
-   checkTrue("LYL1" %in% tbl.model$gene)
-
-
-} # test_lyl1
+} # test_tfPoolOption
 #------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()

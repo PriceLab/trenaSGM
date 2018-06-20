@@ -58,6 +58,7 @@ test_trem2_fpdb <- function()
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
@@ -119,6 +120,7 @@ test_summarizeModels <- function()
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
@@ -137,6 +139,7 @@ test_summarizeModels <- function()
                   pfms=query(MotifDb, "sapiens", "jaspar2018"),
                   matchThreshold=90,
                   motifDiscovery="matchPWM",
+                  tfPool=allKnownTFs(),
                   tfMapping="MotifDB",
                   tfPrefilterCorrelation=0.4,
                   orderModelByColumn="rfScore",
@@ -149,6 +152,7 @@ test_summarizeModels <- function()
                   type="noDNA.tfsSupplied",
                   matrix=mtx,
                   tfs=candidate.tfs,
+                  tfPool=allKnownTFs(),
                   tfPrefilterCorrelation=0.4,
                   orderModelByColumn="rfScore",
                   solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
@@ -169,6 +173,23 @@ test_summarizeModels <- function()
    checkTrue(nrow(tbl.summary) > 10)   # 17 on (23 may 2018)
 
 } # test_summarizeModels
+#------------------------------------------------------------------------------------------------------------------------
+test_allKnownTFs <- function()
+{
+   printf("--- test_allKnownTFs")
+   tfs <- allKnownTFs(source="GO:DNAbindingTranscriptionFactorActivity")
+   checkTrue(length(tfs) > 1500)
+   checkTrue(all(c("AATF", "ADNP", "ADNP2") %in% tfs))
+
+   tfs.ensembl <- allKnownTFs(identifierType="ensemblGeneID")
+   checkTrue(length(tfs.ensembl) > length(tfs))  # some identifier expansion
+   checkEquals(length(which(is.na(tfs.ensembl))), 0)
+
+   tfs.entrez <- allKnownTFs(identifierType="entrezGeneID")
+   checkEquals(length(which(is.na(tfs.entrez))), 0)
+   checkEquals(length(tfs), length(tfs.entrez))
+
+} # test_allKnownTFs
 #------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()
