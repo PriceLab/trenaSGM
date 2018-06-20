@@ -1,12 +1,12 @@
 Package: trenaSGM
 Type: Package
 Title: trenaSGM: trena single gene model
-Version: 0.99.23
-Date: 2018-06-19
+Version: 0.99.24
+Date: 2018-06-20
 Author: Paul Shannon
 Maintainer: Paul Shannon <paul.thurmond.shannon@gmail.com>
 Depends: R (>= 3.5.0), GenomicRanges, trena, MotifDb, org.Hs.eg.db
-Imports: methods, BiocGenerics, RPostgreSQL, FimoClient, AnnotationDbi
+Imports: methods, BiocGenerics, RPostgreSQL, AnnotationDbi
 Suggests: RUnit, BiocStyle, knitr, rmarkdown
 Description:  Creates and combines a variety of transcriptional regulatory models for a single target gene.
 License: MIT + file LICENSE

@@ -3,7 +3,6 @@
 export(FootprintDatabaseModelBuilder)
 export(ModelBuilder)
 export(NoDnaModelBuilder)
-export(RegionsFimoModelBuilder)
 export(RegionsMotifMatchingModelBuilder)
 export(allKnownTFs)
 export(printf)

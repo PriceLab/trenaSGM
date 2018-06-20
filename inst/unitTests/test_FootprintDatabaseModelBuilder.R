@@ -86,9 +86,6 @@ test_build.small.fimo.motifDB.mapping.cor04 <- function()
 
    build.spec <- list(title="fp.2000up.200down",
                       type="footprint.database",
-                      #chrom=chromosome,
-                      #start=start,
-                      #end=end,
                       regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
