@@ -4,6 +4,7 @@
 #' @import MotifDb
 #' @import RPostgreSQL
 #' @import GenomicRanges
+#' @importFrom AnnotationDbi select
 #'
 #' @name trenaSGM-class
 #' @rdname trenaSGM-class
@@ -247,12 +248,29 @@ setMethod('summarizeModels', 'trenaSGM',
 #'
 #' @param obj An object of class ModelBuilder, or any subclass
 #' @param source A character string, currently only (and defaulted to) "GO:DNAbindingTranscriptionFactorActivity"
+#' @param identifierType A string, one of "geneSymbol" (the default), "entrezGeneID", "ensemblGeneID"
 #'
 #' @export
-allKnownTFs <- function(source="GO:DNAbindingTranscriptionFactorActivity")
+allKnownTFs <- function(source="GO:DNAbindingTranscriptionFactorActivity", identifierType="geneSymbol")
 {
+    stopifnot(identifierType %in% c("geneSymbol", "entrezGeneID", "ensemblGeneID"))
+
     load(system.file(package="trenaSGM", "extdata", "tfCollections",
                     "GO_00037000_DNAbindingTranscriptionFactorActivityHuman.RData"))
+
+    if(identifierType != "geneSymbol"){
+       suppressMessages(tbl.ids <- select(org.Hs.eg.db, keytype="SYMBOL",
+                                          keys=tfs,
+                                          columns=c("ENSEMBL", "ENTREZID")))
+       tfs <- switch(identifierType,
+                     "ensemblGeneID" = {unique(tbl.ids$ENSEMBL)},
+                     "entrezGeneID"  = {unique(tbl.ids$ENTREZID)})
+       removers <- which(is.na(tfs))
+       if(length(removers) > 0)
+          tfs <- tfs[-removers]
+       } # if !geneSymbol
+
     tfs
-}
+
+} # allKnownTFs
 #------------------------------------------------------------------------------------------------------------------------

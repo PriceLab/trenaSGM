@@ -45,8 +45,9 @@
 #' @export
 NoDnaModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 {
-   required.strategy.fields <- c("title", "type", "tfs",  "matrix",
-                                 "tfPrefilterCorrelation", "orderModelByColumn", "solverNames")
+   required.strategy.fields <- c("title", "type", "matrix",
+                                 "tfPrefilterCorrelation", "tfPool", "orderModelByColumn",
+                                 "solverNames")
 
    for(field in required.strategy.fields)
       if(!field %in% names(strategy))
@@ -108,7 +109,7 @@ setMethod('build', 'NoDnaModelBuilder',
 
       s <- obj@strategy
       tbls <- .runTrenaWithTFsOnly(obj@genomeName,
-                                   allKnownTFs(),
+                                   s$tfPool,
                                    obj@targetGene,
                                    s$tfs,
                                    s$matrix,

@@ -76,12 +76,12 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 
 } # .runTrenaWithRegulatoryRegions
 #------------------------------------------------------------------------------------------------------------------------
-.runTrenaWithTFsOnly <- function(genomeName, allKnownTFs, targetGene, tfList, expression.matrix,
+.runTrenaWithTFsOnly <- function(genomeName, tfPool, targetGene, tfList, expression.matrix,
                                  tfPrefilterCorrelation, solverNames, quiet)
 {
    trena <- Trena(genomeName, quiet=quiet)
 
-   all.known.tfs.mtx <- intersect(allKnownTFs, rownames(expression.matrix))
+   all.known.tfs.mtx <- intersect(tfPool, rownames(expression.matrix))
    candidate.tfs <- intersect(all.known.tfs.mtx, tfList)
 
    mtx.tfs <- expression.matrix[c(candidate.tfs, targetGene),]
