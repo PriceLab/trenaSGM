@@ -30,6 +30,7 @@ runTests <- function()
    test_build.10kb.fimo.tfclass.mapping.cor04()
    test_reproduceCorysTrem2model()
    test_tfPoolOption()
+   test_modelExpressionDataWithEnsgIDs()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -486,6 +487,83 @@ test_tfPoolOption <- function()
    checkEquals(sort(unique(x$regulatoryRegions$geneSymbol)), sort(build.spec$tfPool))
 
 } # test_tfPoolOption
+#------------------------------------------------------------------------------------------------------------------------
+# the footprint databases (as of jun 20 2018) name footprint/motif-associated TFs by their HGNC gene symbols
+# to support trena analysis on expression data expressed with ensg (ensembl gene) IDs, we need to translate
+# those footprint tfs from geneSymbol to ensembl ids.  develop and test that here
+#
+# use this mapping
+#    SYMBOL         ENSEMBL
+# 1   PRDM2 ENSG00000116731
+# 2   EOMES ENSG00000163508
+# 3    ELF2 ENSG00000109381
+# 4   TREM2 ENSG00000095970
+# 5   TBPL1 ENSG00000028839
+# 6    IRF5 ENSG00000128604
+# 7    SPI1 ENSG00000066336
+# 8   PRDM4 ENSG00000110851
+# 9    EBF4 ENSG00000088881
+# 10   LYL1 ENSG00000104903
+# 11  IKZF1 ENSG00000185811
+# 12   TFEC ENSG00000105967
+# 13  DMRT2 ENSG00000173253
+test_modelExpressionDataWithEnsgIDs <- function()
+{
+   printf("--- test_ensgIDs")
+
+      # create a smallish expression matrix with ENSEMBL gene ids as rownames
+      # starting with mtx.tcx for which we have a good gene-symbol-centric model
+
+   tfs.highRanked <- c("IKZF1", "IRF5",  "LYL1",  "SPI1",  "TFEC")
+   set.seed(17)
+   tfs.randomUnranked <- allKnownTFs()[sample(1:1000, 100)]
+   all.genes <- intersect(rownames(mtx), c("TREM2", tfs.highRanked, tfs.randomUnranked))
+   suppressMessages(tbl.map <- select(org.Hs.eg.db, keys=all.genes, keytype="SYMBOL", columns="ENSEMBL"))
+   dups <- which(duplicated(tbl.map$SYMBOL))
+   if(length(dups) > 0)
+      tbl.map <- tbl.map[-dups,]
+
+   checkTrue(all(tbl.map$SYMBOL %in% rownames(mtx)))
+   mtx.sub <- mtx[tbl.map$SYMBOL,]
+   indices <- match(tbl.map$SYMBOL, rownames(mtx.sub))
+   rownames(mtx.sub) <- tbl.map$ENSEMBL[indices]
+
+   genome <- "hg38"
+   targetGene <- "ENSG00000095970"  # "TREM2"
+   chromosome <- "chr6"
+   upstream <- 2000
+   downstream <- 200
+   tss <- 41163186
+
+      # strand-aware start and end: trem2 is on the minus strand
+   start <- tss - downstream
+   end   <- tss + upstream
+   tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
+
+   build.spec <- list(title="fp.ensemblTest",
+                      type="footprint.database",
+                      regions=tbl.regions,
+                      tss=tss,
+                      matrix=mtx.sub,
+                      db.host="khaleesi.systemsbiology.net",
+                      databases=list("brain_hint_20"),
+                      motifDiscovery="builtinFimo",
+                      tfMapping="MotifDB",
+                      tfPool=allKnownTFs(identifierType="ensemblGeneID"),
+                      tfPrefilterCorrelation=0.4,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+     #------------------------------------------------------------
+     # use the above build.spec: a small region, high correlation
+     # required, MotifDb for motif/tf lookup, all known tfs.
+     #------------------------------------------------------------
+
+   builder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=TRUE)
+   x <- build(builder)
+   checkTrue("ENSG00000185811" %in% x$model$gene)
+
+} # test_ensgIDs
 #------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()

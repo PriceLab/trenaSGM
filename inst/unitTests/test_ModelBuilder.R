@@ -39,5 +39,42 @@ test_constructor <- function()
 
 } # test_constructor
 #------------------------------------------------------------------------------------------------------------------------
+test_.replaceGeneSymbolsWithEnsemblGeneIDs <- function()
+{
+   printf("--- test_.replaceGeneSymbolsWithEnsemblGeneIDs")
+
+   if(!exists("tbl.regulatoryRegions"))
+      load(system.file(package="trenaSGM", "extdata", "tbl.regForSymbolEnsemblTranslationTest.RData"))
+
+      # start with s small simple subet, with 2 NA geneSybmbols
+      # this initially random subset has two NAs, quite a few mouse genes
+
+   set.seed(17); indices <- sample(1:nrow(tbl.regulatoryRegions), 30)
+   tbl.test <- tbl.regulatoryRegions[indices, c("motifName", "geneSymbol")]
+   tbl.fixed <- trenaSGM:::.replaceGeneSymbolsWithEnsemblGeneIDs(tbl.test)
+   checkEquals(nrow(tbl.test), 30)
+   checkEquals(nrow(tbl.fixed), 28)
+   checkEquals(length(grep("^NA", tbl.test$motifName)), 2)
+
+   #geneSymbol.na <- which(is.na(tbl.test$geneSymbol))
+   #fixed.na <- which(is.na(tbl.fixed$geneSymbol))
+   #checkEquals(geneSymbol.na, fixed.na)
+   successful <- length(grep("^ENSG", tbl.fixed$geneSymbol))
+   checkEquals(successful, 22)   # 2 na, 6 unmapped gene symbols, 22 ensemblIDs
+
+      # now a larger table
+   set.seed(17); indices <- sample(1:nrow(tbl.regulatoryRegions), 800)[300:350]
+   tbl.test <- tbl.regulatoryRegions[indices, c("motifName", "geneSymbol")]
+   tbl.fixed <- trenaSGM:::.replaceGeneSymbolsWithEnsemblGeneIDs(tbl.test)
+   #tbl.fixed <- trenaSGM:::.replaceGeneSymbolsWithEnsemblGeneIDs(tbl.test)
+
+   tbl.2 <- tbl.regulatoryRegions[, c("motifName", "geneSymbol")]
+   tbl.2f <- trenaSGM:::.replaceGeneSymbolsWithEnsemblGeneIDs(tbl.2)
+   checkTrue(nrow(tbl.2f) > 900)
+   checkEquals(length(grep("^NA$", tbl.2f$geneSymbol)), 0)
+   checkTrue(length(grep("^ENSG0", tbl.2f$geneSymbol)) > 700)
+
+} # test_.replaceGeneSymbolsWithEnsemblGeneIDs
+#------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()

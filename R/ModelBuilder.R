@@ -38,15 +38,49 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 
 } # ModelBuilder
 #----------------------------------------------------------------------------------------------------
+# remove NA geneSymbols.  uppercase mouse gene symbols to look like humans
+# map to, and replace with, ensembl gene ids.   if multiple, alas, just use the first.
+# use "NA" rather than NA on output
+.replaceGeneSymbolsWithEnsemblGeneIDs <- function(tbl.regRegions)
+{
+   nas <- which(is.na(tbl.regRegions$geneSymbol))
+   if(length(nas) > 0)
+      tbl.regRegions <- tbl.regRegions[-nas,]
+
+   syms <- tbl.regRegions$geneSymbol
+   syms <- unique(toupper(syms))
+
+   suppressMessages(tbl.map <- select(org.Hs.eg.db, keys=syms, keytype="SYMBOL", columns="ENSEMBL"))
+   dups <- which(duplicated(tbl.map$SYMBOL))
+   if(length(dups) > 0)
+      tbl.map <- tbl.map[-dups,]
+   unmapped <- which(is.na(tbl.map$ENSEMBL))
+   if(length(unmapped) > 0)
+      tbl.map$ENSEMBL[unmapped] <- tbl.map$SYMBOL[unmapped]
+   #stopifnot(all(toupper(tbl.regRegions$geneSymbol) %in%  tbl.map$SYMBOL))
+
+   map.list <- tbl.map$ENSEMBL
+   names(map.list) <- tbl.map$SYMBOL
+
+   tbl.regRegions$geneSymbol <- map.list[toupper(tbl.regRegions$geneSymbol)]
+
+   invisible(tbl.regRegions)
+
+} # .replaceGeneSymbolsWithEnsemblGeneIDs
+#----------------------------------------------------------------------------------------------------
 .runTrenaWithRegulatoryRegions <- function(genomeName, allKnownTFs, targetGene, tbl.regulatoryRegions,
                                            expression.matrix, tfPrefilterCorrelation, solverNames, quiet)
 {
    trena <- Trena(genomeName, quiet=quiet)
 
    all.known.tfs.mtx <- intersect(allKnownTFs, rownames(expression.matrix))
+   ensembl.tfs <- length(grep("ENSG0", all.known.tfs.mtx)) > 0
+   if(ensembl.tfs)
+      tbl.regulatoryRegions <- .replaceGeneSymbolsWithEnsemblGeneIDs(tbl.regulatoryRegions)
 
       # for our purposes, a tf can only remain a candidate if it IS a tf, according
       # to GO, and has expression data
+
    candidate.tfs <- intersect(all.known.tfs.mtx, tbl.regulatoryRegions$geneSymbol)
 
       # now reduce the expession matrix to just those tfs + targetGene
