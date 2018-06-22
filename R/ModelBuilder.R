@@ -29,7 +29,6 @@ setGeneric('build', signature='obj', function (obj, expression.matrix) standardG
 #' @export
 ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 {
-
    if(!targetGene %in% rownames(strategy$matrix)){
        msg <- sprintf("your targetGene '%s' is not in the rownames of your expression matrix", targetGene);
        stop(msg)
@@ -97,6 +96,11 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
    mtx.sub <- expression.matrix[c(all.known.tfs.mtx, targetGene),]
    mtx.cor <- cor(t(mtx.sub))
    high.correlation.genes <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
+   if(length(high.correlation.genes) == 1){  # it can only be the targetGene
+      msg <- sprintf("NO genes have expression >= %f correlated with targetGene '%s'",
+                     tfPrefilterCorrelation, targetGene)
+      stop(msg)
+      }
 
       # note that the target gene is in the list, since its correlation is perfect
    mtx.tfs.filtered <- mtx.sub[high.correlation.genes,]
