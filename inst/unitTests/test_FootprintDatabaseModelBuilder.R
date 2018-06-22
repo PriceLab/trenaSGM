@@ -31,6 +31,7 @@ runTests <- function()
    test_reproduceCorysTrem2model()
    test_tfPoolOption()
    test_modelExpressionDataWithEnsgIDs()
+   test_noGenesAboveExpressionCorrelationThreshold()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -564,6 +565,47 @@ test_modelExpressionDataWithEnsgIDs <- function()
    checkTrue("ENSG00000185811" %in% x$model$gene)
 
 } # test_ensgIDs
+#------------------------------------------------------------------------------------------------------------------------
+test_noGenesAboveExpressionCorrelationThreshold <- function()
+{
+   printf("--- test_noGenesAboveExpressionCorrelationThreshold")
+
+   genome <- "hg38"
+   targetGene <- "TREM2"
+   chromosome <- "chr6"
+   upstream <- 2000
+   downstream <- 200
+   tss <- 41163186
+
+      # strand-aware start and end: trem2 is on the minus strand
+   start <- tss - downstream
+   end   <- tss + upstream
+   tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
+
+   build.spec <- list(title="fp.2000up.200down",
+                      type="footprint.database",
+                      regions=tbl.regions,
+                      tss=tss,
+                      matrix=mtx,
+                      db.host="khaleesi.systemsbiology.net",
+                      databases=list("brain_hint_20"),
+                      motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
+                      tfMapping="MotifDB",
+                      tfPool=allKnownTFs(),
+                      tfPrefilterCorrelation=0.99,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+     #------------------------------------------------------------
+     # use the above build.spec: a small region, high correlation
+     # required, MotifDb for motif/tf lookup, all known tfs.
+     #------------------------------------------------------------
+
+   builder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=TRUE)
+   checkException({x <- build(builder)}, silent=TRUE)
+
+} # test_noGenesAboveExpressionCorrelationThreshold()
 #------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()
