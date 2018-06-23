@@ -603,7 +603,10 @@ test_noGenesAboveExpressionCorrelationThreshold <- function()
      #------------------------------------------------------------
 
    builder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=TRUE)
-   checkException({x <- build(builder)}, silent=TRUE)
+   x <- build(builder)
+   checkEquals(names(x), c("model", "regulatoryRegions"))
+   checkEquals(nrow(x$model), 0)
+   checkEquals(nrow(x$regulatoryRegions), 0)
 
 } # test_noGenesAboveExpressionCorrelationThreshold()
 #------------------------------------------------------------------------------------------------------------------------

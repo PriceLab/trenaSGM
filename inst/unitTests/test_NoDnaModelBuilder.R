@@ -111,5 +111,31 @@ test_build.trem2.noDNA.all.known.TFs <- function()
 
 } # test_build.trem2.noDNA.all.known.TFs
 #------------------------------------------------------------------------------------------------------------------------
+test_build.trem2.noDNA.bogus.targetGene <- function()
+{
+   printf("--- test_build.trem2.noDNA.bogus.targetGene")
+
+   genome <- "hg38"
+   targetGene <- "bogusGene"
+
+   candidate.tfs <- allKnownTFs()
+
+   build.spec <- list(title="trem2.noDNA.allTFs",
+                      type="noDNA.tfsSupplied",
+                      matrix=mtx,
+                      tfPool=allKnownTFs(),
+                      tfs=candidate.tfs,
+                      tfPrefilterCorrelation=0.7,
+                      orderModelByColumn="pearsonCoeff",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+   builder <- NoDnaModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
+   x <- build(builder)
+   checkEquals(names(x), c("model", "regulatoryRegions"))
+   checkEquals(nrow(x$model), 0)
+   checkEquals(nrow(x$regulatoryRegions), 0)
+
+} # test_build.trem2.noDNA.bogus.targetGene
+#------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()

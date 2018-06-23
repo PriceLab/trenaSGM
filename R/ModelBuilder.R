@@ -29,10 +29,10 @@ setGeneric('build', signature='obj', function (obj, expression.matrix) standardG
 #' @export
 ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 {
-   if(!targetGene %in% rownames(strategy$matrix)){
-       msg <- sprintf("your targetGene '%s' is not in the rownames of your expression matrix", targetGene);
-       stop(msg)
-       }
+   #if(!targetGene %in% rownames(strategy$matrix)){
+   #    msg <- sprintf("your targetGene '%s' is not in the rownames of your expression matrix", targetGene);
+   #    stop(msg)
+   #    }
 
    obj <- .ModelBuilder(genomeName=genomeName,
                         targetGene=targetGene,
@@ -149,4 +149,18 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
    return(list(model=tbl.model, regulatoryRegions=data.frame()))
 
 } # .runTrenaWithTFsOnly
+#------------------------------------------------------------------------------------------------------------------------
+# create regulatory model of the gene, following all the specified options
+#
+# @rdname build
+# @aliases build
+#
+#setMethod('build', 'ModelBuilder',
+#
+#   function (obj) {
+#      printf("entering ModelBuilder::build")
+#      x <- callNextMethod(obj)
+#      browser()
+#      printf("back in ModelBuilder::build")
+#      })
 #------------------------------------------------------------------------------------------------------------------------

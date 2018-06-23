@@ -111,37 +111,46 @@ setMethod('show', 'RegionsMotifMatchingModelBuilder',
 setMethod('build', 'RegionsMotifMatchingModelBuilder',
 
    function (obj) {
-      mm <- MotifMatcher(obj@genomeName, as.list(obj@strategy$pfms))
-      tbl.regions <- obj@strategy$regions
-      tbl.motifs <- findMatchesByChromosomalRegion(mm,
-                                                   tbl.regions,
-                                                   pwmMatchMinimumAsPercentage=obj@strategy$matchThreshold)
-      if(nrow(tbl.motifs) == 0){
-         warning(sprintf("failure modeling %s: no motifs found in region for %d pfms",
-                          obj@targetGene, length(obj@strategy$pfms)))
-         return(list(model=data.frame, regulatoryRegions=data.frame()))
-         }
-      mappers <- tolower(obj@strategy$tfMapping)
-      stopifnot(all(mappers %in% c("motifdb", "tfclass")))
+      tbls <- tryCatch({
+         if(!obj@targetGene %in% rownames(obj@strategy$matrix)){
+            stop(sprintf("targetGene '%s' not in rownames(expression.matrix)", obj@targetGene))
+            }
+         mm <- MotifMatcher(obj@genomeName, as.list(obj@strategy$pfms))
+         tbl.regions <- obj@strategy$regions
+         tbl.motifs <- findMatchesByChromosomalRegion(mm,
+                                                      tbl.regions,
+                                                      pwmMatchMinimumAsPercentage=obj@strategy$matchThreshold)
+         if(nrow(tbl.motifs) == 0){
+            warning(sprintf("failure modeling %s: no motifs found in region for %d pfms",
+                            obj@targetGene, length(obj@strategy$pfms)))
+            return(list(model=data.frame, regulatoryRegions=data.frame()))
+            }
+         mappers <- tolower(obj@strategy$tfMapping)
+         stopifnot(all(mappers %in% c("motifdb", "tfclass")))
 
-      tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source=obj@strategy$tfMapping, expand.rows=TRUE)
+         tbl.motifs.mapped <- associateTranscriptionFactors(MotifDb, tbl.motifs, source=obj@strategy$tfMapping, expand.rows=TRUE)
 
-      s <- obj@strategy
-      tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
-                                             allKnownTFs(),    # from trenaSGM
-                                             obj@targetGene,
-                                             tbl.motifs.mapped,
-                                             s$matrix,
-                                             s$tfPrefilterCorrelation,
-                                             s$solverNames,
-                                             obj@quiet)
+         s <- obj@strategy
+         tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
+                                                allKnownTFs(),    # from trenaSGM
+                                                obj@targetGene,
+                                                tbl.motifs.mapped,
+                                                s$matrix,
+                                                s$tfPrefilterCorrelation,
+                                                s$solverNames,
+                                                obj@quiet)
 
-      tbl.model <- tbls$model
-      coi <- obj@strategy$orderModelByColumn
-      if(coi %in% colnames(tbl.model))
-         tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
-      tbls$model <- tbl.model
-      invisible(tbls)
+         tbl.model <- tbls$model
+         coi <- obj@strategy$orderModelByColumn
+         if(coi %in% colnames(tbl.model))
+            tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
+         tbls$model <- tbl.model
+         tbls
+         }, error=function(e){
+           print(e)
+           return(list(model=data.frame(), regulatoryRegions=data.frame()))
+           })
+      return(tbls)
       })
 
 #------------------------------------------------------------------------------------------------------------------------

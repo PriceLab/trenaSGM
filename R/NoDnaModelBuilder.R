@@ -106,23 +106,26 @@ setMethod('show', 'NoDnaModelBuilder',
 setMethod('build', 'NoDnaModelBuilder',
 
    function (obj) {
-
-      s <- obj@strategy
-      tbls <- .runTrenaWithTFsOnly(obj@genomeName,
-                                   s$tfPool,
-                                   obj@targetGene,
-                                   s$tfs,
-                                   s$matrix,
-                                   s$tfPrefilterCorrelation,
-                                   s$solverNames,
-                                   obj@quiet)
-
-      tbl.model <- tbls$model
-      coi <- obj@strategy$orderModelByColumn
-      if(coi %in% colnames(tbl.model))
-         tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
-      tbls$model <- tbl.model
-      invisible(tbls)
+      tbls <- tryCatch({
+         s <- obj@strategy
+         tbls <- .runTrenaWithTFsOnly(obj@genomeName,
+                                      s$tfPool,
+                                      obj@targetGene,
+                                      s$tfs,
+                                      s$matrix,
+                                      s$tfPrefilterCorrelation,
+                                      s$solverNames,
+                                      obj@quiet)
+         tbl.model <- tbls$model
+         coi <- obj@strategy$orderModelByColumn
+         if(coi %in% colnames(tbl.model))
+            tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
+         tbls$model <- tbl.model
+         tbls
+         }, error=function(e){
+             return(list(model=data.frame(), regulatoryRegions=data.frame()))
+             })
+      return(tbls)
       })
 
 #------------------------------------------------------------------------------------------------------------------------

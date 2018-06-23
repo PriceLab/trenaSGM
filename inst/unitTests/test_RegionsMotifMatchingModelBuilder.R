@@ -339,5 +339,40 @@ test_build.trem2.enhancers.TFClass.and.MotifDb.model <- function()
 
 } # test_build.trem2.enhancers.TFClass.and.MotifDb.model
 #------------------------------------------------------------------------------------------------------------------------
+test_build.bogusTargetGene <- function()
+{
+   printf("--- test_build.bogusTargetGene")
+
+   genome <- "hg38"
+   targetGene <- "bogus"
+   chromosome <- "chr6"
+   tss <- 41163186
+
+   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
+   tbl.regions$width <- with(tbl.regions, 1 + end - start)
+
+   build.spec <- list(title="trem2.rmm.2000up.200down",
+                      type="regions.motifMatching",
+                      tss=tss,
+                      regions=tbl.regions,
+                      matrix=mtx,
+                      pfms=query(MotifDb, andStrings="sapiens", orString=c("jaspar2018", "hocomoco")),
+                      matchThreshold=90,
+                      tfPool=allKnownTFs(),
+                      motifDiscovery="matchPWM",
+                      tfPool=allKnownTFs(),
+                      tfMapping=c("MotifDb", "TFClass"),
+                      tfPrefilterCorrelation=0.4,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+   builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
+   x <- build(builder)
+   checkEquals(names(x), c("model", "regulatoryRegions"))
+   checkEquals(nrow(x$model), 0)
+   checkEquals(nrow(x$regulatoryRegions), 0)
+
+} # test_bogusTargetGene
+#------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()

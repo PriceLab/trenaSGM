@@ -111,31 +111,38 @@ setMethod('show', 'FootprintDatabaseModelBuilder',
 setMethod('build', 'FootprintDatabaseModelBuilder',
 
    function (obj) {
-      tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
-      if(obj@strategy$motifDiscovery == "builtinFimo"){
-         tbl.fp$motifName <- tbl.fp$name
-         mapper <- tolower(obj@strategy$tfMapping)
-         stopifnot(all(mapper %in% c("motifdb", "tfclass")))
-         tbl.fp <- associateTranscriptionFactors(MotifDb, tbl.fp, source=obj@strategy$tfMapping, expand.rows=TRUE)
+      tbls <- tryCatch({
+        tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
+        if(obj@strategy$motifDiscovery == "builtinFimo"){
+           tbl.fp$motifName <- tbl.fp$name
+           mapper <- tolower(obj@strategy$tfMapping)
+           stopifnot(all(mapper %in% c("motifdb", "tfclass")))
+           tbl.fp <- associateTranscriptionFactors(MotifDb, tbl.fp, source=obj@strategy$tfMapping, expand.rows=TRUE)
 
-         s <- obj@strategy
-         xyz <- "FootprintDatabaseModelBuilder, build"
-         tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
-                                                s$tfPool,
-                                                obj@targetGene,
-                                                tbl.fp,
-                                                s$matrix,
-                                                s$tfPrefilterCorrelation,
-                                                s$solverNames,
-                                                obj@quiet)
+           s <- obj@strategy
+           xyz <- "FootprintDatabaseModelBuilder, build"
+           tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
+                                                  s$tfPool,
+                                                  obj@targetGene,
+                                                  tbl.fp,
+                                                  s$matrix,
+                                                  s$tfPrefilterCorrelation,
+                                                  s$solverNames,
+                                                  obj@quiet)
 
         } # motifDisocvery, builtinFimo
-      tbl.model <- tbls[[1]]
-      coi <- s$orderModelByColumn
-      if(coi %in% colnames(tbl.model)){
-         tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
-         tbls[[1]] <- tbl.model
-         }
+        tbl.model <- tbls[[1]]
+        coi <- s$orderModelByColumn
+        if(coi %in% colnames(tbl.model)){
+           tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
+           tbls[[1]] <- tbl.model
+           }
+        tbls
+        }, error=function(e){
+           print(e)
+           return(list(model=data.frame(), regulatoryRegions=data.frame()))
+           })
+
       return(tbls)
       })
 
