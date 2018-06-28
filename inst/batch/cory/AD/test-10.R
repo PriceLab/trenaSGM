@@ -30,7 +30,7 @@ runSGM <- function(spec)
    chromosome <- tbl.geneLoc$chrom
    print(4)
    tss <- tbl.geneLoc$tss
-   
+
    print(5)
    tbl.regions <- switch(spec$regionsMode,
                          "enhancers" = {
@@ -40,13 +40,13 @@ runSGM <- function(spec)
                             data.frame(chrom=chromosome, start=tss-1000,
                                        end=tss+1000, stringsAsFactors=FALSE)
                          })
-   
+
    print(6)
    genome <- "hg38"
    print(7)
    sgm <- trenaSGM(genome, targetGene, quiet=FALSE)
    print(8)
-   
+
    build.spec <- list(title=targetGene,
                       type="footprint.database",
                       regions=tbl.regions,
@@ -61,19 +61,19 @@ runSGM <- function(spec)
                       orderModelByColumn="pearsonCoeff",
                       solverNames=spec$solvers
                       )
-   
+
    print(9)
    strategies <- list(one=build.spec)
    print(10)
    model <- calculate(sgm, strategies)$one
    print(11)
-   
+
    filename <- sprintf("%s/%s-%s.RData", incremental.data.directory, targetGene,
                        tbl.geneInfo[targetGene, "geneSymbol"])
    printf("saving model for %s (%s): %d tfs", targetGene, tbl.geneInfo[targetGene,]$geneSymbol,
           nrow(model$model))
    save(model, file=filename)
-   
+
    return(model)
 
 } # runSGM
@@ -97,7 +97,7 @@ test_runSGM <- function()
                                    solvers= c("pearson", "spearman"),
                                    dbs="brain_hint_20"))
    names(mini.recipes) <- as.character(targetGenes)
-   
+
   # spec.trem2 <- list(targetGene=targetGenes[["TREM2"]],
   #                      regionsMode="tiny",
   #                    correlationThreshold=0.7,
@@ -120,14 +120,18 @@ test_runSGM <- function()
 
    fast.genes <- c(1,5,7,10,11,12)   # relatively few footprints
    slow.genes <- c(2,3,4)
-   system.time(x <- lapply(mini.recipes[1:12], runSGM))    
+   system.time(x <- lapply(mini.recipes[1:12], runSGM))
+   goi <- c(1,5)
+   goi <- fast.genes
+   goi <- slow.genes
+   goi <- seq_len(length(ad.genes))
    system.time(y <- bptry({
-       bplapply(mini.recipes[1:12],
+       result <- bplapply(mini.recipes[goi],
                 runSGM,
                 #BPPARAM=SerialParam()
                 BPPARAM=MulticoreParam(stop.on.error=FALSE)
                 )
-       }, error=identify))
+       })) #, error=identify))
 
     bpok(y)
 
