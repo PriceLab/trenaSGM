@@ -610,5 +610,60 @@ test_noGenesAboveExpressionCorrelationThreshold <- function()
 
 } # test_noGenesAboveExpressionCorrelationThreshold()
 #------------------------------------------------------------------------------------------------------------------------
+test_stagedExecution <- function()
+{
+   printf("--- test_stagedExecution")
+
+   genome <- "hg38"
+   targetGene <- "TREM2"
+   chromosome <- "chr6"
+   upstream <- 2000
+   downstream <- 200
+   tss <- 41163186
+
+      # strand-aware start and end: trem2 is on the minus strand
+   start <- tss - downstream
+   end   <- tss + upstream
+   tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
+
+   build.spec <- list(title="fp.2000up.200down",
+                      type="footprint.database",
+                      regions=tbl.regions,
+                      tss=tss,
+                      matrix=mtx,
+                      db.host="khaleesi.systemsbiology.net",
+                      databases=list("brain_hint_20"),
+                      motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
+                      tfMapping="MotifDB",
+                      tfPrefilterCorrelation=0.2,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+     #------------------------------------------------------------
+     # use the above build.spec: a small region, high correlation
+     # required, MotifDb for motif/tf lookup
+     #------------------------------------------------------------
+
+   stageDir <- "stage"
+
+   fpBuilder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=FALSE,
+                                              stagedExecutionDirectory=stageDir)
+   fp.filename <- staged.build(fpBuilder, stage="find.footprints")
+   checkTrue(file.exists(fp.filename))
+
+   fp.tfMapped.filename <- staged.build(fpBuilder, stage="associateTFs")
+   checkTrue(file.exists(fp.tfMapped.filename))
+
+   models.filename <- staged.build(fpBuilder, stage="build.models")
+
+   checkEquals(names(x), c("model", "regulatoryRegions"))
+   tbl.regions <- x$regulatoryRegions
+   tbl.model <- x$model
+   tbl.model <- tbl.model[order(tbl.model$rfScore, decreasing=TRUE),]
+
+
+} # test_stagedExecution
+#------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()

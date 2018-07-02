@@ -8,8 +8,12 @@
 #' @rdname FootprintDatabaseModelBuilder-class
 #' @exportClass FootprintDatabaseModelBuilder
 
-.FootprintDatabaseModelBuilder <- setClass("FootprintDatabaseModelBuilder", contains="ModelBuilder")
+.FootprintDatabaseModelBuilder <- setClass("FootprintDatabaseModelBuilder",
+                                           contains="ModelBuilder",
+                                           slots=c(stagedExecutionDirectory="character"))
 
+#------------------------------------------------------------------------------------------------------------------------
+setGeneric('staged.build', signature='obj', function (obj, stage) standardGeneric ('staged.build'))
 #------------------------------------------------------------------------------------------------------------------------
 #' Create a FootprintDatabaseModelBuilder object
 #'
@@ -44,7 +48,7 @@
 #'   }
 #'
 #' @export
-FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
+FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, stagedExecutionDirectory=NA_character_, quiet=TRUE)
 {
    required.strategy.fields <- c("title", "type", "regions", "tss", "matrix", "db.host", "databases", "motifDiscovery",
                                  "tfMapping", "tfPool", "tfPrefilterCorrelation", "orderModelByColumn", "solverNames")
@@ -56,7 +60,8 @@ FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, quie
    obj <- .FootprintDatabaseModelBuilder(ModelBuilder(genomeName=genomeName,
                                                       targetGene=targetGene,
                                                       strategy=strategy,
-                                                      quiet=quiet))
+                                                      quiet=quiet),
+                                         stagedExecutionDirectory=stagedExecutionDirectory)
 
    obj
 
@@ -144,7 +149,115 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
            })
 
       return(tbls)
-      })
+      }) # build
+
+#------------------------------------------------------------------------------------------------------------------------
+#' create regulatory model of the gene, following all the specified options, one stage at a time, saving intermedate data
+#'
+#' @rdname staged.build
+#' @aliases staged.build
+#'
+#' @param obj An object of class FootprintDatabaseModelBuilder
+#' @param strategy a list specifying all the options to build one or more models
+#' @param stage a character string, one of "find.footprints", "associateTFs", "build.models"
+#'
+#' @return A list with two data.frames, "model" and "regulatoryRegions"
+#'
+#' @examples
+#' if(interactive()){
+#'   fp.specs <- list(title="fp.2000up.200down",
+#'                    type="database.footprints",
+#'                    chrom="chr6",
+#'                    tss=41163186,
+#'                    start=(tss-2000),
+#'                    downstream=(tss+200),
+#'                    matrix
+#'                    db.host="khaleesi.systemsbiology.net",
+#'                    databases=list("brain_hint_20"),
+#'                    motifDiscovery="builtinFimo",
+#'                    tfMapping=c("TFClass", "MotifDB"),
+#'                    tfPrefilterCorrelation=0.2)
+#'   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", fp.specs, quiet=TRUE)
+#'   load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
+#'   staged.build(fpBuilder, mtx, stage="find.footprints")
+#'   }
+#'
+#' @export
+#'
+setMethod('staged.build', 'FootprintDatabaseModelBuilder',
+
+   function (obj, stage=c("find.footprints", "associateTFs", "build.models")) {
+
+      stopifnot(dir.exists(obj@stagedExecutionDirectory))
+      subdirName <- sprintf("%s", obj@targetGene)
+      subdir.path <- file.path(obj@stagedExecutionDirectory, subdirName)
+
+      if(!file.exists(subdir.path))
+         dir.create(subdir.path)
+      footprint.filename <-           file.path(subdir.path, "tbl.fp.RData")
+      footprints.tfMapped.filename <- file.path(subdir.path, "tbl.fpMapped.RData")
+      models.filename <-              file.path(subdir.path, "models.RData")
+
+      tbls <- tryCatch({
+
+        if(stage == "find.footprints"){
+           tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
+           save(tbl.fp, file=footprint.filename)
+           if(!obj@quiet)
+              printf("saving %d footprints to %s", nrow(tbl.fp), footprint.filename)
+           return(footprint.filename)
+           } # find.footprints
+
+        if(obj@strategy$motifDiscovery == "builtinFimo" & stage=="associateTFs"){
+           stopifnot(file.exists(footprint.filename))
+           load(footprint.filename)
+           tbl.fp$motifName <- tbl.fp$name
+           mapper <- tolower(obj@strategy$tfMapping)
+           stopifnot(all(mapper %in% c("motifdb", "tfclass")))
+           tbl.fp <- associateTranscriptionFactors(MotifDb, tbl.fp, source=obj@strategy$tfMapping, expand.rows=TRUE)
+           save(tbl.fp, file=footprints.tfMapped.filename)
+           if(!obj@quiet)
+              printf("saving %d tf-mapped footprints to %s", nrow(tbl.fp), footprints.tfMapped.filename)
+           return(footprints.tfMapped.filename)
+           } # associateTFs
+
+         if(stage == "build.models"){
+           load(footprints.tfMapped.filename)
+           s <- obj@strategy
+           browser()
+           tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
+                                                  s$tfPool,
+                                                  obj@targetGene,
+                                                  tbl.fp,
+                                                  s$matrix,
+                                                  s$tfPrefilterCorrelation,
+                                                  s$solverNames,
+                                                  obj@quiet)
+
+           tbl.model <- tbls[[1]]
+           coi <- s$orderModelByColumn
+           if(coi %in% colnames(tbl.model)){
+              tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
+              tbls[[1]] <- tbl.model
+              }
+           save(tbls, file=models.filename)
+           if(!obj@quiet)
+              printf("saving %d model tfs, %d regulatoryRegions, in %s",
+                     nrow(tbls$model), nrow(tbls$regulatoryRegions), models.filename)
+           return(models.filename)
+           } # build.models
+         }, error=function(e){
+           print(e)
+           if(!obj@quiet)
+              printf("saving failed %d model tfs, %d regulatoryRegions, in %s", 0, 0, models.filename)
+           tbls <- list(model=data.frame(), regulatoryRegions=data.frame())
+           save(tbls, file=models.filename)
+           return(models.filename)
+            }
+         ) # tryCatch
+
+      return(tbls)
+      }) # staged.build
 
 #------------------------------------------------------------------------------------------------------------------------
 .assembleFootprints <- function(strategy, quiet=TRUE)
