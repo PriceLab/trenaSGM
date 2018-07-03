@@ -7,7 +7,7 @@ library(motifStack)
 library(biomaRt)
 library(tibble)
 library(BiocParallel)
-library(BatchJobs)
+#library(BatchJobs)
 library(futile.logger)
 library(RPostgreSQL)
 #----------------------------------------------------------------------------------------------------
@@ -21,6 +21,22 @@ if(!exists("tbl.geneInfo"))
     load("tbl.geneInfo.RData")
 
 incremental.data.directory <- "./results"
+#----------------------------------------------------------------------------------------------------
+ad.genes <-c("TREM2", "CR1", "BIN1", "CD2AP", "EPHA1", "CLU", "MS4A6A", "PICALM", "ABCA7",
+             "CD33", "HLA-DRB5", "HLA-DRB1", "PTK2B", "SORL1", "SLC24A4", "RIN3",
+             "INPP5D", "MEF2C",  "ZCWPW1", "CELF1", "FERMT2", "CASS4", "APOE", "TOMM40")
+          # "NME8", "DSG2",
+
+if(!exists("targetGenes")){   # a named list, geneSymbols as names, ensg as content
+   indices <- match(ad.genes, tbl.geneInfo$geneSymbol)
+   deleters <- which(is.na(indices))
+   if(length(deleters) > 0){
+      ad.genes <- ad.genes[-deleters]
+      indices <- indices[-deleters]
+      }
+   targetGenes <- rownames(tbl.geneInfo[indices,])
+   names(targetGenes) <- ad.genes
+   }
 #----------------------------------------------------------------------------------------------------
 runSGM <- function(spec)
 {
@@ -81,7 +97,7 @@ runSGM <- function(spec)
 
    flog.info(sprintf("saving model for %s (%s): %d tfs", targetGene, tbl.geneInfo[targetGene,]$geneSymbol,
                      nrow(model$model)))
-   
+
    save(model, file=filename)
    flog.info("save complete")
 
@@ -96,14 +112,6 @@ test_runSGM <- function()
                 "INPP5D", "MEF2C", "NME8", "ZCWPW1", "CELF1", "FERMT2", "CASS4", "APOE", "TOMM40")
 
 
-   indices <- match(ad.genes, tbl.geneInfo$geneSymbol)
-   deleters <- which(is.na(indices))
-   if(length(deleters) > 0){
-       ad.genes <- ad.genes[-deleters]
-       indices <- indices[-deleters]
-       }
-   targetGenes <- rownames(tbl.geneInfo[indices,])
-   names(targetGenes) <- ad.genes
 
    mini.recipes <- lapply(ad.genes,
                           function(gene)
@@ -153,7 +161,7 @@ test_runSGM <- function()
    goi <- seq_len(length(ad.genes))
    param <- MulticoreParam(stop.on.error=FALSE, log=TRUE, logdir="./")
    sgm.out <- bptry(bplapply(mini.recipes[goi],runSGM, BPPARAM=param))
-   bpok(sgm.out)  
+   bpok(sgm.out)
 
 
 
@@ -168,6 +176,69 @@ test_runSGM <- function()
     # khaleesi   4   331     5/6 successful
 
 } # test_runSGM
+#----------------------------------------------------------------------------------------------------
+runStagedSGM.footprints <- function(short.spec)
+{
+   required.fields <- c("targetGene", "geneSymbol", "regionsMode", "correlationThreshold", "solvers", "dbs")
+   missing.fields <- setdiff(required.fields, names(short.spec))
+   if(length(missing.fields) > 0){
+      msg <- sprintf("runStagedSGM.footprings finds fields missing in short.spec: %s", paste(missing.fields, collapse=", "))
+      stop(msg)
+      }
+
+   printf("-- runSGM(%s)", short.spec$targetGene)
+
+   genomeName <- "hg38"
+   targetGene <- short.spec$targetGene
+   tbl.geneLoc <- tbl.geneInfo[targetGene,]
+   geneSymbol <- tbl.geneLoc$geneSymbol
+   chromosome <- tbl.geneLoc$chrom
+   tss <- tbl.geneLoc$tss
+
+   tbl.regions <- switch(short.spec$regionsMode,
+                         "enhancers" = {enhancer.list[[targetGene]][, c("chrom", "start", "end")]},
+                         "tiny" = {data.frame(chrom=chromosome, start=tss-1000, end=tss+1000, stringsAsFactors=FALSE)
+                         })
+
+   build.spec <- list(title="fp.2000up.200down",
+                      type="footprint.database",
+                      regions=tbl.regions,
+                      tss=tss,
+                      matrix=mtx,
+                      db.host="khaleesi.systemsbiology.net",
+                      databases=list("brain_hint_20"),
+                      motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
+                      tfMapping="MotifDB",
+                      tfPrefilterCorrelation=0.2,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+
+   stageDir <- "stage" # tempdir()
+   fpBuilder <- FootprintDatabaseModelBuilder(genomeName, targetGene, build.spec, quiet=FALSE,
+                                              stagedExecutionDirectory=stageDir)
+   fp.filename <- staged.build(fpBuilder, stage="find.footprints")
+   checkTrue(file.exists(fp.filename))
+
+} # runStagedSGM.footprints
+#----------------------------------------------------------------------------------------------------
+test_runStagedSGM.footprints <- function()
+{
+   short.specs <- lapply(ad.genes,
+                          function(gene)
+                            list(targetGene=targetGenes[[gene]],
+                                 geneSymbol=gene,
+                                 regionsMode="tiny",
+                                 correlationThreshold=0.5,
+                                 solvers= c("pearson", "spearman"),
+                                 dbs="brain_hint_20"))
+   names(short.specs) <- as.character(targetGenes)
+
+   runStagedSGM.footprints(short.specs[[1]])
+   x <- bplapply(short.specs, runStagedSGM.footprints)
+
+} # test_runStagedSGM.footprints
 #----------------------------------------------------------------------------------------------------
 run <- function()
 {
