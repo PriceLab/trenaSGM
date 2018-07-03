@@ -32,6 +32,7 @@ runTests <- function()
    test_tfPoolOption()
    test_modelExpressionDataWithEnsgIDs()
    test_noGenesAboveExpressionCorrelationThreshold()
+   test_stagedExecution()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -645,7 +646,8 @@ test_stagedExecution <- function()
      # required, MotifDb for motif/tf lookup
      #------------------------------------------------------------
 
-   stageDir <- "stage"
+   # stageDir <- "stage"
+   stageDir <- tempdir()
 
    fpBuilder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=FALSE,
                                               stagedExecutionDirectory=stageDir)
