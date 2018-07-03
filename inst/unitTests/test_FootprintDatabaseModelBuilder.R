@@ -659,11 +659,18 @@ test_stagedExecution <- function()
 
    models.filename <- staged.build(fpBuilder, stage="build.models")
 
-   checkEquals(names(x), c("model", "regulatoryRegions"))
-   tbl.regions <- x$regulatoryRegions
-   tbl.model <- x$model
+   load(models.filename)
+   checkEquals(names(tbls), c("model", "regulatoryRegions"))
+   tbl.regions <- tbls$regulatoryRegions
+   tbl.model <- tbls$model
    tbl.model <- tbl.model[order(tbl.model$rfScore, decreasing=TRUE),]
-
+   top.tfs <- head(tbl.model$gene)
+       # allow for stochasticity, check just 3 of those 6 top.tfs
+   checkTrue(all(c("IKZF1", "CEBPA", "IRF8") %in% top.tfs))
+   tbl.regions <- tbls$regulatoryRegions
+   tfs.in.regions <- unique(tbl.regions$geneSymbol)
+      # we keep only regions with tfs in model.  check that
+   checkTrue(all(tfs.in.regions %in% tbl.model$gene))
 
 } # test_stagedExecution
 #------------------------------------------------------------------------------------------------------------------------

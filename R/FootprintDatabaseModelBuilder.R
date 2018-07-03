@@ -224,7 +224,6 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
          if(stage == "build.models"){
            load(footprints.tfMapped.filename)
            s <- obj@strategy
-           browser()
            tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
                                                   s$tfPool,
                                                   obj@targetGene,

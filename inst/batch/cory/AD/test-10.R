@@ -7,6 +7,8 @@ library(motifStack)
 library(biomaRt)
 library(tibble)
 library(BiocParallel)
+library(BatchJobs)
+library(futile.logger)
 library(RPostgreSQL)
 #----------------------------------------------------------------------------------------------------
 if(!exists("mtx"))
@@ -22,16 +24,16 @@ incremental.data.directory <- "./results"
 #----------------------------------------------------------------------------------------------------
 runSGM <- function(spec)
 {
-   print(1)
+   printf("-- runSGM(%s)", spec$targetGene)
    targetGene <- spec$targetGene
-   print(2)
    tbl.geneLoc <- tbl.geneInfo[targetGene,]
-   print(3)
+   geneSymbol <- tbl.geneLoc$geneSymbol
    chromosome <- tbl.geneLoc$chrom
-   print(4)
    tss <- tbl.geneLoc$tss
 
-   print(5)
+   flog.info(sprintf("runSGM on %s, %s", geneSymbol, targetGene))
+   flog.info(sprintf("  assigning regions in mode %s", spec$regionsMode))
+
    tbl.regions <- switch(spec$regionsMode,
                          "enhancers" = {
                              enhancer.list[[targetGene]][, c("chrom", "start", "end")]
@@ -40,12 +42,13 @@ runSGM <- function(spec)
                             data.frame(chrom=chromosome, start=tss-1000,
                                        end=tss+1000, stringsAsFactors=FALSE)
                          })
+   flog.info(sprintf("  assigning regions in mode %s, %d regions", spec$regionsMode, nrow(tbl.regions)))
 
-   print(6)
    genome <- "hg38"
-   print(7)
+
+   flog.info("constructing trenaSGM")
    sgm <- trenaSGM(genome, targetGene, quiet=FALSE)
-   print(8)
+   flog.info("   after ctor")
 
    build.spec <- list(title=targetGene,
                       type="footprint.database",
@@ -62,17 +65,25 @@ runSGM <- function(spec)
                       solverNames=spec$solvers
                       )
 
-   print(9)
+   flog.info("   after build.spec assignement")
+
    strategies <- list(one=build.spec)
-   print(10)
+
+   flog.info("calling calculate")
+
    model <- calculate(sgm, strategies)$one
-   print(11)
+
+   flog.info("calculate complete")
+
 
    filename <- sprintf("%s/%s-%s.RData", incremental.data.directory, targetGene,
                        tbl.geneInfo[targetGene, "geneSymbol"])
-   printf("saving model for %s (%s): %d tfs", targetGene, tbl.geneInfo[targetGene,]$geneSymbol,
-          nrow(model$model))
+
+   flog.info(sprintf("saving model for %s (%s): %d tfs", targetGene, tbl.geneInfo[targetGene,]$geneSymbol,
+                     nrow(model$model)))
+   
    save(model, file=filename)
+   flog.info("save complete")
 
    return(model)
 
@@ -86,6 +97,11 @@ test_runSGM <- function()
 
 
    indices <- match(ad.genes, tbl.geneInfo$geneSymbol)
+   deleters <- which(is.na(indices))
+   if(length(deleters) > 0){
+       ad.genes <- ad.genes[-deleters]
+       indices <- indices[-deleters]
+       }
    targetGenes <- rownames(tbl.geneInfo[indices,])
    names(targetGenes) <- ad.genes
 
@@ -121,20 +137,35 @@ test_runSGM <- function()
    fast.genes <- c(1,5,7,10,11,12)   # relatively few footprints
    slow.genes <- c(2,3,4)
    system.time(x <- lapply(mini.recipes[1:12], runSGM))
-   goi <- c(1,5)
-   goi <- fast.genes
-   goi <- slow.genes
-   goi <- seq_len(length(ad.genes))
    system.time(y <- bptry({
        result <- bplapply(mini.recipes[goi],
                 runSGM,
                 #BPPARAM=SerialParam()
-                BPPARAM=MulticoreParam(stop.on.error=FALSE)
+                BPPARAM=MulticoreParam(workers=2) #, stop.on.error=FALSE)
                 )
        })) #, error=identify))
 
-    bpok(y)
+   bpok(y)
 
+   goi <- c(1,5)
+   goi <- fast.genes
+   goi <- slow.genes
+   goi <- seq_len(length(ad.genes))
+   param <- MulticoreParam(stop.on.error=FALSE, log=TRUE, logdir="./")
+   sgm.out <- bptry(bplapply(mini.recipes[goi],runSGM, BPPARAM=param))
+   bpok(sgm.out)  
+
+
+
+    # riptide    2   812
+    # khaleesi   2   558     10 genes
+    # khaleesi   2   707     24 genes
+    # khaleesi   2   710     24 genes
+    # khaleesi   4    50     ~6 genes, filaed on "error in serialize, ignoring SIGPIPE signal"
+    # khaleesi   2   60
+    # khaleesi   2   562
+    # khaleesi   3   461
+    # khaleesi   4   331     5/6 successful
 
 } # test_runSGM
 #----------------------------------------------------------------------------------------------------
