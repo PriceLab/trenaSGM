@@ -1,15 +1,13 @@
 library(RUnit)
 library(trenaSGM)
-library(igvR)
 library(org.Hs.eg.db)
-library(motifStack)
 #------------------------------------------------------------------------------------------------------------------------
 Sys.setlocale("LC_ALL", "C")
 if(!exists("mtx"))
    load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
 
 if(!exists("tbl.enhancers"))
-  load(system.file(package="trenaSGM", "extdata", "enhancers.trem2.RData"))
+  load(system.file(package="trenaSGM", "extdata", "enhancers.TREM2.RData"))
 
 if(!exists("tbl.trena")){
    printf("loading cory's trem2 model, our standard: %s",
@@ -381,6 +379,8 @@ test_reproduceCorysTrem2model <- function()
 #------------------------------------------------------------------------------------------------------------------------
 viz.corysTrem2Model <- function()
 {
+   library(igvR)
+   library(motifStack)
    igv <- igvR()
    setGenome(igv, "hg38")
    if(!exists("tbl.enhancers"))
