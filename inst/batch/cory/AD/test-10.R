@@ -236,9 +236,138 @@ test_runStagedSGM.footprints <- function()
    names(short.specs) <- as.character(targetGenes)
 
    runStagedSGM.footprints(short.specs[[1]])
-   x <- bplapply(short.specs, runStagedSGM.footprints)
+    # x is true/false, named by target gene
+   x.fp <- bplapply(short.specs, runStagedSGM.footprints)
+   x.tfMap <- bplapply(short.specs, runStagedSGM.tfMapping)
 
 } # test_runStagedSGM.footprints
+#----------------------------------------------------------------------------------------------------
+runStagedSGM.associateTFs <- function(short.spec)
+{
+   required.fields <- c("targetGene", "geneSymbol", "regionsMode", "correlationThreshold", "solvers", "dbs")
+   missing.fields <- setdiff(required.fields, names(short.spec))
+   if(length(missing.fields) > 0){
+      msg <- sprintf("runStagedSGM.footprings finds fields missing in short.spec: %s", paste(missing.fields, collapse=", "))
+      stop(msg)
+      }
+
+   printf("-- runSGM(%s)", short.spec$targetGene)
+
+   genomeName <- "hg38"
+   targetGene <- short.spec$targetGene
+   tbl.geneLoc <- tbl.geneInfo[targetGene,]
+   geneSymbol <- tbl.geneLoc$geneSymbol
+   chromosome <- tbl.geneLoc$chrom
+   tss <- tbl.geneLoc$tss
+
+   tbl.regions <- switch(short.spec$regionsMode,
+                         "enhancers" = {enhancer.list[[targetGene]][, c("chrom", "start", "end")]},
+                         "tiny" = {data.frame(chrom=chromosome, start=tss-1000, end=tss+1000, stringsAsFactors=FALSE)
+                         })
+
+   build.spec <- list(title="fp.2000up.200down",
+                      type="footprint.database",
+                      regions=tbl.regions,
+                      tss=tss,
+                      matrix=mtx,
+                      db.host="khaleesi.systemsbiology.net",
+                      databases=list("brain_hint_20"),
+                      motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
+                      tfMapping="MotifDB",
+                      tfPrefilterCorrelation=0.2,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+
+   stageDir <- "stage" # tempdir()
+   fpBuilder <- FootprintDatabaseModelBuilder(genomeName, targetGene, build.spec, quiet=FALSE,
+                                              stagedExecutionDirectory=stageDir)
+   fp.filename <- staged.build(fpBuilder, stage="associateTFs")
+   checkTrue(file.exists(fp.filename))
+
+} # runStagedSGM.associateTFs
+#----------------------------------------------------------------------------------------------------
+test_runStagedSGM.associateTFs <- function()
+{
+   short.specs <- lapply(ad.genes,
+                          function(gene)
+                            list(targetGene=targetGenes[[gene]],
+                                 geneSymbol=gene,
+                                 regionsMode="tiny",
+                                 correlationThreshold=0.5,
+                                 solvers= c("pearson", "spearman"),
+                                 dbs="brain_hint_20"))
+   names(short.specs) <- as.character(targetGenes)
+
+   runStagedSGM.associateTFs(short.specs[[1]])
+   x.tfMap <- bplapply(short.specs, runStagedSGM.associateTFs)
+
+} # test_runStagedSGM.associateTFs
+#----------------------------------------------------------------------------------------------------
+runStagedSGM.buildModels <- function(short.spec)
+{
+   required.fields <- c("targetGene", "geneSymbol", "regionsMode", "correlationThreshold", "solvers", "dbs")
+   missing.fields <- setdiff(required.fields, names(short.spec))
+   if(length(missing.fields) > 0){
+      msg <- sprintf("runStagedSGM.footprings finds fields missing in short.spec: %s", paste(missing.fields, collapse=", "))
+      stop(msg)
+      }
+
+   printf("-- runSGM(%s)", short.spec$targetGene)
+
+   genomeName <- "hg38"
+   targetGene <- short.spec$targetGene
+   tbl.geneLoc <- tbl.geneInfo[targetGene,]
+   geneSymbol <- tbl.geneLoc$geneSymbol
+   chromosome <- tbl.geneLoc$chrom
+   tss <- tbl.geneLoc$tss
+
+   tbl.regions <- switch(short.spec$regionsMode,
+                         "enhancers" = {enhancer.list[[targetGene]][, c("chrom", "start", "end")]},
+                         "tiny" = {data.frame(chrom=chromosome, start=tss-1000, end=tss+1000, stringsAsFactors=FALSE)
+                         })
+
+   build.spec <- list(title="fp.2000up.200down",
+                      type="footprint.database",
+                      regions=tbl.regions,
+                      tss=tss,
+                      matrix=mtx,
+                      db.host="khaleesi.systemsbiology.net",
+                      databases=list("brain_hint_20"),
+                      motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
+                      tfMapping="MotifDB",
+                      tfPrefilterCorrelation=0.2,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+
+   stageDir <- "stage" # tempdir()
+   fpBuilder <- FootprintDatabaseModelBuilder(genomeName, targetGene, build.spec, quiet=FALSE,
+                                              stagedExecutionDirectory=stageDir)
+   browser()
+   fp.filename <- staged.build(fpBuilder, stage="buildModels")
+   checkTrue(file.exists(fp.filename))
+
+} # runStagedSGM.buildModels
+#----------------------------------------------------------------------------------------------------
+test_runStagedSGM.buildModels <- function()
+{
+   short.specs <- lapply(ad.genes,
+                          function(gene)
+                            list(targetGene=targetGenes[[gene]],
+                                 geneSymbol=gene,
+                                 regionsMode="tiny",
+                                 correlationThreshold=0.5,
+                                 solvers= c("pearson", "spearman"),
+                                 dbs="brain_hint_20"))
+   names(short.specs) <- as.character(targetGenes)
+
+   runStagedSGM.buildModels(short.specs[[1]])
+   x.tfMap <- bplapply(short.specs, runStagedSGM.buildModels)
+
+} # test_runStagedSGM.buildModels
 #----------------------------------------------------------------------------------------------------
 run <- function()
 {
