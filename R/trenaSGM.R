@@ -259,6 +259,7 @@ allKnownTFs <- function(source="GO:DNAbindingTranscriptionFactorActivity", ident
                     "GO_00037000_DNAbindingTranscriptionFactorActivityHuman.RData"))
 
     if(identifierType != "geneSymbol"){
+       printf("----------- select(org.Hs.eg.db, ...) in trenaSGM::allKnownTFs");
        suppressMessages(tbl.ids <- select(org.Hs.eg.db, keytype="SYMBOL",
                                           keys=tfs,
                                           columns=c("ENSEMBL", "ENTREZID")))

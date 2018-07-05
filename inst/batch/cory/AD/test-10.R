@@ -10,6 +10,7 @@ library(BiocParallel)
 #library(BatchJobs)
 library(futile.logger)
 library(RPostgreSQL)
+library(org.Hs.eg.db)
 #----------------------------------------------------------------------------------------------------
 if(!exists("mtx"))
     load("Scaled_Winsorized_MayoRNAseq_TCX.mtx.RData")
@@ -42,8 +43,8 @@ runSGM <- function(spec)
 {
    printf("-- runSGM(%s)", spec$targetGene)
    targetGene <- spec$targetGene
+   geneSymbol <- spec$geneSymbol
    tbl.geneLoc <- tbl.geneInfo[targetGene,]
-   geneSymbol <- tbl.geneLoc$geneSymbol
    chromosome <- tbl.geneLoc$chrom
    tss <- tbl.geneLoc$tss
 
@@ -70,9 +71,11 @@ runSGM <- function(spec)
                       type="footprint.database",
                       regions=tbl.regions,
                       tss=tss,
+                      geneSymbol=geneSymbol,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=spec$db,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
                       tfMapping=c("MotifDB","TFClass"),
                       tfPrefilterCorrelation=spec$correlationThreshold,
@@ -190,8 +193,8 @@ runStagedSGM.footprints <- function(short.spec)
 
    genomeName <- "hg38"
    targetGene <- short.spec$targetGene
+   geneSymbol <- short.spec$geneSymbol
    tbl.geneLoc <- tbl.geneInfo[targetGene,]
-   geneSymbol <- tbl.geneLoc$geneSymbol
    chromosome <- tbl.geneLoc$chrom
    tss <- tbl.geneLoc$tss
 
@@ -204,9 +207,11 @@ runStagedSGM.footprints <- function(short.spec)
                       type="footprint.database",
                       regions=tbl.regions,
                       tss=tss,
+                      geneSymbol=geneSymbol,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
@@ -238,7 +243,7 @@ test_runStagedSGM.footprints <- function()
    runStagedSGM.footprints(short.specs[[1]])
     # x is true/false, named by target gene
    x.fp <- bplapply(short.specs, runStagedSGM.footprints)
-   x.tfMap <- bplapply(short.specs, runStagedSGM.tfMapping)
+   #x.tfMap <- bplapply(short.specs, runStagedSGM.tfMapping)
 
 } # test_runStagedSGM.footprints
 #----------------------------------------------------------------------------------------------------
@@ -255,8 +260,8 @@ runStagedSGM.associateTFs <- function(short.spec)
 
    genomeName <- "hg38"
    targetGene <- short.spec$targetGene
+   geneSymbol <- short.spec$geneSymbol
    tbl.geneLoc <- tbl.geneInfo[targetGene,]
-   geneSymbol <- tbl.geneLoc$geneSymbol
    chromosome <- tbl.geneLoc$chrom
    tss <- tbl.geneLoc$tss
 
@@ -269,9 +274,11 @@ runStagedSGM.associateTFs <- function(short.spec)
                       type="footprint.database",
                       regions=tbl.regions,
                       tss=tss,
+                      geneSymbol=geneSymbol,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
@@ -318,8 +325,8 @@ runStagedSGM.buildModels <- function(short.spec)
 
    genomeName <- "hg38"
    targetGene <- short.spec$targetGene
+   geneSymbol <- short.spec$geneSymbol
    tbl.geneLoc <- tbl.geneInfo[targetGene,]
-   geneSymbol <- tbl.geneLoc$geneSymbol
    chromosome <- tbl.geneLoc$chrom
    tss <- tbl.geneLoc$tss
 
@@ -332,36 +339,41 @@ runStagedSGM.buildModels <- function(short.spec)
                       type="footprint.database",
                       regions=tbl.regions,
                       tss=tss,
+                      geneSymbol=geneSymbol,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
-                      tfPool=allKnownTFs(),
+                      tfPool=short.spec$tfPool,
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.2,
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
-
+                      solverNames=short.spec$solvers)
+                        #c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
    stageDir <- "stage" # tempdir()
    fpBuilder <- FootprintDatabaseModelBuilder(genomeName, targetGene, build.spec, quiet=FALSE,
                                               stagedExecutionDirectory=stageDir)
-   browser()
-   fp.filename <- staged.build(fpBuilder, stage="buildModels")
+   fp.filename <- staged.build(fpBuilder, stage="build.models")
    checkTrue(file.exists(fp.filename))
 
 } # runStagedSGM.buildModels
 #----------------------------------------------------------------------------------------------------
 test_runStagedSGM.buildModels <- function()
 {
+   ensembl.tfPool <- allKnownTFs(identifierType="ensemblGeneID")
+
    short.specs <- lapply(ad.genes,
                           function(gene)
                             list(targetGene=targetGenes[[gene]],
                                  geneSymbol=gene,
                                  regionsMode="tiny",
                                  correlationThreshold=0.5,
+                                 tfPool=ensembl.tfPool,
                                  solvers= c("pearson", "spearman"),
                                  dbs="brain_hint_20"))
+
    names(short.specs) <- as.character(targetGenes)
 
    runStagedSGM.buildModels(short.specs[[1]])
@@ -413,3 +425,39 @@ run <- function()
 
 } # run
 #------------------------------------------------------------------------------------------------------------------------
+demo.bplapply.bug <- function()
+{
+    library(org.Hs.eg.db)
+    lookup <- function(geneSymbols){
+       tbl.map <- select(org.Hs.eg.db, keys=geneSymbols, keytype="SYMBOL", columns="ENSEMBL")
+       }
+
+    tf.entrezIDs <- unique(unlist(get("GO:0003700", envir=org.Hs.egGO2ALLEGS)), use.names=FALSE)
+    tf.geneSymbols <- unique(unlist(mget(tf.entrezIDs, envir=org.Hs.egSYMBOL), use.names=FALSE))
+
+    geneSymbols.list <- list(g1=tf.geneSymbols, g2=tf.geneSymbols, g3=tf.geneSymbols)
+    x <- bplapply(geneSymbols.list, lookup)
+        
+} # demo.bplapply.bug
+#------------------------------------------------------------------------------------------------------------------------
+demo.bplapply.fix <- function()
+{
+  library(AnnotationDbi)
+  library(BiocParallel)
+  library(org.Hs.eg.db)
+  
+  lookup <- function(geneSymbols, dbfile) {
+     db <- AnnotationDbi::loadDb(dbfile)
+     on.exit(RSQLite::dbDisconnect(dbconn(db)))
+     tbl.map <- AnnotationDbi::select(db, keys=geneSymbols, keytype="SYMBOL", columns="ENSEMBL")
+     }
+  
+  # tf.entrezIDs <- unique(unlist(get("GO:0003700", envir=org.Hs.egGO2ALLEGS)), use.names=FALSE)
+  # tf.geneSymbols <- unique(unlist(mget(tf.entrezIDs, envir=org.Hs.egSYMBOL), use.names=FALSE))
+  tf.geneSymbols <- unique( select(org.Hs.eg.db, "GO:0003700", "SYMBOL", "GOALL")$SYMBOL)
+  geneSymbols.list <- list(g1=tf.geneSymbols, g2=tf.geneSymbols, g3=tf.geneSymbols)
+  x <- bplapply(geneSymbols.list, lookup, dbfile(org.Hs.eg.db))
+
+} # demo.bplapply.fix
+#------------------------------------------------------------------------------------------------------------------------
+

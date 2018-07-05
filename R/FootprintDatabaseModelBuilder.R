@@ -50,8 +50,10 @@ setGeneric('staged.build', signature='obj', function (obj, stage) standardGeneri
 #' @export
 FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, stagedExecutionDirectory=NA_character_, quiet=TRUE)
 {
-   required.strategy.fields <- c("title", "type", "regions", "tss", "matrix", "db.host", "databases", "motifDiscovery",
-                                 "tfMapping", "tfPool", "tfPrefilterCorrelation", "orderModelByColumn", "solverNames")
+    required.strategy.fields <- c("title", "type", "regions", "tss", "geneSymbol","matrix",
+                                  "db.host", "databases", "motifDiscovery","tfMapping", "tfPool",
+                                  "tfPrefilterCorrelation", "orderModelByColumn", "solverNames",
+                                  "annotationDbFile")
 
    for(field in required.strategy.fields)
       if(!field %in% names(strategy))
@@ -133,6 +135,7 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
                                                   s$matrix,
                                                   s$tfPrefilterCorrelation,
                                                   s$solverNames,
+                                                  s$annotationDbFile,
                                                   obj@quiet)
 
         } # motifDisocvery, builtinFimo
@@ -189,7 +192,8 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
    function (obj, stage=c("find.footprints", "associateTFs", "build.models")) {
 
       stopifnot(dir.exists(obj@stagedExecutionDirectory))
-      subdirName <- sprintf("%s", obj@targetGene)
+      stopifnot(stage %in% c("find.footprints", "associateTFs", "build.models"))
+      subdirName <- sprintf("%s-%s", obj@targetGene, obj@strategy$geneSymbol)
       subdir.path <- file.path(obj@stagedExecutionDirectory, subdirName)
 
       if(!file.exists(subdir.path))
@@ -231,6 +235,7 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
                                                   s$matrix,
                                                   s$tfPrefilterCorrelation,
                                                   s$solverNames,
+                                                  s$annotationDbFile,
                                                   obj@quiet)
 
            tbl.model <- tbls[[1]]
