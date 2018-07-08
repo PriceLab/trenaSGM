@@ -166,7 +166,6 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
    all.known.tfs.mtx <- intersect(tfPool, rownames(expression.matrix))
    ensembl.tfs <- length(grep("ENSG0", all.known.tfs.mtx)) > 0
 
-   browser()
    if(ensembl.tfs)
       ensembl.tf.candidates <- .replaceGeneSymbolsWithEnsemblGeneIDsInList(tfList, annotationDbFile)
 
@@ -176,6 +175,8 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
    mtx.cor <- cor(t(mtx.tfs))
 
    high.correlation.genes <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
+   printf("ModelBuilder::.runTrenaWithTFsOnly: %d tfs in matrix and correlation > %f",
+          length(high.correlation.genes), tfPrefilterCorrelation)
 
    mtx.tfs.filtered <- expression.matrix[high.correlation.genes,]
    tf.candidates.final <- intersect(high.correlation.genes, candidate.tfs)

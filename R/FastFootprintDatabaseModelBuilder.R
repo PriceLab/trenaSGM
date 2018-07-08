@@ -215,8 +215,9 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
         if(obj@strategy$motifDiscovery == "builtinFimo" & stage=="associateTFs"){
            stopifnot(file.exists(footprint.filename))
            load(footprint.filename)
-           print("--- mapping motifs to genes")
-           print(system.time(tbl.motif2tf <- motifToGene(MotifDb, tbl.fp$name, c("MotifDb", "TFClass"))))
+           motifs.to.map <- unique(tbl.fp$name)
+           printf("--- mapping %d motifs to genes", length(motifs.to.map))
+           print(system.time(tbl.motif2tf <- motifToGene(MotifDb, unique(tbl.fp$name), c("MotifDb", "TFClass"))))
            tf.candidates <- sort(unique(tbl.motif2tf$geneSymbol))
            printf("associateTFs stage found %d tf.candidates", length(tf.candidates))
            save(tbl.fp, tbl.motif2tf, tf.candidates, file=footprints.tfMapped.filename)
