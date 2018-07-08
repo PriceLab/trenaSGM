@@ -206,7 +206,8 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
 
         if(stage == "find.footprints"){
            tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
-           save(tbl.fp, file=footprint.filename)
+           tbl.regions <- obj@strategy$regions
+           save(tbl.fp, tbl.regions, file=footprint.filename)
            if(!obj@quiet)
               printf("saving %d footprints to %s", nrow(tbl.fp), footprint.filename)
            return(footprint.filename)
