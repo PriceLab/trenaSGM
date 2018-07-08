@@ -46,7 +46,7 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 # remove NA geneSymbols.  uppercase mouse gene symbols to look like humans
 # map to, and replace with, ensembl gene ids.   if multiple - alas, and for now -  just use the first.
 # use "NA" rather than NA on output
-.replaceGeneSymbolsWithEnsemblGeneIDs <- function(tbl.regRegions, annotationDbFile)
+.replaceGeneSymbolsWithEnsemblGeneIDsInDataFrame <- function(tbl.regRegions, annotationDbFile)
 {
    nas <- which(is.na(tbl.regRegions$geneSymbol))
    if(length(nas) > 0)
@@ -77,7 +77,36 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 
    invisible(tbl.regRegions)
 
-} # .replaceGeneSymbolsWithEnsemblGeneIDs
+} # .replaceGeneSymbolsWithEnsemblGeneIDsInDataFrame
+#----------------------------------------------------------------------------------------------------
+# remove NA geneSymbols.  uppercase mouse gene symbols to look like humans
+# map to, and replace with, ensembl gene ids.   if multiple - alas, and for now -  just use the first.
+# use "NA" rather than NA on output
+.replaceGeneSymbolsWithEnsemblGeneIDsInList <- function(gene.list, annotationDbFile)
+{
+   nas <- which(is.na(gene.list))
+   if(length(nas) > 0)
+      gene.list <- gene.list[-nas,]
+
+   syms <- unique(toupper(gene.list))
+
+   printf("----------- select(org.Hs.eg.db, ...) in .replaceGeneSymbolsWithEnsemblGeneIDsInList")
+
+   annotationDb <- AnnotationDbi::loadDb(annotationDbFile)
+   on.exit(RSQLite::dbDisconnect(dbconn(annotationDb)))
+   
+   suppressMessages(tbl.map <- AnnotationDbi::select(annotationDb, keys=syms, keytype="SYMBOL", columns="ENSEMBL"))
+
+   dups <- which(duplicated(tbl.map$SYMBOL))
+   if(length(dups) > 0)
+      tbl.map <- tbl.map[-dups,]
+   unmapped <- which(is.na(tbl.map$ENSEMBL))
+   if(length(unmapped) > 0)
+      tbl.map$ENSEMBL[unmapped] <- tbl.map$SYMBOL[unmapped]
+
+   invisible(unique(tbl.map$ENSEMBL))
+
+} # .replaceGeneSymbolsWithEnsemblGeneIDsInList
 #----------------------------------------------------------------------------------------------------
 .runTrenaWithRegulatoryRegions <- function(genomeName, allKnownTFs, targetGene, tbl.regulatoryRegions,
                                            expression.matrix, tfPrefilterCorrelation, solverNames,
@@ -88,7 +117,7 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
    all.known.tfs.mtx <- intersect(allKnownTFs, rownames(expression.matrix))
    ensembl.tfs <- length(grep("ENSG0", all.known.tfs.mtx)) > 0
    if(ensembl.tfs)
-      tbl.regulatoryRegions <- .replaceGeneSymbolsWithEnsemblGeneIDs(tbl.regulatoryRegions, annotationDbFile)
+      tbl.regulatoryRegions <- .replaceGeneSymbolsWithEnsemblGeneIDsInDataFrame(tbl.regulatoryRegions, annotationDbFile)
 
       # for our purposes, a tf can only remain a candidate if it IS a tf, according
       # to GO, and has expression data
@@ -135,7 +164,13 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
    trena <- Trena(genomeName, quiet=quiet)
 
    all.known.tfs.mtx <- intersect(tfPool, rownames(expression.matrix))
-   candidate.tfs <- intersect(all.known.tfs.mtx, tfList)
+   ensembl.tfs <- length(grep("ENSG0", all.known.tfs.mtx)) > 0
+
+   browser()
+   if(ensembl.tfs)
+      ensembl.tf.candidates <- .replaceGeneSymbolsWithEnsemblGeneIDsInList(tfList, annotationDbFile)
+
+   candidate.tfs <- intersect(all.known.tfs.mtx, ensembl.tf.candidates)
 
    mtx.tfs <- expression.matrix[c(candidate.tfs, targetGene),]
    mtx.cor <- cor(t(mtx.tfs))
