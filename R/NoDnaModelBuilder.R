@@ -108,6 +108,7 @@ setMethod('build', 'NoDnaModelBuilder',
    function (obj) {
       tbls <- tryCatch({
          s <- obj@strategy
+         browser("NoDnaModelBuilder::build about to call .runTrenaWithTFsOnly")
          tbls <- .runTrenaWithTFsOnly(obj@genomeName,
                                       s$tfPool,
                                       obj@targetGene,

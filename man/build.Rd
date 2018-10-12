@@ -7,11 +7,8 @@
 \alias{build,FootprintDatabaseModelBuilder-method}
 \alias{build}
 \alias{build,FastFootprintDatabaseModelBuilder-method}
-\alias{build}
 \alias{build,RegionsMotifMatchingModelBuilder-method}
-\alias{build}
 \alias{build,NoDnaModelBuilder-method}
-\alias{build}
 \title{create regulatory model of the gene, following all the specified options}
 \usage{
 \S4method{build}{FootprintDatabaseModelBuilder}(obj)

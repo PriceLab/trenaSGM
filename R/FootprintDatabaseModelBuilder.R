@@ -119,6 +119,8 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
 
    function (obj) {
       tbls <- tryCatch({
+        printf("FootprintDatabaseModleBuilder:: build")
+        browser()
         tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
         if(obj@strategy$motifDiscovery == "builtinFimo"){
            tbl.fp$motifName <- tbl.fp$name

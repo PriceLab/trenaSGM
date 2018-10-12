@@ -59,7 +59,7 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 
    annotationDb <- AnnotationDbi::loadDb(annotationDbFile)
    on.exit(RSQLite::dbDisconnect(dbconn(annotationDb)))
-   
+
    suppressMessages(tbl.map <- AnnotationDbi::select(annotationDb, keys=syms, keytype="SYMBOL", columns="ENSEMBL"))
 
    dups <- which(duplicated(tbl.map$SYMBOL))
@@ -94,7 +94,7 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 
    annotationDb <- AnnotationDbi::loadDb(annotationDbFile)
    on.exit(RSQLite::dbDisconnect(dbconn(annotationDb)))
-   
+
    suppressMessages(tbl.map <- AnnotationDbi::select(annotationDb, keys=syms, keytype="SYMBOL", columns="ENSEMBL"))
 
    dups <- which(duplicated(tbl.map$SYMBOL))
@@ -131,8 +131,8 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 
    mtx.sub <- expression.matrix[c(all.known.tfs.mtx, targetGene),]
    mtx.cor <- cor(t(mtx.sub))
-     # browser()
-     # xyz <- "ModelBuilder before mtx.cor[targetGene,]"
+      browser()
+      xyz <- "ModelBuilder before mtx.cor[targetGene,]"
    high.correlation.genes <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
    if(length(high.correlation.genes) == 1){  # it can only be the targetGene
       msg <- sprintf("NO genes have expression >= %f correlated with targetGene '%s'",
@@ -162,7 +162,9 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
                                  tfPrefilterCorrelation, solverNames, annotationDbFile, quiet)
 {
    trena <- Trena(genomeName, quiet=quiet)
+   printf("--- entering .runTrenaWithTFsOnly")
 
+   browser()
    all.known.tfs.mtx <- intersect(tfPool, rownames(expression.matrix))
    ensembl.tfs <- length(grep("ENSG0", all.known.tfs.mtx)) > 0
 

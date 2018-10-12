@@ -11,7 +11,7 @@
 #' @exportClass trenaSGM
 
 .trenaSGM <- setClass("trenaSGM",
-                       representation = representation(
+                       slots=c(
                           genomeName="character",
                           targetGene="character",
                           quiet="logical",
@@ -253,7 +253,9 @@ setMethod('summarizeModels', 'trenaSGM',
 #' @export
 allKnownTFs <- function(source="GO:DNAbindingTranscriptionFactorActivity", identifierType="geneSymbol")
 {
-    stopifnot(identifierType %in% c("geneSymbol", "entrezGeneID", "ensemblGeneID"))
+        # todo: this function promises flexibility for GO term, but does not deliver.
+    stopifnot(source =="GO:DNAbindingTranscriptionFactorActivity")
+    stopifnot(identifierType %in% c("geneSymbol", "entrezGeneID", "ensemblGeneID", "ensembl|geneSymbol"))
 
     load(system.file(package="trenaSGM", "extdata", "tfCollections",
                     "GO_00037000_DNAbindingTranscriptionFactorActivityHuman.RData"))
@@ -265,7 +267,9 @@ allKnownTFs <- function(source="GO:DNAbindingTranscriptionFactorActivity", ident
                                           columns=c("ENSEMBL", "ENTREZID")))
        tfs <- switch(identifierType,
                      "ensemblGeneID" = {unique(tbl.ids$ENSEMBL)},
-                     "entrezGeneID"  = {unique(tbl.ids$ENTREZID)})
+                     "entrezGeneID"  = {unique(tbl.ids$ENTREZID)},
+                     "ensembl|geneSymbol" = {unique(paste(tbl.ids$ENSEMBL, tbl.ids$SYMBOL, sep="|"))}
+                     )
        removers <- which(is.na(tfs))
        if(length(removers) > 0)
           tfs <- tfs[-removers]

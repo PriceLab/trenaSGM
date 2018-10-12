@@ -7,11 +7,8 @@
 \alias{show,FootprintDatabaseModelBuilder-method}
 \alias{show}
 \alias{show,FastFootprintDatabaseModelBuilder-method}
-\alias{show}
 \alias{show,RegionsMotifMatchingModelBuilder-method}
-\alias{show}
 \alias{show,NoDnaModelBuilder-method}
-\alias{show}
 \title{summarize the attributes specifying the creation of a trena gene regulatory model}
 \usage{
 \S4method{show}{FootprintDatabaseModelBuilder}(object)

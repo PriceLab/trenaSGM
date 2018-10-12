@@ -189,7 +189,54 @@ test_allKnownTFs <- function()
    checkEquals(length(which(is.na(tfs.entrez))), 0)
    checkEquals(length(tfs), length(tfs.entrez))
 
+   tfs.combined <- allKnownTFs(identifierType="ensembl|geneSymbol")
+   checkEquals(head(tfs.combined, n=3), c("ENSG00000275700|AATF", "ENSG00000276072|AATF", "ENSG00000101126|ADNP"))
+   checkTrue("ENSG00000175387|SMAD2" %in% tfs.combined)
+
 } # test_allKnownTFs
+#------------------------------------------------------------------------------------------------------------------------
+test_tair10_frd3 <- function()
+{
+   load("~/github/trenaShinyApps/mentewab/frd3/shinyApp/data/mtx.zinc.22810x42.RData")
+   orf <- "AT3G08040"
+   genome <- "tair10"
+   sgm <- trenaSGM(genome, orf)
+
+   candidate.tfs <- c("AT5G66940", "AT5G17800", "AT1G51700", "AT1G69570",
+                      "AT2G28810", "AT2G01930", "AT3G55370", "AT5G02460",
+                      "AT3G53200", "AT3G50410", "AT1G29160", "AT1G55110",
+                      "AT1G69560", "AT1G14580", "AT2G02070", "AT5G60850",
+                      "AT3G01530", "AT2G02080", "AT3G45610")
+
+
+   genome <- "tair10"
+   targetGene <- orf
+   chromosome <- "3"
+   tss <- 2569396
+      # strand-aware start and end: trem2 is on the minus strand
+   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
+
+   build.spec <- list(title="frd3.",
+                      type="regions.motifMatching",
+                      tss=tss,
+                      regions=tbl.regions,
+                      matrix=mtx,
+                      pfms=pfms,
+                      matchThreshold=90,
+                      motifDiscovery="matchPWM",
+                      tfPool=allKnownTFs(),
+                      tfMapping="MotifDB",
+                      tfPrefilterCorrelation=0.0,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+   build
+   er <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
+   x <- build(builder)
+
+
+
+} # test_tair10_frd3
 #------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()
