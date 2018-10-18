@@ -4,6 +4,7 @@ library(RUnit)
 runTests <- function()
 {
    test_roundNumericColumns()
+   test_make.ensembl.geneSymbol.identifiers()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -27,6 +28,25 @@ test_roundNumericColumns <- function()
                     bindingSites=17))
 
 } # test_roundNumericColumns
+#------------------------------------------------------------------------------------------------------------------------
+test_make.ensembl.geneSymbol.identifiers <- function()
+{
+   printf("--- test_make.ensembl.geneSymbol.identifiers")
+
+   geneSymbols <-  toupper(c("CEBPA", "CEBPA", NA, "znf143", "MYC::MAX", "RARA(var.2)",  "Tcf12", NA))
+   ensm.syms <- make.ensembl.geneSymbol.identifiers(geneSymbols)
+   expected <- c("CEBPA|ENSG00000245848",
+                 "CEBPA|ENSG00000245848",
+                 "NA|NA",
+                 "ZNF143|ENSG00000166478",
+                 "MYC::MAX|NA",
+                 "RARA(VAR.2)|NA",
+                 "TCF12|ENSG00000140262",
+                 "NA|NA")
+
+   checkEquals(ensm.syms, expected)
+
+} # test_make.ensembl.geneSymbol.identifiers
 #------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()

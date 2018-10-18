@@ -119,15 +119,21 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
 
    function (obj) {
       tbls <- tryCatch({
-        printf("FootprintDatabaseModleBuilder:: build")
-        browser()
+        if(!obj@quiet) printf("FootprintDatabaseModleBuilder:: build")
         tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
         if(obj@strategy$motifDiscovery == "builtinFimo"){
            tbl.fp$motifName <- tbl.fp$name
            mapper <- tolower(obj@strategy$tfMapping)
            stopifnot(all(mapper %in% c("motifdb", "tfclass")))
            tbl.fp <- associateTranscriptionFactors(MotifDb, tbl.fp, source=obj@strategy$tfMapping, expand.rows=TRUE)
-
+             # an ad hoc processing step: if compound ensembl|geneSymbol identifers are used, which
+             # we can find out by checking the target gene and the matrix, then we want to make the candidate
+             # tfs into an identifier in the same style
+           #ensembl.geneSymbol.names.in.use <- grepl("|", obj@targetGene, fixed=TRUE)
+           #if(ensembl.geneSymbol.names.in.use){
+           #   ensembl.geneSymbols <- make.ensembl.geneSymbol.identifiers(tbl.fp$geneSymbol)
+           #   tbl.fp$geneSymbol <- ensembl.geneSymbols
+           #   }
            s <- obj@strategy
            xyz <- "FootprintDatabaseModelBuilder, build"
            tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
@@ -270,6 +276,7 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
 {
    s <- strategy # for lexical brevity
 
+   if(!quiet) printf("opening PostgreSQL connection to %s", s$db.host)
    dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname="hg38")
    all.available <- all(s$databases %in% dbGetQuery(dbMain, "select datname from pg_database")$datname, v=TRUE, ignore.case=TRUE)
    dbDisconnect(dbMain)
@@ -286,6 +293,7 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
       tbl.hits <- .multiQueryFootprints(dbConnection, s$regions)
       tbl.hits$chrom <- unlist(lapply(strsplit(tbl.hits$loc, ":"), "[",  1))
       tbl.hits.clean <- tbl.hits # [, c("chrom", "fp_start", "fp_end", "name", "score2", "method")]
+      if(!quiet) printf("footprints from %s: %d", dbName, nrow(tbl.hits.clean))
       fps[[dbName]] <- tbl.hits.clean
       tbl.hits.clean$database = dbName
       dbDisconnect(dbConnection)

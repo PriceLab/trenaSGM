@@ -52,5 +52,10 @@ roundNumericColumns <- function(tbl, digits, exponentialColumnNames=NA)
 
 } # roundNumericColumns
 #------------------------------------------------------------------------------------------------------------------------
+make.ensembl.geneSymbol.identifiers <- function(geneSymbols)
+{
+   tbl.geneNameMapper <- select(org.Hs.eg.db, keys=geneSymbols, keytype="SYMBOL", columns="ENSEMBL")
+   return(with(tbl.geneNameMapper, paste(SYMBOL, ENSEMBL, sep="|")))
 
-
+} # make.ensembl.geneSymbol.identifiers
+#------------------------------------------------------------------------------------------------------------------------

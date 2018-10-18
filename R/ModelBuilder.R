@@ -129,10 +129,9 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
       # and further restricting the candidate tfs, and the matrix, by
       # an abs(cor) threshold
 
-   mtx.sub <- expression.matrix[c(all.known.tfs.mtx, targetGene),]
+   mtx.sub <- expression.matrix[c(candidate.tfs, targetGene),]
    mtx.cor <- cor(t(mtx.sub))
-      browser()
-      xyz <- "ModelBuilder before mtx.cor[targetGene,]"
+   xyz <- "ModelBuilder before mtx.cor[targetGene,]"
    high.correlation.genes <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
    if(length(high.correlation.genes) == 1){  # it can only be the targetGene
       msg <- sprintf("NO genes have expression >= %f correlated with targetGene '%s'",
@@ -152,7 +151,9 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
    stopifnot(all(c(targetGene, tbl.regulatoryRegions.filtered$geneSymbol) %in% rownames(mtx.tfs.filtered)))
 
    tbl.model <- createGeneModelFromRegulatoryRegions(trena, targetGene, solverNames,
-                                                     tbl.regulatoryRegions.filtered, mtx.tfs.filtered)
+                                                     tbl.regulatoryRegions.filtered,
+                                                     mtx.tfs.filtered,
+                                                     quiet)
 
    return(list(model=tbl.model, regulatoryRegions=tbl.regulatoryRegions.filtered))
 
@@ -164,7 +165,7 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
    trena <- Trena(genomeName, quiet=quiet)
    printf("--- entering .runTrenaWithTFsOnly")
 
-   browser()
+   #browser()
    all.known.tfs.mtx <- intersect(tfPool, rownames(expression.matrix))
    ensembl.tfs <- length(grep("ENSG0", all.known.tfs.mtx)) > 0
 
