@@ -152,8 +152,7 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 
    tbl.model <- createGeneModelFromRegulatoryRegions(trena, targetGene, solverNames,
                                                      tbl.regulatoryRegions.filtered,
-                                                     mtx.tfs.filtered,
-                                                     quiet)
+                                                     mtx.tfs.filtered)
 
    return(list(model=tbl.model, regulatoryRegions=tbl.regulatoryRegions.filtered))
 
@@ -163,9 +162,8 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
                                  tfPrefilterCorrelation, solverNames, annotationDbFile, quiet)
 {
    trena <- Trena(genomeName, quiet=quiet)
-   printf("--- entering .runTrenaWithTFsOnly")
+   if(!quiet(printf("--- entering .runTrenaWithTFsOnly")))
 
-   #browser()
    all.known.tfs.mtx <- intersect(tfPool, rownames(expression.matrix))
    ensembl.tfs <- length(grep("ENSG0", all.known.tfs.mtx)) > 0
 
@@ -192,7 +190,9 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 
    stopifnot(all(c(targetGene, tf.candidates.final) %in% rownames(mtx.tfs.filtered)))
 
-   tbl.model <- createGeneModelFromTfList(trena, targetGene, solverNames, tf.candidates.final, mtx.tfs.filtered)
+   if(!quiet) printf("calling createGeneModelFromTfList")
+   tbl.model <- createGeneModelFromTfList(trena, targetGene, solverNames, tf.candidates.final,
+                                          mtx.tfs.filtered)
 
    return(list(model=tbl.model, regulatoryRegions=data.frame()))
 

@@ -31,7 +31,6 @@ runTests <- function()
    test_modelExpressionDataWithEnsgIDs()
    test_noGenesAboveExpressionCorrelationThreshold()
    test_stagedExecution()
-   test_parallel_stagedExecution.footprints()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -92,9 +91,11 @@ test_build.small.fimo.motifDB.mapping.cor04 <- function()
                       type="footprint.database",
                       regions=tbl.regions,
                       tss=tss,
+                      geneSymbol=targetGene,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
@@ -184,6 +185,7 @@ test_build.small.fimo.motifDB.mapping.cor.02 <- function()
 {
    printf("--- test_build.small.fimo.motifDB.mapping.cor.02")
 
+   targetGene <- "TREM2"
    chromosome <- "chr6"
    upstream <- 2000
    downstream <- 200
@@ -197,9 +199,11 @@ test_build.small.fimo.motifDB.mapping.cor.02 <- function()
                       type="footprint.database",
                       regions=tbl.regions,
                       tss=tss,
+                      geneSymbol=targetGene,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
@@ -222,6 +226,7 @@ test_build.10kb.fimo.motifDB.mapping.cor04 <- function()
 {
    printf("--- test_build.10kb.fimo.motifDB.mapping.cor04")
 
+   targetGene <- "TREM2"
    chromosome <- "chr6"
    upstream <- 5000
    downstream <- 5000
@@ -233,11 +238,13 @@ test_build.10kb.fimo.motifDB.mapping.cor04 <- function()
 
    build.spec <- list(title="fp.5kbup.5kbdown",
                       type="footprint.database",
+                      geneSymbol=targetGene,
                       regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
@@ -265,6 +272,7 @@ test_build.10kb.fimo.tfclass.mapping.cor04 <- function()
 {
    printf("--- test_build.10kb.fimo.tfclass.mapping.cor04")
 
+   targetGene <- "TREM2"
    chromosome <- "chr6"
    upstream <- 5000
    downstream <- 5000
@@ -276,11 +284,13 @@ test_build.10kb.fimo.tfclass.mapping.cor04 <- function()
 
    build.spec <- list(title="fp.5kbup.5kbdown",
                       type="footprint.database",
+                      geneSymbol=targetGene,
                       regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
                       tfPool=allKnownTFs(),
                       tfMapping="TFClass",
@@ -315,12 +325,14 @@ test_reproduceCorysTrem2model <- function()
 
    build.spec <- list(title="fp.enhancers",
                       type="footprint.database",
+                      geneSymbol="TREM2",
                       regions=tbl.enhancers,
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=c("brain_hint_20", "brain_hint_16", "brain_wellington_20", "brain_wellington_16"),
                       motifDiscovery="builtinFimo",
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       tfPool=allKnownTFs(),
                       tfMapping=c("TFClass", "MotifDb"),
                       tfPrefilterCorrelation=0.4,
@@ -464,11 +476,13 @@ test_tfPoolOption <- function()
 
    build.spec <- list(title="fp.2000up.200down",
                       type="footprint.database",
+                      geneSymbol=targetGene,
                       regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
@@ -547,11 +561,13 @@ test_modelExpressionDataWithEnsgIDs <- function()
 
    build.spec <- list(title="fp.ensemblTest",
                       type="footprint.database",
+                      geneSymbol=targetGene,
                       regions=tbl.regions,
                       tss=tss,
                       matrix=mtx.sub,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
                       tfMapping="MotifDB",
                       tfPool=allKnownTFs(identifierType="ensemblGeneID"),
@@ -588,11 +604,13 @@ test_noGenesAboveExpressionCorrelationThreshold <- function()
 
    build.spec <- list(title="fp.2000up.200down",
                       type="footprint.database",
+                      geneSymbol=targetGene,
                       regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
@@ -632,11 +650,13 @@ test_stagedExecution <- function()
 
    build.spec <- list(title="fp.2000up.200down",
                       type="footprint.database",
+                      geneSymbol=targetGene,
                       regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
                       databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",

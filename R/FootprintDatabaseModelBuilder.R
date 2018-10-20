@@ -122,10 +122,21 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
         if(!obj@quiet) printf("FootprintDatabaseModleBuilder:: build")
         tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
         if(obj@strategy$motifDiscovery == "builtinFimo"){
+           if(!obj@quiet) printf("motifDiscovery: bulitinFimo")
            tbl.fp$motifName <- tbl.fp$name
            mapper <- tolower(obj@strategy$tfMapping)
-           stopifnot(all(mapper %in% c("motifdb", "tfclass")))
+           stopifnot(all(mapper %in% c("motifdb", "tfclass", "motifdb+tfclass")))
+           #if(mapper == "motifdb+tfclass")
+           #   mapper <- c("motifdb", "tfclass")
+           if(!obj@quiet){
+              printf("associateTranscriptFactors (with motifs), mappers: %s", paste(mapper, collapse=", "))
+              printf("  tbl.fp for mapping: %d rows", nrow(tbl.fp))
+              }
            tbl.fp <- associateTranscriptionFactors(MotifDb, tbl.fp, source=obj@strategy$tfMapping, expand.rows=TRUE)
+           if(!obj@quiet){
+              printf("after associateTranscriptFactors")
+              printf("  tbl.fp after mapping: %d rows", nrow(tbl.fp))
+              }
              # an ad hoc processing step: if compound ensembl|geneSymbol identifers are used, which
              # we can find out by checking the target gene and the matrix, then we want to make the candidate
              # tfs into an identifier in the same style
@@ -311,7 +322,7 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
       # TODO (14 may 2018): fix this
    invisible(tbl.fp)
 
-} # .assembleFootprint
+} # .assembleFootprints
 #------------------------------------------------------------------------------------------------------------------------
 .queryFootprints <- function(db, chrom, start, stop)
 {
