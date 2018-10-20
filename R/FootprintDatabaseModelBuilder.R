@@ -157,8 +157,19 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
                                                   s$annotationDbFile,
                                                   obj@quiet)
 
-        } # motifDisocvery, builtinFimo
+           } # motifDisocvery, builtinFimo
         tbl.model <- tbls[[1]]
+        tbl.regRegions <- tbls[[2]]
+           # recalculate the bindingSites count, which are likely to be inflated
+           # by identical motif/tf/loc matches from multiple samples in the footprints
+        tbl.regRegions.unique <- unique(tbl.regRegions[, c("loc", "geneSymbol")])
+        tbl.tf.counts <- as.data.frame(table(tbl.regRegions.unique$geneSymbol))
+        colnames(tbl.tf.counts) <- c("gene", "bindingSites")
+        gene.order <- match(tbl.model$gene, tbl.tf.counts$gene)
+        if(!obj@quiet)
+           printf("bindingSite reduction, from total %d to %d",
+                  sum(tbl.model$bindingSites), sum(tbl.tf.counts$bindingSites))
+        tbl.model$bindingSites <- tbl.tf.counts$bindingSites[gene.order]
         coi <- s$orderModelByColumn
         if(coi %in% colnames(tbl.model)){
            tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
