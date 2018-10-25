@@ -50,6 +50,8 @@ setGeneric('staged.build', signature='obj', function (obj, stage) standardGeneri
 #' @export
 FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, stagedExecutionDirectory=NA_character_, quiet=TRUE)
 {
+    if(!quiet) message("constructing FootprintDatabaseModelBuilder")
+
     required.strategy.fields <- c("title", "type", "regions", "tss", "geneSymbol","matrix",
                                   "db.host", "databases", "motifDiscovery","tfMapping", "tfPool",
                                   "tfPrefilterCorrelation", "orderModelByColumn", "solverNames",
@@ -59,6 +61,7 @@ FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, stag
       if(!field %in% names(strategy))
          stop(sprintf("missing '%s' field in strategy", field))
 
+   printf("FPDBbuilder ctor, quiet: %s", quiet)
    obj <- .FootprintDatabaseModelBuilder(ModelBuilder(genomeName=genomeName,
                                                       targetGene=targetGene,
                                                       strategy=strategy,
@@ -115,27 +118,28 @@ setMethod('show', 'FootprintDatabaseModelBuilder',
 #'   }
 #'
 #' @export
+#'
 setMethod('build', 'FootprintDatabaseModelBuilder',
 
    function (obj) {
       tbls <- tryCatch({
-        if(!obj@quiet) printf("FootprintDatabaseModleBuilder:: build")
+        if(!obj@quiet) message(sprintf("FootprintDatabaseModleBuilder::build"))
         tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
         if(obj@strategy$motifDiscovery == "builtinFimo"){
-           if(!obj@quiet) printf("motifDiscovery: bulitinFimo")
+           if(!obj@quiet) message(sprintf("motifDiscovery: bulitinFimo"))
            tbl.fp$motifName <- tbl.fp$name
            mapper <- tolower(obj@strategy$tfMapping)
            stopifnot(all(mapper %in% c("motifdb", "tfclass", "motifdb+tfclass")))
            #if(mapper == "motifdb+tfclass")
            #   mapper <- c("motifdb", "tfclass")
            if(!obj@quiet){
-              printf("associateTranscriptFactors (with motifs), mappers: %s", paste(mapper, collapse=", "))
-              printf("  tbl.fp for mapping: %d rows", nrow(tbl.fp))
+              message(sprintf("associateTranscriptFactors (with motifs), mappers: %s", paste(mapper, collapse=", ")))
+              message(sprintf("  tbl.fp for mapping: %d rows", nrow(tbl.fp)))
               }
            tbl.fp <- associateTranscriptionFactors(MotifDb, tbl.fp, source=obj@strategy$tfMapping, expand.rows=TRUE)
            if(!obj@quiet){
-              printf("after associateTranscriptFactors")
-              printf("  tbl.fp after mapping: %d rows", nrow(tbl.fp))
+              message(sprintf("after associateTranscriptFactors"))
+              message(sprintf("  tbl.fp after mapping: %d rows", nrow(tbl.fp)))
               }
              # an ad hoc processing step: if compound ensembl|geneSymbol identifers are used, which
              # we can find out by checking the target gene and the matrix, then we want to make the candidate
@@ -167,8 +171,8 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
         colnames(tbl.tf.counts) <- c("gene", "bindingSites")
         gene.order <- match(tbl.model$gene, tbl.tf.counts$gene)
         if(!obj@quiet)
-           printf("bindingSite reduction, from total %d to %d",
-                  sum(tbl.model$bindingSites), sum(tbl.tf.counts$bindingSites))
+           message(sprintf("bindingSite reduction, from total %d to %d across %d tfs in model",
+                  sum(tbl.model$bindingSites), sum(tbl.tf.counts$bindingSites), nrow(tbl.model)))
         tbl.model$bindingSites <- tbl.tf.counts$bindingSites[gene.order]
         coi <- s$orderModelByColumn
         if(coi %in% colnames(tbl.model)){
@@ -177,7 +181,7 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
            }
         tbls
         }, error=function(e){
-           print(e)
+           message(e)
            return(list(model=data.frame(), regulatoryRegions=data.frame()))
            })
 
@@ -271,7 +275,11 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
            tbl.model <- tbls[[1]]
            coi <- s$orderModelByColumn
            if(coi %in% colnames(tbl.model)){
-              tbl.model <- tbl.model[order(tbl.model[, coi], decreasing=TRUE),]
+                # note: all columns are ordered by their absolute value.
+                #       this could, in principle, cause problems, but current
+                #       trena columms (pearson, spearman, beta lasso, beta ridge, random forest)
+                 #       are all safely treated this way
+              tbl.model <- tbl.model[order(abs(tbl.model[, coi]), decreasing=TRUE),]
               tbls[[1]] <- tbl.model
               }
            save(tbls, file=models.filename)
@@ -294,11 +302,15 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
       }) # staged.build
 
 #------------------------------------------------------------------------------------------------------------------------
-.assembleFootprints <- function(strategy, quiet=TRUE)
+.hiddenassembleFootprints <- function(strategy, quiet)
 {
    s <- strategy # for lexical brevity
 
-   if(!quiet) printf("opening PostgreSQL connection to %s", s$db.host)
+   printf("=============================================")
+   printf(".assembleFootprints, quiet? %s", quiet)
+   printf("=============================================")
+
+   if(!quiet) message(sprintf("opening PostgreSQL connection to %s", s$db.host))
    dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname="hg38")
    all.available <- all(s$databases %in% dbGetQuery(dbMain, "select datname from pg_database")$datname, v=TRUE, ignore.case=TRUE)
    dbDisconnect(dbMain)
@@ -308,21 +320,21 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
    fps <- list()
 
    for(dbName in s$databases){
-      if(!quiet) printf("--- opening connection %s", dbName)
+      if(!quiet) message(sprintf("--- opening connection %s", dbName))
       dbConnection <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname=dbName)
-      if(!quiet) printf("--- querying %s for footprints across %d regions totaling %d bases",
-                        dbName, nrow(s$regions), with(s$regions, sum(end-start)))
+      if(!quiet) message(sprintf("--- querying %s for footprints across %d regions totaling %d bases",
+                        dbName, nrow(s$regions), with(s$regions, sum(end-start))))
       tbl.hits <- .multiQueryFootprints(dbConnection, s$regions)
       tbl.hits$chrom <- unlist(lapply(strsplit(tbl.hits$loc, ":"), "[",  1))
       tbl.hits.clean <- tbl.hits # [, c("chrom", "fp_start", "fp_end", "name", "score2", "method")]
-      if(!quiet) printf("footprints from %s: %d", dbName, nrow(tbl.hits.clean))
+      if(!quiet) message(sprintf("footprints from %s: %d", dbName, nrow(tbl.hits.clean)))
       fps[[dbName]] <- tbl.hits.clean
       tbl.hits.clean$database = dbName
       dbDisconnect(dbConnection)
       }
 
    tbl.fp <- do.call(rbind, fps)
-   if(!quiet) printf(" combined tbl.fp: %d %d", nrow(tbl.fp), ncol(tbl.fp))
+   if(!quiet) message(sprintf(" combined tbl.fp: %d %d", nrow(tbl.fp), ncol(tbl.fp)))
    tbl.fp$shortMotif <- NA
    missing <- which(!tbl.fp$name %in% names(MotifDb))
    matched <- which(tbl.fp$name %in% names(MotifDb))
@@ -333,7 +345,7 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
       # TODO (14 may 2018): fix this
    invisible(tbl.fp)
 
-} # .assembleFootprints
+} # .hiddenassembleFootprints
 #------------------------------------------------------------------------------------------------------------------------
 .queryFootprints <- function(db, chrom, start, stop)
 {

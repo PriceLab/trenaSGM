@@ -133,6 +133,13 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
    mtx.cor <- cor(t(mtx.sub))
    xyz <- "ModelBuilder before mtx.cor[targetGene,]"
    high.correlation.genes <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
+   if(!quiet){
+      message(sprintf("%d high correlation tfs: %d +  %d -",
+                      length(high.correlation.genes),
+                      length(which(mtx.cor[high.correlation.genes, targetGene] > 0)),
+                      length(which(mtx.cor[high.correlation.genes, targetGene] < 0))))
+      } # !quiet
+
    if(length(high.correlation.genes) == 1){  # it can only be the targetGene
       msg <- sprintf("NO genes have expression >= %f correlated with targetGene '%s'",
                      tfPrefilterCorrelation, targetGene)

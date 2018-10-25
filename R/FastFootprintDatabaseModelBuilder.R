@@ -276,9 +276,13 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
       }) # staged.fast.build
 
 #------------------------------------------------------------------------------------------------------------------------
-.assembleFootprints <- function(strategy, quiet=TRUE)
+.assembleFootprints <- function(strategy, quiet)
 {
    s <- strategy # for lexical brevity
+
+   printf("=============================================")
+   printf(".assembleFootprints, quiet? %s", quiet)
+   printf("=============================================")
 
    dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname="hg38")
    all.available <- all(s$databases %in% dbGetQuery(dbMain, "select datname from pg_database")$datname, v=TRUE, ignore.case=TRUE)
@@ -289,10 +293,10 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
    fps <- list()
 
    for(dbName in s$databases){
-      if(!quiet) printf("--- opening connection %s", dbName)
+      if(!quiet) message(sprintf("--- opening connection %s", dbName))
       dbConnection <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname=dbName)
-      if(!quiet) printf("--- querying %s for footprints across %d regions totaling %d bases",
-                        dbName, nrow(s$regions), with(s$regions, sum(end-start)))
+      if(!quiet) message(sprintf("--- querying %s for footprints across %d regions totaling %d bases",
+                        dbName, nrow(s$regions), with(s$regions, sum(end-start))))
       tbl.hits <- .multiQueryFootprints(dbConnection, s$regions)
       tbl.hits$chrom <- unlist(lapply(strsplit(tbl.hits$loc, ":"), "[",  1))
       tbl.hits.clean <- tbl.hits # [, c("chrom", "fp_start", "fp_end", "name", "score2", "method")]
@@ -302,7 +306,7 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
       }
 
    tbl.fp <- do.call(rbind, fps)
-   if(!quiet) printf(" combined tbl.fp: %d %d", nrow(tbl.fp), ncol(tbl.fp))
+   if(!quiet) message(printf(" combined tbl.fp: %d %d", nrow(tbl.fp), ncol(tbl.fp)))
    tbl.fp$shortMotif <- NA
    missing <- which(!tbl.fp$name %in% names(MotifDb))
    matched <- which(tbl.fp$name %in% names(MotifDb))
