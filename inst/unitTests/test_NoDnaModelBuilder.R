@@ -9,6 +9,7 @@ runTests <- function()
    test_constructor()
    test_build.trem2.noDNA.13.known.TFs()
    test_build.trem2.noDNA.all.known.TFs()
+   test_build.trem2.noDNA.bogus.targetGene()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -29,8 +30,10 @@ test_constructor <- function()
                       matrix=mtx,
                       tfPool=allKnownTFs(),
                       tfPrefilterCorrelation=0.4,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=TRUE)
 
    builder <- NoDnaModelBuilder(genome, targetGene, build.spec, quiet=TRUE)
 
@@ -55,8 +58,10 @@ test_build.trem2.noDNA.13.known.TFs <- function()
                       tfPool=allKnownTFs(),
                       tfs=candidate.tfs,
                       tfPrefilterCorrelation=0.2,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=TRUE)
 
    builder <- NoDnaModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
    x <- build(builder)
@@ -98,8 +103,10 @@ test_build.trem2.noDNA.all.known.TFs <- function()
                       tfPool=allKnownTFs(),
                       tfs=candidate.tfs,
                       tfPrefilterCorrelation=0.7,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="pearsonCoeff",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=TRUE)
 
    builder <- NoDnaModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
    x <- build(builder)
@@ -125,9 +132,11 @@ test_build.trem2.noDNA.bogus.targetGene <- function()
                       matrix=mtx,
                       tfPool=allKnownTFs(),
                       tfs=candidate.tfs,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       tfPrefilterCorrelation=0.7,
                       orderModelByColumn="pearsonCoeff",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=TRUE)
 
    builder <- NoDnaModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
    x <- build(builder)

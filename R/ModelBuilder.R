@@ -34,6 +34,7 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
    #    stop(msg)
    #    }
 
+
    obj <- .ModelBuilder(genomeName=genomeName,
                         targetGene=targetGene,
                         strategy=strategy,
@@ -169,25 +170,22 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
                                  tfPrefilterCorrelation, solverNames, annotationDbFile, quiet)
 {
    trena <- Trena(genomeName, quiet=quiet)
-   if(!quiet(printf("--- entering .runTrenaWithTFsOnly")))
+   if(!quiet)
+      printf("--- entering .runTrenaWithTFsOnly")
 
    all.known.tfs.mtx <- intersect(tfPool, rownames(expression.matrix))
-   ensembl.tfs <- length(grep("ENSG0", all.known.tfs.mtx)) > 0
 
-   if(ensembl.tfs)
-      ensembl.tf.candidates <- .replaceGeneSymbolsWithEnsemblGeneIDsInList(tfList, annotationDbFile)
-
-   candidate.tfs <- intersect(all.known.tfs.mtx, ensembl.tf.candidates)
-
-   mtx.tfs <- expression.matrix[c(candidate.tfs, targetGene),]
+   mtx.tfs <- expression.matrix[c(all.known.tfs.mtx, targetGene),]
    mtx.cor <- cor(t(mtx.tfs))
 
    high.correlation.genes <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
-   printf("ModelBuilder::.runTrenaWithTFsOnly: %d tfs in matrix and correlation > %f",
-          length(high.correlation.genes), tfPrefilterCorrelation)
+   if(!quiet) {
+      printf("ModelBuilder::.runTrenaWithTFsOnly: %d tfs in matrix and correlation > %f",
+             length(high.correlation.genes), tfPrefilterCorrelation)
+      }
 
    mtx.tfs.filtered <- expression.matrix[high.correlation.genes,]
-   tf.candidates.final <- intersect(high.correlation.genes, candidate.tfs)
+   tf.candidates.final <- intersect(high.correlation.genes, tfList)
 
    if(length(tf.candidates.final) <= 1){
       message(sprintf("none of the supplied TFs reach expression correlation threshold(%4.2f) with targetGene %s",
@@ -195,7 +193,11 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
       return(list(model=data.frame(), regulatoryRegions=data.frame()))
       }
 
-   stopifnot(all(c(targetGene, tf.candidates.final) %in% rownames(mtx.tfs.filtered)))
+   missing.genes <- setdiff(c(targetGene, tf.candidates.final), rownames(mtx.tfs.filtered))
+   if(length(missing.genes) > 0){
+      msg <- sprintf("these (target + tfs) not in matrix: %s", paste(missing.genes, collapse=", "))
+      stop(msg)
+      }
 
    if(!quiet) printf("calling createGeneModelFromTfList")
    tbl.model <- createGeneModelFromTfList(trena, targetGene, solverNames, tf.candidates.final,
