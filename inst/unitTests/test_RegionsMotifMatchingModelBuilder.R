@@ -41,8 +41,10 @@ test_constructor <- function()
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=TRUE)
 
    builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
 
@@ -73,7 +75,9 @@ test_build.trem2.2200bp.motifDB.model <- function()
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      annotationDbFile=dbfile(org.Hs.eg.db),
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=FALSE)
 
    builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
    x <- build(builder)
@@ -111,8 +115,10 @@ test_build.trem2.2200bp.TFClass.model <- function()
                       tfPool=allKnownTFs(),
                       tfMapping="TFClass",
                       tfPrefilterCorrelation=0.4,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=FALSE)
 
 
    builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
@@ -151,8 +157,10 @@ test_build.trem2.2200bp.TFClass.and.MotifDb.model <- function()
                       tfPool=allKnownTFs(),
                       tfMapping=c("MotifDb", "TFClass"),
                       tfPrefilterCorrelation=0.4,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=FALSE)
 
 
    builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
@@ -193,8 +201,10 @@ test_IKZF1 <- function()
                       tfPool=allKnownTFs(),
                       tfMapping=c("MotifDb", "TFClass"),
                       tfPrefilterCorrelation=0.4,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=FALSE)
 
    builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
    x <- build(builder)
@@ -233,8 +243,10 @@ test_IRF5 <- function()
                       tfPool=allKnownTFs(),
                       tfMapping=c("MotifDb", "TFClass"),
                       tfPrefilterCorrelation=0.4,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=FALSE)
 
    builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
    suppressWarnings(x <- build(builder))
@@ -275,8 +287,10 @@ test_BHLHE41 <- function()
                       tfPool=allKnownTFs(),
                       tfMapping=c("MotifDb", "TFClass"),
                       tfPrefilterCorrelation=0.4,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=FALSE)
 
    builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
    suppressWarnings(x <- build(builder))
@@ -322,8 +336,10 @@ test_build.trem2.enhancers.TFClass.and.MotifDb.model <- function()
                       tfPool=allKnownTFs(),
                       tfMapping=c("MotifDb", "TFClass"),
                       tfPrefilterCorrelation=0.4,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=FALSE)
 
    builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
    x <- build(builder)
@@ -363,8 +379,10 @@ test_build.bogusTargetGene <- function()
                       tfPool=allKnownTFs(),
                       tfMapping=c("MotifDb", "TFClass"),
                       tfPrefilterCorrelation=0.4,
+                      annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
+                      quiet=FALSE)
 
    builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
    x <- build(builder)

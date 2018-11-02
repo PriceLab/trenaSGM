@@ -8,7 +8,7 @@ runTests <- function()
 {
    test_constructor()
    test_constructor_failure()
-   test_.replaceGeneSymbolsWithEnsemblGeneIDs()
+   #test_.replaceGeneSymbolsWithEnsemblGeneIDs()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------

@@ -47,7 +47,8 @@ RegionsMotifMatchingModelBuilder <- function(genomeName, targetGene, strategy, q
 {
    required.strategy.fields <- c("title", "type", "regions", "tss", "matrix", "motifDiscovery",
                                  "tfPool", "tfMapping", "tfPrefilterCorrelation",
-                                 "orderModelByColumn", "solverNames")
+                                 "orderModelByColumn", "solverNames",
+                                 "annotationDbFile", "quiet")
 
    for(field in required.strategy.fields)
       if(!field %in% names(strategy))
@@ -138,6 +139,7 @@ setMethod('build', 'RegionsMotifMatchingModelBuilder',
                                                 s$matrix,
                                                 s$tfPrefilterCorrelation,
                                                 s$solverNames,
+                                                s$annotationDbFile,
                                                 obj@quiet)
 
          tbl.model <- tbls$model

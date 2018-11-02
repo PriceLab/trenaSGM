@@ -127,8 +127,10 @@ setMethod('build', 'NoDnaModelBuilder',
          tbls$model <- tbl.model
          tbls
          }, error=function(e){
-             return(list(model=data.frame(), regulatoryRegions=data.frame()))
-             })
+            message("==== ERROR in NoDnaModelBuilder: %s")
+            message(d)
+            return(list(model=data.frame(), regulatoryRegions=data.frame()))
+            })
       return(tbls)
       })
 

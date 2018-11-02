@@ -27,7 +27,7 @@ if(!exists("tbl.trena")){
    printf("loading cory's trem2 model for comparison")
    load(system.file(package="trenaSGM", "extdata", "ENSG00000095970.RData"))
    ensembl.ids <- tbl.trena$gene
-   suppressWarnings(tbl.map <-  select(org.Hs.eg.db, keys=ensembl.ids, keytype="ENSEMBL", columns=c("SYMBOL", "ENSEMBL")))
+   suppressMessages(tbl.map <-  select(org.Hs.eg.db, keys=ensembl.ids, keytype="ENSEMBL", columns=c("SYMBOL", "ENSEMBL")))
    tbl.map <- tbl.map[-which(duplicated(tbl.map$ENSEMBL)),]   # two dups
    rownames(tbl.trena) <- tbl.map$SYMBOL
    }
@@ -86,12 +86,6 @@ test_stagedExecution <- function()
 {
    printf("--- test_stagedExecution")
 
-   #genome <- "hg38"
-   #chromosome <- "chr6"
-   #upstream <- 2000
-   #downstream <- 200
-   #tss <- 41163186
-
       # strand-aware start and end: trem2 is on the minus strand
    start <- tss - downstream
    end   <- tss + upstream
@@ -109,7 +103,7 @@ test_stagedExecution <- function()
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       tfPool=allKnownTFs(identifierType="ensemblGeneID"),
                       tfMapping="MotifDB",
-                      tfPrefilterCorrelation=0.2,
+                      tfPrefilterCorrelation=0.1,
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
@@ -119,10 +113,10 @@ test_stagedExecution <- function()
      #------------------------------------------------------------
 
    # stageDir <- "stage"
-   stageDir <- tempdir()
+   stageDir <- "stage" # tempdir()
 
    fpBuilder <- FastFootprintDatabaseModelBuilder(genome, targetGene.ensembl, build.spec, quiet=FALSE,
-                                              stagedExecutionDirectory=stageDir)
+                                                  stagedExecutionDirectory=stageDir)
    fp.filename <- staged.fast.build(fpBuilder, stage="find.footprints")
    checkTrue(file.exists(fp.filename))
 

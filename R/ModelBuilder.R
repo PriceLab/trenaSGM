@@ -29,11 +29,10 @@ setGeneric('build', signature='obj', function (obj, expression.matrix) standardG
 #' @export
 ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 {
-   #if(!targetGene %in% rownames(strategy$matrix)){
-   #    msg <- sprintf("your targetGene '%s' is not in the rownames of your expression matrix", targetGene);
-   #    stop(msg)
-   #    }
-
+   if(!targetGene %in% rownames(strategy$matrix)){
+       msg <- sprintf("your targetGene '%s' is not in the rownames of your expression matrix", targetGene);
+       stop(msg)
+       }
 
    obj <- .ModelBuilder(genomeName=genomeName,
                         targetGene=targetGene,

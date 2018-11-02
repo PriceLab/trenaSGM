@@ -220,6 +220,17 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
            printf("--- mapping %d motifs to genes", length(motifs.to.map))
            print(system.time(tbl.motif2tf <- motifToGene(MotifDb, unique(tbl.fp$name), c("MotifDb", "TFClass"))))
            tf.candidates <- sort(unique(tbl.motif2tf$geneSymbol))
+           if(grep("^ENSG", obj@targetGene)){  # rather crude hack for now.  TODO: refactor ensg/geneSymol navigation
+              suppressMessages(
+                 tf.candidates.ensg <- select(org.Hs.eg.db, keys=tf.candidates, keytype="SYMBOL",
+                                              columns=c("SYMBOL", "ENSEMBL"))$ENSEMBL
+                 )
+              if(!obj@quiet){
+                 message(sprintf("target gene is ENSG, converted %d tf geneSymbols from MotifDb to %d tf ensg",
+                                 length(tf.candidates), length(tf.candidates.ensg)))
+                 }
+               tf.candidates <- tf.candidates.ensg
+               } # if targetGene has an ensembl (ENSG) identifier
            printf("associateTFs stage found %d tf.candidates", length(tf.candidates))
            save(tbl.fp, tbl.motif2tf, tf.candidates, file=footprints.tfMapped.filename)
            if(!obj@quiet)

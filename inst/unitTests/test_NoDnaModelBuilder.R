@@ -138,11 +138,7 @@ test_build.trem2.noDNA.bogus.targetGene <- function()
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
                       quiet=TRUE)
 
-   builder <- NoDnaModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
-   x <- build(builder)
-   checkEquals(names(x), c("model", "regulatoryRegions"))
-   checkEquals(nrow(x$model), 0)
-   checkEquals(nrow(x$regulatoryRegions), 0)
+   checkException(builder <- NoDnaModelBuilder(genome, targetGene,  build.spec, quiet=TRUE), silent=TRUE)
 
 } # test_build.trem2.noDNA.bogus.targetGene
 #------------------------------------------------------------------------------------------------------------------------
