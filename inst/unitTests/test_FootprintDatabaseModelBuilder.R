@@ -71,6 +71,47 @@ test_constructor <- function()
 
 } # test_constructor
 #------------------------------------------------------------------------------------------------------------------------
+test_targetGeneNotInExpressionMatrix <- function()
+{
+   printf("--- test_targetGeneNotInExpressionMatrix")
+
+   genome <- "hg38"
+   targetGene <- "hocusPocus"
+   chromosome <- "chr6"
+   upstream <- 2000
+   downstream <- 200
+   tss <- 41163186
+
+      # strand-aware start and end: trem2 is on the minus strand
+   start <- tss - downstream
+   end   <- tss + upstream
+   tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
+
+   build.spec <- list(title="fp.2000up.200down",
+                      type="footprint.database",
+                      regions=tbl.regions,
+                      tss=tss,
+                      geneSymbol=targetGene,
+                      matrix=mtx,
+                      db.host="khaleesi.systemsbiology.net",
+                      databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
+                      motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
+                      tfMapping="MotifDB",
+                      tfPrefilterCorrelation=0.4,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+     #------------------------------------------------------------
+     # use the above build.spec: a small region, high correlation
+     # required, MotifDb for motif/tf lookup
+     #------------------------------------------------------------
+
+   checkException(fpBuilder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=TRUE), silent=TRUE)
+
+} # test_targetGeneNotInExpressionMatrix
+#------------------------------------------------------------------------------------------------------------------------
 test_build.small.fimo.motifDB.mapping.cor04 <- function()
 {
    printf("--- test_build.small.fimo.motifDB.mapping.cor04")

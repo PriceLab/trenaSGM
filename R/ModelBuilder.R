@@ -114,6 +114,11 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 {
    trena <- Trena(genomeName, quiet=quiet)
 
+   if(!targetGene %in% rownames(expression.matrix)){
+      msg <- sprintf("targetGene '%s' not found in expression matrix", targetGene)
+      stop(msg)
+      }
+
    all.known.tfs.mtx <- intersect(allKnownTFs, rownames(expression.matrix))
    ensembl.tfs <- length(grep("ENSG0", all.known.tfs.mtx)) > 0
    if(ensembl.tfs)
