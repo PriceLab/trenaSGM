@@ -382,7 +382,7 @@ test_build.bogusTargetGene <- function()
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"),
-                      quiet=FALSE)
+                      quiet)
 
    builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
    x <- build(builder)
