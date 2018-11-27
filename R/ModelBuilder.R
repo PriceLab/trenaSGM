@@ -112,6 +112,7 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
                                            expression.matrix, tfPrefilterCorrelation, solverNames,
                                            annotationDbFile, quiet)
 {
+   printf("--- entering .runTrenaWithRegulatoryRegions, 27nov2018, 217p")
    trena <- Trena(genomeName, quiet=quiet)
 
    if(!targetGene %in% rownames(expression.matrix)){
