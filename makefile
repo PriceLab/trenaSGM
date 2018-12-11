@@ -9,7 +9,7 @@ build:
 	(cd ..; R CMD build trenaSGM)
 
 install:
-	(cd ..; R CMD INSTALL trenaSGM)
+	(cd ..; R CMD INSTALL --no-test-load trenaSGM)
 
 check:
 	(cd ..; R CMD check `ls -t trenaSGM_* | head -1`)
