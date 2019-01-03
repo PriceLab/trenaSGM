@@ -4,3 +4,4 @@ inst/batch
 inst/prep
 *.RData
 
+.Rproj.user
