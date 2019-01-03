@@ -4,9 +4,9 @@ library(MotifDb)
 library(motifStack)
 #------------------------------------------------------------------------------------------------------------------------
 if(!exists("mtx")){
-   filename <- system.file(package="trenaSGM", "extdata", "mayo.tcx.RData")
+   filename <- system.file(package="trenaSGM", "extdata", "mayo.tcx.new.RData")
    if(!file.exists(filename))
-      filename <- file.path("../extdata", "mayo.tcx.RData")
+      filename <- file.path("../extdata", "mayo.tcx.new.RData")
    stopifnot(file.exists(filename))
    load(filename)
    }

@@ -4,7 +4,7 @@ library(org.Hs.eg.db)
 #------------------------------------------------------------------------------------------------------------------------
 Sys.setlocale("LC_ALL", "C")
 if(!exists("mtx"))
-   load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
+   load(system.file(package="trenaSGM", "extdata", "mayo.tcx.new.RData"))
 
 if(!exists("tbl.enhancers"))
   load(system.file(package="trenaSGM", "extdata", "enhancers.TREM2.RData"))

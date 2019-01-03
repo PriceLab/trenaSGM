@@ -3,7 +3,7 @@ library(trenaSGM)
 library(motifStack)
 #------------------------------------------------------------------------------------------------------------------------
 if(!exists("mtx"))
-   load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
+   load(system.file(package="trenaSGM", "extdata", "mayo.tcx.new.RData"))
 #------------------------------------------------------------------------------------------------------------------------
 runTests <- function()
 {

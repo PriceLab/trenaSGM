@@ -5,7 +5,7 @@ library(org.Hs.eg.db)
 Sys.setlocale("LC_ALL", "C")
 
 if(!exists("mtx")){
-    load(system.file(package="trenaSGM", "extdata", "mayo.tcx.RData"))
+    load(system.file(package="trenaSGM", "extdata", "mayo.tcx.new.RData"))
     all.genes <- rownames(mtx)
     suppressMessages(tbl.map <- select(org.Hs.eg.db, keys=all.genes, keytype="SYMBOL", columns="ENSEMBL"))
     dups <- which(duplicated(tbl.map$SYMBOL))
