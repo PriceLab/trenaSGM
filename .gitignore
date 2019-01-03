@@ -2,6 +2,16 @@
 inst/doc
 inst/batch
 inst/prep
-*.RData
+inst/bugs
+inst/unitTests/stage
+inst/extdata/GeneHancer_4.6
+inst/extdata/enhancers.v47.TREM2.RData
+inst/extdata/tbl.regForSymbolEnsemblTranslationTest.RData
+inst/unitTests/*.RData
+junk
+*.Rproj
+
+inst/ext
+# *.RData
 
 .Rproj.user
