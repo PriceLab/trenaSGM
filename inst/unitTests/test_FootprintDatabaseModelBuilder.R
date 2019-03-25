@@ -22,6 +22,7 @@ if(!exists("tbl.trena")){
 runTests <- function()
 {
    test_constructor()
+   test_failure.build.where.there.are.no.footprints()
    test_build.small.fimo.motifDB.mapping.cor04()
    test_build.small.fimo.motifDB.mapping.cor.02()
    test_build.10kb.fimo.motifDB.mapping.cor04()
@@ -70,6 +71,46 @@ test_constructor <- function()
    checkTrue("FootprintDatabaseModelBuilder" %in% is(fpBuilder))
 
 } # test_constructor
+#------------------------------------------------------------------------------------------------------------------------
+test_failure.build.where.there.are.no.footprints <- function()
+{
+   printf("--- test_failure.build.where.there.are.no.footprints")
+
+   genome <- "hg38"
+   targetGene <- "TREM2"
+   chromosome <- "chr6"
+   tss <- 41163186
+
+      # strand-aware start and end: trem2 is on the minus strand
+   start <- tss
+   end   <- tss + 1
+   tbl.regions <- data.frame(chrom=chromosome, start=start, end=end, stringsAsFactors=FALSE)
+
+   build.spec <- list(title="1 base only ",
+                      type="footprint.database",
+                      regions=tbl.regions,
+                      tss=tss,
+                      geneSymbol=targetGene,
+                      matrix=mtx,
+                      db.host="khaleesi.systemsbiology.net",
+                      databases=list("brain_hint_20"),
+                      annotationDbFile=dbfile(org.Hs.eg.db),
+                      motifDiscovery="builtinFimo",
+                      tfPool=allKnownTFs(),
+                      tfMapping="MotifDB",
+                      tfPrefilterCorrelation=0.4,
+                      orderModelByColumn="rfScore",
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+     #------------------------------------------------------------
+     # use the above build.spec: a small region, high correlation
+     # required, MotifDb for motif/tf lookup
+     #------------------------------------------------------------
+
+   fpBuilder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=TRUE)
+   checkException(x <- build(fpBuilder), silent=TRUE)
+
+} # test_failure.build.where.there.are.no.footprints
 #------------------------------------------------------------------------------------------------------------------------
 test_targetGeneNotInExpressionMatrix <- function()
 {

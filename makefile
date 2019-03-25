@@ -1,3 +1,5 @@
+quick:  docs install
+
 all:  docs vig build install check biocCheck
 
 docs:

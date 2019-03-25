@@ -118,8 +118,12 @@ setMethod('show', 'FastFootprintDatabaseModelBuilder',
 setMethod('build', 'FastFootprintDatabaseModelBuilder',
 
    function (obj) {
+      printf("--- FastFootprintDataqbaseModelBuilder.build")
       tbls <- tryCatch({
         tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
+        if(nrow(tbl.fp) == 0){
+           stop(base::simpleError("no footprints found"))
+           }
         if(obj@strategy$motifDiscovery == "builtinFimo"){
            tbl.fp$motifName <- tbl.fp$name
            mapper <- tolower(obj@strategy$tfMapping)
@@ -127,7 +131,6 @@ setMethod('build', 'FastFootprintDatabaseModelBuilder',
            tbl.fp <- associateTranscriptionFactors(MotifDb, tbl.fp, source=obj@strategy$tfMapping, expand.rows=TRUE)
 
            s <- obj@strategy
-           xyz <- "FastFootprintDatabaseModelBuilder, build"
            tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
                                                   s$tfPool,
                                                   obj@targetGene,
@@ -206,6 +209,9 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
 
         if(stage == "find.footprints"){
            tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
+           if(nrow(tbl.fp) == 0){
+              return(list(model=data.frame(), regulatoryRegions=data.frame()))
+             }
            tbl.regions <- obj@strategy$regions
            save(tbl.fp, tbl.regions, file=footprint.filename)
            if(!obj@quiet)
@@ -291,12 +297,19 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
 {
    s <- strategy # for lexical brevity
 
-   printf("=============================================")
-   printf(".assembleFootprints, quiet? %s", quiet)
-   printf("=============================================")
+   printf("==========================================================================")
+   printf("FastFootprintDatabaseModelBuilder::.assembleFootprints, quiet? %s", quiet)
+   printf("===========================================================================")
 
-   dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname="hg38")
-   all.available <- all(s$databases %in% dbGetQuery(dbMain, "select datname from pg_database")$datname, v=TRUE, ignore.case=TRUE)
+   printf("  s$db.host: %s", s$db.host)
+   dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host)
+   availableDatabases <- dbGetQuery(dbMain, "select datname from pg_database")$datname
+   printf("==== available databases:")
+   print(availableDatabases)
+   printf("==== requested databases:")
+   requestedDatabases <- unlist(s$databases)
+   print(requestedDatabases)
+   all.available <- all(requestedDatabases %in% availableDatabases)
    dbDisconnect(dbMain)
    stopifnot(all.available)
 
@@ -309,11 +322,20 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
       if(!quiet) message(sprintf("--- querying %s for footprints across %d regions totaling %d bases",
                         dbName, nrow(s$regions), with(s$regions, sum(end-start))))
       tbl.hits <- .multiQueryFootprints(dbConnection, s$regions)
-      tbl.hits$chrom <- unlist(lapply(strsplit(tbl.hits$loc, ":"), "[",  1))
-      tbl.hits.clean <- tbl.hits # [, c("chrom", "fp_start", "fp_end", "name", "score2", "method")]
-      fps[[dbName]] <- tbl.hits.clean
-      tbl.hits.clean$database = dbName
+      if(nrow(tbl.hits) == 0){
+         message(sprintf("--- no footprints found in regions in db '%s'", dbName))
+      } else {
+         tbl.hits$chrom <- unlist(lapply(strsplit(tbl.hits$loc, ":"), "[",  1))
+         tbl.hits.clean <- tbl.hits
+         tbl.hits.clean$database = dbName
+         fps[[dbName]] <- tbl.hits.clean
+         }
       dbDisconnect(dbConnection)
+      }
+
+   if(length(fps) == 0){
+      message("no footprints found, returning empty data.frame")
+      return(data.frame())
       }
 
    tbl.fp <- do.call(rbind, fps)
@@ -328,7 +350,7 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
       # TODO (14 may 2018): fix this
    invisible(tbl.fp)
 
-} # .assembleFootprint
+} # .assembleFootprints
 #------------------------------------------------------------------------------------------------------------------------
 .queryFootprints <- function(db, chrom, start, stop)
 {

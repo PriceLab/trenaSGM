@@ -125,6 +125,9 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
       tbls <- tryCatch({
         if(!obj@quiet) message(sprintf("FootprintDatabaseModleBuilder::build"))
         tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
+        if(nrow(tbl.fp) == 0){
+           stop(base::simpleError("no footprints found"))
+           }
         if(obj@strategy$motifDiscovery == "builtinFimo"){
            if(!obj@quiet) message(sprintf("motifDiscovery: bulitinFimo"))
            tbl.fp$motifName <- tbl.fp$name
@@ -301,51 +304,6 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
       return(tbls)
       }) # staged.build
 
-#------------------------------------------------------------------------------------------------------------------------
-.hiddenassembleFootprints <- function(strategy, quiet)
-{
-   s <- strategy # for lexical brevity
-
-   printf("=============================================")
-   printf(".assembleFootprints, quiet? %s", quiet)
-   printf("=============================================")
-
-   if(!quiet) message(sprintf("opening PostgreSQL connection to %s", s$db.host))
-   dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname="hg38")
-   all.available <- all(s$databases %in% dbGetQuery(dbMain, "select datname from pg_database")$datname, v=TRUE, ignore.case=TRUE)
-   dbDisconnect(dbMain)
-   stopifnot(all.available)
-
-   dbConnections <- list()
-   fps <- list()
-
-   for(dbName in s$databases){
-      if(!quiet) message(sprintf("--- opening connection %s", dbName))
-      dbConnection <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname=dbName)
-      if(!quiet) message(sprintf("--- querying %s for footprints across %d regions totaling %d bases",
-                        dbName, nrow(s$regions), with(s$regions, sum(end-start))))
-      tbl.hits <- .multiQueryFootprints(dbConnection, s$regions)
-      tbl.hits$chrom <- unlist(lapply(strsplit(tbl.hits$loc, ":"), "[",  1))
-      tbl.hits.clean <- tbl.hits # [, c("chrom", "fp_start", "fp_end", "name", "score2", "method")]
-      if(!quiet) message(sprintf("footprints from %s: %d", dbName, nrow(tbl.hits.clean)))
-      fps[[dbName]] <- tbl.hits.clean
-      tbl.hits.clean$database = dbName
-      dbDisconnect(dbConnection)
-      }
-
-   tbl.fp <- do.call(rbind, fps)
-   if(!quiet) message(sprintf(" combined tbl.fp: %d %d", nrow(tbl.fp), ncol(tbl.fp)))
-   tbl.fp$shortMotif <- NA
-   missing <- which(!tbl.fp$name %in% names(MotifDb))
-   matched <- which(tbl.fp$name %in% names(MotifDb))
-   x <- match(tbl.fp$name[matched], names(MotifDb))
-   tbl.fp$shortMotif[matched] <- mcols(MotifDb[x])[, "providerName"]
-      # our odd convention: MotifDb:associationTranscriptFactors uses BOTH columns, one
-      # for the MotifDb mapping, one "shortMotif" for the TFClass mapping
-      # TODO (14 may 2018): fix this
-   invisible(tbl.fp)
-
-} # .hiddenassembleFootprints
 #------------------------------------------------------------------------------------------------------------------------
 .queryFootprints <- function(db, chrom, start, stop)
 {
