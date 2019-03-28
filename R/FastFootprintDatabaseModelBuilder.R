@@ -297,18 +297,24 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
 {
    s <- strategy # for lexical brevity
 
-   printf("==========================================================================")
-   printf("FastFootprintDatabaseModelBuilder::.assembleFootprints, quiet? %s", quiet)
-   printf("===========================================================================")
+   if(!quiet) {
+      message(sprintf("=========================================================================="))
+      message(sprintf("FastFootprintDatabaseModelBuilder::.assembleFootprints, quiet? %s", quiet))
+      message(sprintf("==========================================================================="))
+      message(sprintf("  s$db.host: %s", s$db.host))
+      }
 
-   printf("  s$db.host: %s", s$db.host)
-   dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host)
+   dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", dbname="hg38", host=s$db.host)
    availableDatabases <- dbGetQuery(dbMain, "select datname from pg_database")$datname
-   printf("==== available databases:")
-   print(availableDatabases)
-   printf("==== requested databases:")
    requestedDatabases <- unlist(s$databases)
-   print(requestedDatabases)
+
+   if(!quiet){
+      message(sprintf("==== available databases:"))
+      print(availableDatabases)
+      message(sprintf("==== requested databases:"))
+      print(requestedDatabases)
+      }
+
    all.available <- all(requestedDatabases %in% availableDatabases)
    dbDisconnect(dbMain)
    stopifnot(all.available)
