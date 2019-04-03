@@ -53,7 +53,7 @@ FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, stag
     if(!quiet) message("constructing FootprintDatabaseModelBuilder")
 
     required.strategy.fields <- c("title", "type", "regions", "tss", "geneSymbol","matrix",
-                                  "db.host", "databases", "motifDiscovery","tfMapping", "tfPool",
+                                  "db.host", "db.port", "databases", "motifDiscovery","tfMapping", "tfPool",
                                   "tfPrefilterCorrelation", "orderModelByColumn", "solverNames",
                                   "annotationDbFile")
 

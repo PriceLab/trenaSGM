@@ -2,6 +2,8 @@ library(RUnit)
 library(trenaSGM)
 library(MotifDb)
 library(motifStack)
+library(org.Hs.eg.db)
+library(org.At.tair.db)
 #------------------------------------------------------------------------------------------------------------------------
 if(!exists("mtx")){
    filename <- system.file(package="trenaSGM", "extdata", "mayo.tcx.new.RData")
@@ -53,13 +55,16 @@ test_trem2_fpdb <- function()
    build.spec <- list(title="fp.2000up.200down",
                       type="footprint.database",
                       regions=tbl.regions,
+                      geneSymbol="TREM2",
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
+                      annotationDbFile=org.Hs.eg.db,
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
@@ -114,12 +119,15 @@ test_summarizeModels <- function()
 
    spec.1 <- list(title="fp.2000up.200down.04",
                       type="footprint.database",
+                      geneSymbol="TREM2",
                       regions=tbl.regions,
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       motifDiscovery="builtinFimo",
+                      annotationDbFile=org.Hs.eg.db,
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.4,
@@ -141,6 +149,8 @@ test_summarizeModels <- function()
                   motifDiscovery="matchPWM",
                   tfPool=allKnownTFs(),
                   tfMapping="MotifDB",
+                  annotationDbFile=org.Hs.eg.db,
+                  quiet=TRUE,
                   tfPrefilterCorrelation=0.4,
                   orderModelByColumn="rfScore",
                   solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
@@ -151,9 +161,12 @@ test_summarizeModels <- function()
    spec.4 <- list(title="trem2.noDNA.allTFs",
                   type="noDNA.tfsSupplied",
                   matrix=mtx,
+                  geneSymbol="TREM2",
                   tfs=candidate.tfs,
                   tfPool=allKnownTFs(),
                   tfPrefilterCorrelation=0.4,
+                  annotationDbFile=org.Hs.eg.db,
+                  quiet=TRUE,
                   orderModelByColumn="rfScore",
                   solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
@@ -219,6 +232,7 @@ test_tair10_frd3 <- function()
    build.spec <- list(title="frd3.",
                       type="regions.motifMatching",
                       tss=tss,
+                      geneSymbol="FRD3",
                       regions=tbl.regions,
                       matrix=mtx,
                       pfms=pfms,
@@ -227,6 +241,8 @@ test_tair10_frd3 <- function()
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
                       tfPrefilterCorrelation=0.0,
+                      annotationDbFile=org.At.tair.db,
+                      quiet=TRUE,
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 

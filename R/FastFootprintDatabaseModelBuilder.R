@@ -51,7 +51,7 @@ setGeneric('staged.fast.build', signature='obj', function (obj, stage) standardG
 FastFootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, stagedExecutionDirectory=NA_character_, quiet=TRUE)
 {
     required.strategy.fields <- c("title", "type", "regions", "tss", "geneSymbol","matrix",
-                                  "db.host", "databases", "motifDiscovery","tfMapping", "tfPool",
+                                  "db.host", "db.port", "databases", "motifDiscovery","tfMapping", "tfPool",
                                   "tfPrefilterCorrelation", "orderModelByColumn", "solverNames",
                                   "annotationDbFile")
 
@@ -304,7 +304,7 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
       message(sprintf("  s$db.host: %s", s$db.host))
       }
 
-   dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", dbname="hg38", host=s$db.host)
+   dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", dbname="hg38", host=s$db.host, port=s$db.port)
    availableDatabases <- dbGetQuery(dbMain, "select datname from pg_database")$datname
    requestedDatabases <- unlist(s$databases)
 
