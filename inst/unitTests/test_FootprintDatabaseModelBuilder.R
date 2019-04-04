@@ -57,6 +57,7 @@ test_constructor <- function()
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
@@ -93,6 +94,7 @@ test_failure.build.where.there.are.no.footprints <- function()
                       geneSymbol=targetGene,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
@@ -135,6 +137,7 @@ test_targetGeneNotInExpressionMatrix <- function()
                       geneSymbol=targetGene,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
@@ -176,6 +179,7 @@ test_build.small.fimo.motifDB.mapping.cor04 <- function()
                       geneSymbol=targetGene,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
@@ -199,8 +203,7 @@ test_build.small.fimo.motifDB.mapping.cor04 <- function()
    #browser()
    #xyz <- "test_FPDB, line 93"
    expected.tfs <- c("IKZF1", "CEBPA", "IRF8", "TAL1", "NR6A1", "IRF2")
-
-   checkEquals(tbl.model$gene, expected.tfs)
+   checkTrue(all(expected.tfs %in% tbl.model$gene))
    checkTrue(all(expected.tfs %in% tbl.regions$geneSymbol))
    checkTrue(all(tbl.regions$chrom == chromosome))
    checkTrue(all(tbl.regions$fp_start >= start))
@@ -227,7 +230,7 @@ test_build.small.fimo.motifDB.mapping.cor04 <- function()
    expected.tfs <- c("IKZF1", "CEBPA", "IRF8", "TAL1", "NR6A1", "IRF2")
 
    #browser()
-   checkEquals(tbl.model.2$gene, expected.tfs)
+   checkTrue(all(expected.tfs %in% tbl.model.2$gene))
    checkTrue(all(expected.tfs %in% tbl.regions.2$geneSymbol))
    checkTrue(all(tbl.regions.2$chrom == chromosome))
    checkTrue(all(tbl.regions.2$fp_start >= start))
@@ -284,6 +287,7 @@ test_build.small.fimo.motifDB.mapping.cor.02 <- function()
                       geneSymbol=targetGene,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
@@ -325,6 +329,7 @@ test_build.10kb.fimo.motifDB.mapping.cor04 <- function()
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
@@ -371,6 +376,7 @@ test_build.10kb.fimo.tfclass.mapping.cor04 <- function()
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
@@ -412,6 +418,7 @@ test_reproduceCorysTrem2model <- function()
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=c("brain_hint_20", "brain_hint_16", "brain_wellington_20", "brain_wellington_16"),
                       motifDiscovery="builtinFimo",
                       annotationDbFile=dbfile(org.Hs.eg.db),
@@ -565,6 +572,7 @@ test_tfPoolOption <- function()
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
@@ -650,6 +658,7 @@ test_modelExpressionDataWithEnsgIDs <- function()
                       tss=tss,
                       matrix=mtx.sub,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
@@ -693,6 +702,7 @@ test_noGenesAboveExpressionCorrelationThreshold <- function()
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",
@@ -739,6 +749,7 @@ test_stagedExecution <- function()
                       tss=tss,
                       matrix=mtx,
                       db.host="khaleesi.systemsbiology.net",
+                      db.port=5432,
                       databases=list("brain_hint_20"),
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       motifDiscovery="builtinFimo",

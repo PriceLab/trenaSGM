@@ -304,7 +304,13 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
       message(sprintf("  s$db.host: %s", s$db.host))
       }
 
-   dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", dbname="hg38", host=s$db.host, port=s$db.port)
+      # dbConnect requires us to specify a database to connect to
+      # having done that, we can then query postgres for all of the databases it holds
+      # we take these two steps first, then close that initial connection
+      # it seems (n=2) that every postgres installation has a database called "postgres":
+      # that's what we use for the initial "what databases do you have?" query
+
+   dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", dbname="postgres", host=s$db.host, port=s$db.port)
    availableDatabases <- dbGetQuery(dbMain, "select datname from pg_database")$datname
    requestedDatabases <- unlist(s$databases)
 
