@@ -330,7 +330,7 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
 
    for(dbName in s$databases){
       if(!quiet) message(sprintf("--- opening connection %s", dbName))
-      dbConnection <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname=dbName)
+      dbConnection <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname=dbName, port=s$db.port)
       if(!quiet) message(sprintf("--- querying %s for footprints across %d regions totaling %d bases",
                         dbName, nrow(s$regions), with(s$regions, sum(end-start))))
       tbl.hits <- .multiQueryFootprints(dbConnection, s$regions)
