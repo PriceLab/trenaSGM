@@ -226,7 +226,9 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
            printf("--- mapping %d motifs to genes", length(motifs.to.map))
            print(system.time(tbl.motif2tf <- motifToGene(MotifDb, unique(tbl.fp$name), c("MotifDb", "TFClass"))))
            tf.candidates <- sort(unique(tbl.motif2tf$geneSymbol))
-           if(grep("^ENSG", obj@targetGene)){  # rather crude hack for now.  TODO: refactor ensg/geneSymol navigation
+           browser()
+           xyz <- "ENSG coming up"
+           if(grepl("^ENSG", obj@targetGene)){  # rather crude hack for now.  TODO: refactor ensg/geneSymol navigation
               suppressMessages(
                  tf.candidates.ensg <- select(org.Hs.eg.db, keys=tf.candidates, keytype="SYMBOL",
                                               columns=c("SYMBOL", "ENSEMBL"))$ENSEMBL
