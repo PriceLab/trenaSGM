@@ -34,6 +34,12 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
        stop(msg)
        }
 
+   if(!is.matrix(strategy$matrix)){
+       msg <- sprintf("your expression matrix is not a proper 'matrix' object")
+       stop(msg)
+       }
+
+
    obj <- .ModelBuilder(genomeName=genomeName,
                         targetGene=targetGene,
                         strategy=strategy,

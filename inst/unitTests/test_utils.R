@@ -34,7 +34,8 @@ test_make.ensembl.geneSymbol.identifiers <- function()
    printf("--- test_make.ensembl.geneSymbol.identifiers")
 
    geneSymbols <-  toupper(c("CEBPA", "CEBPA", NA, "znf143", "MYC::MAX", "RARA(var.2)",  "Tcf12", NA))
-   ensm.syms <- make.ensembl.geneSymbol.identifiers(geneSymbols)
+   ensm.syms <- trenaSGM:::make.ensembl.geneSymbol.identifiers(geneSymbols)
+
    expected <- c("CEBPA|ENSG00000245848",
                  "CEBPA|ENSG00000245848",
                  "NA|NA",

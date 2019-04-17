@@ -7,7 +7,7 @@ if(!exists("mtx"))
 runTests <- function()
 {
    test_constructor()
-   test_constructor_failure()
+   test_constructor_failure_geneNotInExpressionMatrix()
    #test_.replaceGeneSymbolsWithEnsemblGeneIDs()
 
 } # runTests
@@ -41,9 +41,9 @@ test_constructor <- function()
 
 } # test_constructor
 #------------------------------------------------------------------------------------------------------------------------
-test_constructor_failure <- function()
+test_constructor_failure_geneNotInExpressionMatrix <- function()
 {
-   printf("--- test_constructor_failure")
+   printf("--- test_constructor_failure_geneNotInExpressionMatrix")
 
    genome <- "hg38"
    targetGene <- "bogus"
@@ -66,7 +66,34 @@ test_constructor_failure <- function()
 
    checkException(modelBuilder <- ModelBuilder(genome, targetGene,  build.spec, quiet=TRUE), silent=TRUE)
 
-} # test_constructor_failure
+} # test_constructor_failure_geneNotInExpressionMatrix
+#------------------------------------------------------------------------------------------------------------------------
+test_constructor_failure_matrixIsDataFrame <- function()
+{
+   printf("--- test_constructor_failure_matrixIsDataFrame")
+
+   genome <- "hg38"
+   targetGene <- "TREM2"
+   chromosome <- "chr6"
+   upstream <- 2000
+   downstream <- 200
+   tss <- 41163186
+      # strand-aware start and end: trem2 is on the minus strand
+   start <- tss - downstream
+   end   <- tss + upstream
+   tbl.regions <- data.frame(chrom=chromosome, start=tss-200, end=tss+2000, stringsAsFactors=FALSE)
+
+   build.spec <- list(title="fp.2000up.200down",
+                      type="footprint.database",
+                      regions=tbl.regions,
+                      tss=tss,
+                      matrix=as.data.frame(mtx),
+                      tfPrefilterCorrelation=0.4,
+                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+
+   checkException(modelBuilder <- ModelBuilder(genome, targetGene,  build.spec, quiet=TRUE), silent=TRUE)
+
+} # test_constructor_failure_matrixIsDataFrame
 #------------------------------------------------------------------------------------------------------------------------
 test_.replaceGeneSymbolsWithEnsemblGeneIDs <- function()
 {
