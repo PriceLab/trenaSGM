@@ -250,22 +250,11 @@ setMethod('staged.fast.build', 'FastFootprintDatabaseModelBuilder',
            tbls <- .runTrenaWithTFsOnly(obj@genomeName,
                                         s$tfPool,
                                         obj@targetGene,
-                                        tf.candidates,
                                         s$matrix,
                                         s$tfPrefilterCorrelation,
                                         s$solverNames,
                                         s$annotationDbFile,
                                         obj@quiet)
-
-           # tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
-           #                                       s$tfPool,
-           #                                       obj@targetGene,
-           #                                       tf.candidates,
-           #                                       s$matrix,
-           #                                       s$tfPrefilterCorrelation,
-           #                                       s$solverNames,
-           #                                       s$annotationDbFile,
-           #                                       obj@quiet)
 
            tbl.model <- tbls[[1]]
            coi <- s$orderModelByColumn

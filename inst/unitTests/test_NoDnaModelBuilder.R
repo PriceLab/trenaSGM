@@ -26,9 +26,8 @@ test_constructor <- function()
 
    build.spec <- list(title="trem2.rmm.2000up.200down",
                       type="noDNA.tfsSupplied",
-                      tfs=c("HLF", "STAT4", "SATB2", "SATB1", "TSHZ3", "TSHZ2", "FOXP2"),
+                      tfPool=c("HLF", "STAT4", "SATB2", "SATB1", "TSHZ3", "TSHZ2", "FOXP2"),
                       matrix=mtx,
-                      tfPool=allKnownTFs(),
                       tfPrefilterCorrelation=0.4,
                       annotationDbFile=dbfile(org.Hs.eg.db),
                       orderModelByColumn="rfScore",

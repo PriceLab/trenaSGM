@@ -1,8 +1,8 @@
 Package: trenaSGM
 Type: Package
 Title: trenaSGM: trena single gene model
-Version: 0.99.83
-Date: 2019-04-17
+Version: 0.99.85
+Date: 2019-05-06
 Author: Paul Shannon
 Maintainer: Paul Shannon <paul.thurmond.shannon@gmail.com>
 Depends: R (>= 3.5.0), GenomicRanges, trena, MotifDb, org.Hs.eg.db
@@ -23,4 +23,5 @@ Collate:
 Packaged: 2018-03-22 20:02:10 UTC; paul
 VignetteBuilder:
   knitr
+Encoding: UTF-8
 RoxygenNote: 6.1.1

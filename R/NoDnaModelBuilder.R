@@ -114,12 +114,11 @@ setMethod('build', 'NoDnaModelBuilder',
          tbls <- .runTrenaWithTFsOnly(obj@genomeName,
                                       s$tfPool,
                                       obj@targetGene,
-                                      s$tfs,
                                       s$matrix,
                                       s$tfPrefilterCorrelation,
                                       s$solverNames,
                                       s$annotationDbFile,
-                                      obj@quiet)
+                                      s$quiet)
          tbl.model <- tbls$model
          coi <- obj@strategy$orderModelByColumn
          if(coi %in% colnames(tbl.model))
@@ -127,7 +126,7 @@ setMethod('build', 'NoDnaModelBuilder',
          tbls$model <- tbl.model
          tbls
          }, error=function(e){
-            message("==== ERROR in NoDnaModelBuilder: %s")
+            message("==== ERROR in NoDnaModelBuilder")
             message(e)
             return(list(model=data.frame(), regulatoryRegions=data.frame()))
             })

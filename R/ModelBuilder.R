@@ -176,10 +176,11 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 
 } # .runTrenaWithRegulatoryRegions
 #------------------------------------------------------------------------------------------------------------------------
-.runTrenaWithTFsOnly <- function(genomeName, tfPool, targetGene, tfList, expression.matrix,
+.runTrenaWithTFsOnly <- function(genomeName, tfPool, targetGene, expression.matrix,
                                  tfPrefilterCorrelation, solverNames, annotationDbFile, quiet)
 {
    trena <- Trena(genomeName, quiet=quiet)
+
    if(!quiet)
       printf("--- entering .runTrenaWithTFsOnly")
 
@@ -188,14 +189,15 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
    mtx.tfs <- expression.matrix[c(all.known.tfs.mtx, targetGene),]
    mtx.cor <- cor(t(mtx.tfs))
 
-   high.correlation.genes <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
+   high.correlation.tfs <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
+
    if(!quiet) {
       printf("ModelBuilder::.runTrenaWithTFsOnly: %d tfs in matrix and correlation > %f",
-             length(high.correlation.genes), tfPrefilterCorrelation)
+             length(high.correlation.tfs), tfPrefilterCorrelation)
       }
 
-   mtx.tfs.filtered <- expression.matrix[high.correlation.genes,]
-   tf.candidates.final <- intersect(high.correlation.genes, tfList)
+   mtx.tfs.filtered <- expression.matrix[high.correlation.tfs,]
+   tf.candidates.final <- high.correlation.tfs
 
    if(length(tf.candidates.final) <= 1){
       message(sprintf("none of the supplied TFs reach expression correlation threshold(%4.2f) with targetGene %s",
