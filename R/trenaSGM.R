@@ -279,3 +279,44 @@ allKnownTFs <- function(source="GO:DNAbindingTranscriptionFactorActivity", ident
 
 } # allKnownTFs
 #------------------------------------------------------------------------------------------------------------------------
+#' trim an expansive model to a more credible one, using parameterized voting scheme
+#'
+#' @rdname trimModel
+#' @aliases trimModel
+#'
+#' @param tbl.model a data.frame, an expansive, unfiltered trena model data.frame, with perhaps > 200 tf rows
+#' @param tbl.reg a data.frame,  included here only so that it can be returned, filtered to exclude binding sites for tfs
+#'                    which did not make it into the trimmed model
+#' @param votesNeeded, numeric, typically 2 or 3, at least this many votes, by any solver method, is required to keep
+#' @param tf.keepers, a character vector,   keep these in the model no matter how well they performed.
+#'        a tf in the model
+#' @export
+trimModel <- function(tbl.model, tbl.reg, votesNeeded=3, tf.keepers=c())
+{
+   matched.keeper.rows <- unlist(lapply(tf.keepers, function(tf) grep(tf, tbl.model$gene)))
+   pvals <- -log10(tbl.model$lassoPValue)
+   good.lassoPval <- which(pvals > 5)
+   good.betaLasso <- which(abs(tbl.model$betaLasso) > 0.1)
+   good.betaRidge <- which(abs(tbl.model$betaRidge) > 0.1)
+   spearman.cutoff <- fivenum(abs(tbl.model$spearmanCoeff))[4]
+   good.spearmanCoeff <- which(abs(tbl.model$spearmanCoeff) >= spearman.cutoff)
+   randomForest.cutoff <- fivenum(tbl.model$rfScore)[4]
+   forest.tfs <- subset(tbl.model, rfScore >= randomForest.cutoff)$gene
+   good.rfScore <- unlist(lapply(forest.tfs, function(tf) grep(tf, tbl.model$gene)))
+   all.counts <- c(good.lassoPval, good.betaLasso, good.betaRidge, good.spearmanCoeff, good.rfScore)
+   tbl.freq <- as.data.frame(table(all.counts), stringsAsFactors=FALSE)
+   colnames(tbl.freq) <- c("rowNumber", "count")
+   tbl.freq <- tbl.freq[order(tbl.freq$count, decreasing=TRUE),]
+   tbl.freq$rowNumber <- as.integer(tbl.freq$rowNumber)
+   good.tf.rows <- subset(tbl.freq, count >= votesNeeded)$rowNumber
+   not.yet.included <- setdiff(matched.keeper.rows, good.tf.rows)
+   if(length(not.yet.included) > 0)
+      good.tf.rows <- c(good.tf.rows, not.yet.included)
+   tbl.model <- tbl.model[good.tf.rows,]
+   new.order <- order(abs(tbl.model$spearmanCoeff), decreasing=TRUE)
+   tbl.model <- tbl.model[new.order,]
+   tbl.reg <- subset(tbl.reg, geneSymbol %in% tbl.model$gene)
+   return(list(model=tbl.model, regulatoryRegions=tbl.reg))
+
+} # trimModel
+#------------------------------------------------------------------------------------------------------------------------

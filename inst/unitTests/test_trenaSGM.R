@@ -26,6 +26,8 @@ runTests <- function()
    test_constructor()
    test_trem2_fpdb()
    test_summarizeModels()
+   test_allKnownTFs()
+   test_trimModels()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
@@ -246,13 +248,81 @@ test_tair10_frd3 <- function()
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
-   build
-   er <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
+   builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
    x <- build(builder)
 
 
-
 } # test_tair10_frd3
+#------------------------------------------------------------------------------------------------------------------------
+test_trimModel <- function()
+{
+   printf("--- test_trimModel")
+
+   load(system.file(package="trenaSGM", "extdata", "sampleDataForTrimModel.RData"))
+   tbl.model.full <- x$model
+   tbl.reg.full <- x$regulatoryRegions
+
+      #------------------------------------------------------------
+      # first, a very strong model, 3 votes needed
+      #------------------------------------------------------------
+
+   tbls.trimmed.3 <- trimModel(tbl.model.full, tbl.reg.full, votesNeeded=3)
+   lapply(tbls.trimmed.3, nrow)
+   tbl.model <- tbls.trimmed.3$model
+   tbl.reg <- tbls.trimmed.3$regulatoryRegions
+
+   checkTrue(nrow(tbl.model) < 7)
+   checkTrue(nrow(tbl.reg) > 30)
+   checkEquals(sort(tbl.model$gene), sort(unique(tbl.reg$geneSymbol)))
+
+     # validate bindingSites count in tbl.model against UNIQUE sites in tbl.reg
+     # first eliminate duplicated sites - which most often (and perhaps exclusively)
+     # occur when overlapping footprints from different footprinting runs have
+     # different though overlapping coordinates, but identically located motif hits
+     # the "loc" column has these motif locations
+
+   duplicated.sites <- which(duplicated(tbl.reg$loc))
+   tbl.reg.reduced <- tbl.reg[-duplicated.sites,]
+   tbl.siteCounts <- as.data.frame(table(tbl.reg.reduced$geneSymbol))
+   colnames(tbl.siteCounts) <- c("gene", "bindingSites")
+
+   list.reg <- tbl.siteCounts$bindingSites
+   names(list.reg) <- tbl.siteCounts$gene
+   list.reg <- list.reg[sort(names(list.reg))]
+
+   list.model <- tbl.model$bindingSites
+   names(list.model) <- tbl.model$gene
+   list.model <- list.model[sort(names(list.model))]
+
+   checkEquals(list.reg, list.model)
+
+      #------------------------------------------------------------
+      # now, a less stringent model, only 2 votes needed
+      #------------------------------------------------------------
+
+   tbls.trimmed.2 <- trimModel(tbl.model.full, tbl.reg.full, votesNeeded=2)
+   lapply(tbls.trimmed.2, nrow)
+   tbl.model <- tbls.trimmed.2$model
+   tbl.reg <- tbls.trimmed.2$regulatoryRegions
+
+   checkTrue(nrow(tbl.model) > 8)
+   checkTrue(nrow(tbl.reg) > 60)
+   checkEquals(sort(tbl.model$gene), sort(unique(tbl.reg$geneSymbol)))
+
+      #----------------------------------------------------------------
+      # now the strict model again, but force keeping EGR4 and ZBTB18
+      #----------------------------------------------------------------
+
+   tbls.trimmed.3.plus <- trimModel(tbl.model.full, tbl.reg.full, votesNeeded=3, tf.keepers=c("EGR4", "ZBTB18"))
+   lapply(tbls.trimmed.3.plus, nrow)
+   tbl.model <- tbls.trimmed.3.plus$model
+   tbl.reg <- tbls.trimmed.3.plus$regulatoryRegions
+
+   checkEquals(nrow(tbl.model), 8)
+   checkEquals(nrow(tbl.reg), 35)
+   checkEquals(sort(tbl.model$gene), sort(unique(tbl.reg$geneSymbol)))
+
+} # test_trimModel
 #------------------------------------------------------------------------------------------------------------------------
 if(!interactive())
    runTests()
