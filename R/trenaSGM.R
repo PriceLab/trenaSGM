@@ -313,9 +313,14 @@ trimModel <- function(tbl.model, tbl.reg, votesNeeded=3, tf.keepers=c())
    if(length(not.yet.included) > 0)
       good.tf.rows <- c(good.tf.rows, not.yet.included)
    tbl.model <- tbl.model[good.tf.rows,]
+
    new.order <- order(abs(tbl.model$spearmanCoeff), decreasing=TRUE)
    tbl.model <- tbl.model[new.order,]
    tbl.reg <- subset(tbl.reg, geneSymbol %in% tbl.model$gene)
+
+   rownames(tbl.model) <- NULL
+   rownames(tbl.reg) <- NULL
+
    return(list(model=tbl.model, regulatoryRegions=tbl.reg))
 
 } # trimModel

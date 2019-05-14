@@ -306,6 +306,44 @@ test_build.small.fimo.motifDB.mapping.cor.02 <- function()
    top.tfs <- subset(tbl.model, rfScore >= 4)$gene
    checkTrue(all(top.tfs %in% tbl.regions$geneSymbol))
 
+      #-----------------------------------------------------------------
+      # an artifact of our footprint calling methods
+      # is that non-human motifs (mouse, rat, chicken!)
+      # are mapped to a footprint
+      # see that this is the case with the regulatory regions
+      # returned above, then test the species-specific filter
+      # added today (14 may 2019)
+      # this elimination of other species depends on the MotifDb
+      # convention, in which full motif names begin with the species:
+      #
+      #    "Hsapiens-jaspar2016-ZNF263-MA0528.1"
+      #    "Mmusculus-HOCOMOCOv10-CEBPA_MOUSE.H10MO.B"
+      #    "Rnorvegicus-jaspar2016-SP1-MA0079.2"
+      #
+      #-----------------------------------------------------------------
+
+
+
+   human.hits <- length(grep("hsapiens", tbl.regions$motifName, ignore.case=TRUE))
+   total.hits <- nrow(tbl.regions)
+   checkTrue(total.hits > human.hits)
+   checkTrue(length(grep("mmusculus", tbl.regions$motifName, ignore.case=TRUE)) > 0)
+   checkTrue(length(grep("rnorvegicus", tbl.regions$motifName, ignore.case=TRUE)) > 0)
+
+   build.spec$motifSpeciesRestriction <- "hsapiens"
+   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=TRUE)
+   x <- build(fpBuilder)
+   tbl.regions <- x$regulatoryRegions
+   tbl.model <- x$model
+   tbl.model <- tbl.model[order(tbl.model$rfScore, decreasing=TRUE),]
+   checkTrue(nrow(tbl.model) > 20)
+   top.tfs <- subset(tbl.model, rfScore >= 4)$gene
+   checkTrue(all(top.tfs %in% tbl.regions$geneSymbol))
+
+   human.hits <- length(grep("hsapiens", tbl.regions$motifName, ignore.case=TRUE))
+   total.hits <- nrow(tbl.regions)
+   checkEquals(total.hits, human.hits)
+
 } # test_build.small.fimo.motifDB.mapping.cor02
 #------------------------------------------------------------------------------------------------------------------------
 test_build.10kb.fimo.motifDB.mapping.cor04 <- function()

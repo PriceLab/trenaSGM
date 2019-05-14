@@ -10,7 +10,8 @@
 
 .FootprintDatabaseModelBuilder <- setClass("FootprintDatabaseModelBuilder",
                                            contains="ModelBuilder",
-                                           slots=c(stagedExecutionDirectory="character"))
+                                           slots=c(stagedExecutionDirectory="character",
+                                                   motifSpeciesRestriction="character"))
 
 #------------------------------------------------------------------------------------------------------------------------
 setGeneric('staged.build', signature='obj', function (obj, stage) standardGeneric ('staged.build'))
@@ -50,23 +51,28 @@ setGeneric('staged.build', signature='obj', function (obj, stage) standardGeneri
 #' @export
 FootprintDatabaseModelBuilder <- function(genomeName, targetGene, strategy, stagedExecutionDirectory=NA_character_, quiet=TRUE)
 {
-    if(!quiet) message("constructing FootprintDatabaseModelBuilder")
+   if(!quiet) message("constructing FootprintDatabaseModelBuilder")
 
-    required.strategy.fields <- c("title", "type", "regions", "tss", "geneSymbol","matrix",
-                                  "db.host", "db.port", "databases", "motifDiscovery","tfMapping", "tfPool",
-                                  "tfPrefilterCorrelation", "orderModelByColumn", "solverNames",
-                                  "annotationDbFile")
+   required.strategy.fields <- c("title", "type", "regions", "tss", "geneSymbol","matrix",
+                                 "db.host", "db.port", "databases", "motifDiscovery","tfMapping", "tfPool",
+                                 "tfPrefilterCorrelation", "orderModelByColumn", "solverNames",
+                                 "annotationDbFile")
 
    for(field in required.strategy.fields)
       if(!field %in% names(strategy))
          stop(sprintf("missing '%s' field in strategy", field))
+
+   motifSpeciesRestriction <- NA_character_
+   if("motifSpeciesRestriction" %in% names(strategy))
+      motifSpeciesRestriction <- strategy$motifSpeciesRestriction
 
    printf("FPDBbuilder ctor, quiet: %s", quiet)
    obj <- .FootprintDatabaseModelBuilder(ModelBuilder(genomeName=genomeName,
                                                       targetGene=targetGene,
                                                       strategy=strategy,
                                                       quiet=quiet),
-                                         stagedExecutionDirectory=stagedExecutionDirectory)
+                                         stagedExecutionDirectory=stagedExecutionDirectory,
+                                         motifSpeciesRestriction=motifSpeciesRestriction)
 
    obj
 
@@ -127,6 +133,14 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
         tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
         if(nrow(tbl.fp) == 0){
            stop(base::simpleError("no footprints found"))
+           }
+        if(!is.na(obj@motifSpeciesRestriction)){  # filter out all but the motifs named
+           keepers <- grep(obj@motifSpeciesRestriction, tbl.fp$name, ignore.case=TRUE)
+           if(length(keepers) > 0)
+              tbl.fp <- tbl.fp[keepers,]
+           } # motifSpeciesRestriction
+        if(nrow(tbl.fp) == 0){
+           stop(base::simpleError("no footprints survived the motif species filter"))
            }
         if(obj@strategy$motifDiscovery == "builtinFimo"){
            if(!obj@quiet) message(sprintf("motifDiscovery: bulitinFimo"))
