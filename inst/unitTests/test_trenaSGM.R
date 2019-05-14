@@ -27,7 +27,7 @@ runTests <- function()
    test_trem2_fpdb()
    test_summarizeModels()
    test_allKnownTFs()
-   test_trimModels()
+   test_trimModel()
 
 } # runTests
 #------------------------------------------------------------------------------------------------------------------------
