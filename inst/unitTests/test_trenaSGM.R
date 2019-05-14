@@ -202,7 +202,7 @@ test_allKnownTFs <- function()
 
    tfs.entrez <- allKnownTFs(identifierType="entrezGeneID")
    checkEquals(length(which(is.na(tfs.entrez))), 0)
-   checkEquals(length(tfs), length(tfs.entrez))
+   checkEqualsNumeric(length(tfs), length(tfs.entrez), tolerance=5)
 
    tfs.combined <- allKnownTFs(identifierType="ensembl|geneSymbol")
    checkEquals(head(tfs.combined, n=3), c("ENSG00000275700|AATF", "ENSG00000276072|AATF", "ENSG00000101126|ADNP"))
