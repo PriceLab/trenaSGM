@@ -46,7 +46,8 @@
 NoDnaModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
 {
    required.strategy.fields <- c("title", "type", "matrix",
-                                 "tfPrefilterCorrelation", "tfPool",
+                                 "tfPrefilterCorrelation",
+                                 "candidateTFs", "tfPool",
                                  "orderModelByColumn",
                                  "solverNames", "annotationDbFile",
                                  "quiet")
@@ -110,9 +111,9 @@ setMethod('build', 'NoDnaModelBuilder',
    function (obj) {
       tbls <- tryCatch({
          s <- obj@strategy
-         xyz <- "NoDnaModelBuilder::build about to call .runTrenaWithTFsOnly"
+         recognizedCandidateTFs <- intersect(s$tfPool, s$candidateTFs)
          tbls <- .runTrenaWithTFsOnly(obj@genomeName,
-                                      s$tfPool,
+                                      recognizedCandidateTFs,
                                       obj@targetGene,
                                       s$matrix,
                                       s$tfPrefilterCorrelation,
