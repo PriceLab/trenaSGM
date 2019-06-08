@@ -164,7 +164,7 @@ test_summarizeModels <- function()
                   type="noDNA.tfsSupplied",
                   matrix=mtx,
                   geneSymbol="TREM2",
-                  tfs=candidate.tfs,
+                  candidateTFs=candidate.tfs,
                   tfPool=allKnownTFs(),
                   tfPrefilterCorrelation=0.4,
                   annotationDbFile=org.Hs.eg.db,
