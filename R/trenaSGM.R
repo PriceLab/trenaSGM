@@ -316,7 +316,7 @@ trimModel <- function(tbl.model, tbl.reg, votesNeeded=3, tf.keepers=c())
 
    new.order <- order(abs(tbl.model$spearmanCoeff), decreasing=TRUE)
    tbl.model <- tbl.model[new.order,]
-   tbl.reg <- subset(tbl.reg, geneSymbol %in% tbl.model$gene)
+   tbl.reg <- subset(tbl.reg, tf %in% tbl.model$gene)
 
    rownames(tbl.model) <- NULL
    rownames(tbl.reg) <- NULL

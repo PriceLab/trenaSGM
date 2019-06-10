@@ -20,5 +20,4 @@ biocCheck:
 	(cd ..; R CMD BiocCheck `ls -t trenaSGM_* | head -1`)
 
 test:
-	for x in inst/unitTests/test_*.R; do echo $x; R -f $$x; done
-
+	for x in inst/unitTests/test_*.R; do echo "========= $$x"; R -f $$x; done
