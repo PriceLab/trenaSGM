@@ -123,11 +123,13 @@ setMethod('show', 'FimoDatabaseModelBuilder',
 setMethod('build', 'FimoDatabaseModelBuilder',
 
    function (obj) {
-      xyz <- "starting FimoDatabaseModelBuilder::build"
+      # browser()
+      # xyz <- "starting FimoDatabaseModelBuilder::build"
       db <- dbConnect(SQLite(), obj@strategy$databases[[1]])
       tbls.hits <- list()
       tbl.regions <- obj@strategy$regions
-      pvalThreshold <- 0.001
+      pvalThreshold <- obj@strategy$fimoPValueThreshold
+      #xyz <- "FimoDatabaseModelBuilder, build"
       for(r in 1:nrow(tbl.regions)){
          query <- sprintf("select * from fimoBindingSites where chrom='%s' and start >= %d and end <= %d and pValue < %f",
                           tbl.regions$chrom[r], tbl.regions$start[r], tbl.regions$end[r], pvalThreshold)
@@ -138,6 +140,7 @@ setMethod('build', 'FimoDatabaseModelBuilder',
       tbl.hits <- subset(tbl.hits, pValue <= obj@strategy$fimoPValueThreshold)
       tfs <- mcols(MotifDb[(tbl.hits$motif)])$geneSymbol   # TODO: put this in the database fill (pshannon, 9 jun 2019)
       tbl.hits$tf <- tfs
+      tbl.hits <- subset(tbl.hits, tf %in% rownames(obj@strategy$matrix))
       signature <- with(tbl.hits, sprintf("%s:%d-%d:%s", chrom, start, end, tf))
       dups <- which(duplicated(signature))
       if(length(dups) > 0)
@@ -154,6 +157,9 @@ setMethod('build', 'FimoDatabaseModelBuilder',
                                        s$annotationDbFile,
                                        obj@quiet)
       tbl.model <- tbls.out$model
+         # TODO: papering over - for now - s bug in .runTrenaWithTFSOnly
+         # TODO: for future examination:  ~/github/trenaSGM/inst/extdata/recipe-to-reproduce-gene-named-1-bug.RData
+      tbl.model <- subset(tbl.model, gene %in% recognizedCandidateTFs)
       coi <- obj@strategy$orderModelByColumn
       if(coi %in% colnames(tbl.model))
          tbl.model <- tbl.model[order(abs(tbl.model[, coi]), decreasing=TRUE),]

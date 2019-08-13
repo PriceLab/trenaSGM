@@ -20,4 +20,10 @@ biocCheck:
 	(cd ..; R CMD BiocCheck `ls -t trenaSGM_* | head -1`)
 
 test:
-	for x in inst/unitTests/test_*.R; do echo "========= $$x"; R -f $$x; done
+	R -f inst/unitTests/test_allKnownTFs.R
+	R -f inst/unitTests/test_utils.R
+	R -f inst/unitTests/test_trenaSGM.r
+	R -f inst/unitTests/test_ModelBuilder.R
+	R -f inst/unitTests/test_NoDnaModelBuilder.R
+	R -f inst/unitTests/test_FootprintDatabaseModelBuilder.R
+	#R -f inst/unitTests/test_FimoDatabaseModelBuilder.R   # deferred: depends on FimoService running
