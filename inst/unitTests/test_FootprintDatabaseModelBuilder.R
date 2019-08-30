@@ -568,6 +568,17 @@ queryDB <- function()
 
 } # queryDB
 #------------------------------------------------------------------------------------------------------------------------
+temporary_test_refactor_.multiQueryFootprints_toAvoidForLoopAndRbind <- function()
+{
+   message(sprintf("--- temporary_test_refactor_.multiQueryFootprints_toAvoidForLoopAndRbind"))
+   dbConnection <- dbConnect(PostgreSQL(), user="trena", password="trena", host="khaleesi", dbname="brain_hint_20")
+   starts <- seq(41200271, by=10000, length.out=3)
+   ends   <- starts + 3000
+   tbl.regions <- data.frame(chrom=rep("chr6", 3), start=starts, end=ends, stringsAsFactors=FALSE)
+   tbl.hits <- trenaSGM:::.multiQueryFootprints(dbConnection, tbl.regions)
+
+} # temporary_test_refactor_.multiQueryFootprints_toAvoidForLoopAndRbind
+#------------------------------------------------------------------------------------------------------------------------
 find.tf.bindingSites <- function(tf)
 {
    mdb.tf <- query(MotifDb, c("hsapiens", "jaspar2018", "BHLHE41"))

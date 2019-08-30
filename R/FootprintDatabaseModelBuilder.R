@@ -130,7 +130,7 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
    function (obj) {
       tbls <- tryCatch({
         if(!obj@quiet) message(sprintf("FootprintDatabaseModleBuilder::build"))
-        tbl.fp <- .assembleFootprints(obj@strategy, obj@quiet)
+        tbl.fp <- .queryFootprintsFromDatabase(obj@strategy, obj@quiet)
         if(nrow(tbl.fp) == 0){
            stop(base::simpleError("no footprints found"))
            }
@@ -205,6 +205,87 @@ setMethod('build', 'FootprintDatabaseModelBuilder',
       return(tbls)
       }) # build
 
+#------------------------------------------------------------------------------------------------------------------------
+.queryFootprintsFromDatabase <- function(strategy, quiet)
+{
+   s <- strategy # for lexical brevity
+
+   if(!quiet) {
+      message(sprintf("=========================================================================="))
+      message(sprintf("FootprintDatabaseModelBuilder::.queryFootprintsFromDatabase, quiet? %s", quiet))
+      message(sprintf("==========================================================================="))
+      message(sprintf("  s$db.host: %s", s$db.host))
+      }
+
+      # dbConnect requires us to specify a database to connect to
+      # having done that, we can then query postgres for all of the databases it holds
+      # we take these two steps first, then close that initial connection
+      # it seems (n=2) that every postgres installation has a database called "postgres":
+      # that's what we use for the initial "what databases do you have?" query
+
+   dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", dbname="postgres", host=s$db.host, port=s$db.port)
+   availableDatabases <- dbGetQuery(dbMain, "select datname from pg_database")$datname
+   requestedDatabases <- unlist(s$databases)
+
+   if(!quiet){
+      message(sprintf("==== available databases:"))
+      print(availableDatabases)
+      message(sprintf("==== requested databases:"))
+      print(requestedDatabases)
+      }
+
+   all.available <- all(requestedDatabases %in% availableDatabases)
+   dbDisconnect(dbMain)
+   stopifnot(all.available)
+
+   dbConnections <- list()
+   fps <- list()
+
+   for(dbName in s$databases){
+      if(!quiet) message(sprintf("--- opening connection %s", dbName))
+      dbConnection <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname=dbName, port=s$db.port)
+
+      if(!quiet){
+         options(digits.secs = 6)
+         message(Sys.time())
+         message(sprintf("--- querying %s for footprints across %d regions totaling %d bases",
+                         dbName, nrow(s$regions), with(s$regions, sum(end-start))))
+         }
+      tbl.hits <- .multiQueryFootprints(dbConnection, s$regions, quiet)
+      if(!quiet){
+         message(Sys.time())
+         message(sprintf("--- back from multiQueryFootprints, nrow: %d", nrow(tbl.hits)))
+         }
+      if(nrow(tbl.hits) == 0){
+         message(sprintf("--- no footprints found in regions in db '%s'", dbName))
+      } else {
+         tbl.hits$chrom <- unlist(lapply(strsplit(tbl.hits$loc, ":"), "[",  1))
+         tbl.hits.clean <- tbl.hits
+         tbl.hits.clean$database = dbName
+         fps[[dbName]] <- tbl.hits.clean
+         }
+      dbDisconnect(dbConnection)
+      }
+
+   if(length(fps) == 0){
+      message("no footprints found, returning empty data.frame")
+      return(data.frame())
+      }
+
+   if(!quiet) message(sprintf("about to do.call rbind, length(fps): %d", length(fps)))
+   tbl.fp <- do.call(rbind, fps)
+   if(!quiet) message(sprintf(" combined tbl.fp: %d %d", nrow(tbl.fp), ncol(tbl.fp)))
+   tbl.fp$shortMotif <- NA
+   # missing <- which(!tbl.fp$name %in% names(MotifDb))
+   matched <- which(tbl.fp$name %in% names(MotifDb))
+   x <- match(tbl.fp$name[matched], names(MotifDb))
+   tbl.fp$shortMotif[matched] <- mcols(MotifDb[x])[, "providerName"]
+      # our odd convention: MotifDb:associationTranscriptFactors uses BOTH columns, one
+      # for the MotifDb mapping, one "shortMotif" for the TFClass mapping
+      # TODO (14 may 2018): fix this
+   invisible(tbl.fp)
+
+} # .queryFootprintsFromDatabase
 #------------------------------------------------------------------------------------------------------------------------
 #' create regulatory model of the gene, following all the specified options, one stage at a time, saving intermedate data
 #'
@@ -334,9 +415,14 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
 
 } # .queryFootprints
 #------------------------------------------------------------------------------------------------------------------------
-.multiQueryFootprints <- function(db, tbl.regions)
+.multiQueryFootprints <- function(db, tbl.regions, quiet=TRUE)
 {
-   tbl.fpRegions <- data.frame()
+   if(!quiet){
+      message(sprintf("--- entering FootprintDatabaseModelBuilder, .multiQueryFootprints, regions: %d", nrow(tbl.regions)))
+      message(Sys.time())
+      }
+
+   tbls <- list()
 
    for(r in seq_len(nrow(tbl.regions))){
       chrom <- tbl.regions$chrom[r]
@@ -345,14 +431,96 @@ setMethod('staged.build', 'FootprintDatabaseModelBuilder',
       query.p0 <- "select loc, chrom, start, endpos from regions"
       query.p1 <- sprintf("where chrom='%s' and start > %d and endpos < %d", chrom, start, end)
       query.regions <- paste(query.p0, query.p1)
+      if(!quiet){
+         message(sprintf("--- .multiQueryFootprints, about to query db: %s", query.regions))
+         message(Sys.time())
+         }
+
       tbl.fpRegions.new <- dbGetQuery(db, query.regions)
-      tbl.fpRegions <- rbind(tbl.fpRegions, tbl.fpRegions.new)
+      if(!quiet){
+         message(sprintf("--- .multiQueryFootprints, after query.regions, rows returned: %d", nrow(tbl.fpRegions.new)))
+         message(Sys.time())
+         }
+
+      tbls[[r]] <- tbl.fpRegions.new
       }
 
+   tbl.fpRegions <- do.call(rbind, tbls)
    loc.set <- unique(sprintf("('%s')", paste(tbl.fpRegions$loc, collapse="','")))
    query.hits <- sprintf("select * from hits where loc in %s", loc.set)
 
    invisible(dbGetQuery(db, query.hits))
 
 } # .multiQueryFootprints
+#------------------------------------------------------------------------------------------------------------------------
+.assembleFootprints <- function(strategy, quiet)
+{
+   s <- strategy # for lexical brevity
+
+   if(!quiet) {
+      message(sprintf("=========================================================================="))
+      message(sprintf("FastFootprintDatabaseModelBuilder::.assembleFootprints, quiet? %s", quiet))
+      message(sprintf("==========================================================================="))
+      message(sprintf("  s$db.host: %s", s$db.host))
+      }
+
+      # dbConnect requires us to specify a database to connect to
+      # having done that, we can then query postgres for all of the databases it holds
+      # we take these two steps first, then close that initial connection
+      # it seems (n=2) that every postgres installation has a database called "postgres":
+      # that's what we use for the initial "what databases do you have?" query
+
+   dbMain <- dbConnect(PostgreSQL(), user="trena", password="trena", dbname="postgres", host=s$db.host, port=s$db.port)
+   availableDatabases <- dbGetQuery(dbMain, "select datname from pg_database")$datname
+   requestedDatabases <- unlist(s$databases)
+
+   if(!quiet){
+      message(sprintf("==== available databases:"))
+      print(availableDatabases)
+      message(sprintf("==== requested databases:"))
+      print(requestedDatabases)
+      }
+
+   all.available <- all(requestedDatabases %in% availableDatabases)
+   dbDisconnect(dbMain)
+   stopifnot(all.available)
+
+   dbConnections <- list()
+   fps <- list()
+
+   for(dbName in s$databases){
+      if(!quiet) message(sprintf("--- opening connection %s", dbName))
+      dbConnection <- dbConnect(PostgreSQL(), user="trena", password="trena", host=s$db.host, dbname=dbName, port=s$db.port)
+      if(!quiet) message(sprintf("--- querying %s for footprints across %d regions totaling %d bases",
+                        dbName, nrow(s$regions), with(s$regions, sum(end-start))))
+      tbl.hits <- .multiQueryFootprints(dbConnection, s$regions)
+      if(nrow(tbl.hits) == 0){
+         message(sprintf("--- no footprints found in regions in db '%s'", dbName))
+      } else {
+         tbl.hits$chrom <- unlist(lapply(strsplit(tbl.hits$loc, ":"), "[",  1))
+         tbl.hits.clean <- tbl.hits
+         tbl.hits.clean$database = dbName
+         fps[[dbName]] <- tbl.hits.clean
+         }
+      dbDisconnect(dbConnection)
+      }
+
+   if(length(fps) == 0){
+      message("no footprints found, returning empty data.frame")
+      return(data.frame())
+      }
+
+   tbl.fp <- do.call(rbind, fps)
+   if(!quiet) message(printf(" combined tbl.fp: %d %d", nrow(tbl.fp), ncol(tbl.fp)))
+   tbl.fp$shortMotif <- NA
+   missing <- which(!tbl.fp$name %in% names(MotifDb))
+   matched <- which(tbl.fp$name %in% names(MotifDb))
+   x <- match(tbl.fp$name[matched], names(MotifDb))
+   tbl.fp$shortMotif[matched] <- mcols(MotifDb[x])[, "providerName"]
+      # our odd convention: MotifDb:associationTranscriptFactors uses BOTH columns, one
+      # for the MotifDb mapping, one "shortMotif" for the TFClass mapping
+      # TODO (14 may 2018): fix this
+   invisible(tbl.fp)
+
+} # .assembleFootprints
 #------------------------------------------------------------------------------------------------------------------------
