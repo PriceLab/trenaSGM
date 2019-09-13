@@ -68,3 +68,5 @@ INFO [2019-08-30 06:54:21] queryFootprints(    placenta_fp),   1 regions,      6
 INFO [2019-08-30 06:55:32] queryFootprints(  brain_hint_20),   1 regions,      600 bases:   0.02   0.00   0.76   0.00   0.00
 INFO [2019-08-30 07:40:26] queryFootprints(    placenta_fp),   1 regions,      600 bases:   0.12   0.00   0.61   0.00   0.00
 INFO [2019-08-30 07:40:39] queryFootprints(  brain_hint_20),   1 regions,      600 bases:   0.03   0.01   0.86   0.00   0.00
+INFO [2019-08-30 08:26:06] queryFootprints(    placenta_fp),   1 regions,      600 bases:   0.12   0.00   0.61   0.00   0.00
+INFO [2019-08-30 08:26:07] queryFootprints(  brain_hint_20),   1 regions,      600 bases:   0.03   0.01   0.89   0.00   0.00

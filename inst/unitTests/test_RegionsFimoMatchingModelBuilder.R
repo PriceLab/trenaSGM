@@ -14,7 +14,8 @@ if(!exists("mtx"))
 #    FIMO="/Users/paul/meme/bin/fimo"
 #    MOTIFS="../pfms/trem2.curated.15.pfms.meme"
 #    start:
-#	python -i runServer.py $(PORT) $(FIMO) $(MOTIFS)
+#      	$(PYTHON) -i $(PYTHON_SCRIPT) $(PORT) $(FIMO) $(MOTIFS)
+#    which resolves to  /Users/paul/anaconda3/bin/python -i /Users/paul/github/fimoService/server/runFimoServer.py 5560 "/Users/paul/meme/bin/fimo" "../pfms/trem2.curated.15.pfms.meme"
 
 if(!exists("fimo")){
    FIMO_HOST <- "localhost"
@@ -52,13 +53,15 @@ test_constructor <- function()
                       motifDiscovery="fimo",
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
+                      annotationDbFile=dbfile(org.Hs.eg.db),
+                      quiet=TRUE,
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
+                      fimoThreshold=1e-4,
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
    builder <- RegionsFimoModelBuilder(genome, targetGene,  build.spec, fimo, quiet=TRUE)
-
-   checkTrue("RegionsFimoModelBuilder" %in% is(builder))
+   checkTrue(all(c("RegionsFimoModelBuilder", "ModelBuilder") %in%  is(builder)))
 
 } # test_constructor
 #------------------------------------------------------------------------------------------------------------------------
@@ -83,11 +86,16 @@ test_build.trem2.400bp.motifDB.model <- function()
                       motifDiscovery="fimo",
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
+                      annotationDbFile=dbfile(org.Hs.eg.db),
+                      quiet=TRUE,
+                      fimoThreshold=1e-4,
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
-                      solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
+                      solverNames=c("lasso", "lassopv", "ridge", "spearman", "pearson", "randomForest", "xgboost"))
 
+   # builder <- RegionsMotifMatchingModelBuilder(genome, targetGene,  build.spec, quiet=TRUE)
    builder <- RegionsFimoModelBuilder(genome, targetGene,  build.spec, fimo, quiet=TRUE)
+
    x <- build(builder)
    checkEquals(names(x), c("model", "regulatoryRegions"))
    tbl.regRegions <- x$regulatoryRegions
@@ -125,6 +133,7 @@ test_build.trem2.twoRegions.motifDB.model <- function()
                       motifDiscovery="fimo",
                       tfPool=allKnownTFs(),
                       tfMapping="MotifDB",
+                      fimoThreshold=1e-4,
                       tfPrefilterCorrelation=0.4,
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))

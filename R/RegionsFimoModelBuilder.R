@@ -52,7 +52,7 @@ RegionsFimoModelBuilder <- function(genomeName, targetGene, strategy, fimoClient
 {
    required.strategy.fields <- c("title", "type", "regions", "tss", "matrix", "motifDiscovery",
                                  "tfPool", "tfMapping", "tfPrefilterCorrelation", "orderModelByColumn",
-                                 "solverNames")
+                                 "solverNames", "fimoThreshold")
 
    for(field in required.strategy.fields)
       if(!field %in% names(strategy))
@@ -117,20 +117,21 @@ setMethod('show', 'RegionsFimoModelBuilder',
 setMethod('build', 'RegionsFimoModelBuilder',
 
    function (obj) {
+      xyz <- "RegiondFimoodelBuilder::build"
       mm <- MotifMatcher(obj@genomeName, list())
       tbl.regions <- obj@strategy$regions
+      pvalThreshold <- obj@strategy$fimoThreshold;
       tbl.motifs <- data.frame()
       for(r in seq_len(nrow(tbl.regions))){
         tbl.seq <- getSequence(mm, tbl.regions[r,])
         seq.list <- list(tbl.seq$seq)
-        tbl.fimo <- requestMatch(obj@fimo, seq.list)
-        tbl.fimo.filtered <- subset(tbl.fimo, p.value <= obj@strategy$matchThreshold)
-        if(nrow(tbl.fimo.filtered) > 0){
-           tbl.fimo.filtered$start <- tbl.fimo.filtered$start + tbl.regions$start[r]
-           tbl.fimo.filtered$stop <- tbl.fimo.filtered$stop + tbl.regions$start[r]
-           tbl.fimo.filtered$chrom <- tbl.regions$chrom[r]
-           tbl.motifs <- rbind(tbl.motifs, tbl.fimo.filtered)
-           } # if filtered
+        tbl.fimo <- requestMatch(obj@fimo, seq.list, pvalThreshold)
+        if(nrow(tbl.fimo) > 0){
+           tbl.fimo$start <- tbl.fimo$start + tbl.regions$start[r]
+           tbl.fimo$stop <- tbl.fimo$stop + tbl.regions$start[r]
+           tbl.fimo$chrom <- tbl.regions$chrom[r]
+           tbl.motifs <- rbind(tbl.motifs, tbl.fimo)
+           } # if nrow(tbl.fimo)
         } # for nrow(tbl(regions
       tfs <- mcols(MotifDb[tbl.motifs$motif])$geneSymbol
       tbl.motifs$geneSymbol <- tfs
@@ -141,6 +142,7 @@ setMethod('build', 'RegionsFimoModelBuilder',
                                              obj@strategy$matrix,
                                              obj@strategy$tfPrefilterCorrelation,
                                              obj@strategy$solverNames,
+                                             obj@strategy$annotationDbFile,
                                              obj@quiet)
 
       tbl.model <- tbls$model
