@@ -3,7 +3,6 @@
 #' @import trena
 #' @import MotifDb
 #' @import RPostgreSQL
-##  @importFrom FimoClient FimoClientClass
 #' @import FimoClient
 
 #' @name RegionsFimoModelBuilder-class
@@ -117,7 +116,6 @@ setMethod('show', 'RegionsFimoModelBuilder',
 setMethod('build', 'RegionsFimoModelBuilder',
 
    function (obj) {
-      xyz <- "RegiondFimoodelBuilder::build"
       mm <- MotifMatcher(obj@genomeName, list())
       tbl.regions <- obj@strategy$regions
       pvalThreshold <- obj@strategy$fimoThreshold;
@@ -133,7 +131,13 @@ setMethod('build', 'RegionsFimoModelBuilder',
            tbl.motifs <- rbind(tbl.motifs, tbl.fimo)
            } # if nrow(tbl.fimo)
         } # for nrow(tbl(regions
-      tfs <- mcols(MotifDb[tbl.motifs$motif])$geneSymbol
+      motifNames <- tbl.motifs$motif
+      deleters <- which(nchar(motifNames) >= 100)
+      printf("   === deleting %d motifs with names bigger than fimo's 100 character limit", length(deleters))
+      if(length(deleters) > 0)
+         tbl.motifs <- tbl.motifs[-deleters,]
+      motifNames.trimmed <- tbl.motifs$motif
+      tfs <- mcols(MotifDb[motifNames.trimmed])$geneSymbol
       tbl.motifs$geneSymbol <- tfs
       tbls <- .runTrenaWithRegulatoryRegions(obj@genomeName,
                                              allKnownTFs(),    # from trenaSGM
