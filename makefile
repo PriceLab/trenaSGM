@@ -26,5 +26,5 @@ test:
 	R -f inst/unitTests/test_ModelBuilder.R
 	R -f inst/unitTests/test_NoDnaModelBuilder.R
 	R -f inst/unitTests/test_FootprintDatabaseModelBuilder.R
-	R -f inst/unitTests/test_RegionsFimoMatchingModelBuilder.R
-	# R -f inst/unitTests/test_FimoDatabaseModelBuilder.R   # deferred: depends on FimoService running
+#	R -f inst/unitTests/test_RegionsFimoMatchingModelBuilder.R   # deferred: depends on FimoService running
+#	R -f inst/unitTests/test_FimoDatabaseModelBuilder.R   # deferred: depends on FimoService running
