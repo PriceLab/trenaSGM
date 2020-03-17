@@ -176,7 +176,7 @@ test_TBX15.represses.GATA2 <- function()
 library(FimoClient)
 FIMO_HOST <- "localhost"
 FIMO_PORT <- 60000
-fc <- FimoClient(FIMO_HOST, FIMO_PORT, quiet=FALSE)
+fc <- FimoClient(FIMO_HOST, FIMO_PORT, quiet=TRUE)
 tbl.regions <- get(load("~/github/trenaSGM/inst/extdata/d12_rep2_erythro_ATAC-seq.RData"))
 x <- requestMatchForRegions(fc, tbl.regions, "hg38", 1e-4)
 

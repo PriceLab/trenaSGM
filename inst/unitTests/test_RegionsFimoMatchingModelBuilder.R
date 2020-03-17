@@ -20,7 +20,7 @@ if(!exists("mtx"))
 if(!exists("fimo")){
    FIMO_HOST <- "localhost"
    FIMO_PORT <- 5560
-   fimo <-FimoClient(FIMO_HOST, FIMO_PORT, quiet=FALSE)
+   fimo <-FimoClient(FIMO_HOST, FIMO_PORT, quiet=TRUE)
    }
 
 #------------------------------------------------------------------------------------------------------------------------

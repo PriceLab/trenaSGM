@@ -466,7 +466,7 @@ test_reproduceCorysTrem2model <- function()
                       orderModelByColumn="rfScore",
                       solverNames=c("lasso", "lassopv", "pearson", "randomForest", "ridge", "spearman"))
 
-   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=FALSE)
+   fpBuilder <- FootprintDatabaseModelBuilder("hg38", "TREM2", build.spec, quiet=TRUE)
    x <- build(fpBuilder)
    tbl.regions <- x$regulatoryRegions
    tbl.model <- x$model
@@ -816,7 +816,7 @@ test_stagedExecution <- function()
    # stageDir <- "stage"
    stageDir <- tempdir()
 
-   fpBuilder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=FALSE,
+   fpBuilder <- FootprintDatabaseModelBuilder(genome, targetGene, build.spec, quiet=TRUE,
                                               stagedExecutionDirectory=stageDir)
    fp.filename <- staged.build(fpBuilder, stage="find.footprints")
    checkTrue(file.exists(fp.filename))

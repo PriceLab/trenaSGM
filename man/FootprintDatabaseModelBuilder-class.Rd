@@ -7,8 +7,13 @@
 \alias{FootprintDatabaseModelBuilder}
 \title{Create a FootprintDatabaseModelBuilder object}
 \usage{
-FootprintDatabaseModelBuilder(genomeName, targetGene, strategy,
-  stagedExecutionDirectory = NA_character_, quiet = TRUE)
+FootprintDatabaseModelBuilder(
+  genomeName,
+  targetGene,
+  strategy,
+  stagedExecutionDirectory = NA_character_,
+  quiet = TRUE
+)
 }
 \arguments{
 \item{genomeName}{hg38, mm10, ...}

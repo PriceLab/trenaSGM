@@ -7,8 +7,12 @@
 \alias{RegionsMotifMatchingModelBuilder}
 \title{Create a RegionsMotifMatchingModelBuilder object}
 \usage{
-RegionsMotifMatchingModelBuilder(genomeName, targetGene, strategy,
-  quiet = TRUE)
+RegionsMotifMatchingModelBuilder(
+  genomeName,
+  targetGene,
+  strategy,
+  quiet = TRUE
+)
 }
 \arguments{
 \item{genomeName}{hg38, mm10, ...}
