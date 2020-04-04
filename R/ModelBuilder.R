@@ -141,7 +141,7 @@ ModelBuilder <- function(genomeName, targetGene, strategy, quiet=TRUE)
       # an abs(cor) threshold
 
    mtx.sub <- expression.matrix[c(candidate.tfs, targetGene),]
-   mtx.cor <- cor(t(mtx.sub))
+   mtx.cor <- cor(t(mtx.sub), method="spearman")
    xyz <- "ModelBuilder before mtx.cor[targetGene,]"
    high.correlation.genes <- names(which(abs(mtx.cor[targetGene,]) >= tfPrefilterCorrelation))
    if(!quiet){
