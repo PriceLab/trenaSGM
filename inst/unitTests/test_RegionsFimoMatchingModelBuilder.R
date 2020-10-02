@@ -1,6 +1,5 @@
 library(RUnit)
 library(trenaSGM)
-library(motifStack)
 library(FimoClient)
 #------------------------------------------------------------------------------------------------------------------------
 if(!exists("mtx"))

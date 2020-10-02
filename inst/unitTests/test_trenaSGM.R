@@ -1,7 +1,6 @@
 library(RUnit)
 library(trenaSGM)
 library(MotifDb)
-library(motifStack)
 library(org.Hs.eg.db)
 library(org.At.tair.db)
 #------------------------------------------------------------------------------------------------------------------------
@@ -88,7 +87,7 @@ test_trem2_fpdb <- function()
       # the two different tfPrefilterCorrelation values produce models with very different row counts
    checkTrue(nrow(models$one$model) < 8)
    checkTrue(nrow(models$two$model) > 20)
-   checkTrue(nrow(models$one$regulatoryRegions) < 35)
+   checkTrue(nrow(models$one$regulatoryRegions) < 100)
    checkTrue(nrow(models$two$regulatoryRegions) > 250)
 
       # check the sort order on the requested orderByColumns
